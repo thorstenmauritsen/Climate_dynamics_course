@@ -48,6 +48,9 @@ axes.set_xticklabels(('90S','30S','Equator','30N','90N'))
 axes.xaxis.set_ticks_position('bottom')
 axes.spines['bottom'].set_position('zero')
 
+for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
+    ticks.set_color(almost_black)
+
 spines_to_remove        = ['top'] 
 for spine in spines_to_remove:
     axes.spines[spine].set_visible(False)
@@ -61,19 +64,12 @@ plt.tight_layout()
 plt.savefig('../plots/CERES_Ebaf_zonalmean.pdf', dpi=600)
 plt.close()
 
+#-------------------------------------------------------------
 
 fig, axes = plt.subplots(1,1, figsize=(6,4))  
 
-#axes.fill_between(sinlats, sw_all, -lw_all, where=-lw_all >= sw_all, facecolor='blue', interpolate=True)
-#axes.fill_between(sinlats, sw_all, -lw_all, where=-lw_all < sw_all, facecolor='red', interpolate=True)
-#axes.fill_between(sinlats, y1, y2, where=y2 <= y1, facecolor='red', interpolate=True)
 axes.plot(sinlats,  albedo, color='black')
-#axes.plot(sinlats, -lw_all, color='black')
-#axes.text(0,15,'CERES EBAF Edition 2.8, 2001-2014', color=almost_black, ha='center')
-#axes.text(0,330,'Shortwave', color=almost_black, ha='center')
-#axes.text(0,220,'-Longwave', color=almost_black, ha='center')
 
-#axes.set_xlabel('Latitude')
 axes.set_ylabel('Planetary albedo')
 
 plt.ylim((0,0.8))
@@ -86,6 +82,11 @@ axes.set_xticklabels(('90S','30S','Equator','30N','90N'))
 axes.xaxis.set_ticks_position('bottom')
 #axes.spines['bottom'].set_position('zero')
 
+axes.set_yticks(np.arange(0.1,0.9,0.1))
+
+for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
+    ticks.set_color(almost_black)
+
 spines_to_remove        = ['top'] 
 for spine in spines_to_remove:
     axes.spines[spine].set_visible(False)
@@ -96,7 +97,7 @@ for spine in spines_to_keep:
     axes.spines[spine].set_color(almost_black)
 
 plt.tight_layout()
-plt.savefig('../plots/CERES_Ebaf_aldedo.pdf', dpi=600)
+plt.savefig('../plots/CERES_Ebaf_albedo.pdf', dpi=600)
 plt.close()
 
 

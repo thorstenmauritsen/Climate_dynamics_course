@@ -107,7 +107,7 @@ The course is theoretical in the sense that we will be working with abstraction:
 \begin{center}
 \includegraphics[width=17 cm]{../external_figures/Paleo_temperature_timeseries}
 \end{center}
-\caption{ Concatenation of various proxies of temperature from the past for illustration purposes. Note the logarithmic time-axis. Modified from Glen Fergus. } 
+\caption{ Concatenation of various proxies of temperature from the past for illustration purposes. Note the logarithmic time-axis. Modified from the original by Glen Fergus. } 
 \label{fig:Paleo_temperature_timeseries}
 \end{figure}
 
@@ -116,16 +116,20 @@ The course is theoretical in the sense that we will be working with abstraction:
 %---------------------------------------------------------------------
 \chapter{Essentials}
 \label{chapter:essentials}
-Here I go over some of the basics of Earth's climatology, it's radiative properties and the energetic flows. This chapter is meant to 
-
-
-
+Here I go over some of the basics of Earth's climatology, it's radiative properties and the energetic flows. This chapter is intended to provide a minimal background for the further studies. We will spend a bit extra time trying to understand what controls the height of the troposphere. 
 
 \section{Temperature of the Earth and its atmosphere}
-From basic thermodynamics we have learned that an isolated system has a well-defined temperature when it is in a thermodynamic equilibrium wherein there are only random brownian transfer of energy and no net fluxes exist. The Earth is very far from thermodynamic equilibrium, and instead about 120 Petawatt (PW: $10^{15}$W) are received from the sun and approximately the same amount is radiated to back to space in the form of infrared radiation. In this case it makes sense to choose a more practical definition of Earth's temperature, for instance that which is needed temperature needed to achieve equilibrium: the warmer it is the more infrared radiation it will radiate to space. This is sometimes referred to as the Earth's radiation temperature at thermal equilibrium.
+From basic thermodynamics we have learned that an isolated system has a well-defined temperature when it is in a thermodynamic equilibrium wherein there are only random brownian transfer of energy and no net fluxes exist. The Earth is very far from thermodynamic equilibrium, and instead about 173 Petawatt (PW: $10^{15}$W) are received from the sun and approximately the same amount is radiated to back to space in the form of reflected sunlight and as infrared radiation. In this case it makes sense to choose a more practical definition of Earth's temperature, for instance that which is needed temperature needed to achieve equilibrium: the warmer it is the more infrared radiation it will radiate to space. This is sometimes referred to as the Earth's radiation temperature at thermal equilibrium.
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=15 cm]{../external_figures/Stevens_Schwartz_2012_energy_flows.pdf}
+\end{center}
+\caption{ Observational estimates of the Earth's energy balance from Stevens and Schwartz \citep{Stevens2012}. Yellow is sunlight, red is infrared radiation. The little whirl is turbulent sensible heat transfer and the green is latent heat transfer. } 
+\label{fig:energy_flows}
+\end{figure}
 
-Energy flows
+It is useful to consider the components of the global mean energy balance (Figure \ref{fig:energy_flows}). Here we consider the fluxes per meter squared surface area of the Earth (total area $510\cdot 10^{12}$ m$^2$). Energy flows in from the sun at 340 Wm$^{-2}$, about 100 of which are reflected back to space by clouds, aerosol particles or the surface. In the atmosphere some of the sunlight is absorbed, mostly by oxygen, ozone and water vapor, and the rest reaches and heats the surface. The surface gets rid of the heat again through emitting infrared radiation, and sensible and latent heat fluxes to the atmosphere. Of the emitted nearly 400 Wm$^{-2}$ infrared radiation most it is absorbed by the atmosphere
 
 \begin{figure}
 \begin{center}
@@ -135,12 +139,24 @@ Energy flows
 \label{fig:HadCRUT_temperature_map}
 \end{figure}
 
-Partly because the sunlight is not distributed evenly over the Earth's surface it exhibits wildly varying temperatures near the surface with extremes from about -90$^\circ$C to +60$^\circ$C. Even in the annual longterm mean the coldest and warmest places differ by nearly 90 degrees (Figure \ref{fig:HadCRUT_temperature_map}). As we will see below, this sets up large energy flows in the atmosphere and oceans from warmer to colder regions. Nevertheless, we will often use a conceptual global mean surface temperature; today this is about 15$^\circ$C.
+Partly because the sunlight is not distributed evenly over the Earth's surface it exhibits wildly varying temperatures near the surface with extremes from about -90$^\circ$C to +60$^\circ$C. Even in the annual longterm mean the coldest and warmest places differ by nearly 90 degrees (Figure \ref{fig:HadCRUT_temperature_map}). As we will see below, these temperature gradients set up large energy flows in the atmosphere and oceans from warmer to colder regions. Nevertheless, we will often use a global mean surface temperature; today this is about 15$^\circ$C.
 
-Temperature profile, focus on troposphere
+On average, though, the coldest point in the Earth's troposphere is the tropical tropopause region with temperatures around 200 K (Figure \ref{fig:tropical_profiles}). These low temperatures are achieved through vertical mixing in deep convective clouds wherein localized rapidly rising motion causes adiabatic cooling due to the decreasing pressure with height. If the air was dry the temperature would decrease at a rate of about -10 K km$^{-1}$, but because some latent heat is released as water vapor condenses during the ascent, the actual lapse rate is less, about -6 K km$^{-1}$ as can be inferred from Figure \ref{fig:tropical_profiles}. This is referred to as the moist adiabat.
 
+Unlike the horizontal temperature gradients at the Earth's surface, mostly from equator to poles, that cause energy to be transported in the oceans and the atmosphere, the vertical temperature gradient of about 100 K in the topical troposphere is not on it's own causing transports to occur. However, as we shall see in a moment radiative cooling causes an upward convective  transport of energy to balance the budget of the atmosphere.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=17 cm]{../external_figures/atmospheric-radiation-13a-tropical-profile-temperature-gases-density}
+\end{center}
+\caption{ Typical profiles of temperature, greenhouse gases and density in the tropics.  } 
+\label{fig:tropical_profiles}
+\end{figure}
 
 \section{Radiative properties}
+
+
+
 
 Spectra
 
@@ -148,7 +164,7 @@ Spectra
 \begin{center}
 \includegraphics[width=17 cm]{../external_figures/GW_Petty_IRIS_Tropical_Western_Pacific.png}
 \end{center}
-\caption{ Classical radiance spectrum measured by the infrared interferometer spectrometer (IRIS) for measuring the emission spectra of the earth/atmosphere system aboard the Nimbus-4 satellite. The instrument is limited to the range 400 to 1600 cm$^{-1}$, and outside simplistic extrapolations are made. The measurements were made in the 1970's and are restricted to clear sky scenes. Dashed lines show idealized black body spectra. Blue shading illustrates the effect of carbon dioxide (CO$_2$). The other dip at 1000-1100 cm$^{-1}$ is due to ozone (O$_3$), and the flanks (less than 600 and more than 1200 cm$^{-1}$) are dominated by vapor vapor (H$_2$O). } 
+\caption{ Classical irradiance spectrum measured by the infrared interferometer spectrometer (IRIS) for measuring the emission spectra of the earth/atmosphere system aboard the Nimbus-4 satellite. The instrument is limited to the range 400 to 1600 cm$^{-1}$, and outside simplistic extrapolations are made. The measurements were made in the 1970's and are restricted to clear sky scenes. Dashed lines show idealized black body spectra. Blue shading illustrates the effect of carbon dioxide (CO$_2$). The other dip at 1000-1100 cm$^{-1}$ is due to ozone (O$_3$), and the flanks (less than 600 and more than 1200 cm$^{-1}$) are dominated by vapor vapor (H$_2$O). } 
 \label{fig:radiation_spectrum}
 \end{figure}
 
@@ -158,22 +174,33 @@ Cooling rates (Petty 2006)
 \begin{center}
 \includegraphics[width=8 cm]{../external_figures/atmospheric-radiation-13c-heating-rates-tropical-each-h2o-co2-o3.png}
 \end{center}
-\caption{ Longwave heating rates due to individual greenhouse gases calculated for a clear-sky tropical atmosphere.  } 
+\caption{ Longwave heating rates due to individual greenhouse gases calculated for the  clear-sky tropical atmosphere displayed in Figure \ref{fig:tropical_profiles}.  } 
 \label{fig:radiative_cooling}
 \end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/CERES_Ebaf_zonalmean.pdf}
+%\includegraphics[width=8 cm]{../plots/CERES_Ebaf_albedo.pdf}
+\end{center}
+\caption{ Top-of-atmosphere net fluxes of shortwave and longwave radiation as measured from satellite. The red area shows regions where more energy is received than emitted, it extends approximately from 36S to 36N and has a mean of 36.5 Wm$^{-2}$. The blue areas are regions that emit more radiation to space than they receive. In the Southern Hemisphere the mean flux is -54.0 Wm$^{-2}$ and in the Northern Hemisphere the deficit is -54.7 Wm$^{-2}$.  } 
+\label{fig:ceres_fluxes}
+\end{figure}
+
 
 \section{The tropopause}
 
 Radiative-convective equilibrium, ozone layer heating, tropopause
 
-\section{Energy transports}
-The atmosphere and oceans transport energy
+%\section{Energy transports}
+%The atmosphere and oceans transport energy
 
+\newpage
 \vspace{1 cm}
 \hrule
 {\setlength{\parindent}{0cm}
 \begin{exercise}
-Estimate roughly from which heights in the troposphere thermal radiation to space comes from. Use Figures \ref{fig:temperature_profile} and \ref{fig:radiation_spectrum} and divide into lower-, mid- and upper troposphere by means of its temperature. From which height do you think radiation in the wavelength range 9-10 $\mu$m come?
+Estimate roughly from which heights in the troposphere thermal radiation to space comes from? Use Figures \ref{fig:tropical_profiles} and \ref{fig:radiation_spectrum} and divide into lower-, mid- and upper troposphere by means of its temperature. Use the fact that the area under the curve in Figure  \ref{fig:radiation_spectrum} is the total flux. Compare the amount of radiation escaping to space at near-surface brightness temperature to the amount escaping through the atmospheric window in Figure \ref{fig:energy_flows}. What is missing? From approximately which height do you think radiation in the wavelength range 9-10 $\mu$m come? 
 \end{exercise}
 
 \begin{exercise}
@@ -184,6 +211,9 @@ Explain, in your own words, why the tropopause is where it is.
 % TASKS:
 %
 % Make sure you have python access, including numpy and matplotlib (preferably Anaconda)
+%
+% Assume the Earth's surface is a black body and calculate it's temperature based on the emission in Figure \ref{fig:energy_flows}. Assume it is 1 K warmer, then how much more does it radiate? How much of this flux will approximately escape directly to space through the atmospheric window?
+%
 % Estimate from which heights in the troposphere thermal radiation to space comes from
 % Estimate the fixed anvil temperature (FAT) cloud feedback by assuming a fixed areal coverage of anvils and a fixed tropospheric lapse-rate
 %
