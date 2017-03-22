@@ -35,7 +35,7 @@
 \rhead{Mauritsen}
 \chead{}
 \lhead{\DocTitle}
-%\cfoot{Page \thepage}
+\cfoot{}
 \cfoot{}
 
 % Remove to get numbers:
@@ -87,9 +87,12 @@
 \maketitle
 \tableofcontents
 
+
+
 \frontmatter
+\cfoot{Page \thepage}
 \chapter{Preface}
-Let us take a look at a planet from space -- and -- imagine we let time pass relatively quickly. From this perspective we can observe a system in approximate stationarity; something which we usually call equilibrium. This is not to be mistaken for a strict thermodynamical equilibrium, wherein, as you may have learnt in other courses, the system is characterised by a single well-defined temperature, but rather an approximate equilibrium between radiative energy received from the star around which our planet of interest is circulating (provided it does have a star), and the thermal energy that the planet is radiating to space. How does the planet come into equilibrium, and is there only one equilibrium? How does the equilibrium change if the star changes it's irradiance, or the planets orbit is altered? How does the equilibrium of the planet depend on properties of the planet? To begin to answer these questions we will have to dig into the processes that determine the energy balance, but the starting point will be our somewhat abstract perspective from space and time.
+Let us take a look at Earth from space -- and -- imagine we let time pass relatively quickly. From this perspective we can observe a system in approximate stationarity; something which we usually call equilibrium. This is not to be mistaken for a strict thermodynamical equilibrium, wherein, as you may have learnt in other courses, the system is characterised by a single well-defined temperature, but rather an approximate equilibrium between radiative energy received from the star around which our planet of interest is circulating (provided it does have a star), and the thermal energy that the planet is radiating to space. How does the planet come into equilibrium, and is there only one equilibrium? How does the equilibrium change if the star changes it's irradiance, or the planets orbit is altered? How does the equilibrium of the planet depend on properties of the planet? To begin to answer these questions we will have to dig into the processes that determine the energy balance, but the starting point will be our somewhat abstract perspective from space and time.
 
 Usually we think of the climate as something that is static, we think of averages in time -- traditionally taken to be 30 years. So why discuss the dynamics of something that is static? The climate is varying on timescales as short as we choose to define them up to those of the existence of the planet (Figure \ref{fig:Paleo_temperature_timeseries}). These variations were either due to external factors, such as the sun, or  the composition of the atmosphere changing due to biogeochemical processes, or internal variability. Much of this can be described by simple dynamical equations, as the dynamics of climate. A related and interesting field describes the dynamics of the atmosphere- and ocean circulations and the biogeochemical cycles. 
 
@@ -139,9 +142,18 @@ It is useful to consider the components of the global mean energy balance (Figur
 \label{fig:HadCRUT_temperature_map}
 \end{figure}
 
-Partly because the sunlight is not distributed evenly over the Earth's surface it exhibits wildly varying temperatures near the surface with extremes from about -90$^\circ$C to +60$^\circ$C. Even in the annual longterm mean the coldest and warmest places differ by nearly 90 degrees (Figure \ref{fig:HadCRUT_temperature_map}). As we will see below, these temperature gradients set up large energy flows in the atmosphere and oceans from warmer to colder regions. Nevertheless, we will often use a global mean surface temperature; today this is about 15$^\circ$C.
+Partly because the sunlight is not distributed evenly over the Earth's surface it exhibits wildly varying temperatures near the surface with extremes from about -90$^\circ$C to +60$^\circ$C. Even in the annual longterm mean the coldest and warmest places differ by nearly 90 degrees (Figure \ref{fig:HadCRUT_temperature_map}). We will, however, often use a global mean surface temperature; today this is about 15$^\circ$C, or 288 K. These temperature gradients set up large energy flows in the atmosphere and oceans from warmer to colder regions. To get an idea of the magnitude of these transports one can inspect the zonal mean top-of-atmosphere radiation balance (Figure \ref{fig:ceres_fluxes}). The regions from about 36S to 36N receives more energy than is emitted back to space, whereas the high latitudes have an energy deficit. To compensate this, there must be a meridional energy transport from low to high latitudes in the oceans and in the atmosphere (It is left as an exercise to estimate the flux of energy from low to high latitudes). As a result, the temperature gradients on Earth are, in fact, modest. For instance, the Moon has equatorial temperatures varying from about 100 to 390 K between day and night, and even colder temperatures have been measured in craters near the poles.
 
-On average, though, the coldest point in the Earth's troposphere is the tropical tropopause region with temperatures around 200 K (Figure \ref{fig:tropical_profiles}). These low temperatures are achieved through vertical mixing in deep convective clouds wherein localized rapidly rising motion causes adiabatic cooling due to the decreasing pressure with height. If the air was dry the temperature would decrease at a rate of about -10 K km$^{-1}$, but because some latent heat is released as water vapor condenses during the ascent, the actual lapse rate is less, about -6 K km$^{-1}$ as can be inferred from Figure \ref{fig:tropical_profiles}. This is referred to as the moist adiabat.
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/CERES_Ebaf_zonalmean.pdf}
+%\includegraphics[width=8 cm]{../plots/CERES_Ebaf_albedo.pdf}
+\end{center}
+\caption{ Top-of-atmosphere net fluxes of shortwave and longwave radiation as measured from satellite. The red area shows regions where more energy is received than emitted, it extends approximately from 36S to 36N and has a mean of 36.5 Wm$^{-2}$. The blue areas are regions that emit more radiation to space than they receive. In the Southern Hemisphere the mean flux is -54.0 Wm$^{-2}$ and in the Northern Hemisphere the deficit is -54.7 Wm$^{-2}$. Note that the x-axis is plotted as sinus of latitude such that the area under the curves can be integrated. } 
+\label{fig:ceres_fluxes}
+\end{figure}
+
+On average, the coldest point in the Earth's troposphere is the tropical tropopause region with temperatures around 200 K (Figure \ref{fig:tropical_profiles}). These low temperatures are achieved through vertical mixing in deep convective clouds wherein localized rapidly rising motion causes adiabatic cooling due to the decreasing pressure with height. If the air was dry the temperature would decrease at a rate of about -10 K km$^{-1}$, but because some latent heat is released as water vapor condenses during the ascent, the actual lapse rate is less, about -6 K km$^{-1}$ as can be inferred from Figure \ref{fig:tropical_profiles}. This is referred to as the moist adiabat.
 
 Unlike the horizontal temperature gradients at the Earth's surface, mostly from equator to poles, that cause energy to be transported in the oceans and the atmosphere, the vertical temperature gradient of about 100 K in the topical troposphere is not on it's own causing transports to occur. However, as we shall see in a moment radiative cooling causes an upward convective  transport of energy to balance the budget of the atmosphere.
 
@@ -149,26 +161,71 @@ Unlike the horizontal temperature gradients at the Earth's surface, mostly from 
 \begin{center}
 \includegraphics[width=17 cm]{../external_figures/atmospheric-radiation-13a-tropical-profile-temperature-gases-density}
 \end{center}
-\caption{ Typical profiles of temperature, greenhouse gases and density in the tropics.  } 
+\caption{ Typical tropical profiles of temperature as functions of height and pressure (top panels), volume mixing ratios of some greenhouse gases (lower left), and atmospheric density.  } 
 \label{fig:tropical_profiles}
 \end{figure}
 
 \section{Radiative properties}
+Let us next focus our attention on infrared or longwave part of the Earth's radiation budget. A wealth of information can be obtained from studying the spectrum of radiation emitted from the Earth, stars and from other planets. This is because molecules have unique absorption properties that are determined by quantum mechanics. There are a number of ways in which atoms and molecules can absorb a photon, most of which happen at nearly discrete energies. Visible light is able to excite the electron states of atoms and highly energetic ultraviolet photons can split molecules apart. In the infrared, where photons each contain less energy, absorption happens mostly by exciting various modes of vibrations of molecules. 
 
+Some molecules are unable to interact with infrared radiation, in fact the abundant nitrogen (N$_2$) and oxygen (O$_2$) molecules that constitute 99 percent of Earth's atmosphere are unable to absorb the low-energy infrared photons emitted by the Earth's surface. The simple configuration of these molecules with two atoms connected by electron bonds do not allow the absorption of a photon by vibration. More complex molecules with three or more atoms, such as water vapor (H$_2$O), carbon dioxide (CO$_2$), methane (CH$_4$) and ozone (O$_3$), can typically vibrate or rotate in a number of ways and are therefore what we call greenhouse gases. 
 
-
-
-Spectra
+A useful starting point to appreciate the information in the infrared spectrum is to consider the radiation emitted by an ideal black body which constitutes a continuous and smooth spectrum called the Planck spectrum. Ideal black bodies are not necessarily black: if warm enough they can emit visible light, instead the blackness refers to them absorbing all incoming radiation perfectly, which is necessary to obtain the ideal emission spectrum because emissivity equals absorptivity. Examples of nearly ideal black bodies are the Sun, most solids and liquids. The surface of the Earth, be it the ocean or the land, is closely approximated as a black body. A cloud is also a surprisingly good absorber: a typical low-level liquid cloud consisting of suspended tiny droplets can be a nearly ideal black body if it contains a meager 20 gm${-2}$ of water. Gases, on the other contrary, are usually far from ideal black bodies. 
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=17 cm]{../external_figures/GW_Petty_IRIS_Tropical_Western_Pacific.png}
 \end{center}
-\caption{ Classical irradiance spectrum measured by the infrared interferometer spectrometer (IRIS) for measuring the emission spectra of the earth/atmosphere system aboard the Nimbus-4 satellite. The instrument is limited to the range 400 to 1600 cm$^{-1}$, and outside simplistic extrapolations are made. The measurements were made in the 1970's and are restricted to clear sky scenes. Dashed lines show idealized black body spectra. Blue shading illustrates the effect of carbon dioxide (CO$_2$). The other dip at 1000-1100 cm$^{-1}$ is due to ozone (O$_3$), and the flanks (less than 600 and more than 1200 cm$^{-1}$) are dominated by vapor vapor (H$_2$O). } 
+\caption{ Classical irradiance spectrum measured by the infrared interferometer spectrometer (IRIS) for measuring the emission spectra of the earth/atmosphere system aboard the Nimbus-4 satellite. The instrument is limited to the range 400 to 1600 cm$^{-1}$, and outside simplistic extrapolations are made. The measurements were made in the 1970's and are restricted to clear sky scenes. Dashed lines show idealized black body spectra. Blue shading illustrates the effect of carbon dioxide (CO$_2$). The other dip at 1000-1100 cm$^{-1}$ is due to ozone (O$_3$), and the flanks (less than 600 and more than 1200 cm$^{-1}$) are dominated by vapor vapor (H$_2$O), as well as methane (CH$_4$) at around 1200-1400 cm$^{-1}$. In the atmospheric window between 10 and 13 $\mu$m there are multiple weak absorption lines from water vapor. } 
 \label{fig:radiation_spectrum}
 \end{figure}
 
-Cooling rates (Petty 2006)
+Several spectra of such ideal black bodies are plotted in Figure \ref{fig:radiation_spectrum} for temperatures from 200 to 300 K as dashed lines. Also shown is the emission spectrum from a tropical cloud free scene as measured from space. The plot is linear in wavenumber such that shorter wavelength, corresponding to more energetic photons, are situated to the right. The warmer the black body the further both the peak and the tail extends to the right. For reference light that is visible to the eye is at 0.7-0.4 $\mu$m. Also the area under the spectra, which are proportional to the total irradiance from the black body which is a strong function of temperature:
+\begin{equation}
+R_b = -\sigma T^4,
+\label{eq:blackbody}
+\end{equation}
+\noindent where $\sigma=5.67\cdot 10^{-8}$ Wm$^{-2}$K$^{-4}$ is the Stefan-Boltzmann constant. Most solids and liquids can be considered nearly ideal black bodies, including the Earth's surface. Also thick clouds act as if they were nearly ideal black bodies.
+
+Now, let us compare the ideal black body spectra with the actual spectrum measured over the tropical Pacific (Figure \ref{fig:radiation_spectrum}): The observed spectrum is indeed far from ideal, which is a consequence of the atmosphere being between the satellite and the Earth's surface. Parts of the spectrum (10-13 $\mu$m), sometimes referred to as the atmospheric window, are actually quite close to the black body spectrum of the surface temperature (298 K), but other parts are much colder, 215 K at about 15 $\mu$m, or considerably colder with 260-270 K long and short wavelengths. We call these brightness temperatures as they are the equivalent irradiance of an ideal black body.
+The reason that parts of the spectrum is suppressed relative to that of a black body with the surface temperature is that it is not only the surface that is emitting but also the greenhouse gases of the atmosphere absorb and emit radiation. The temperature with which they effectively emit is a result of the individual molecules absorption properties, their mixing ratio profiles, and the atmospheric density and temperature profiles (Figure \ref{fig:tropical_profiles}):
+\begin{itemize}
+\item
+Take first carbon dioxide (CO$_2$). It has a uniform and relatively high mixing ratio and it absorbs well around 13-17 $\mu$m (Figure \ref{fig:radiation_spectrum}, blue shading). The result is that most of the emission in the band around 15 $\mu$m comes from the upper troposphere where the atmospheric density is still high enough. Above the tropopause (~18 km) the temperature rises again, and actually some of the emission in the center of the CO$_2$ dominated band originates in the stratosphere which is somewhat warmer than the troposphere as marked by a spike. 
+\item
+For the water vapor (H$_2$O) dominated flanks of the spectrum, however, the story is different. Water vapor is most abundant in the lower troposphere (Figure \ref{fig:tropical_profiles}), and most of the radiation emitted by water vapor originates from there. This results in the Earth's spectrum being closer to that of a black body with 260-270 K at the flanks consistent with temperatures at about 5-7 km in the tropics.
+\item
+Finally, let us consider ozone (O$_3$) which increases in mixing ratio with height and is most abundant in the stratosphere where it is produced by photodissociation of oxygen molecules by an ultraviolet photon ($\nu$): 2O$_2 +\nu$ $\rightarrow$ 2O + O$_2$ $\rightarrow$ O + O$_3$ $\rightarrow$ 2O$_2$. Most of the ozone mass is at 20-25 km altitude, whereas the volume mixing ratio peaks higher up at 30-40 km. Ozone absorbs infrared radiation at 9-10 $\mu$m wavelength where we see a brightness temperature of about 270-280 K. Most of this radiation originates in the stratosphere, which is warmer than the upper troposphere, and therefore the depression is not as deep as for the CO$_2$ case.
+\end{itemize}
+I hope you have now a bit of an impression of the power of the infrared spectrum. We shall return to it on several occasions. 
+
+\section{The tropopause}
+The transition zone between the troposphere and the stratosphere plays a central role in several of the themes related to the dynamics of climate. The tropopause plays a key role in determining the forcing from greenhouse gases, and it is central to understanding certain feedback mechanisms.
+
+Perhaps a good starting point is the now iconic single-column simulations by Manabe and Strickler presented in their 1964-paper\citep{Manabe1964} (Figure \ref{fig:rce_manabe}). In their model they prescribed profiles of ozone and water vapor, and let the sun shine. A large fraction of the sunlight passes to the surface which is relatively warm. In the simplest case of a pure radiative equilibrium the surface reaches about 340 K whereas the troposphere is colder than observed. The pure radiative equilibrium is that the radiation absorbed and emitted at a given level is equal. However, in case the temperature drops this quickly with height then convective instability will occur. To parameterize this Manabe and Strickler adjusted the profile to first a dry adiabat (-10 K/km) and then to a more realistic lapse-rate close to the moist adiabat (-6.5 K/km). The result is that the troposphere is warmer and the surface is colder than at pure radiative equilibrium. Note how the stratosphere is not reacting much. Here instead the temperature rises with altitude and therefore no convective instability arises. The stratosphere also cools in the infrared, but it is being heated by absorption of sunlight mostly by the ozone layer. In summary: the convection acts to heat the troposphere in order to compensate radiative cooling, whereas the stratosphere is roughly in a radiative equilibrium. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=10 cm]{../external_figures/Manabe_Strickler_1964_figure.pdf}
+\end{center}
+\caption{ Solutions to radiative and radiative-convective equilibrium in the single-column model by Manabe and Strickler\citep{Manabe1964}.   } 
+\label{fig:rce_manabe}
+\end{figure}
+
+It is the greenhouse gases that cool the atmosphere by emitting infrared radiation through radiative flux divergence. If we define a net flux as the difference between an upward and a downward component ($R_{net}(z) = R^\downarrow(z) - R^\uparrow(z)$, where $z$ is height), then we can calculate the heating rate as:
+\begin{equation}
+\frac{dT}{dt} = \frac{1}{c_p \rho}\frac{dR_{net}}{dz},
+\end{equation}
+where $c_p$ is the heat capacity of air and $\rho$ the density of air. Figure \ref{fig:radiative_cooling} shows infrared heating rates that are due to individual greenhouse gases in the tropical cloud-free profile displayed in Figure \ref{fig:tropical_profiles}. The heating rates are mostly negative and on the order of degrees per day, that is, if no other process would be acting to keep the temperature in place it would change at this rate. Ozone is the exception which heats the atmosphere in the lower stratosphere. But above 30 km ozone is also cooling the atmosphere, and it does so by radiating both upwards and downwards. It is this downwards flux from the warm upper stratosphere aloft that is being absorbed in the colder lower stratosphere. There are at least three controls that conspire to have the troposphere where it is:
+\begin{itemize}
+\item
+Water vapor dominates infrared cooling in the troposphere, and is the reason that the pure radiative equilibrium case of Manabe and Strickler (Figure \ref{fig:rce_manabe}) has such a cold troposphere. However, water vapor mixing ratio decreases rapidly with height because the holding capacity decreases with temperature according to Clausius-Clapeyron. At around 15 km altitude, or more importantly around 200 K temperature, the cooling due to water vapor is nearly zero. It is thought that in a warming changing climate the tropical tropospheric temperature will increase to maintain roughly a moist adiabat, such that the level at which the temperature reaches 200 K moves upward, and with it the water vapor cooling and consequently the tropopause (Hartmann and Larsson\cite{Hartmann2002}). {\em Radiative cooling by water vapor comes to an end.}
+\item
+Another way to look at this is that the heating caused by moist convection, which is to compensate the radiative cooling, can only function as long as the moist and dry adiabats are different. The ascending air inside deep convective clouds follow approximately the moist adiabat which generally has a lower lapse-rate of temperature with height than the dry adiabat. The heating due to convection occurs as the surrounding air subsides, as a result of continuity, instead along a dry adiabat. However, at very cold temperatures, around 200 K, the moist and dry adiabats are practically the same as there is very little water vapor left to condense, and it follows that the convection can no longer heat the troposphere. This sets another control on the tropopause height. {\em Heating by moist convection comes to an end.}
+\item
+Absorption of sunlight by ozone is the main source of heating in the stratosphere and results in the increasing temperature with height which hinders convection from penetrating deeper. Ozone has a relatively long lifetime in the stratosphere but if it ends up in the troposphere it is quickly destroyed. So the ozone layer has to move up to stay above a rising tropopause in a warming climate. If this leads to a thinning of the ozone layer perhaps more ultraviolet radiation can penetrate into and heat the upper troposphere, thereby increasing the temperature of the tropopause. {\em Ozone processes may bound the rise.}
+\end{itemize}
+Understanding the actual behavior of the tropopause as a field of active research, and the rise of the tropopause with warming plays an important role in determining feedbacks. 
 
 \begin{figure}
 \begin{center}
@@ -178,33 +235,28 @@ Cooling rates (Petty 2006)
 \label{fig:radiative_cooling}
 \end{figure}
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=12 cm]{../plots/CERES_Ebaf_zonalmean.pdf}
-%\includegraphics[width=8 cm]{../plots/CERES_Ebaf_albedo.pdf}
-\end{center}
-\caption{ Top-of-atmosphere net fluxes of shortwave and longwave radiation as measured from satellite. The red area shows regions where more energy is received than emitted, it extends approximately from 36S to 36N and has a mean of 36.5 Wm$^{-2}$. The blue areas are regions that emit more radiation to space than they receive. In the Southern Hemisphere the mean flux is -54.0 Wm$^{-2}$ and in the Northern Hemisphere the deficit is -54.7 Wm$^{-2}$.  } 
-\label{fig:ceres_fluxes}
-\end{figure}
-
-
-\section{The tropopause}
-
-Radiative-convective equilibrium, ozone layer heating, tropopause
 
 %\section{Energy transports}
 %The atmosphere and oceans transport energy
 
 \newpage
-\vspace{1 cm}
-\hrule
+\vspace{2 cm}
+%\hrule
 {\setlength{\parindent}{0cm}
 \begin{exercise}
-Estimate roughly from which heights in the troposphere thermal radiation to space comes from? Use Figures \ref{fig:tropical_profiles} and \ref{fig:radiation_spectrum} and divide into lower-, mid- and upper troposphere by means of its temperature. Use the fact that the area under the curve in Figure  \ref{fig:radiation_spectrum} is the total flux. Compare the amount of radiation escaping to space at near-surface brightness temperature to the amount escaping through the atmospheric window in Figure \ref{fig:energy_flows}. What is missing? From approximately which height do you think radiation in the wavelength range 9-10 $\mu$m come? 
+Estimate the combined poleward energy transport by the atmosphere and oceans at 36N based on Figure \ref{fig:ceres_fluxes}. Do this by estimating the area poleward of that latitude; the result should be given in PW.
+\end{exercise}
+
+\begin{exercise}
+Estimate roughly from which heights in the troposphere thermal radiation to space comes from. Use Figures \ref{fig:tropical_profiles} and \ref{fig:radiation_spectrum} and divide into lower-, mid- and upper troposphere by means of its temperature. Use the fact that the area under the curve in Figure  \ref{fig:radiation_spectrum} is the total flux. %Next, compare the amount of radiation escaping to space at near-surface brightness temperature to the amount escaping through the atmospheric window in Figure \ref{fig:energy_flows}. What is the difference do you think? 
 \end{exercise}
 
 \begin{exercise}
 Explain, in your own words, why the tropopause is where it is.
+\end{exercise}
+
+\begin{exercise}
+Visit the MODTRAN infrared radiation model at http://climatemodels.uchicago.edu/modtran/. This is a graphical interface to a moderately resolved radiative transfer model. By default the model uses a tropical cloud-free profile with present-day greenhouse gases, and the spectrum is what one might observe looking down from 70 km altitude, i.e. at the top of the stratosphere. You can always revert to these settings by reloading the webpage. Starting from these settings, hit the {\em Save this run to background} button. The saved run will later appear as a red line. Now place yourself at the tropopause. What is the difference?
 \end{exercise}
 }
 
@@ -231,36 +283,141 @@ Explain, in your own words, why the tropopause is where it is.
 
 %---------------------------------------------------------------------
 \chapter{Energy balance}
-Let us take a look at the planet Earth from space. By focusing on 
+The flows of energy in and out of the planet is central to climate dynamics; it is actually more important to keep track of the energy balance than it is to trace surface temperature which  represents only a small part of the Earth's total heat reservoir. The temperature, however, plays a central role in determining this balance: in essence a planet receives energy at some rate and therefore warms up until it loses energy at the same rate. In fact, whereas a planet in general can receive energy in a number of ways, infrared radiation is basically the only way in which it can get rid of it again.
 
-\section{Stationarity}
+\section{The black body case}
+Most of the Earth's energy is received from the Sun in the form of shortwave radiation, sunlight. At the Earth's distance from the Sun this corresponds to a flux of little more than 1360 Wm$^{-2}$ through a sphere centered at the Sun. This number is often referred to as the solar constant, or $S_o$, although it is not really to be considered constant. There are other small sources of energy such as geothermal heat from the interior of the Earth and heat generated by dissipation of tides, but these can be safely neglected. On other planets or moons, however, this need not be the case.
 
-
+Because the distance between the Sun and the Earth is vast compared to their respective radii, we can assume that all incoming sunlight is parallel, which makes it easy to calculate the average sunlight per unit area of the Earth's surface. The radiation is intercepted by the Earth cross-section which is roughly that of a disc with the average radius of the Earth ($r$), or $\pi r^2$. But the surface area of the Earth is larger, roughly $4\pi r^2$. It follows that the intercepted sunlight must be spread over a four times larger area, giving a mean incident flux of about 340 Wm$^{-2}$. In addition, not all the incoming sunlight is absorbed, but as we saw in the previous chapter about 100 Wm$^{-2}$ is reflected back to space by clouds, aerosol particles and the surface. We say that the Earth has a planetary albedo of $\alpha \approx 100/340 \approx 0.29$. It follows that the absorbed sunlight is $R_s=S_o/4(1-\alpha)$. Finally, we shall assume that the Earth's surface has a single uniform temperature, that it radiates to space as an ideal black body following Equation \ref{eq:blackbody}, and that the atmosphere is fully transparent to infrared radiation.
+Now we are in a position to form a first estimate of the energy balance ($N$) :
+\begin{eqnarray}
+N &=& R_s + R_b \nonumber \\ 
+   &=& \frac{S_o}{4}(1-\alpha) - \sigma T_e^4,
+\label{eq:black_body_energy_balance}
+\end{eqnarray}
+\noindent where $T_e$ is an effective, or emission, temperature of the Earth that it would have had had it been an ideal black body. The balance  can be solved by setting $N=0$:
 \begin{equation}
-N = \frac{S_o}{4}(1-\alpha) - \epsilon \sigma T_s^4,
+T_e = \sqrt[4]{S_o(1-\alpha)/4\sigma}. 
 \end{equation}
-\noindent which for $N=0$ can be solved:
-\begin{equation}
-T_s = \sqrt[4]{S_o(1-\alpha)/4\sigma}
-\end{equation}
-
-
+Inserting reasonable values we obtain $T_e \approx$  255 K. This is considerably colder than the global mean surface temperature of the Earth ($T_s$) which is currently about 288 K. But remembering the observed spectrum of Earth in Figure \ref{fig:radiation_spectrum} perhaps this is not too surprising; a large part of the spectrum is at a lower brightness temperature than that of the surface. The found emission temperature is that of the ideal black body that would average the Earth's infrared radiance to space (remember the observation in Figure \ref{fig:radiation_spectrum} is from the tropics which is warmer than average).
 
 \section{The greenhouse effect}
+The reason the surface of the Earth is about 33 K warmer than it's emission temperature is the so-called greenhouse effect, which was first suggested to exist by Fourier in his essay from 1827; a nice 1-page perspective on that paper is provided by Pierrehumbert \cite{Pierrehumbert2004}. Fourier formulated the question of what determines Earth's temperature and developed the idea of the planetary energy balance which is the foundation of climate science. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=8 cm]{../external_figures/Greenhouse_effect_illustration_Pierrehumbert_2004}
+\end{center}
+\caption{ Illustration of the greenhouse effect by Pierrehumbert \cite{Pierrehumbert2004}. Heat is lost by infrared radiation (pink arrows) but some of that emitted by the warm surface is absorbed and re-emitted by the cooler troposphere. The thick red line shows an idealized temperature profile. The result is that the surface has to become warmer compared to the case when there is no atmosphere in order to obtain energy balance.    } 
+\label{fig:greenhouse_effect_illustration}
+\end{figure}
+
+It is often argued that the naming of the greenhouse effect is misleading. The greenhouses, which we use to grow vegetables and fruits, are indeed warmer than their surroundings because sunlight is trapped inside, but they are warmer mainly because they hinder air motion from transporting the excess heat away. This is fundamentally different from how the atmospheric greenhouse effect works which is by absorbing infrared radiation emitted by the surface and re-emitting at a lower temperature to space resulting in a warmer surface (Figure \ref{fig:greenhouse_effect_illustration}). We can define the greenhouse effect as the difference between the infrared radiation emitted by the surface ($R^\uparrow_{ir}(\textrm{sfc})$) and that which escapes to space ($R_{ir}(\textrm{toa})$), and then assume the fluxes are consistent with those of black bodies at the emission- and surface temperatures:
+\begin{eqnarray}
+\textrm{Greenhouse effect}&\equiv&   R_{ir}(\textrm{toa}) - R^\uparrow_{ir}(\textrm{sfc}) \nonumber \\ 
+                                           &\approx&   -\sigma (T_e^4 - T_s^4) \nonumber \\
+                                           &\approx& 150 \ \textrm{Wm}^{-2}, \nonumber
+\end{eqnarray}
+which is a bit less than the estimate by Stevens and Schwartz of 155-160 Wm$^{-2}$ (Figure \ref{fig:energy_flows}). It is easy to understand why our estimate is smaller. The black body radiation depends on the temperature to the fourth power and so if there are inhomogeneous distributed surface temperatures, such as is the case at Earth's surface ($T_s$), then the average emitted radiation is larger than that of a uniform black body with the same average temperature.
+
+\section{The perfectly absorbing slab atmosphere}
+To emulate a greenhouse effect we may consider a single-temperature, or slab, atmosphere that is perfectly transmissive to sunlight but a black body absorber in the infrared. We may think of this as a slab of perfect greenhouse gas. The atmosphere radiates up and down as an ideal black body. At the top of this atmosphere (toa) the same energy balance must hold as for the pure black body case (Eq. \ref{eq:black_body_energy_balance}). At the surface (sfc), in addition to the unhindered downwelling solar irradiance, also downwelling infrared radiation comes from the atmosphere, while the surface radiates upward: 
+\begin{eqnarray}
+N_\textrm{toa} &=&  \frac{S_o}{4}(1-\alpha) - \sigma T_e^4  \\ 
+N_\textrm{sfc} &=&  \frac{S_o}{4}(1-\alpha) + \sigma T_e^4 - \sigma T_s^4  \nonumber
+\label{eq:perfect_greenhouse}
+\end{eqnarray}
+and at equilibrium we have energy balances both at the top-of-atmosphere and at the surface, $N_\textrm{toa}=N_\textrm{sfc}=0$, so that we can solve for surface temperature for a single layer atmosphere:
+\begin{equation}
+T_s(1) = \sqrt[4]{S_o(1-\alpha)2/4\sigma}. 
+\end{equation}
+Putting in reasonable numbers we obtain a surface temperature of 304 K -- substantially warmer than that on Earth -- and a whopping greenhouse effect of 243 Wm$^{-2}$. Now, let us double the amount of our perfect greenhouse slab by adding another layer to obtain the solution:
+\begin{equation}
+T_s(2) = \sqrt[4]{S_o(1-\alpha)3/4\sigma},
+\label{eq:ntwo}
+\end{equation}
+or in the general case with $n$ levels:
+\begin{equation}
+T_s(n) = \sqrt[4]{S_o(1-\alpha)(n+1)/4\sigma},
+\end{equation}
+such that the temperature increases monotonically with the number of perfect greenhouse slabs. Eventually, the approximations made above must break down when the surface gets so hot that it radiates visible light which can escape unhindered through this idealized atmosphere. 
+
+Obviously, and perhaps luckily, we do not have such a perfect greenhouse slab in the Earth's atmosphere, rather individual gases only absorb in parts of the infrared spectrum. In the bands around 15 $\mu$m where CO$_2$ absorbs the atmosphere is virtually opaque to radiation, but at other wavelengths infrared radiation from the surface or lower troposphere can escape to space (Figure \ref{fig:radiation_spectrum}). It is sometimes incorrectly argued that because the atmosphere is nearly saturated in the CO$_2$ absorption bands then adding more will not act to warm the Earth's surface. However, the example above with a completely opaque greenhouse slab nicely illustrates the opposite.
+
+\section{The partially absorbing slab atmosphere}
+It is therefore useful to think of the atmosphere as partially absorbing. Commonly this is modelled using an effective emissivity that is less than unity, sometimes referred to as the gray body case, or gray radiation case. 
+It is the purpose of an exercise to study this case and estimate the effective emissivity of the Earth and to show that the result is analogous to what we find here. 
+Perhaps a physically more revealing approach is to consider an atmosphere layer analog to the perfect greenhouse case above that transmits all solar radiation but absorbs and emits in only a fraction $f$ of the infrared spectrum. The problem is illustrated in Figure \ref{fig:partially_absorbing_atmosphere}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../illustrations/Partially_absorbing_atmosphere}
+\end{center}
+\caption{ The energy balance for the partially absorbing slab atmosphere.    } 
+\label{fig:partially_absorbing_atmosphere}
+\end{figure}
+
+Now, let $T_s$ be the surface temperature and $T_a$ be the atmosphere temperature. Unlike in the perfect greenhouse slab case, we cannot assume that the atmosphere temperature equals the emission temperature, $T_e$. We can then set up balances at the top of the atmosphere and at the surface:
+\begin{eqnarray}
+N_\textrm{toa} &=&  \frac{S_o}{4}(1-\alpha) - f \sigma T_a^4 - (1-f)\sigma T_s^4 \nonumber \\ 
+N_\textrm{sfc} &=&  \frac{S_o}{4}(1-\alpha) + f \sigma T_a^4 - \sigma T_s^4 \nonumber 
+\end{eqnarray}
+Again, we can assume stationarity and solve for $T_s$ and $T_a$:
+\begin{equation}
+T_s(f) = \sqrt[4]{\frac{S_o(1-\alpha)}{2\sigma(2-f)}}, \ T_a(f) =  \sqrt[4]{\frac{S_o(1-\alpha)}{4\sigma(2-f)}},
+\label{eq:partial_absorbtion_solution}
+\end{equation}
+such that we see that $T_s > T_a$ under all conditions and that they both increase with increasing $f$. For the limit $f \rightarrow 1$ we obtain $T_a \rightarrow T_e$ as in Equation \ref{eq:perfect_greenhouse}, and in the opposite case $f \rightarrow 0$ we obtain $T_s \rightarrow T_e$ as in the ideal black body case of Equation \ref{eq:black_body_energy_balance}. We may also solve for $f$ instead:
+\begin{equation}
+f = 2 - \frac{S_o(1-\alpha)}{2\sigma T_s^4},
+\end{equation}
+which for Earth-like conditions gives $f \approx 0.76$, that is, three quarters of the infrared radiation emitted from the surface has to be absorbed by the partially absorbing greenhouse slab if we are to get a surface temperature of 288 K. To obtain balance here, the atmosphere has to be colder than $T_e$, about 242 K. We can understand this as some of the radiation can escape from the surface directly space, so that to obtain energy balance with the incoming solar radiation the atmosphere has to be colder than 255 K such that the average emission temperature is $T_e$. In the limit $f \rightarrow 0$ the atmospheric temperature is about 215 K, but of course, strictly in the limit that temperature looses meaning as no radiation is absorbed and emitted from the atmosphere anymore.
+
+
+\section{Greenhouse effect of a gaseous atmosphere}
+Now in practical cases the atmosphere does not consist of a single, or multiple slabs in radiative equilibrium with the incoming solar radiation and the outgoing infrared radiation, rather it consists of gases, clouds and perhaps some particulate matter. An important property of a gaseous atmosphere is that it is relatively mobile, so that it can overturn and react on timescales comparable to those of radiative heating and cooling. As a first approximation we can think of this by the troposphere having a reasonably fixed lapse-rate with height. For dry mixing this would be about -10 K/km, but as discussed earlier the real atmosphere cools less rapidly with height due to release of latent heat in convective clouds.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=8 cm]{../illustrations/Gaseous_atmosphere_radiation_level}
+\end{center}
+\caption{ Illustration of the concept of a radiation level pressure for an optically thick atmosphere. With more greenhouse gas (red) the radiation level moves upward and therefore the surface and atmosphere has to warm in order to again radiate as $-\sigma T_e$ to space.   } 
+\label{fig:radiation_level}
+\end{figure}
+
+Let us start with an atmosphere that is fully transparent to infrared radiation. Here we may think of the Earth's dry atmosphere absent carbon dioxide, ozone, methane etc. That is, it could consist of nitrogen and oxygen. Then we are effectively having the black body case (Eq. \ref{eq:black_body_energy_balance}) wherein $T_s = T_e$. Then let us add some small amount of a perfect greenhouse gas, one that absorbs equally well at all infrared wavelengths. We shall assume that it is equally distributed everywhere, such as is the case for carbon dioxide (Figure \ref{fig:tropical_profiles}) with a concentration $q$. 
+
+As we look at this atmosphere from space the radiation emitted towards us is then  a mixture of radiation from different heights. If $q$ is very small some of the radiation emitted by the surface may escape directly to space without being absorbed by the greenhouse gas molecules: some of the photons can slip through, and we call the atmosphere optically thin. In the other limit, if $q$ is large then a small fraction of the atmospheric column can act as if it was a black body. The thickness of such a layer will scale with the amount greenhouse molecules $q\rho \Delta z \approx q \Delta p/g$, such that the larger $q$ is, the smaller $\Delta p$ has to be. As we view our optically thick atmosphere from space we will almost exclusively see radiation coming from the uppermost part ($\Delta p$) and it will be characterized by the temperature that prevails there. In this case it may be useful to think of the infrared radiation as coming from a certain radiation level, $p_r < p_s$, that is the height at which the temperature equals the emission temperature, $T_e$. The concept is illustrated in Figure \ref{fig:radiation_level}.
+
+As we add more greenhouse gas to our atmosphere then the pressure thickness, $\Delta p$, required to act as a black body decreases, and so with it $p_r$ becomes smaller. Therefore the emission levels moves upward in the atmosphere. But since the emission temperature, $T_e$, is constrained to be that which closes the energy budget of the planet (in the case of Earth $T_e \approx 255$ K) then the whole atmosphere as well as the surface has to warm up. This is because the surface and atmosphere are dynamically coupled by mixing processes to follow closely a certain lapse-rate.
+
+In a nutshell, the reason there is a greenhouse effect is that the atmosphere absorbs some of the radiation emitted by the surface and re-emits at a lower temperature to space. To achieve this the atmosphere has to be colder than the surface; something which is ensured on Earth.
+
+%Partially_absorbing_atmosphere.pdf
+%Gaseous_atmosphere_radiation_level
 
 \section{A note on signs}
-Throughout this set of notes I will count all fluxes as positive downwards. 
+As you may have already noticed, throughout this set of notes I will count all fluxes as positive downwards. This has the advantage that positive fluxes will act to warm- and negative fluxes cool the system. Likewise, the feedback parameter that we shall define in the next chapter is automatically negative for stable climates and positive for unstable climates. The downside is that the {\em outgoing longwave radiation} emitted by the Earth (OLR) is then a negative flux -- where possible I shall denote it {\em net longwave radiation} trying to avoid confusion. Also note that some figures that I borrow can use the definition where OLR is positive. In the literature a number of sign conventions have developed, and it is worth paying close attention when reading on.
 
+%\newpage
 \vspace{1 cm}
 {\setlength{\parindent}{0cm}
 \hrule
 \begin{exercise}
-text
+Derive the energy balance for the grey body case and estimate the Earth's effective emissivity ($\epsilon$). Do this by modifying Equation \ref{eq:black_body_energy_balance} replacing $\sigma T_e^4$ with $\epsilon \sigma T_s^4$. Compare the result with the partially absorbing atmosphere, Equation \ref{eq:partial_absorbtion_solution}, and find out how $\epsilon$ depends on $f$.
 \end{exercise}
+
+\begin{exercise}
+Derive Equation \ref{eq:ntwo} for a two-layer atmosphere in the same way as done for the case for the single-layer atmosphere.
+\end{exercise}
+
+
 }
 
 %---------------------------------------------------------------------
 \chapter{Forcing, feedback and stability to small perturbations}
+
+
 
 \section{Surface albedo feedback}
 \section{Water vapor feedback}
@@ -285,7 +442,7 @@ text
 %---------------------------------------------------------------------
 \chapter{Time- and state-dependent feedback}
 \section{Snow-ball Earth instability}
-\section{Runaway greenhouse}
+\section{Runaway feedback}
 \section{Ocean heat uptake efficacy}
 
 %---------------------------------------------------------------------
@@ -293,8 +450,19 @@ text
 
 
 %---------------------------------------------------------------------
-%\chapter{The thermohaline circulation}
+\chapter{Projects}
 
+
+\section{Attribution of historical warming}
+
+
+\section{Treating volcanoes in historical simulations}
+
+
+\section{Estimate Earth's climate sensitivity from historical warming}
+
+
+\section{Fit two-layer model to GCM}
 
 
 
