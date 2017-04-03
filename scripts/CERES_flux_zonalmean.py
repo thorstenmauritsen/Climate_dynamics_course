@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from netCDF4 import Dataset
+from scipy.io import netcdf
 import math
 
 # set general text options for plotting
@@ -13,7 +13,7 @@ plt.rc('text.latex'     , preamble=r'\usepackage{cmbright}')
 
 almost_black            = '#262626'
 
-f = Dataset('../Data/CERES_EBAF-TOA_Ed2.8_Subset_2001-2014_timmean_zonmean.nc', mode='r')
+f = netcdf.netcdf_file('../Data/CERES_EBAF-TOA_Ed2.8_Subset_2001-2014_timmean_zonmean.nc')
 
 lats    = f.variables['lat'][:]
 sinlats = np.sin(lats*math.pi/180)
@@ -76,8 +76,6 @@ plt.ylim((0,0.8))
 plt.xticks(np.arange(-1.0,1.5,0.5))
 axes.set_xticklabels(('90S','30S','Equator','30N','90N'))
 
-
-
 #axes.yaxis.set_ticks_position('left')
 axes.xaxis.set_ticks_position('bottom')
 #axes.spines['bottom'].set_position('zero')
@@ -100,5 +98,5 @@ plt.tight_layout()
 plt.savefig('../plots/CERES_Ebaf_albedo.pdf', dpi=600)
 plt.close()
 
-
+f.close()
 
