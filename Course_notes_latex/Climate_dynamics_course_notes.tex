@@ -338,6 +338,7 @@ such that the temperature increases monotonically with the number of perfect gre
 Obviously, and perhaps luckily, we do not have such a perfect greenhouse slab in the Earth's atmosphere, rather individual gases only absorb in parts of the infrared spectrum. In the bands around 15 $\mu$m where CO$_2$ absorbs the atmosphere is virtually opaque to radiation, but at other wavelengths infrared radiation from the surface or lower troposphere can escape to space (Figure \ref{fig:radiation_spectrum}). It is sometimes incorrectly argued that because the atmosphere is nearly saturated in the CO$_2$ absorption bands then adding more will not act to warm the Earth's surface. However, the example above with $n$ completely opaque greenhouse gas slabs nicely illustrates the opposite: the more slabs you add, the warmer is your surface temperature.
 
 \section{The partially absorbing slab atmosphere}
+\label{sec:partially_absorbing_slab}
 It is therefore useful to think of the atmosphere as partially absorbing. Commonly this is modelled using an effective emissivity that is less than unity, sometimes referred to as the gray body case, or gray radiation case. 
 It is the purpose of an exercise to study this case and estimate the effective emissivity of the Earth and to show that the result is analogous to what we shall find below. 
 Perhaps a physically more revealing approach is to consider an atmosphere layer analog to the perfect greenhouse case above that transmits all solar radiation but absorbs and emits in only a fraction $f$ of the infrared spectrum. The problem is illustrated in Figure \ref{fig:partially_absorbing_atmosphere}.
@@ -415,8 +416,9 @@ Make sure you have access to a computer with Python, and follow the instructions
 
 %---------------------------------------------------------------------
 \chapter{Response to small perturbations}
+\vspace{1 cm}
 
-Up until now we considered climates that were stationary, at rest between the absorbed solar radiation and the emitted infrared radiation. We call this a stationary state or a fix-point. But what happens if the system is starting a bit away from that stationary state? Or what happens if we take a system in a stationary state and somehow force it in a way that causes an energy imbalance to occur? This naturally leads us to develop the concepts of radiative forcing, climate change feedbacks and a resulting equilibrium climate sensitivity.
+Up until now we considered climates that were stationary, at balance between the absorbed solar radiation and the emitted infrared radiation. We call this a stationary state or a fix-point. But what happens if the system is starting a bit away from that stationary state? Or what happens if we take a system in a stationary state and somehow force it in a way that causes an energy imbalance to occur? This naturally leads us to develop the concepts of radiative forcing, climate change feedbacks and a resulting equilibrium climate sensitivity.
 In this chapter we shall assume the perturbations are small such that we can linearize the system.  A surprisingly large part of the discussion around climate change is actually limited to this first-order linear regime and so it makes sense to spend some time on it. In a later chapter we shall explore systems wherein linearity can no longer be assumed and the associated concepts begin to fall apart.
 
 \begin{figure}
@@ -429,8 +431,8 @@ In this chapter we shall assume the perturbations are small such that we can lin
 
 
 \section{Climate stability}
-In one perspective the Earth's climate has varied in rich ways in the past, in another perspective it has been remarkably stable (Figure \ref{fig:Paleo_temperature_timeseries}). The past 6.000 years we have had nearly steady temperatures, a period called the Holocene. These relatively mild conditions, wherein modern human civilization developed, have been rare in the past 1.000.000 years wherein the climate has cycled between longer colder glacial interrupted by short interglacials. Before that the Earth was warmer than it is today. For instance during Pliocene CO$_2$ concentrations were close to what they are today, about 400 ppm, and temperatures higher by 2-3 K. Much earlier, during the Eocene temperatures were much warmer, maybe by 10-15 K. These differences on the one hand translated into substantially different conditions for life to unfold on the planet. On the other hand, from a physical point of view the Eocene was merely 5 percent warmer than today, as measured on an absolute temperature scale. 
-On this background it makes intuitive sense to think that Earth's climate is stable to small perturbations in the context of it's known history: The system did not venture to completely different states and it did spend enough time to equilibrate at almost any temperature within the range visited since dinosaurs ruled the Earth 65 million years ago (Figure \ref{fig:Paleo_temperature_timeseries}); we shall return to estimating the time-scales for equilibrating in the next chapter. 
+In one perspective the Earth's climate has varied in rich ways in the past, in another perspective it has been remarkably stable (Figure \ref{fig:Paleo_temperature_timeseries}). The past 6.000 years we have had nearly steady temperatures, a period called the Holocene. These relatively mild conditions, wherein modern human civilization developed, have been rare in the past 1.000.000 years wherein the climate has cycled between longer colder glacial periods interrupted by short interglacials. Before that the Earth was warmer than it is today. For instance during Pliocene CO$_2$ concentrations were close to what they are today, about 400 ppm, and temperatures higher than during Holocene by about 2-3 K. Much earlier, during the Eocene temperatures were warmer, maybe by 10-15 K. These differences on the one hand translated into substantially different conditions for life to unfold on the planet. On the other hand, from a physical point of view the Eocene was merely 5 percent warmer than today, as measured on an absolute temperature scale. 
+On this background it makes intuitive sense to think that Earth's climate is stable to small perturbations in the context of it's known history: The system did not venture to completely different states and it did spend enough time to equilibrate at almost any temperature within the range visited since dinosaurs ruled the Earth 65 million years ago (Figure \ref{fig:Paleo_temperature_timeseries}); we shall return to estimating the time-scales for equilibrating in the next chapter. It is worth pointing out though that the mere fact that temperatures did not substantially change over that period does not imply that the Earth is {\em insensitive} to perturbations, rather climate has been relatively constant due to the compensation between a longterm increase in $S_o$ and a simultaneous decrease in atmospheric CO$_2$ as carbon has been buried in fossil sediments. 
 
 \begin{figure}
 \begin{center}
@@ -440,14 +442,16 @@ On this background it makes intuitive sense to think that Earth's climate is sta
 \label{fig:feedback_stability_cases}
 \end{figure}
 
-For a state to be stable it must not only have zero imbalance ($N=0$) but it must also be stable to small perturbations. The latter requires that there must be some restoring force such that if the system finds itself a bit away from stationarity, then that force will act to move the system back towards the fix-point. We can think of these perturbations as arising due to internal variability, due to weather phenomena or climate variability, or due to external forcing such as fluctuations in the solar constant or changes in atmospheric composition for reasons we consider external to the system, e.g. anthropogenic carbon dioxide emissions. For a complex system such as the Earth's climate this may be difficult to visualize as there is a practically near-infinite number of state-variables. But for many purposes we think of the climate system as having a single state-variable, the global mean surface temperature as we did it in the previous chapter, and in this case we can visualize the problem more easily (Figure \ref{fig:feedback_stability_cases}). We can think of all the other state variables as being functions of the global mean temperature. Suppose $T_o$ is a fixed-point at which the imbalance is zero and that in {\em some region} above and below $T_o$ the imbalance, $N$, is a continuous and differentiable function of $T$. Then for cases wherein $dN/dT \ne 0$ the fix-points are either stable if $dN/dT < 0$ and unstable if $dN/dT > 0$ where the derivative is calculated at $T_o$. These two possibilities are displayed as black lines in cases a and c in Figure \ref{fig:feedback_stability_cases}. We shall refer to $dN/dT$ as the feedback parameter ($\lambda$), and the above summarizes that for cases whereat $N(T_o) = 0$ the stability is determined as follows:
+For a state to be stable it must not only have zero imbalance ($N=0$) but it must also be stable to small perturbations. The latter requires that there is some restoring force such that if the system finds itself a bit away from stationarity, then that force will act to move the system back towards the fix-point. We can think of these perturbations as arising due to internal variability, due to weather phenomena or climate variability, or due to external forcing such as fluctuations in the solar constant or changes in atmospheric composition for reasons we consider external to the system, e.g. anthropogenic carbon dioxide emissions. For a complex system such as the Earth's climate this may be difficult to visualize as there is a practically near-infinite number of state-variables. But for many purposes we think of the climate system as having a single state-variable, the global mean surface temperature as we did it in the previous chapter, and in this case we can visualize the problem more easily (Figure \ref{fig:feedback_stability_cases}). In trying to consolidate this one-dimensional view, we may think of all the state variables as being functions of the global mean temperature. 
+
+Now suppose $T_o$ is a fixed-point at which the imbalance is zero and that in {\em some region} above and below $T_o$ the imbalance, $N$, is a continuous and differentiable function of $T$. Then for cases wherein $dN/dT \ne 0$ the fix-points are either stable if $dN/dT < 0$, where the derivative is evaluated at $T_o$, as in some region above $T_o$ the imbalance has to be negative and the system will cool towards $T_o$, and vice-versa if the system is colder than $T_o$ it will warm up again. A similar argument can be made that the system is unstable if $dN/dT > 0$. These two possibilities are displayed as black lines in cases a and c in Figure \ref{fig:feedback_stability_cases}. We shall refer to $dN/dT$ as the feedback parameter ($\lambda$), and the above summarizes that for cases whereat $N(T_o) = 0$ the stability is determined as follows:
 \begin{eqnarray}
 \lambda(T_o) < 0&:& T_o \textrm{ is a stable fix-point} \nonumber \\  
 \lambda(T_o) > 0&:& T_o \textrm{ is an unstable fix-point} \nonumber
 \end{eqnarray}
 which is the take-home message of this section.
 
-We talked above about stability in {\em some region} around a fix-point, but what does that mean? How large does the region have to be? It depends on how large the perturbations considered to be relevant are, if there is a faint risk of approaching another fix-point. If a stable and an unstable fix-point exists in immediate vicinity, such as shown by the dashed line in Figure \ref{fig:feedback_stability_cases}, then the stable solution is only stable to small perturbations. If it is pushed hard to temperatures above those of the unstable fix-point, then it will not return to the stable fix-point, but instead continue to warm because there $N>0$. Eventually, then system may then encounter another stable fix-point and settle in at warmer temperatures. 
+We talked above about stability in {\em some region} around a fix-point, but what does that mean? How large does the region have to be? It depends on how large the perturbations considered to be relevant are, if there is a faint risk of approaching another fix-point. If a stable and an unstable fix-point exists in immediate vicinity, such as shown by the dashed line in Figure \ref{fig:feedback_stability_cases}, then the stable solution is only stable to small perturbations. If it is pushed hard to temperatures above those of the unstable fix-point, then it will not return to the stable fix-point, but instead continue to warm because there $N>0$. Eventually, the system may then encounter another stable fix-point and settle at warmer temperatures. 
 
 In the rare limiting cases wherein both $N=0$ and $dN/dT = 0$ at the fix point things get a bit more complicated. In this case it makes sense to evaluate $N$ on either side of the fix point. If $N>0$ at somewhat colder $T$ and $N<0$ at slightly warmer $T$ then the system is stable to small perturbations, as illustrated for the gray case a in Figure \ref{fig:feedback_stability_cases}. The same argument can be used for the limiting unstable case, c. In the marginally stable cases (b) wherein $N$ has the same sign on either side of the fix-point the system is stable to perturbations in one direction and unstable to perturbations in the other direction. Think of yourself as standing on a small plateau on the side of a slippery cliff. If you try to climb up the mountain you will slide back towards the plateau (stable), but if you move a bit in the other direction you fall off the cliff and never get back to your starting point (unstable). Marginally stable fix-points occur when a system undergoes so-called bifurcations, a topic we shall return to in a later chapter.
 
@@ -460,110 +464,246 @@ from which we can estimate the feedback parameter by taking the derivative yield
 \lambda = -\frac{S_o}{4}\frac{d\alpha}{dT_s} - \sigma T_s^4 \frac{d\epsilon}{dT_s} - 4 \epsilon \sigma T_s^3,
 \label{eq:lambda_general}
 \end{equation}
-in the general case where $\epsilon$ and $\alpha$ are dependent on temperature. We can think of the first term as shortwave feedback which arises due to changes in planetary albedo. The origin of such feedbacks could be changes in surface albedo, e.g. through the melting of bright snow and ice, or through changes in the cloudiness. The two other terms are infrared or longwave feedbacks. The middle term encapsulates changes in the Earth's emissivity with temperature, as we shall see e.g. due to increasing water vapor and rising upper-level clouds with warming. The last term is what is often referred to as the Planck feedback.
+in the general case where $\epsilon$ and $\alpha$ are dependent on temperature. We can think of the first term as shortwave feedback which arises due to changes in planetary albedo. The origin of such feedbacks could be changes in surface albedo, e.g. through the melting of bright snow and ice, or through changes in the cloudiness and water vapor. The two other terms are infrared or longwave feedbacks. The middle term encapsulates changes in the Earth's emissivity with temperature, as we shall see e.g. due to increasing water vapor and rising upper-level clouds with warming. The last term is what is often referred to as the Planck feedback parameter.
 
 If we consider a system with constant $\epsilon$ and $\alpha$ then the only term remaining is the Planck feedback for which we have:
 \begin{equation}
 \lambda_P = - 4 \epsilon \sigma T_s^3 < 0 
+\label{eq:lambda_planck}
 \end{equation}
-for all $T_s$ implying that this system is unconditionally stable. If we insert numbers typical for the Earth we obtain obtain $\lambda_p \approx$ -3.25 Wm$^{-2}$K$^{-1}$ which is surprisingly close to the value obtained from complex climate models. The second term on the right hand side of equation \ref{eq:lambda_general}, which is broadly to be thought of as water vapor feedback, is found in climate models to be about +1 Wm$^{-2}$K$^{-1}$ (we shall refine this below), and so is not sufficient to cause instability in current climates. In warmer climates the positive water vapor feedback is thought to increase faster than the negative Planck feedback and so could aid in destabilising the system. It is left as an exercise to estimate the criterion for instability when considering planetary albedo feedback.
+for all $T_s$ implying that this system is unconditionally stable. If we insert numbers typical for the Earth we obtain obtain $\lambda_p \approx$ -3.25 Wm$^{-2}$K$^{-1}$ which is surprisingly close to the value obtained from complex climate models, as we shall see later. The second term on the right hand side of equation \ref{eq:lambda_general}, which is broadly to be thought of as water vapor feedback (plus something called lapse-rate feedback), is found in climate models to be about +1.2 Wm$^{-2}$K$^{-1}$, and so is not sufficient to cause instability in current climates. In warmer climates the positive water vapor feedback is thought to increase faster than the negative Planck feedback and so could aid in destabilising the system. Finally, the first term on right hand side of Eq. \ref{eq:lambda_general} is the planetary albedo feedback, which is due to clouds, surface albedo as well as absorption by the atmosphere foremost water vapor. It is left as an exercise to estimate the criterion for instability when considering planetary albedo feedback.
 
 \section{Feedback mechanisms}
-Above we calculated the feedback parameter for the general case (Eq. \ref{eq:lambda_general}) and identified three terms, one related to how planetary albedo changes with temperature one related to how the effective emissivity changes and one which is directly related to the Planck feedback. Now, if we want to go about understanding and quantifying the feedback it is more convenient to make another division. For instance the planetary albedo is controlled by changes in surface albedo, cloudiness and water vapor, as well as some other factors such as aerosol particles and ozone that we shall ignore here as feedbacks. 
-As a first step let us divide $\lambda$ into contributions due to changes in temperature, water vapor, surface albedo and clouds:
+Above we calculated the feedback parameter for the general case (Eq. \ref{eq:lambda_general}) and identified three terms, one related to how planetary albedo changes with temperature, one related to how the effective emissivity changes and one which is directly related to the Planck feedback. Now, if we want to go about understanding and quantifying the feedback it is more convenient to make another division. For instance the planetary albedo is controlled by changes in surface albedo, cloudiness and water vapor, as well as some other factors such as aerosol particles and ozone that we shall ignore here as feedbacks. 
+As a first step let us divide $\lambda$ into contributions due to changes in temperature, water vapor, clouds and surface albedo:
 \begin{equation}
-\lambda =  \lambda_T + \lambda_W + \lambda_A + \lambda_C + ...
+\lambda =  \lambda_T + \lambda_W + \lambda_C + \lambda_A + ...
+\label{eq:lambda_linear_sum}
 \end{equation}
-where there are a number of additional terms due to interactions between e.g. clouds and water vapor changes as well as other factors that we have ignored (aerosols, ozone etc.). As long as we consider relatively small perturbations  then the interactions between feedbacks are of secondary importance. For large perturbations, however, it is easy to appreciate that this will no longer be the case. For instance cloudiness tends to increase in a warming climate, and so a decreasing surface albedo will have less of an impact on the energy imbalance than in a colder case. Or if the vertical temperature structure is substantially altered due to a rising tropopause, then the impacts of clouds and water vapor changes on the greenhouse effect may be different.
+where there are a number of additional terms due to interactions between e.g. clouds and water vapor changes as well as other factors that we have ignored. As long as we consider relatively small perturbations  then the interactions between feedbacks are of secondary importance. For large perturbations, however, it is easy to appreciate that this will no longer be the case. For instance at high latitudes cloudiness tends to increase in a warming climate, and so a decreasing surface albedo will have less of an impact on the energy imbalance than in a colder case. Or if the vertical temperature structure is substantially altered due to a rising tropopause, then the impacts of clouds and water vapor changes on the greenhouse effect may be different.
+\begin{figure}
+\begin{center}
+\includegraphics[width=8 cm]{../illustrations/Planck_LR_feedback.pdf}
+\end{center}
+\caption{ Principle of dividing temperature feedback into two contributions from Planck and Lapse-rate feedback. The shown temperature profile is typical of the tropics; at high latitudes the surface may warm faster than the troposphere. } 
+\label{fig:planck_LR}
+\end{figure}
 
-It turns out to be meaningful to divide the temperature feedback parameter into two contributions. 
+It turns out to be meaningful to divide the temperature feedback parameter into two contributions (Figure \ref{fig:planck_LR}). The Planck feedback is that which would occur if the entire troposphere would warm at the rate of the surface temperature (gray shading). The lapse-rate feedback is that due to deviations from vertically uniform warming. In a later chapter we shall study stratospheric adjustment as a response to changing CO$_2$ which is not considered a feedback, and so ignoring the stratospheric temperature changes, we can write the temperature feedback as:
 \begin{equation}
-\lambda_T \approx \lambda_P + \lambda_{LR}
+\lambda_T \approx \lambda_P + \lambda_{LR}.
 \end{equation}
+The planck feedback is therefore always negative, whereas the lapse-rate feedback could be either positive or negative: If the troposphere warms faster than the surface temperature then the system can radiate more to space relative to the case where warming was vertically uniform. This is the case in the tropics where the troposphere is vertically mixed by deep convective clouds (as in Figure \ref{fig:planck_LR}). At high latitudes, however, the surface may well warm faster than the troposphere such that the lapse-rate feedback is a positive feedback mechanism acting to amplify regional warming (Pithan and Mauritsen \cite{Pithan2014}). However, because the tropics cover a much larger area the lapse-rate feedback is thought to be on average negative.
 
+It is worth noting that the division of feedback parameters chosen here is only one of many possible divisions, a few of which makes sense. A powerful recent development has been to include some of the water vapor feedback into the temperature feedback, namely that which would occur if relative humidity stayed fixed (Held and Shell\cite{Held2012}). This is effective since, as we shall argue next, changes in relative humidity tend to be small in climate models. 
 
-Complex climate models agree broadly on the importance of these feedback mechanisms, although the strengths of feedback parameters are model dependent. Table \ref{table:feedbacks} shows a dozen examples from some of the models that participated in the latest Coupled Model Intercomparison Project (CMIP5). In particular the cloud feedback parameter varies substantially among models.
+Complex climate models agree broadly on the importance of these feedback mechanisms, although the strengths of feedback parameters are model dependent. Table \ref{table:feedbacks} shows a dozen examples from some of the models that participated in the fifth phase of the Coupled Model Intercomparison Project (CMIP5). In particular the cloud feedback parameter varies substantially among models. An example of the spatial patterns of the feedback parameters is shown for one climate model in Figure \ref{fig:feedback_maps}. We see that the temperature feedbacks are the dominant negative feedback, whereas water vapor feedback is generally positive and strongest in the moist tropical regions. Surface albedo feedback is positive in regions were snow and sea ice melts. Finally, cloud feedbacks exhibit complex patterns which are different from model to model. Next we shall look at a some of the individual feedback mechanisms.
 
 \begin{table}
-  \caption{ Overview of feedback parameter strength in some climate models as diagnosed using the radiative kernel method. This is a subset of the analysis from Vial et al. (2013). }
+  \caption{ Overview of feedback parameter strength (Wm$^{-2}$K$^{-1}$) in some climate models as diagnosed using the radiative kernel method. The cloud feedback parameter is split into shortwave ($\lambda_{C,SW}$) and longwave ($\lambda_{C,LW}$) contributions, and I also provide the sum of water vapor and lapse-rate feedback ($\lambda_{W+LR}$). This is a subset of the analysis from Caldwell et al.\cite{Caldwell2016}. }
   \vspace{0.5 cm}
   \centering
-  \begin{tabular}{l|rrrrrr} 
-    Model                 & $\lambda_P$ & $\lambda_{LR}$ & $\lambda_W$ & $\lambda_{W+LR}$ & $\lambda_A$ & $\lambda_C$ \\
-    \hline
-    IPSL-CM5A-LR  & -3.29 & -0.97 & 1.86 & 0.89 & 0.18 & 1.18 \\
-    NorESM1-M       & -3.19 & -0.47 & 1.54 & 1.07 & 0.30 & 0.14 \\
-    MPI-ESM-LR      & -3.27 & -0.88 & 1.76 & 0.89 & 0.29 & 0.45 \\
-    INMCM4             & -3.24 & -0.67 & 1.62 & 0.95 & 0.33 & -0.05 \\
-    HadGEM2          & -3.18 & -0.55 & 1.49 & 0.94 & 0.29 & 0.39 \\
-    CanESM2          & -3.23 & -0.64 & 1.67 & 1.03 & 0.32 & 0.52 \\
-    MIROC5             & -3.22 & -0.66 & 1.68 & 1.02 & 0.36 & 0.04 \\
-    CCSM4              & -3.18 & -0.44 & 1.48 & 1.05 & 0.40 & -0.42 \\
-    BNU-ESM          & -3.15 & -0.22 & 1.39 & 1.17 & 0.48 & 0.09 \\
-    FGOALS-s2       & -3.20 & -0.53 & 1.73 & 1.20 & 0.37 & -0.10 \\
-    MRI-CGCM3      & -3.22 & -0.61 & 1.53 & 0.92 & 0.37 & 0.21 \\
-    \hline
-    Ensemble mean      & -3.22 & -0.60 & 1.61 & 1.01 & 0.34 & 0.22 \\
-    Standard deviation  & 0.04 & 0.21 & 0.14 & 0.11 & 0.08 & 0.42 \\
+  \begin{tabular}{l|rrrrr|rr|r} 
+Model                 & $\lambda_P$ & $\lambda_{W}$ & $\lambda_{LR}$ & $\lambda_{C}$ & $\lambda_A$ & $\lambda_{C,SW} $ & $\lambda_{C,LW}$  & $\lambda_{W+LR}$  \\
+\hline
+ACCESS1.3&	-3.16	&1.65&	-0.49&0.68&	0.39&	0.53&	0.15&	1.16 \\
+BNU-ESM	& 	-3.08&1.46&	-0.17	&0.24&	0.56&	-0.12	&	0.36&	1.29 \\
+CCSM4&	         -3.14&1.47&	-0.29	&0.27&	0.43&	0.00&	0.27&	1.18 \\
+CanESM2& 	-3.22	&1.77&	-0.49	&0.54&	0.36&	-0.24	&	0.78&	1.28 \\
+FGOALS-g2&	-3.15	&1.52&	-0.22	&0.39&	0.54&	0.00&	0.39&	1.30 \\
+GFDL-CM3&	-3.12	&1.67&	-0.64	&0.92&	0.40&	0.64&	0.28&	1.03 \\
+HadGEM2-ES&	-3.13	&1.62&	-0.41	&0.73&	0.35&	0.31&	0.42&	1.21 \\
+IPSL-CM5A-LR	&-3.19&2.02&	-0.94	&1.17&	0.23&	0.63&	0.54&	1.08 \\
+MIROC5& 	-3.19	&1.86&	-0.67	&0.00&	0.42&	-0.32	&	0.32&	1.19 \\
+MPI-ESM-LR&	-3.10	&1.80&	-0.80	&0.46&	0.39&	-0.14	&	0.60&	1.00 \\
+MRI-CGCM3&	-3.19	&1.49&	-0.34	&0.30&	0.45&	0.30&	0.00&	1.15 \\
+NorESM1-M&	-3.11	&1.48&	-0.23	&0.35&	0.39&	0.07&	0.28&	1.25 \\
+INM-CM4.0&	-3.11	&1.59&	-0.43	&0.23&	0.38&	0.01&	0.22&	1.16 \\
+\hline								
+Ensemble mean&	-3.15&	1.65&	-0.47&	0.48&	0.41&	0.13&	0.35&	1.18 \\
+Standard deviation&	0.04&	0.17&	0.24&	0.32&	0.08&	0.32&	0.20&	0.10
   \end{tabular}
   \label{table:feedbacks}
 \end{table}
 
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=15 cm]{../external_figures/MPI-ESM_abrupt4xCO2_allfeedbacks_contour.png}
+\end{center}
+\caption{ Maps of feedback from MPI-ESM-LR, from Block and Mauritsen \cite{Block2013}. } 
+\label{fig:feedback_maps}
+\end{figure}
+
 \subsection{Surface albedo feedback}
+Perhaps the simplest feedback to comprehend is the surface albedo feedback. That is, at least the more important parts of the feedback that are related to melting snow and sea ice -- changes in vegetation may also impact the surface albedo -- and at least as long as we are thinking about a small warming relative to the present climate. In a later chapter we shall look at what happens if we instead cool the system and it might enter a snow-ball instability. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/CERES_Ebaf_shortwave.pdf}
+\end{center}
+\caption{ Shortwave fluxes observed and inferred from the CERES dataset. Black is the downwelling annually averaged sunlight at the top of the atmosphere, on average 340 Wm$^{-2}$. The red line is the downwelling sunlight at the surface (187 Wm$^{-2}$), and the blue is the reflected sunlight at the surface (24 Wm$^{-2}$). Therefor the gray shaded area is the surface absorption. Over the region poleward of 60N the corresponding three numbers are 201, 102, 43 Wm$^{-2}$, respectively. } 
+\label{fig:CERES_shortwave}
+\end{figure}
+
+So let us focus on the Arctic region, where most of the surface albedo feedback occurs with respect to warming (Figure \ref{fig:feedback_maps}). As a first attempt at constraining this feedback, let us assume there is no atmosphere and therefore also no clouds. Thus all incoming radiation arrives at the surface, and a fraction $A$ is reflected back to space. Suppose the surface albedo changes by an amount $\Delta A$ for a global warming of $\Delta T$ and let $S$ be the incoming solar radiation. Then regionally the imbalance changes by an amount $S \Delta A / \Delta T$. On average over the region poleward of 60N $S=201$ Wm$^{-2}$ (Figure \ref{fig:CERES_shortwave}). Complex climate models have that most of their Arctic sea ice is gone at a global mean temperature around 20$^\circ$C (currently about 15$^\circ$C), so $\Delta T \approx 5$ K. The observed average effective surface albedo in the region is 0.42 (Figure \ref{fig:CERES_shortwave}), which would then drop to about 0.07 which is that of an open ocean. The area of a spherical cap is $2\pi r^2 (1-\sin\theta)$, where $\theta$ is the angle from the Equator to the pole, whereas we recall the surface area of the whole Earth is $4\pi r^2$. Thus, suppose we consider the region poleward of 60N then that is little less than 7 percent of the Earth's surface; if we restrict this to mainly be the Arctic ocean roughly poleward of 70N then it is only 3 percent of the Earth. Then we can estimate an upper bound on the contribution of the Arctic region to global surface albedo feedback parameter as:
+\begin{equation}
+\frac{\textrm{polar cap area}}{\textrm{global area}} \cdot \frac{\Delta A} {\Delta T} \cdot S \approx 1.0 \ \textrm{Wm}^{-2}\textrm{K}^{-1}.
+\end{equation}
+Now this is a gross overestimate. The reason is that the atmosphere, which we neglected above, hinders (absorbs or reflects) roughly half of the radiation at the top of the atmosphere from reaching the surface in the Arctic region. This alone would half the surface albedo feedback parameter. But the surface reflected sunlight would have to, once again traverse the atmosphere before escaping to space, whereby again about half the radiation would be either reflected back towards the surface or absorbed by the atmosphere. Accounting for this would leave us with a quarter of the original estimate, or roughly $\lambda_A \approx 0.25$ Wm$^{-2}$K$^{-1}$ originating in the Arctic region only. Other regions, e.g. the Southern Ocean, also contribute to the surface albedo feedback making the climate model ensemble mean global $\lambda_A \approx 0.41$ Wm$^{-2}$K$^{-1}$ seem plausible (Table \ref{table:feedbacks}). The calculation shows that in addition to how fast the regional surface albedo changes with global warming, perhaps the most important factor in determining the surface albedo feedbacks is the attenuation of sunlight by the atmosphere, which in turn is mostly dependent on cloudiness at these high latitudes.
 
 
 \subsection{Water vapor feedback}
+As we saw in the beginning of the course, water vapor is an excellent greenhouse gas in that it absorbs across a wide range of the infrared spectrum. A problem with water vapor is that, unlike CO$_2$, it is highly inhomogeneously distributed in the atmosphere both vertically, horizontally and in time; in Figure  \ref{fig:tropical_profiles} we saw how the average mixing ratio of water vapor in the tropics changes a factor 10.000 from the surface to the tropopause. This is because the lifetime of a water vapor molecule in the troposphere is relatively short, about a week or so, before it is for the most part precipitated out. The maximum amount of water vapor the atmosphere can hold before it starts condensing into cloud droplets is highly temperature dependent, roughly exponential according to the Clausius-Clapeyron relationship. 
 
-\begin{eqnarray}
-\frac{de_s}{dT} &=& \frac{L_v e_s}{R_v T^2}, \nonumber \\
-\frac{d\ln e_s}{dT} &=& \frac{L_v}{R_v T^2}
+\begin{figure}
+\begin{center}
+\includegraphics[width=14 cm]{../external_figures/RH_change_echam-6_3_02p4_amip4K_zonalmean.png}
+\end{center}
+\caption{ Change in relative humidity in a model experiment where the ocean surface temperature is raised uniformly by 4 K.} 
+\label{fig:RH_change_ECHAM}
+\end{figure}
+
+Fortunately, we can argue that relative humidity ($RH$) stays approximately constant under climate change. Relative humidity is the actual water vapor pressure ($e$) relative to the saturation vapor pressure ($e_s$). For the argument we will be making it is perhaps easier to think of the water vapor mixing ratio which is conserved with adiabatic motion ($q$, such that $RH \approx q/q_s$). If we trace an isolated air parcel along it's trajectory through the atmosphere we will find that it spends part of its time being saturated within clouds and part of its time being sub-saturated in clear air. As long as it is inside clouds it will have $q=q_s$, and so too at the exact moment the parcel leaves the cloud. Let us call this $q_s(T_c)$ where $T_c$ is the temperature at the last contact with cloud. Subsequently, in the cloud-free part of the parcels trajectory, where by necessity $T \ge T_c$, the water vapor mixing ratio at the last contact with cloud is conserved and so the relative humidity is $RH = q_s(T_c)/q_s(T) \le 1$. 
+
+We can think of the total atmospheric circulation as consisting of many such trajectories of small parcels of air, each undergoing cloudy and cloud-free transects. Now, suppose the atmospheric circulation stays unchanged in a statistical sense under small amounts of climate change, then the only thing that changes for our parcels is the temperatures at which they operate. If then the entire troposphere warms at about the same rate, then for a given trajectory both $T_c$ and $T$ change by the same amount and so to first order $RH$ stays constant under climate change. To investigate how good an approximation this is, I plotted the change in $RH$ in Figure \ref{fig:RH_change_ECHAM} as the difference between two experiments: one with sea-surface temperatures prescribed as observed and one wherein I added a horizontally uniform warming of 4 K. In most of the troposphere the changes in $RH$ is less than or around 1 percent per Kelvin warming. In the tropopause and lower stratosphere region there is a substantial rise in $RH$, in part associated with a rise of the tropopause as discussed in the first chapter.
+
+With this result at hand we can now estimate how the specific humidity changes with warming. Our starting point is the Clausius-Clapeyron relation for the saturation vapor pressure:
+\[ \frac{de_s}{dT} = \frac{L}{R_v T^2} e_s, \]
+which can be rewritten as:
+\begin{equation}
+\frac{d\ln e_s}{dT} = \frac{L}{R_v T^2},
 \label{eq:clausius_clapeyron}
-\end{eqnarray}
+\end{equation}
+such that the fractional rate of change of the saturation vapor pressure is a simple function of temperature. $L$ denotes the latent heat of evaporation (about $2.5 \cdot 10^6$ J kg$^{-1}$) and $R_v$ is the gas constant for water vapor (about $461$ J kg$^{-1}$ K$^{-1}$). Inserting different temperatures on the right hand side of Equation \ref{eq:clausius_clapeyron}, one finds that near the Earth's surface one finds increases of 6-8 percent per degree warming, and for tropical upper-tropospheric temperatures around 14 percent per degree warming. Since most of the water vapor resides in the lower troposphere the water vapor path scales with close to 7 percent per degree warming.
 
+The reader is reminded that the infrared part of the water vapor feedback only works because the atmosphere is colder than the surface. Thus adding a water vapor molecule to the atmosphere near the surface is less effective than adding it near the tropopause, and so despite the amount of water vapor in the upper troposphere is much smaller than near the surface it still plays an important role in controlling the infrared radiation to space. The troposphere is colder than the surface in most places and at most times. 
+An exception where the atmosphere can be warmer than the surface occurs at high latitudes in winter, and so there raising the emissivity of the atmosphere by adding water vapor will result in more infrared radiation escaping to space. 
+A not negligible part of the water vapor feedback of about 20-30 percent, however, occurs because water vapor absorbs sunlight. This absorption depends less on where in the vertical the water vapor is, and more on the column integrated amount, the latitude and season, as well as the presence of clouds and the reflectivity of the surface.
+It is left as an exercise to estimate the infrared part of the water vapor feedback under the assumption of constant relative humidity using the MODTRAN model and compare the result with that of more complex climate models. 
 
 \subsection{Cloud feedbacks}
+Clouds are exceptionally complicated, and I would be foolish to even try to account for the many different ways in which clouds could possibly feed back on the Earth's energy balance. And not only are the mechanisms complex and difficult to grasp, they are also the main source of uncertainty in quantifying climate change and clouds impact the strength of other feedback mechanisms as we have seen above in the example of surface albedo feedback. Therefore, cloud feedbacks are very much central to the part of climate sciences that aims at estimating Earth's climate sensitivity. Because it is so complicated, one current trend is to dissect the cloud feedback into separate regimes (Figure \ref{fig:cloud_feedback_illustration}) wherein the hope is that the individual mechanisms can be understood and quantified. It is not at all clear that this is the most effective way to achieve overall progress, though, and climate scientists also pursue other routes to determining feedback. 
+Current thinking is that it is useful to divide cloud feedback into three groups:
+\begin{itemize}
+\item Mid- to high latitude mixed-phase clouds
+\item Low-level clouds 
+\item Deep clouds,
+\end{itemize}
+although one could certainly think of other divisions that would be meaningful. The first two categories act mostly in the shortwave bands by regulating the planetary albedo, whereas the third category is thought to mainly function in the longwave by regulating the infrared radiation emitted to space.
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=17 cm]{../illustrations/Cloud_feedbacks_illustration.png}
+\end{center}
+\caption{ Illustration of various cloud feedback mechanisms. To the left is mixed-phase cloud feedback occurring at mid- to high latitudes in for instance frontal clouds, in the lower middle I show several mechanisms related to low-level stratocumulus and trade-wind cumulus cloud feedbacks, and to the right are deep cloud feedbacks which are thought to act mainly by regulating the infrared radiation escaping to space. } 
+\label{fig:cloud_feedback_illustration}
+\end{figure}
 
+Ice clouds are generally less reflective to sunlight than are liquid clouds. This is primarily because ice crystals tend to be few and large, whereas cloud droplets tend to be small but many: the cross-section of many small droplets is larger for a given amount of condensate. In a warming climate the isotherms will move upward in the atmosphere and poleward alone resulting in a larger fraction of liquid clouds (Figure \ref{fig:cloud_feedback_illustration}), and so a negative shortwave cloud feedback must result. 
+If all clouds at temperatures below the melting point (0$^\circ$C), then a very strong negative feedback would result. However, it is a bit more complicated. At temperatures above 0$^\circ$C all clouds consist of the liquid phase, and below about -35$^\circ$C all clouds consist of ice phase. Between these temperatures both phases can exist, we say clouds are of mixed phase. The more one can maintain liquid clouds at temperatures below the melting point, the weaker the mixed-phase feedback is as there is simply less ice clouds that can be transformed.
+Signs of what might be dominating negative mixed-phase cloud feedback can be seen in the Southern Ocean, North Pacific and the Arctic in the MPI-ESM-LR model (Figure \ref{fig:feedback_maps}). This is not the only type of cloud feedback in those regions though, and for instance total cloud feedback appears to be positive in the North Atlantic, a region where we would also expect mixed-phase cloud feedback to be active. A couple of recent studies try to observationally constrain mixed-phase feedback. One study finds that complex climate models are on average correct, with some models having stronger and some models having weaker feedback. Another study finds that models as a whole overestimate the strength of the negative mixed-phase cloud feedback.
 
+Low-level clouds in the tropics and sub-tropics on the contrary consist mostly of liquid droplets. They are, nevertheless, consistently identified as the main source of spread in complex climate model feedback, which is likely due to there being a large number of competing mechanisms (Figure \ref{fig:cloud_feedback_illustration}), explaining all of which I couldn't possibly do any justice here. Foremost, the low-level clouds may regulate the planetary albedo either by changing their coverage or by changing their reflectivity. The reflectivity of low-level clouds is mainly controlled by the amount of condensate. We saw previously that in a warmer climate the atmosphere holds more water vapor, as of Clausius-Clapeyron, and so a naive expectation is that low-level clouds will thicken as there is more vapor to condense (adiabatic thickening). Counteracting this, is the mixing of the moist lower atmospheric air with dry air subsiding from aloft: in a warmer climate the difference in specific humidity will be larger between the boundary layer and the subsiding air, and so the mixing down of air (entrainment) results in a larger depression of relative humidity and fewer clouds in a warmer climate. The strength of the mixing, in turn, is controlled by the strength of the temperature inversion above the boundary layer. In some regions of the sub-tropics this inversion is expected to strengthen in a warmer climate resulting in more cloudiness. Overall, complex climate models can exhibit both positive and negative low-level cloud feedbacks, but there is a tendency for observational and fine-scale cloud modeling evidence to favor positive feedback from this regime.
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=10 cm]{../illustrations/Deep_cloud_feedback_illustration.pdf}
+\end{center}
+\caption{ Illustration of the infrared feedback from deep clouds. The upper level clouds are thought to move upward in a warming climate so as to maintain a nearly constant temperature of about 200 K, alone resulting in the positive fixed-anvil temperature feedback. There may also be changes in the anvil coverage, something which is popularly denoted iris-effect. } 
+\label{fig:deep_cloud_feedback_illustration}
+\end{figure}
 
+Deep cloud feedbacks originate for the most part in the tropical regions. We argued in an earlier chapter that the tropopause might move upward in a warming climate so as to maintain an approximately constant temperature, and with it, presumably also that of the deepest convective cloud tops (anvils). 
+To see how this ascendence of upper level clouds might exert a cloud feedback, let us consider the gray body case with an upper-level cloud that covers a fraction, $f$, which acts as an ideal black body. The cloud is assumed to rise such as to maintain a constant temperature with a warming surface ($dT_a/dT_s=0$, Figure \ref{fig:deep_cloud_feedback_illustration}). Since there is only one unknown in our problem, $T_s$, we also only need to form one energy balance equation; we choose the top of the atmosphere:
+\begin{equation}
+N = \frac{S_o}{4}(1-\alpha) - (1-f) \epsilon \sigma T_s^4 - f\sigma T_a^4.
+\label{eq:anvil_balance}
+\end{equation}
+First, let us assume that $f$ is constant such that the upper level cloud maintains its coverage, then we can calculate the feedback parameter:
+\begin{equation}
+\lambda =  - 4(1-f) \epsilon \sigma T_s^3,
+\end{equation}
+where we note that $dT_a/dT_s=0$. Comparing to the Planck feedback parameter, Equation (\ref{eq:lambda_planck}), we immediately recognize that this can be rewritten as:
+\begin{equation}
+\lambda =  \lambda_P + f 4 \epsilon \sigma T_s^3,
+\end{equation}
+where the second term is then the fixed anvil temperature (FAT) feedback parameter. Notice how the actual temperature of the cloud, $T_a$, plays no role in determining the strength of the feedback. Since the FAT feedback parameter equals $-f\lambda_P$ we can readily estimate what $f$ has to be around 0.11 to provide the longwave cloud feedback parameter found in complex climate models ($\lambda_{C,LW}$, Table \ref{table:feedbacks}). The estimate of $f$ is smaller than expected since tropical upper-level cirrus clouds cover a larger fraction of the Earth, perhaps twice as much. However, because they consist of few relatively large ice crystal their longwave emissivity is usually less than unity and so in this more realistic setting it requires a larger coverage to reach the same amount of feedback.
+
+Now, let the area $f$ covered with our upper-level black body cloud vary with temperature to emulate an iris-effect. Now the derivative with respect to $T_s$ of Equation (\ref{eq:anvil_balance}) becomes a bit more complicated:
+\begin{eqnarray}
+\lambda &=&  \lambda_P + f 4 \epsilon \sigma T_s^3 + \epsilon \sigma T_s^4\frac{df}{dT_s} - \sigma T_a^4\frac{df}{dT_s} \nonumber \\
+&=&  \lambda_P + \lambda_{FAT} +  \sigma \left( \epsilon T_s^4 - T_a^4\right)\frac{df}{dT_s},
+\label{eq:lambda_iris}
+\end{eqnarray}
+where we recognize the second term as the FAT feedback parameter. The third term represents a replacement of radiation originating from the upper-level cloud to radiation originating from the surface if $df/dT_s$ is negative. In this extreme example it takes only a 2 percent per degree warming reduction of the anvil coverage ($df/dT_s \approx -0.02f$) for the iris-effect feedback parameter to be as strong as  $\lambda_{FAT}$. This is an underestimate of the amount of reduction required for several reasons. First, if cloud cover decreases then the planetary albedo also decreases, thereby inducing a compensating positive shortwave cloud feedback. Second, most of the upper-level cirrus cloud is optically too thin to act as ideal black bodies, further requiring a larger reduction. Together, I believe it might take around 5 percent reduction per degree warming, or so, to be able to compensate the positive FAT feedback.
+Complex climate models exhibit no, or only very weak, reductions of anvil area with warming, whereas different lines of observational evidence suggest that models underestimate this reduction. The interpretation of the data, however, remains contentious and it is also currently not known mechanistically why anvil coverage would reduce substantially in a warming climate.
 
 \section{Equilibrium climate sensitivity (ECS)}
+So far we have been agnostic as to why the climate system might be out of balance. It could be due to some random fluctuation, a short volcanic eruption, a change in the solar constant, or forced by a change in the atmospheric greenhouse gas concentration. We shall return to radiative forcing in more detail later, but a standard way to define the sensitivity of the climate system is to expose it to a doubling of CO$_2$ relative to the pre-industrial level which reduces the infrared radiation to space and yields a top-of-atmosphere imbalance of:
+$$F_{2x} \approx 3.7 \ \textrm{Wm}^{-2}.$$
+A neat thing about CO$_2$ is that the atmosphere is optically thick in the part of the spectrum dominated by CO$_2$ absorption. This leads to the forcing being almost logarithmic in the concentration so that each doubling (from 1 to 2xCO$_2$, from 2 to 4xCO$_2$ etc.) results in about the same amount of forcing. If we think $F_{2x}$ is a sufficiently small perturbation that the feedback parameter, $\lambda$, can be considered constant then we can write the energy balance equation as:
+\begin{equation}
+N = F_{2x} + \lambda \Delta T
+\end{equation}
+where we have linearized around a base state. Imagine that we instantaneously double the CO$_2$ concentration in the atmosphere. At this very moment we have $N=F_{2x}$ and the system will start warming. With the warming ($\Delta T > 0$) feedbacks start acting. If the system is stable ($\lambda < 0$) then the warming will lead to a reduction in the planetary imbalance ($N$). It is quite popular to think of this system as an electric feedback loop circuit (Figure \ref{fig:feedback_illustration}). 
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=9 cm]{../illustrations/Feedback_illustration.pdf}
+\end{center}
+\caption{ Illustration of the principle of climate change feedback to external forcing $F$. In case a) the feedback is the product of the total feedback parameter, $\lambda$, and the temperature change. In case b) I divide this into a linear sum corresponding to equation \ref{eq:lambda_linear_sum}, whereby for instance the symbol is $T=\lambda_T \Delta T$. } 
+\label{fig:feedback_illustration}
+\end{figure}
+
+Eventually, after some time, our system may reach a new equilibrium where $N=0$. Here the temperature change, which we call the equilibrium climate sensitivity (ECS) is:
+\begin{equation}
+\textrm{ECS} = \frac{-F_{2x}}{\lambda}.
+\end{equation}
+The inverse relationship between the total feedback parameter ($\lambda$) and ECS is plotted as the black curve in Figure \ref{fig:feedback_vs_ECS} along with estimates from complex climate models. All models exhibit higher sensitivity than what would be the case if there would only be Planck feedback (dashed line). The scatter of models around the theoretical line can have several causes, for instance $F_{2x}$ is model-dependent and there may be non-linearities impacting the estimates. Nevertheless, most of the spread in ECS is due to spread in the total feedback parameter. It is left as an exercise to explore how uncertainty in the strength of feedback mechanisms impact ECS.
 
 \begin{figure}
 \begin{center}
 \includegraphics[width=8 cm]{../external_figures/Feedback_vs_ECS.pdf}
 \end{center}
-\caption{ Relationship between feedback and equilibrium climate sensitivity to one doubling of CO$_2$, ie. a forcing of 3.7 Wm$^{-2}$. Gray dots show individual CMIP5 climate models, and the dashed line indicates the case with only Planck feedback ($\lambda=\lambda_P$). } 
+\caption{ Relationship between feedback and equilibrium climate sensitivity to one doubling of CO$_2$, ie. a forcing of 3.7 Wm$^{-2}$. Gray dots show individual CMIP5 climate models, and the dashed line indicates the case with only Planck feedback ($\lambda=\lambda_P$). Adapted from Mauritsen and Stevens \cite{Mauritsen2015}.} 
 \label{fig:feedback_vs_ECS}
 \end{figure}
 
 
 
-
+\newpage
 \vspace{1 cm}
 {\setlength{\parindent}{0cm}
-\hrule
+%\hrule
 \begin{exercise}
-Estimate the limit of instability for planetary albedo feedbacks using equation \ref{eq:lambda_general}. First assume $\epsilon$ is a constant. Put in numbers relevant for Earth to estimate how fast planetary albedo would have to decrease to alone cause instability.  
+Estimate the limit of instability for planetary albedo feedbacks using equation \ref{eq:lambda_general}.  Assume here that $\epsilon$ is a constant. Put in numbers relevant for Earth to estimate how fast planetary albedo would have to decrease to alone cause instability.  
+\end{exercise}
+
+\begin{exercise}
+Calculate the feedback parameter $\lambda = dN/dT_s$ for the partially absorbing slab atmosphere derived in the previous chapter, section \ref{sec:partially_absorbing_slab}. Do so by eliminating $T_a$ from the top-of-atmosphere imbalance equation and then take the derivative with respect to $T_s$. Calculate ECS with reasonable parameters for Earth.
 \end{exercise}
 
 \begin{exercise}
 Use the online MODTRAN radiative transfer model to estimate water vapor feedback. Do so by changing the 'Water Vapor Scale' from, say, 1.00 to 1.07, corresponding to a 7 percent increase of specific humidity which is roughly what occurs for a 1 K warming at typical tropospheric temperatures. Another way to do this is to use the 'Ground T offset', which actually increases the temperature of the whole column, then compare the cases with constant vapor pressure and relative humidity. It is convenient to use the 'Save this run to background' button.
-
 How does the water vapor feedback depend on locality? How does your estimate compare with that of complex climate models?
 \end{exercise}
 
-
+\begin{exercise}
+Estimate the ECS using the complex climate model ensemble mean feedback factors $ \lambda_P + \lambda_{W+LR} + \lambda_C + \lambda_A$ as listed in Table $\ $ \ref{table:feedbacks}. Note that you are to use the sum of the water vapor and lapse-rate feedbacks. What happens to ECS if each feedback is one standard deviation larger, respectively, smaller? Repeat the calculations without cloud feedback. 
+\end{exercise}
 
 }
 
 
 %---------------------------------------------------------------------
 \chapter{Temporal evolution}
+
 \section{Heat capacities and time-scales}
 \section{Mixed-layer ocean}
+
+\subsection{Numerical solution}
 %\subsection{Step-response solution}
 \section{Two-layer model}
 \section{Zero-layer model}
