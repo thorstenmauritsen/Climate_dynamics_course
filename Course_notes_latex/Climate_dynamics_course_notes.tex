@@ -276,6 +276,7 @@ Visit the MODTRAN infrared radiation model at http://climatemodels.uchicago.edu/
 
 %---------------------------------------------------------------------
 \chapter{Energy balance}
+\label{chapter:energybalance}
 The flows of energy in and out of the planet is central to climate dynamics; it is actually more important to keep track of the energy balance than it is to trace surface temperature which  represents only a small part of the Earth's total heat reservoir. The temperature, however, plays a central role in determining this balance: in essence a planet receives energy at some rate and therefore warms up until it loses energy at the same rate. In fact, whereas a planet in general can receive energy in a number of ways, infrared radiation is basically the only way in which it can get rid of it again.
 
 \section{The black body case}
@@ -418,6 +419,7 @@ Make sure you have access to a computer with Python, and follow the instructions
 
 %---------------------------------------------------------------------
 \chapter{Response to small perturbations}
+\label{chapter:response}
 \vspace{1 cm}
 
 Up until now we considered climates that were stationary, at balance between the absorbed solar radiation and the emitted infrared radiation. We call this a stationary state or a fix-point. But what happens if the system is starting a bit away from that stationary state? Or what happens if we take a system in a stationary state and somehow force it in a way that causes an energy imbalance to occur? This naturally leads us to develop the concepts of radiative forcing, climate change feedbacks and a resulting equilibrium climate sensitivity.
@@ -706,7 +708,7 @@ Estimate the ECS using the complex climate model ensemble mean feedback factors 
 
 %---------------------------------------------------------------------
 \chapter{Temporal evolution}
-
+\label{chapter:evolution}
 In the previous chapter we focussed on the stability of stationary states and the equilibrium response to a small forcing. Here we will investigate how the system approaches these equilibria and how it responds to forcing. This involves considerations of the relevant heat reservoirs, and ignorance of those that do not matter. On this background we will develop a mixed-layer and a two-layer model and study their behavior. 
 
 \section{Heat capacities}
@@ -927,28 +929,199 @@ Plot the result and verify your inference from the previous exercise.
 
 
 %---------------------------------------------------------------------
-\chapter{External forcing and adjustments}
-The climate system can be forced in a number of ways. But what we mean by forcing is not always obvious. 
+\chapter{External forcing and fast adjustments}
+\label{chapter:forcing}
+The climate system can be forced in a number of ways, and previously we have taken the concept of external forcing from a doubling of atmospheric CO$_2$ for granted. But what we mean by external forcing is not always obvious. The first thing we need to do is to define the system we are looking at. Often we think of the physical properties of the system: the temperature, humidity, clouds and surface albedo, whereas other components such as the solar constant or the atmospheric CO$_2$ are considered as "given" external boundary conditions. Feedbacks are then those internal processes within the system that respond to changes in the external boundary conditions in ways that achieves a new balanced climate. 
+
+But even some of those internal processes may not respond in concert with the surface temperature: we have already looked at the sluggish deep ocean in the previous chapter, but also ice sheets may take millennia to equilibrate with a new climate, and vegetation may react to changes in boundary conditions such as CO$_2$ or sunlight over long timescales. In a later chapter we shall develop a way to handle the possible impact of the slow deep ocean adjustment process as a time-dependent feedback. 
+Also at short timescales -- and this is what we shall investigate here -- things can change in ways that do not depend directly on the temperature. We shall see below how the stratosphere cools off rapidly, within weeks, after an increase in CO$_2$ which is a consequence of the increased emissivity allowing it to cool more effectively. But also clouds may respond to atmospheric composition changes, actually within hours, well before the surface temperature has had time to respond.
+
+\vspace{0.5 cm}
+\noindent
+When trying to separate {\bf feedback} from {\bf forcing} I find it useful to think of the responses that impact the radiation balance as to whether, or not, they depend physically on the surface temperature. The increase in water vapor depends mostly on the surface temperature, hence it is a feedback, but in other cases it may not be so straightforward. Therefore we often resort to a more ad-hoc definition by dividing the problem into time-scales. We call things that happen well within the first year after a forcing is applied {\bf fast adjustments} and those that happen in congruence with surface temperature we define as {\bf feedbacks}. Finally, those that involve long timescales are often referred to as slow- or time-dependent feedbacks. It is often quite challenging to separate these effects. 
+%A clear short-coming of this division occurs for vegetation which may respond to purely the CO$_2$ fertilization, but over long timescales. 
+
+\vspace{0.5 cm}
+\noindent
+To be a little more concrete, let's take the perhaps simplest case of an abrupt but small change in the solar constant, $\delta S_o$. We may now perturb our energy balance equation \ref{eq:black_body_energy_balance} for the black body Earth and assume the planetary albedo stays constant:
+$$ N+\delta N \approx \frac{S_o+\delta S_o}{4}(1-\alpha) - \sigma (T_e+\delta T)^4 $$
+Now, the system was in balance before the abrupt change, so $N=0$ and initially $\delta T=0$, such that we can estimate the change in the radiation balance induced by the change in solar constant:
+$$ \delta N(t=0) \approx \frac{\delta S_o}{4}(1-\alpha).$$
+We can think of this initial change in the radiation balance as the forcing, $F$. Traditionally, climate modelers apply a 2 percent increase in the solar constant, giving $F_{2pct}\approx 4.8$ Wm$^{-2}$ which is close to that of a doubling of CO$_2$, $F_{2x}\approx 3.7$ Wm$^{-2}$. 
+
+We may, however, imagine things could happen on a short timescale that are not congruent with the surface temperature response to the solar forcing. The first is that some of the extra sunlight will be absorbed by ozone in the stratosphere, and because the stratosphere has a low heat capacity and is not dynamically coupled to the surface it can quickly warm up, as it turns out in matter of weeks. The warmer stratosphere will radiate more infrared radiation both down towards the surface and up to space, the latter resulting in a weakening of $F_{2pct}$ by some amount. Second, clouds might respond to the stronger solar input thereby altering the planetary albedo. This will result in an adjustment term $-\delta \alpha \cdot S_o/4$, meaning that even minute changes in $\alpha$ can have relatively large impacts on the adjusted $F_{2pct}$.
+
+\vspace{0.5 cm}
+\noindent
+In the following we shall go over two methods to estimate forcing, and then take a closer look at the forcing from CO$_2$. There are of course many other ways the Earth system can be forced, some of which we shall look at in the next chapter in the context of historical warming. 
+
+\section{The Gregory- and the Hansen methods}
+There are many ways to estimate the radiative forcing in climate models. Here I will go over the two methods that are most widely used today namely those suggested by Gregory et al. (2004) and Hansen et al. (2005). Both methods build on the idea of the linear framework we developed earlier wherein the energy balance is a function of forcing and feedback:
+$$N=F+\lambda T$$
+where $F$ and $\lambda$ are assumed to be constants. 
+
+The Gregory-method builds on coupled climate simulations wherein CO$_2$, or any other forcing is abruptly applied whereafter the system slowly warms. Then the parameters $F$ and $\lambda$ can be determined by linear regression of $N$ versus $T$. The best way to see this is to plot yearly mean values of the imbalance as a function of global mean surface temperature change (Figure \ref{fig:gregory_hansen}). Note that in the figure I show a case with quadrupled CO$_2$, or two doublings, rather than the usual single doubling of CO$_2$. The radiative forcing from CO$_2$ is roughly logarithmic in the concentration (Arrhenius 1896) and so if we divide the forcing estimate by two we get an estimate of that from a single doubling. Using 4xCO$_2$, rather than 2xCO$_2$, is popular in the climate modeling community as it increases the ratio of the forced signal over internal variability (noise) when trying to fit simple models to the results, such as we do here. By applying a larger forcing, however, we also risk activating non-linearities that again makes interpretation more difficult.
+
+\begin{figure}[!]
+\begin{center}
+\includegraphics[width=10 cm]{../plots/MPI-ESM12_abrupt4xCO2.pdf}
+\end{center}
+\caption{ Imbalance versus global mean surface temperature following an abrupt quadrupling of CO$_2$ in the coupled climate model MPI-ESM1.2. Each black dot is an annual average and displayed are the first 300 years of the simulation.  The gray solid line is a linear fit to all 300 years and the gray dashed line is a linear fit to the first 10 years of the simulation. The red dot is the effect of quadrupling CO$_2$ in 30-year long simulations for the period 1979-2008 with the atmosphere-only ECHAM6.3 model wherein the sea surface temperatures are held fixed at their observed values. The red line is an extrapolation back to zero following the Hansen et al. (2005) method. } 
+\label{fig:gregory_hansen}
+\end{figure}
+
+As we expect for the system to be stable (Chapter 3) the slope of the linear fit is negative; we can identify the slope as the feedback parameter, $\lambda \approx -1.2$ Wm$^{-2}$K$^{-1}$. The intercept with the y-axis, i.e. where $T=0$ can then be interpreted as the forcing, $F$. With this method we find an estimate of $F_{4x} \approx 7.34$ Wm$^{-2}$, corresponding to $F_{4x} \approx 3.67$ Wm$^{-2}$ which is not far from our canonical value of 3.7 Wm$^{-2}$. This close agreement, as it shall turn out, is purely coincidental.
+
+Hansen et al. (2005) took a somewhat different approach. They suggested using simulations with atmosphere-only models, wherein the sea surface temperature is held fixed, so as to not allow the system to warm. Often these are referred to as AMIP experiments. One will make two simulations, a control and one with a forcing applied, for instance increased CO$_2$. If $T=0$ we simply have that the forcing equals the change in the radiation imbalance. Unfortunately -- or perhaps fortunately -- the whole Earth is not covered only by ocean, and so the land and sea ice covered regions can change their temperatures in response to the changed atmospheric composition. This alters the global mean surface temperature a little bit, for a quadrupled CO$_2$ concentration approximately by 0.5 K. We can write this as:
+$$F = N -\lambda \delta T$$
+where $N$ is determined from the difference between the two runs, $\delta T$ is the small change in surface temperature and $\lambda$ is taken to be the longterm average slope as determined using the Gregory-method. In figure \ref{fig:gregory_hansen} I display the Hansen method estimate with the red line, yielding $F_{4x} \approx 9.2$ Wm$^{-2}$, corresponding to $F_{2x} \approx 4.6$ Wm$^{-2}$, or a substantially larger value than found with the Gregory et al. (2004) method.
+
+The two methods can be brought into agreement by relaxing the requirement that $\lambda$ is constant. We note that the first few years the imbalance is somewhat above the longterm mean fitted line. If we fit a line to just the first 10 years we see that the slope is substantially steeper with $\lambda \approx -1.8$ Wm$^{-2}$K$^{-1}$ and an intercept close to that obtained with the Hansen-method. 
+We shall return to the interesting causes and implications of $\lambda$ not being a constant at several later occasions, however already below we shall see that it has something to do with clouds.
+
+\section{Components of the radiative forcing from CO$_2$}
+So far we have focussed on the total forcing from e.g. an increase in atmospheric CO$_2$. But it is useful to also separate them out to better appreciate how the forcing comes about. Here we note that we can separate the total imbalance change into contributions from CO$_2$ itself, as well as temperature, water vapor, clouds and surface albedo, and we shall then assume they are linear in global mean surface temperature change:
+\begin{eqnarray}
+N &\approx& \sum{ N_i}     \label{eq:prp} \\
+ &\approx&  N_{CO_2} +  N_{T} +  N_{W}  +  N_{C}  +  N_{A} \nonumber  \\
+  &\approx& F^*_{2xCO_2} + F_T  + F_W + F_C + F_A + \left(\lambda_T + \lambda_W + \lambda_C + \lambda_A \right)\cdot T \nonumber \\
+  &=& F_{2x} + \lambda \cdot T \nonumber
+%  \label{eq:prp}
+\end{eqnarray}
+where $F^*_{2xCO_2}$ is the direct radiative flux response to a doubling of CO$_2$ and we have assumed that it does not depend on the temperature. This is not entirely correct, and there are in fact good arguments as to why the direct forcing should increase in a warmer climate. In MPI-ESM1.2 there is a small slope of about 0.03 Wm$^{-2}$K$^{-1}$, that however can safely be neglected for the considerations here.
+
+In Figure \ref{fig:mpi-esm1.2_PRP} I plot all the terms in equation \ref{eq:prp} as well as linear regressions for each term. We see that for all components but clouds, the linear approximation works surprisingly well in this model. Further, for two components, namely surface albedo and water vapor, there is a near-zero y-intercept. This means that these components do not contribute to forcing, but can be considered pure climate change feedbacks. Careful inspection reveals a slightly negative y-intercept for surface albedo, which is due to the fact that it takes 1-2 years for sea ice to melt in response to warming (Block and Mauritsen 2013). 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/MPI-ESM12_abrupt4xCO2_PRP.pdf}
+\end{center}
+\caption{ Separation of contributions to imbalance as in equation \ref{eq:prp} for the MPI-ESM1.2 coupled climate model run presented in Figure \ref{fig:gregory_hansen}. Solid lines are fitted by linear regression over the full 300 years, whereas the two dashed lines are fitted over the first 10 years of the simulation. The separation is done using so-called partial radiative perturbations (PRP) which involves making multiple radiation calls with state-variables replaced by those from a control simulation. } 
+\label{fig:mpi-esm1.2_PRP}
+\end{figure}
+
+Non-zero y-intercepts are found for temperature ($N_T$) clouds ($N_C$) and the direct CO$_2$ forcing ($F^*$). In MPI-ESM1.2 roughly half of the total forcing is due to $F^*$ itself, whereas fast temperature and cloud adjustments contribute nearly equal amounts. The direct forcing can be understood from our considerations in Chapter 2 where we argued that increasing the emissivity of the atmosphere reduces the infrared radiation to space because the atmosphere is, for the most part, colder than the surface. Next, we will try to understand the other two components.
+
+\subsection{Stratospheric adjustment to CO$_2$}
+The initial positive contribution to the radiation balance by temperature (Figure \ref{fig:mpi-esm1.2_PRP}) may seem puzzling at first. Actually, the only way this can happen is if a part of the climate system cools in response to the increase in CO$_2$; this happens to be the stratosphere. To show this, I plot global mean temperature profiles from the two simulations with prescribed sea surface temperatures that we used to estimate forcing with the Hansen et al. (2005) method above. We see how the tropospheric temperature is hardly changed, but the stratosphere is around 10-15 K colder in the case with quadrupled CO$_2$ and the stratopause and mesosphere are even colder. 
+A cooling stratosphere can also be observed on Earth and in the period of about 1960-2010 it cooled off by about 1.5 K. In the same period CO$_2$ concentration rose from 320 to 390 ppm.
 
 
-Solar forcing
+\begin{figure}[!]
+\begin{center}
+\includegraphics[width=8 cm]{../plots/Stratospheric_adjustment_profiles.pdf}
+\end{center}
+\caption{ Globally averaged temperature in experiments with prescribed sea surface temperatures. The black is the standard AMIP experiment with ECHAM6.3 for the period 1979-2008, whereas the red profile shows temperatures in an experiment wherein CO$_2$ is quadrupled. These are the same experiments used to estimate forcing with the Hansen method. } 
+\label{fig:stratospheric_adjustment_profiles}
+\end{figure}
 
-\section{Stratospheric adjustment}
+The stratosphere is primarily in a radiative equilibrium between sunlight absorbed by oxygen and ozone and a net heat loss of infrared radiation. The stratosphere receives some infrared radiation from lower levels, but looses more through emission so that the net is negative.
+As we saw in Chapter \ref{chapter:essentials} the infrared emissivity of the stratosphere is controlled mostly by CO$_2$, ozone and very small amounts of water vapor. In an exercise we saw how the infrared spectrum changes a bit around the regions where CO$_2$ and ozone are absorbing depending on whether we observe from 70 km or 18 km height, but even so the changes were not dramatic. Already here we can infer that the stratosphere is very far from an ideal black body, $\epsilon_s \ll 1$, as it is transparent to most of the infrared radiation from lower levels. 
+As the CO$_2$ concentration is increase the stratospheric emissivity, $\epsilon_s$, is also increased and so the stratosphere can cool more readily in the infrared. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/Stratospheric_adjustment_timeseries.pdf}
+\end{center}
+\caption{ Temporal evolution of the clear-sky flux change after quadrupled CO$_2$ at the top-of-atmosphere and at the 200 hPa level just below the tropopause in the ECHAM6.3 model. The dashed line shows the longterm mean change at the top of the atmosphere. } 
+\label{fig:stratospheric_adjustment_timeseries}
+\end{figure}
+
+Let us consider the energy balance of the stratosphere approximated by a slab that receives energy from the sun's ultraviolet ($f_{UV}$ is about 2 percent of $S_o$) and from the troposphere that radiates upward as a black body with $T_e\approx$ 255 K, and looses heat by radiating up and down:
+$$ N_s = f_{UV}*\frac{S_o}{4} + \epsilon_s \sigma T_e^4 - 2\cdot \epsilon_s \sigma T_s^4 $$
+where $T_s$ is a bulk stratospheric temperature. By assuming radiation balance ($N_s=0$) and re-arranging we can estimate the emissivity of the stratosphere:
+$$ \epsilon_s = \frac{f_{UV}*\frac{S_o}{4}}{\sigma (T_e^4 - 2 T_s^4)} $$
+Taking the temperature at around 35 km height as a bulk representation of the stratosphere we can estimate that under base conditions with $T_s\approx$ 230 K we get  $\epsilon_s \approx$ 0.07 and in order to cool off by 10 K then $\epsilon_s$ has to increase to around 0.20 when we quadruple CO$_2$, something which seems reasonable for an optically thin case where emissivity scales nearly linearly with the number of absorbing molecules. Note that these are merely ballpark estimates, and the real-world situation is of course much more complicated with ozone also adjusting to the changed conditions. 
+
+In our ad-hoc definition of fast adjustments we stated that they should happen well within the first year after a forcing has been applied. Now we can estimate the response time of the stratosphere analogous to that developed in Chapter \ref{chapter:evolution} for the mixed-layer model:
+$$\tau_s = -C_s \left( \frac{\partial N_s}{\partial T_s}\right)^{-1}$$
+It is left as an exercise to show that the response time after a quadrupling of CO$_2$ is about two weeks.  It is worth noting that the response time is inversely proportional to $\epsilon_s$ and so becomes shorter for higher CO$_2$ concentrations. 
+
+\begin{figure}[!]
+\begin{center}
+\includegraphics[width=12 cm]{../plots/MPI-ESM12_abrupt4xCO2_PRP_temperatures.pdf}
+\end{center}
+\caption{ Separation of contributions to imbalance from the components of the temperature response: Planck, lapse-rate and stratosphere as depicted in Figure \ref{fig:planck_LR}. Otherwise as in Figure \ref{fig:mpi-esm1.2_PRP}. The dashed regression line shows the fit to the first 10 years. } 
+\label{fig:mpi-esm1.2_PRP_temperatures}
+\end{figure}
+
+We can see this process happening in a model in Figure \ref{fig:stratospheric_adjustment_timeseries}. Initially there is more downward flux going out below the stratosphere (200 hPa) than is coming in at the top of the atmosphere. As the stratosphere cools off this radiation deficit is reduced. The flux at 200 hPa is actually quite close to the longterm mean at the top of the atmosphere right from the start. Therefore climate modelers have often in the past used this level to estimate the forcing that will occur after the stratospheric adjustment period. It is, however, problematic to use a fixed pressure level when the tropopause moves up and so nowadays we usually use the Hansen et al. (2005) method to estimate radiative forcing after adjustment. 
+
+In summary, the stratosphere adjusts it's temperature quickly thereby enhancing the radiative forcing from CO$_2$. This is the very foundation of the division we made of the total temperature feedback in Chapter \ref{chapter:response} into the tropospheric Planck and lapse-rate feedbacks, and separate out stratospheric adjustment as a forcing (Figure \ref{fig:planck_LR}). We can see how well this works in MPI-ESM1.2 in Figure \ref{fig:mpi-esm1.2_PRP_temperatures} where we see that the stratospheric contribution to the radiation balance has the intercept at around 3 Wm$^{-2}$ and nearly zero slope, i.e. zero feedback parameter. The Planck and lapse-rate components have practically zero y-intercept, that is do not contribute to forcing, but substantial slopes and are hence asserting strong feedbacks.
 
 
-\section{Cloud adjustments}
+\subsection{Cloud adjustments to CO$_2$}
+Less than a decade ago Gregory and Webb (2008) found that in addition to the stratosphere also clouds can add to the forcing through fast adjustment processes; that is, in some respects clouds respond directly to a change in CO$_2$. Before this time climate scientists would run their models to equilibrium and assume that all changes to the clouds were temperature-dependent feedbacks. 
+
+\begin{figure}[!]
+\begin{center}
+\includegraphics[width=14 cm]{../external_figures/aclcov_BOT_echam-6302p4_amip4xCO2_197.pdf}
+\end{center}
+\caption{ Cloud cover response to quadrupled CO$_2$ in simulations with ECHAM6.3 and fixed sea surface temperatures for the period 1979-2008. In the global mean the cloud cover is reduced by almost 1 percent. } 
+\label{fig:cloud_cover_adjustment}
+\end{figure}
+
+We have already seen that in MPI-ESM1.2 -- depending how one counts -- more than half the total change in the radiation balance originating from clouds happens quickly, well within the first year (Figure \ref{fig:mpi-esm1.2_PRP}). We can investigate this fast adjustment using the same experiments that we used in the  Hansen et al. (2005) method. The quadrupled CO$_2$ induces a reduction in global mean total cloud cover of about one percent but large regional deviations occur (Figure \ref{fig:cloud_cover_adjustment}). We see that over most of the oceans, whereat the surface temperature is held fixed, there is a nearly general reduction in cloudiness. Over some land-regions, mostly those associated with monsoons, there is an increase in cloudiness. In the following we shall make qualitative reasoning as to why these two counteracting phenomena occur.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../illustrations/Stratocumulus_dynamics.pdf}
+\end{center}
+\caption{ Illustration of the key processes involved in low-level stratocumulus clouds: longwave cooling near cloud-top causes condensation and convective instability that drives mixing within the cloud. } 
+\label{fig:stratocumulus_dynamics}
+\end{figure}
+
+A large class of clouds, in particular over the oceans, are stratiform in nature. The best known is sub-tropical low-level stratocumulus. These are caused by radiative longwave cooling at the cloud-top that cause condensation and convective mixing (Figure \ref{fig:stratocumulus_dynamics}). They mostly occur below a temperature inversion and usually the troposphere above is dry and relatively clear. Under such conditions the cloud-top cooling is particularly strong. In case-studies one can find how stratocumulus thin when a cloud passes by aloft; the upper cloud radiates down towards the stratocumulus thereby reducing the cloud-top cooling. The same phenomenon happens when we increase the atmospheric CO$_2$: the down-welling infrared radiation near cloud top increases due to the higher emissivity of the atmosphere thereby reducing the net cooling. The result is a reduction in this type of clouds within a matter of minutes to hours.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=9 cm]{../illustrations/Land_sea_breeze_CO2_illustration.pdf}
+\end{center}
+\caption{ Illustration of the monsoon-circulation cloud adjustment to increased CO$_2$. } 
+\label{fig:landseabreeze}
+\end{figure}
+
+Some tropical land regions see instead increased cloudiness in response increased CO$_2$ in MPI-ESM1.2 (Figure \ref{fig:cloud_cover_adjustment}). They occur over the major monsoon regions, with the notable exception of the Amazon (probably a model bias), ranging from a few up to 10 percent increase in cloud cover over parts of Africa, the Middle East, Australia etc. I believe the reason is that land warms up faster than the ocean (in this simulation the ocean cannot warm), which causes an increased land-sea temperature contrast that drives stronger monsoon circulations (Figure \ref{fig:landseabreeze}). The result is more deep clouds forming over most of tropical lands, in particular upper-level ice clouds.
+
+Cloud adjustments to CO$_2$ are the main source of uncertainty in radiative forcing from CO$_2$. If it wasn't for clouds we would know $F_{2x}$ with very high accuracy, some cite 3.72 Wm$^{-2}$, but clouds introduce model uncertainty of 10-20 percent. 
+
+
+%\section{Aerosol forcings}
+
+
 
 \newpage
 \vspace{1 cm}
 {\setlength{\parindent}{0cm}
-%\hrule
+\hrule
+
+
+
+
+
+%\begin{exercise}
+%For the system above, estimate how much the planetary albedo, $\alpha$, changes due to clouds adjusting to increased CO$_2$.
+%\end{exercise}
+
 \begin{exercise}
-Stratospheric adjustment with MODTRAN.
+Investigate stratospheric adjustment with the MODTRAN model. First calculate the change in the top of atmosphere radiation by quadrupling the CO$_2$ concentration. Then estimate the change near the tropopause. Compare the results with those from ECHAM6.3 displayed in Figure \ref{fig:stratospheric_adjustment_timeseries}. What will happen to the stratosphere?
 \end{exercise}
 
 \begin{exercise}
-Planetary albedo adjustments.
+Estimate the response time of the stratosphere after a quadrupling of CO$_2$. You can assume the stratosphere is about 150 hPa thick and so weighs roughly 1500 kg m$^{-2}$, and remember that in the transient you cannot assume $N_s=0$.
 \end{exercise}
+
+\begin{exercise}
+A climate system has $ECS = 4.5$ K, a non-cloud forcing to a doubling of CO$_2$ of 3.7 Wm$^{-2}$ and a cloud adjustment ($F_C$) of 0.8 Wm$^{-2}$. Calculate the total feedback parameter, and estimate the cloud feedback parameter by assuming the other feedback parameters ($\lambda_P+\lambda_W+\lambda_{LR}+\lambda_A$) are equal to the ensemble mean tabulated in Table \ref{table:feedbacks}. What would the $ECS$ be if the same climate system had fixed clouds?
+\end{exercise}
+
+\begin{exercise}
+Explain, in your own words, how clouds adjust to an increase in atmospheric CO$_2$.
+\end{exercise}
+
+%\begin{exercise}
+%Show that the Hansen- and the Gregory methods yield the same forcing estimate if $\lambda$ is constant.
+%\end{exercise}
 
 
 }
@@ -956,6 +1129,29 @@ Planetary albedo adjustments.
 
 %---------------------------------------------------------------------
 \chapter{Historical warming}
+
+
+\section{Historical forcings}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/Forcing_two_layer_model_historical.pdf}
+\end{center}
+\caption{ Time series of annual mean globally averaged forcing estimates relative to year 1850.  Data are from the IPCC AR5 WG1 (http://www.climate-change2013.org/images/report/WG1AR5\_AIISM\_Datafiles.xlsx. } 
+\label{fig:historical_forcing}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/Temperature_two_layer_model_historical.pdf}
+\end{center}
+\caption{ Temperature . } 
+\label{fig:historical_two-layer}
+\end{figure}
+
+\section{Interpreting historical warming}
+
 
 
 \begin{table}
