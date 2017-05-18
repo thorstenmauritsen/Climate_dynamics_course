@@ -95,14 +95,15 @@ F_volc = F_volc*1.00
 F_aero = F_aero*1.0
   
 F_total = F_co2 + F_ghgother + F_o3trop + F_o3strat + F_aero + F_luc + F_h2ostrat + F_bcsnow + F_contrails + F_solar + F_volc #- np.mean(F_volc)
-F_ghg   = F_co2 + F_ghgother + F_h2ostrat + F_o3trop + F_o3strat 
-F_aero  = F_aero + F_bcsnow + F_contrails
+F_ghg   = F_co2 + F_ghgother
+F_o3    = F_o3trop + F_o3strat 
 
 
 ECS=1.78
 
 id  = np.where(F_year >= 1850)
 id1 = np.where(F_year == 1850)
+idr = np.where((F_year >= 1850) & (F_year < 1880))
 
 exp1 = twolayermodel(F_year[id], F_total[id]-F_total[id1], ECS=ECS)
 exp2 = twolayermodel(F_year[id], F_ghg[id]-F_ghg[id1], ECS=ECS)
@@ -110,6 +111,7 @@ exp3 = twolayermodel(F_year[id], F_aero[id]-F_aero[id1], ECS=ECS)
 exp4 = twolayermodel(F_year[id], F_luc[id]-F_luc[id1], ECS=ECS)
 exp5 = twolayermodel(F_year[id], F_volc[id], ECS=ECS)
 exp6 = twolayermodel(F_year[id], F_solar[id], ECS=ECS)
+exp7 = twolayermodel(F_year[id], F_o3[id]-F_o3[id1], ECS=ECS)
 
 #--------------------------------------------------------------------------
 
@@ -117,6 +119,7 @@ exp6 = twolayermodel(F_year[id], F_solar[id], ECS=ECS)
 f_HadCRU    = netcdf.netcdf_file('../Data/HadCRUT.4.5.0.0.median_means.nc')
 HadCRU_year = f_HadCRU.variables['time'][:]
 HadCRU_t    = f_HadCRU.variables['temperature_anomaly'][:,0,0]
+idrHad      = np.where((HadCRU_year >= 1850) & (HadCRU_year < 1880))
 
 #--------------------------------------------------------------------------
 
@@ -124,13 +127,17 @@ HadCRU_t    = f_HadCRU.variables['temperature_anomaly'][:,0,0]
 
 fig, axes = plt.subplots(1,1, figsize=(6,4))
 
-axes.plot(HadCRU_year,HadCRU_t-np.mean(HadCRU_t)+np.mean(exp1['T_ml']),color='lightgray')
+idrmodel   = np.where((exp1['time'] >= 1850) & (exp1['time'] < 1880))
+correction = -np.mean(HadCRU_t[idrHad])+np.mean(exp1['T_ml'][idrmodel])
+
+axes.plot(HadCRU_year,HadCRU_t+correction,color='lightgray')
 
 axes.plot(exp2['time'],exp2['T_ml'],color='green')
 axes.plot(exp3['time'],exp3['T_ml'],color='violet')
 axes.plot(exp4['time'],exp4['T_ml'],color='blue')
 axes.plot(exp5['time'],exp5['T_ml'],color='chocolate')
 axes.plot(exp6['time'],exp6['T_ml'],color='orange')
+axes.plot(exp7['time'],exp7['T_ml'],color='red')
 axes.plot(exp1['time'],exp1['T_ml'],color='black',linewidth=1.5)
 
 plt.xlim((1850,2020))
@@ -141,24 +148,25 @@ axes.set_ylabel('Temperature (K)')
 
 axes.text(1860,1.1,'Observed, HadCRUT',color='gray')
 axes.text(1860,1.0,'Total forcing',color='black')
-axes.text(1860,0.9,'Greenhouse gases, ozone, stratospheric water',color='green')
-axes.text(1860,0.8,'Aerosol, BC on snow, contrails',color='violet')
+axes.text(1860,0.9,'Greenhouse gases',color='green')
+axes.text(1860,0.8,'Aerosol',color='violet')
 axes.text(1860,0.7,'Land-use change',color='blue')
-axes.text(1860,0.6,'Volcanoes',color='chocolate')
-axes.text(1860,0.5,'Solar',color='orange')
+axes.text(1860,0.6,'Ozone',color='red')
+axes.text(1860,0.5,'Volcanoes',color='chocolate')
+axes.text(1860,0.4,'Solar',color='orange')
 
 #axes.xaxis.set_ticks_position('top')
 axes.spines['top'].set_position('zero')
-axes.yaxis.set_ticks_position('left')
+#axes.yaxis.set_ticks_position('left')
 
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     ticks.set_color(almost_black)
 
-spines_to_remove        = ['right'] 
-for spine in spines_to_remove:
-    axes.spines[spine].set_visible(False)
+#spines_to_remove        = ['right'] 
+#for spine in spines_to_remove:
+#    axes.spines[spine].set_visible(False)
 
-spines_to_keep = [ 'bottom', 'top', 'left']     
+spines_to_keep = [ 'bottom', 'top', 'left','right']     
 for spine in spines_to_keep:
     axes.spines[spine].set_linewidth(0.5)
     axes.spines[spine].set_color(almost_black)
@@ -178,7 +186,9 @@ axes.plot(exp3['time'],exp3['forcing'],color='violet')
 axes.plot(exp4['time'],exp4['forcing'],color='blue')
 axes.plot(exp5['time'],exp5['forcing'],color='chocolate')
 axes.plot(exp6['time'],exp6['forcing'],color='orange')
+axes.plot(exp7['time'],exp7['forcing'],color='red')
 axes.plot(exp1['time'],exp1['forcing'],color='black',linewidth=1.5)
+
 
 plt.xlim((1850,2020))
 plt.ylim((-4.0,4.0))
@@ -188,23 +198,24 @@ axes.set_ylabel(r'Forcing relative to 1850 (Wm$^{-2}$)')
 
 axes.text(1860,2.7,'Total forcing',color='black')
 axes.text(1860,2.4,'Greenhouse gases, ozone, stratospheric water',color='green')
-axes.text(1860,2.1,'Aerosol, BC on snow, contrails',color='violet')
+axes.text(1860,2.1,'Aerosol',color='violet')
 axes.text(1860,1.8,'Land-use change',color='blue')
-axes.text(1860,1.5,'Volcanoes',color='chocolate')
-axes.text(1860,1.2,'Solar',color='orange')
+axes.text(1860,1.5,'Ozone',color='red')
+axes.text(1860,1.2,'Volcanoes',color='chocolate')
+axes.text(1860,0.9,'Solar',color='orange')
 
 #axes.xaxis.set_ticks_position('top')
 axes.spines['top'].set_position('zero')
-axes.yaxis.set_ticks_position('left')
+#axes.yaxis.set_ticks_position('left')
 
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     ticks.set_color(almost_black)
 
-spines_to_remove        = ['right'] 
-for spine in spines_to_remove:
-    axes.spines[spine].set_visible(False)
+#spines_to_remove        = ['right'] 
+#for spine in spines_to_remove:
+#    axes.spines[spine].set_visible(False)
 
-spines_to_keep = [ 'bottom', 'top', 'left']     
+spines_to_keep = [ 'bottom', 'top', 'left', 'right']     
 for spine in spines_to_keep:
     axes.spines[spine].set_linewidth(0.5)
     axes.spines[spine].set_color(almost_black)
