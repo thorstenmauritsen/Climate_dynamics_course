@@ -13,7 +13,7 @@ plt.rc('text.latex'     , preamble=r'\usepackage{cmbright}')
 
 almost_black            = '#262626'
 
-temperature = np.arange(200,320,1,'float')
+temperature = np.arange(180,320,1,'float')
 albedo = np.empty_like(temperature)
 
 ai = 0.7
@@ -34,20 +34,32 @@ LW  = 5.67e-8*temperature**4.
 SW  = 1360./4.*(1-albedo)
 LWe = 0.61*5.67e-8*temperature**4.
 
+# Pseudo-potential
+V = np.empty_like(temperature)
+V[0] = 0
+
+for i in np.arange(1,np.size(temperature)):
+    V[i] = V[i-1] - (SW[i]-LWe[i])/(temperature[i]-temperature[i-1])
 
 
-
+#-------------------------------------------------------------------
 #
 
 fig, axes = plt.subplots(1,1, figsize=(6,4))  
 
-axes.plot(temperature, SW, color='blue')
+
+axes.plot(temperature[80:110], SW[80:110]*0.87, color='blue', ls='--')
+axes.plot(temperature[55:90], 0.46*LW[55:90], color='red', ls='--')
+
+axes.plot(temperature, SW, color='blue', lw=2)
 axes.plot(temperature[3:], LW[3:], color='black')
-axes.plot(temperature[15:], LWe[15:], color='red')
+axes.plot(temperature[15:], LWe[15:], color='red', lw=2)
+
+
 
 axes.text(270,350,r'$\sigma T^4$', color='black')
 axes.text(293,300,r'$\epsilon \sigma T^4$', color='red')
-axes.text(300,210,r'$\frac{S_o}{4}(1-\alpha)$', color='blue')
+axes.text(305,250,r'$\frac{S_o}{4}(1-\alpha)$', color='blue')
 
 #axes.text(270,150,str(ai)+' , T$_s < $ '+str(ti) \n str(a0) ', T$_s < $ '+str(ti) )
 
@@ -65,7 +77,7 @@ axes.text(300,210,r'$\frac{S_o}{4}(1-\alpha)$', color='blue')
 axes.set_xlabel('Surface temperature (K)')
 axes.set_ylabel(r'Top-of-atmosphere net fluxes (Wm$^{-2}$)')
 
-plt.ylim((50,400))
+plt.ylim((00,400))
 #plt.xticks(np.arange(-1.0,1.5,0.5))
 #axes.set_xticklabels(('90S','30S','Equator','30N','90N'))
 
@@ -91,5 +103,44 @@ for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     
 plt.tight_layout()
 plt.savefig('../plots/Snowball_Earth_budget.pdf', dpi=600)
+plt.close()
+
+
+#-------------------------------------------------------------------
+
+fig, axes = plt.subplots(1,1, figsize=(5,3))  
+
+
+axes.plot(temperature, V, color='black', lw=2)
+
+axes.set_xlabel('Surface temperature (K)')
+#axes.set_ylabel(r'Top-of-atmosphere net fluxes (Wm$^{-2}$)')
+
+#plt.ylim((50,400))
+#plt.xticks(np.arange(-1.0,1.5,0.5))
+#axes.set_xticklabels(('90S','30S','Equator','30N','90N'))
+
+
+plt.yticks([])
+axes.yaxis.set_ticks_position('none')
+axes.xaxis.set_ticks_position('bottom')
+#axes.spines['bottom'].set_position('zero')
+
+
+spines_to_remove        = ['top', 'right', 'left'] 
+for spine in spines_to_remove:
+    axes.spines[spine].set_visible(False)
+
+spines_to_keep = [ 'bottom']     
+for spine in spines_to_keep:
+    axes.spines[spine].set_linewidth(0.5)
+    axes.spines[spine].set_color(almost_black)
+
+for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
+    ticks.set_color(almost_black)
+
+    
+plt.tight_layout()
+plt.savefig('../plots/Snowball_Earth_pseudo_potential.pdf', dpi=600)
 plt.close()
 

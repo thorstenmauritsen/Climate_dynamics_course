@@ -5,6 +5,7 @@
 \RequirePackage{lineno}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage[a4paper, total={6.3in, 8.5in}]{geometry}
 \usepackage[super]{natbib}
 
@@ -655,6 +656,7 @@ $$F_{2x} \approx 3.7 \ \textrm{Wm}^{-2}.$$
 A neat thing about CO$_2$ is that the atmosphere is optically thick in the part of the spectrum dominated by CO$_2$ absorption. This leads to the forcing being almost logarithmic in the concentration so that each doubling (from 1 to 2xCO$_2$, from 2 to 4xCO$_2$ etc.) results in about the same amount of forcing. If we think $F_{2x}$ is a sufficiently small perturbation that the feedback parameter, $\lambda$, can be considered constant then we can write the energy balance equation as:
 \begin{equation}
 N = F_{2x} + \lambda \Delta T
+\label{eq:linear_energy_balance}
 \end{equation}
 where we have linearized around a base state. Imagine that we instantaneously double the CO$_2$ concentration in the atmosphere. At this very moment we have $N=F_{2x}$ and the system will start warming. With the warming ($\Delta T > 0$) feedbacks start acting. If the system is stable ($\lambda < 0$) then the warming will lead to a reduction in the planetary imbalance ($N$). It is quite popular to think of this system as an electric feedback loop circuit (Figure \ref{fig:feedback_illustration}). 
 
@@ -873,6 +875,7 @@ yielding the result that the deep ocean heat uptake acts to restore the surface 
 \end{figure}
 
 \section{The zero-layer model}
+\label{sec:zero-layer}
 An approximate diagnostic version of the two-layer model can be obtained for the case of a gradually changing forcing. We will use the fact that the mixed-layer and the deep ocean heat capacities are distinctly different by more than an order of magnitude. Thus, there must be some intermediate timescales that are long enough so that the mixed-layer heat capacity can be ignored ($C\rightarrow 0$) and still short enough that the deep ocean warming can be ignored ($C_d \rightarrow \infty$). In this limit, the two-layer model surface temperature (equation \ref{eq:twolayer-ml}) simplifies to:
 \begin{equation}
 0 = F + \left(\lambda - \gamma \right)T,
@@ -1126,9 +1129,13 @@ Explain, in your own words, how clouds adjust to an increase in atmospheric CO$_
 
 }
 
+%---------------------------------------------------------------------
+%\chapter{Natural variability}
+
 
 %---------------------------------------------------------------------
 \chapter{Historical warming}
+\label{chapter:historical}
 
 The recent global warming found in the instrumental record plays a central role in the debate over anthropogenic climate change. It is the best observed example of climate change we have, but unfortunately it is caused by a large number of factors that complicates interpretation.
 
@@ -1273,13 +1280,552 @@ With the resulting distribution of $\Delta F$, and likewise randomly sampled $\D
 
 
 %---------------------------------------------------------------------
-\chapter{Time- and state-dependent feedback}
+\chapter{State-dependent feedback}
+In the previous chapters we assumed that perturbations were small enough that feedbacks could be considered approximately constant. However, there are good reasons to think that for even modestly warmer or colder climates that feedback mechanisms could change in strength. 
+It turns out that all the feedbacks, surface albedo, temperature, water vapor and clouds may depend on the climate state, and understanding and quantifying the underlying processes -- and what it means for the interpretation of Earth's past and possible futures -- are subject to ongoing scientific debate. %Thus I will only discuss them qualitatively here. 
+
+
+
 \section{Snow-ball Earth instability}
-\section{Runaway feedback}
-\section{Ocean heat uptake efficacy}
+An obvious example of a state-dependent feedback is the positive surface albedo feedback from melting snow and sea-ice which must cease in very warm climates when there is no more snow or ice left to melt. Or, likewise, if it gets so cold that the entire Earth's surface is covered with snow and ice, then surface albedo feedback also ceases. In between these extremes there must be a maximum, a fact that can lead to the classical snow-ball Earth instability. There is some geological evidence that such nearly frozen over states may have occurred in the early history of Earth.
+
+To approach the problem let us consider the gray body case. We remember that the energy imbalance is the difference between the absorbed sunlight and the emitted infrared radiation to space, where we model the latter via an emissivity, $\epsilon$:
+\begin{equation}
+N = \frac{S_o}{4}(1-\alpha) - \epsilon \sigma T_s^4
+\label{eq:gray_body_2}
+\end{equation}
+where for present-day Earth-like conditions $T_s\approx 288$ K, $\alpha \approx 0.29$ and $\epsilon \approx 0.61$, and we have shown in an exercise that the equilibrium surface temperature at $N=0$ is:
+$$T_s = \sqrt[4]{\frac{S_o(1-\alpha)}{4\epsilon\sigma}}.$$
+Now, let us imagine that the planetary albedo ($\alpha$) no longer a constant but instead it is a simple function of global mean surface temperature such that:
+%\[
+\begin{equation}
+\alpha(T_s) = 
+\begin{dcases*}
+   \alpha_i                    & $T_s \le T_i$  \\
+   \alpha_o+(\alpha_i-\alpha_o)\frac{(T_s-T_o)^2}{(T_o-T_i)^2}       & $T_i < T_s \le T_o$ \\
+   \alpha_o                    & $T_o < T_s$ 
+\end{dcases*}
+\label{eq:snowball}
+\end{equation}
+%\]
+where I have chosen $T_i=250$ K, $T_o=288$ K, $\alpha_i=0.70$ and $\alpha_o=0.29$. The quadratic behavior of the planetary albedo is intended to emulate the effect that the further equatorward the ice extends the larger the incremental area increase per degree cooling becomes, and thereby the feedback becomes stronger. One can use a linear relationship too for the considerations made here, whereby one would need to lower the $T_o$ parameter to avoid an almost immediate freeze-up. The choice of $\alpha_i$, corresponding roughly to a fully snow-covered state, is rather extreme as a snow-ball Earth will have mostly aged snow or regional bare ice surfaces which are darker, and supposedly there might also have been a rim of open ocean around the equator. Instability could also occur for a weaker state-dependence if $\epsilon$ is allowed to vary, for instance due to water vapor feedback.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/Snowball_Earth_budget.pdf}
+\end{center}
+\caption{ Plot of the right-hand-side terms of equation (\ref{eq:gray_body_2}) combined with equation (\ref{eq:snowball}): blue is absorbed sunlight, red is emitted infrared radiation. Dashed curves show bifurcations for blue reduced solar input at $S=0.87\cdot S_o$ and for red reduced emissivity of $\epsilon=0.46$. } 
+\label{fig:snowball}
+\end{figure}
+
+It is possible to solve algebraically for fix-points, but for simplicity I plotted the two terms on the right-hand-side of equation (\ref{eq:gray_body_2}) in figure \ref{fig:snowball} as thick solid blue and red lines to see that three solutions of $N=0$ corresponding to $S_o/4\cdot(1-\alpha)=\epsilon \sigma T_s^4$ are possible with our choice of parameters at $T_s \approx 233$ K,  $T_s \approx 258$ K and  $T_s \approx 289$ K. We recognize the latter as the present-day solution and the first solution is the snow-ball state. 
+The intermediate fix-point at $T_s \approx 258$ K turns out to be unstable (see Chapter \ref{chapter:response}). This is because at temperatures just above the fix-point the imbalance is positive ($S_o/4\cdot(1-\alpha) > \epsilon \sigma T_s^4$) such that the system would warm up and therefore move away from the fix-point. Likewise, for temperatures just below we have a negative imbalance ($S_o/4\cdot(1-\alpha) < \epsilon \sigma T_s^4$) and the system would cool off, again moving away from the fix-point. We remember from Chapter \ref{chapter:response} that a fix-point is unstable if the feedback parameter at that point is positive: 
+\[
+\lambda = \frac{dN}{dT_s} = -\frac{S_o}{4}\frac{d\alpha}{dT_s}-4\epsilon \sigma T_s^3 > 0
+\]
+that is, in this case the slope of the absorbed shortwave (blue) is steeper than the slope of the emitted longwave radiation (red). The opposite is the case for the snow-ball and present-day states, such that these are stable stationary states: the solution will return to the fix-points if we add or subtract small fluctuations. The solutions are not unconditionally stable, though. If you perturb it really hard ($\approx$ 30 K) the system can transition to the other stable state. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=11 cm]{../Plots/Snowball_Earth_pseudo_potential.pdf}
+\end{center}
+\caption{ Pseudo potential curve for the snow-ball Earth instability case. The system has three equilibria $V$ is local minimum or maximum, two of which are stable and one is unstable.  } 
+\label{fig:snowball_pseudo_potential}
+\end{figure}
+
+It can be illustrative to calculate the pseudo potential for cases such as the snow-ball Earth case that have multiple equilibria. We can define the pseudo potential, $V$, as:
+\[
+-\frac{dV}{dT_s} = N
+\]
+such that at fix-points where $N=0$ we have that $V$ has zero slope. This means that $V$ is either a local minimum or maximum, or possibly a saddle point. We further remember that the feedback parameter is $\lambda = dN/dT_s$ such that the stability of a fix-point can be inferred from the second derivative of the pseudo potential: if $V$ is a local minimum then the fix-point is stable, if it is a local maximum the fix-point is unstable. A saddle point has marginal stability. It is easy to calculate $V=-\int N dT_s$ and I show the result in Figure \ref{fig:snowball_pseudo_potential}. It is tempting to imagine the curve as a hilly landscape where the system will try to gravitate towards either of the two minima, depending on where it starts from. 
+
+Changing the parameters of the model can lead to bifurcations whereby the number of fix-points change. As the most simple example, if there is no greenhouse effect ($\epsilon=1.0$, black curve) then there is only one solution at:
+$$T_s= \sqrt[4]{\frac{S_o(1-\alpha_i)}{4\sigma}} \approx 206 \textrm{ K},$$
+where I assume that the solution is safely below $T_i$. This is substantially below the black-body solution with present-day planetary albedo ($T_e\approx 255$ K) because there is simply less sunlight being absorbed in the snow-ball state.
+
+Perhaps more interesting is what happens if one lowers the solar constant. Then the warm-state fix-point cools off and the intermediate fix-points warms such that they eventually collide. This situation is depicted by the blue dashed line in Figure \ref{fig:snowball}. In this case the fix-point becomes marginally stable (Figure \ref{fig:feedback_stability_cases}), which means that it is stable to positive perturbations but unstable to negative perturbations, as in both case $N$ becomes negative a bit away from the fix-point. This means that, eventually, the system will transition towards the snow-ball state. 
+
+Once the system is in the snow-ball state then how could it transition back to the warm state? One could imagine increasing the solar constant, but given what we know about our sun's past history it seems unlikely to have happened. The other option is to increase the greenhouse effect, i.e. to lower $\epsilon$, but by how much? We can use the fact that the transition will happen when the snow-ball fix-point reaches $T_o$ and thereby estimate the critical emissivity:
+$$
+\epsilon_c = \frac{S_o}{4}\frac{1-\alpha_i}{\sigma T_i^4} \approx 0.46.
+$$
+The case is depicted as the red dashed curve in Figure \ref{fig:snowball}. The fix-point is again marginally stable and so is stable to negative perturbations, but unstable to positive perturbations, and thus will eventually end up in the warm state. It will actually take quite a bit of greenhouse gases to bring the system out of a snow-ball state, in particular because the greenhouse effect from water vapor is small at such cold temperatures.
+
+The behavior can be illustrated with a modified version of the two-layer model, whereby I use absolute temperature and equation \ref{eq:gray_body_2} for the energy balance (Figure \ref{fig:snowball_twolayer}); it should be noted that the two-layer model would need some modification to do a reasonable job in handling an ice-covered ocean, even if this is less relevant here. First we note that at standard settings the initial conditions determine at which solution the system ends: if it starts in the warm state it stays there (black), and if it starts in the snow-ball state it stays there (red). Then, starting from the warm state I scale the solar constant down relative to its present-day value ($S_o$). When I lower $S$ to $0.88\cdot S_o$ the system cools but stays in the warm state, but at $0.87$ suddenly a rapid transition occurs to the snow-ball state. The last example show how a lowering of $\epsilon$ can allow the system to escape the snow-ball state (orange).
+
+%The case with 0.88 is however not stable to perturbations which can be seen from an additional run where I add random noise to the radiation balance. In this case the system cools a bit faster and eventually transitions to the snow-ball state after about 1,000 years. This goes to show that when considering also natural variability the system need not to reach the bifurcation before a transition can occur.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=13 cm]{../plots/Two_layer_snowball.pdf}
+\end{center}
+\caption{ Qualitative behavior around the snow-ball instability depending on initial  and boundary conditions. %All but the orange case starts at present-day temperatures. The orange case illustrates how the system can exit the snow-ball state if there is a low enough emissivity.  
+} 
+\label{fig:snowball_twolayer}
+\end{figure}
+
+
+\section{State-dependent feedbacks in a warmer world}
+Next we will consider cases that are warmer than present. Evidence from the Eocene period about 50 million years ago (Figure \ref{fig:Paleo_temperature_timeseries}), when the Earth was warmer than it is today, suggests that $ECS$ was also higher than today -- around twice as large. It is currently not known why that might have been. Some climate models are capable of producing a rise in $ECS$ in warmer climates, but studies find different magnitudes as well as causes for the rise depending on which model and methods are used. And some models do not even exhibit an increase of their $ECS$ in a warmer climate. 
+
+One model that does exhibit a substantial rise in $ECS$ in a warmer climate is the MPI-ESM1.2 (Figure \ref{fig:mpiesm12_wide_range}). We can see how the model exhibits a relationship between $T_s$ and $N$ that is far from linear when exposed to strong forcing, here an abrupt increase of CO$_2$ to sixteen times the pre-industrial level (16xCO$_2$). Remember that the forcing from CO$_2$ is roughly logarithmic in the concentration so that each doubling results in about the same amount of forcing. 
+It will take a few thousand years to equilibrate a coupled model with a forcing, and so the displayed runs have not yet reached a stationary state. But we can get a good idea of where the runs are headed by fitting a line to the output and then extrapolate to zero. Because of the bending I chose to use the years 100 to 1000 of each run for the estimate; the results are shown in the lower part of Figure \ref{fig:mpiesm12_wide_range}. We can now estimate $ECS$ for each of the doublings as the difference between the equilibria:
+\begin{center}
+\begin{tabular}{l|r} 
+ & $ECS$  \\
+\hline
+1xCO$_2$ to 2xCO$_2$     & 2.77 K \\
+2xCO$_2$ to 4xCO$_2$     & 3.61 K \\
+4xCO$_2$ to 8xCO$_2$     & 4.92 K \\
+8xCO$_2$ to 16xCO$_2$     & 9.80 K 
+\end{tabular}
+\end{center}
+where we see that $ECS$ roughly triples from the first to the fourth doubling of CO$_2$. The difference is mainly due to a change in slope, which we remember is the feedback parameter. On the contrary, the forcing from each doubling is not changing in a way that explains the rise in $ECS$. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../external_figures/MPI-ESM12_gregory_plot.pdf}
+\end{center}
+\caption{ Gregory plot of four simulations with the MPI-ESM1.2 model. Each simulation is 1000 years. The equilibrium temperature is estimated by linearly extrapolating the years 100 to 1000 of the simulations. } 
+\label{fig:mpiesm12_wide_range}
+\end{figure}
+
+\subsection{Possible mechanisms}
+Next, we will explore why $ECS$ increases in MPI-ESM1.2. Here the reader is cautioned, though, that the mechanisms are different between models, even model versions as I found quite different results for the predecessor of this model (MPI-ESM). 
+We now can analyse these runs as we did in Chapter \ref{chapter:forcing} by splitting up the radiation balance into contributions from temperature, water vapor, clouds and surface albedo: $N=N_T+N_W+N_C+N_A$. The evolution of the four terms are shown in Figure \ref{fig:state_dependent_feedback_mpiesm12}. At first sight, not much changes across the displayed range. But one has to remember that it is the sum of four components that make up the total imbalance. I calculated the slope of each term on years 100 to 300 for the two runs:
+\begin{center}
+  \begin{tabular}{l|rr} 
+Feedback parameter (Wm$^{-2}$K$^{-1}$) & 2xCO$_2$ & 16xCO$_2$  \\
+\hline
+Temperature     & -4.21  & -4.19 \\
+Water vapor      & 2.20 & 2.71 \\
+Clouds              & 0.30 & 1.01 \\
+Surface albedo & 0.23 & -0.01
+  \end{tabular}
+\end{center}
+From this we see that the positive change in the total feedback parameter is not due to changes in the temperature and surface albedo feedback parameters in this model. In fact, surface albedo feedback diminishes to near-zero in the warm climate thereby counteracting the rise in $ECS$. Instead it is water vapor and cloud feedbacks that cause the rise in sensitivity in warmer climates. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=10 cm]{../plots/MPI-ESM12_abrupt_forcing.pdf}
+\end{center}
+\caption{ Partial radiative perturbation analysis showing temperature (green), water vapor (brown), cloud (blue) and surface albedo (orange) feedback from two experiments, 2xCO$_2$ (circles) and 16xCO$_2$ (crosses) also shown in Figure \ref{fig:mpiesm12_wide_range}. Here the first 300 years are shown.   } 
+\label{fig:state_dependent_feedback_mpiesm12}
+\end{figure}
+
+Clouds are the main contributors to the rise in $ECS$ in MPI-ESM1.2. However, clouds and their feedbacks on climate change can depend on so many factors that I would rather not even begin to discuss this. Clouds are also, not surprisingly, the main cause of inter model spread in state-dependence. Instead, here I will take a closer look at the other three feedback mechanisms which may act as a basis for understanding before adding the complexity of clouds.
+
+\subsubsection{Water vapor feedback}
+There is broad agreement among models of various types that water vapor feedback will get stronger in a warmer climate. 
+To be honest, I am actually not quite sure why that is. 
+I think, though, that it has to do with the water vapor absorption bands, unlike those of CO$_2$, being far from saturated such that the atmosphere can be considered optically thin with respect to water vapor. This also means that some of the radiation emitted by the surface escapes directly to space. As temperature rise the water vapor content increases roughly exponentially. The induced greenhouse effect, though, increases faster than logarithmically, and so the end result is a strengthening water vapor feedback. 
+Beware, though, that I am here at the limit of my understanding. 
+
+
+%\subsubsection{Cloud feedback}
+
+
+\subsubsection{Surface albedo feedback}
+Whereas the surface albedo feedback from melting snow and ice may have played an important role in climates colder than present, as we saw in the example of the snow-ball Earth instability, it will not play a significant role in a warmer climate where it may be close to zero. On average, for instance, climate models predict that Arctic spring sea ice is practically gone by about 4-7 K above pre-industrial temperatures; summer sea ice a bit earlier. 
+Other factors may influence the surface albedo, though, foremost vegetation or the lack thereof. For instance a forest absorbs more sunlight than grass-lands, and deserts are actually quite reflective. Thus, shifts in the extent of the different vegetation types can induce surface albedo feedbacks too.
+The Earth's currently remaining ice sheets, Greenland and Antarctica, would also eventually cause a surface albedo feedback as they adjust to a warmer climate. This process takes, as argued earlier, thousands of years because the ice sheets are very thick. Such a process is not included in the simulations with MPI-ESM1.2.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../plots/Planck_state_dependence.pdf}
+\end{center}
+\caption{ Temperature feedback parameters from ECHAM6 (red) from the study of Meraner et al. (2015) and two theoretical expressions. } 
+\label{fig:planck_state_dependence}
+\end{figure}
+\subsubsection{Temperature feedback}
+Perhaps the most surprising result in the feedback analysis of MPI-ESM1.2 is that temperature feedback didn't change appreciably. 
+It is in fact easy to think that the Planck feedback is highly state-dependent as it contains the absolute surface temperature to the third power, equation (\ref{eq:lambda_planck}). The dependence on region is dramatic: the Planck feedback at tropical temperatures (30$^\circ$C) is almost twice as strong as that at high latitude winter temperatures (-30$^\circ$C). This is of course a large temperature range when thinking about global climate change, but even for more modest temperature changes the dependence is possibly of relevant magnitude because the Planck feedback is by far the largest feedback. However, things are not as simple as they might seem.
+To get started we are reminded that the Planck feedback of the gray body is:
+\begin{equation}
+\lambda_p= -4 \epsilon \sigma T_s^3
+\label{eq:planck_feedback_3}
+\end{equation}
+from which we see that $\lambda_p$ not only depends on $T_s$, but also on the planetary emissivity $\epsilon$. The equilibrium temperature of this system is:
+\begin{equation}
+T_s = \sqrt[4]{\frac{S_o(1-\alpha)}{4\epsilon\sigma}}
+\end{equation}
+from which we see that $T_s$ depends on $S_o$, $\alpha$ and $\epsilon$. If we now consider the case where we are increasing atmospheric CO$_2$ we can model this with small reductions of emissivity $\delta \epsilon$ corresponding to increasing the greenhouse effect:
+\begin{equation}
+F = - \delta \epsilon \cdot \sigma T_s^4
+\end{equation}
+from which we see that a one percent reduction in $\epsilon$ gives $F\approx 3.9$ Wm$^{-2}$, roughly equal to that of a doubling of CO$_2$. If we ignore any changes in $S_o$ and $\alpha$ we see that:
+$$T_s \propto \epsilon^{-\frac{1}{4}}$$
+Inserting this into \ref{eq:planck_feedback_3} we get that in this limiting case:
+$$\lambda_p \propto \epsilon^{\frac{1}{4}}$$
+which means that as the system warms due to a decreasing emissivity the Planck feedback must also weaken slowly. The case is shown in blue in Figure \ref{fig:planck_state_dependence} for a range of emissivities from 0.7 to 0.3. As a contrasting case I plotted the Planck feedback for the case that temperature increases due to an increasing solar forcing $S_o$ such that $\lambda_p \propto T_s^3$ as black. For comparison the estimates of temperature feedback, which includes Planck and lapse-rate feedbacks, from the ECHAM6 model in Meraner et al. (2013) is shown in red. The latter supports nearly constant $\lambda_T$ as also found with MPI-ESM1.2.
+
+% It should be possible to express the state-dependence in temperature rather than emissivity which would make the result clearer. Isolate epsilon in equation 7.4 and substitute into 7.3.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=11 cm]{../plots/Two_layer_like_MPI-ESM12.pdf}
+\end{center}
+\caption{ Simulations with the two-layer model with applied 2, 4, 8 and 16xCO$_2$ forcing, whereby the feedback parameter is assumed a linear function of temperature. Here $F_{2x}=4.5$ Wm$^{-2}$ and the base $ECS=2.6$ K, such that $\lambda_o=-1.73$ Wm$^{-2}$K$^{-1}$ and I assume a quadratic term coefficient $b=0.045$ Wm$^{-2}$K$^{-2}$. } 
+\label{fig:quadratic_imbalance}
+\end{figure}
+
+\section{A quadratic representation of imbalance}
+It was suggested by Bloch-Johnson et al. (2015) to represent the behavior of models, such as MPI-ESM, imbalance as a quadratic function of temperature, rather than a linear function:
+\begin{equation}
+N=F+\lambda_o T_s+ bT_s^2
+\label{eq:quadratic}
+\end{equation}
+where $b$ is a coefficient, typically in the range -0.05 to 0.05. This is really nothing but a more accurate truncation of a Taylor expansion of the actual imbalance of the complex climate model. To see how well this expression works, I iteratively fitted the two-layer model (Figure \ref{fig:quadratic_imbalance}) to match roughly the behavior of MPI-ESM1.2 (Figure \ref{fig:state_dependent_feedback_mpiesm12}). The fit works reasonably well.
+The system equation \ref{eq:quadratic} has one or two stationary solutions ($N=0$) given by:
+$$T_s=\frac{-\lambda_o\pm \sqrt{\lambda_o^2-4bF}}{2b}$$
+which has real roots for cases with positive forcing ($F>0$) only if :
+$$F \le F_b=\frac{\lambda_o^2}{4b}$$
+For stronger forcing ($F>F_b$) the vertex of the parabola is above zero at all temperatures, and the system finds no place to rest, warming indefinitely. When fix-points are possible, however, we can estimate their stability by calculating the feedback parameter:
+$$\lambda(T_s)=\frac{dN}{dT_s} = \lambda_o+2bT_s$$
+From this we can already see that the feedback parameter changes sign, and the system undergoes a bifurcation at:
+\begin{equation}
+T_b=\frac{-\lambda_o}{2b}
+\label{eq:quadratic_runaway}
+\end{equation}
+such that fix-points below $T_b$ are stable and fix-points above $T_b$ are unstable. This leads to a so-called run-away feedback situation where the system warms and the imbalance increases more and more leading to further warming. This actually happens to our fit to MPI-ESM1.2 (Figure \ref{fig:quadratic_imbalance}) for a forcing corresponding to 16xCO$_2$ as shown by the dashed extension. Also the full MPI-ESM model can exhibit a run-away, even if it is difficult to make the code work at high temperatures. Popp et al. (2016) made several modifications to the model and found that the modified model has an unstable regime and if forced hard it will settle in a very warm moist greenhouse (Figure \ref{fig:popp}). In principle this situation could be modelled by adding a cubic term to equation \ref{eq:quadratic}:
+$$N=F+\lambda_o T_s+ bT_s^2+cT_s^3$$
+which could then have a stable fix-point at high temperatures for certain combinations of $\lambda_o$, $b$ and $c$. The overall behavior of this system is reminiscent of the snow-ball Earth instability which also had two stable fix-points with an unstable fix-point in between them.
+
+%\section{Runaway feedback}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=11 cm]{../external_figures/Popp_etal_2016_instability.pdf}
+\end{center}
+\caption{ The transition to a moist greenhouse in model simulations by Popp et al. (2016). The model is a modified version of ECHAM6.  } 
+\label{fig:popp}
+\end{figure}
+
+
+
+\newpage
+\vspace{1 cm}
+{\setlength{\parindent}{0cm}
+%\hrule
+
+\begin{exercise}
+Calculate the feedback parameter using equations \ref{eq:gray_body_2} and \ref{eq:snowball} under present-day and last-glacial maximum conditions around 21,000 years ago (Figure \ref{fig:Paleo_temperature_timeseries}); helpful information can be found around equation \ref{eq:lambda_general}. You may here assume $\epsilon$ is constant. If you were to double CO$_2$ at these two states approximately how much would they warm, respectively? %First use the standard parameters as in the text, second try lowering $\alpha_i$ to 0.50 to account for the effects of aged snow, bare ice and some open ocean near the equator.
+\end{exercise}
+
+\begin{exercise}
+A climate system has a basic state imbalance that can be approximated as $N=-1.0\cdot T_s + 0.05\cdot T_s^2$. Determine the bifurcation point temperature $T_b$ in the system and infer the stability of stationary states on either side of the bifurcation point. What will happen to the system if $T_s>T_b$?
+Calculate the minimum forcing needed to cause the system to bifurcate. 
+\end{exercise}
+
+\begin{exercise}
+Set up the two-layer model to run the case in the exercise above. This can be achieved by setting \verb|ECS=f2x| and \verb|b=0.05| in the function call. The former results in $\lambda_o=-1.0$ Wm$^{-2}$K$^{-1}$. Further, make sure to run the model out far enough to ensure that it can equilibrate, if possible. Since an instability may occur, you may want to limit the axis in your plot, e.g. by setting \verb|plt.xlim((0,15))| and likewise for the y-axis choosing a reasonable upper limit. 
+Apply different forcing strengths and estimate iteratively at which forcing the bifurcation occurs. 
+%Compare the result with the forcing needed to reach $T_b$ if $\lambda=\lambda_0$ which you can calculate analytically. %{\em Hint: it is }
+\end{exercise}
+}
+
 
 %---------------------------------------------------------------------
-\chapter{The water cycle}
+\chapter{Time-dependent feedback}
+The idea that climate feedbacks are time-dependent can be mind-boggling. In a deterministic dynamical system the only thing that determines the evolution moving forward in time is the current state combined with the boundary conditions. 
+So when we refer to time-dependent feedbacks then formally these are also state-dependent feebdacks. 
+The way I think about it is that a feedback change following the application of a forcing is defined as time-dependent if the behavior does not depend on which stationary state the system starts from or, equivalently, how strongly it is forced. This is in contrast with the examples from the previous chapter where the radiation balance depends explicitly on the temperature of the system. 
+To obtain such behavior the system needs to have at least two state-variables; something which is not hard to find in the complex climate systems we often deal with. In this chapter I will go over two simple models that have exactly two state-variables such that they can exhibit time-dependency of their feedback. 
+\\
+
+A bit the background for this topic is the type of non-linearity or "bending" in a plot of imbalance versus temperature such as Figure \ref{fig:gregory_hansen} or Figure \ref{fig:mpiesm12_wide_range}, which we tried to explain in the previous chapter using state-dependent feedback. From the reasoning above it is clear that a purely time-dependent feedback cannot explain the rise in $ECS$ under strong forcing we found in MPI-ESM1.2 in the previous chapter. But there is a component to the bending that occurs in the first few decades after an abrupt forcing has been applied which does actually exhibit signs of a time-dependent behavior; something that occurs regardless how strongly the model is forced. And, there are even some climate models, such as the Hadley Centre climate model, which do not exhibit a rise in $ECS$ with warming, but still has stronger bending than MPI-ESM1.2. 
+\\
+
+The reason scientists are currently very interested in the phenomenon is that a time-dependent feedback may impact the transient response to forcing. As we shall see the time-dependent feedback can lead to a temporary suppression of warming as the system equilibrates. The effect can have important consequences for the interpretation of historical warming we made in Chapter \ref{chapter:historical}, where we assumed that the system was linear. The current challenge, I think, is to figure out {\em how} time-dependent feedback may be on planet Earth.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../illustrations/Time-dependent_models.pdf}
+\end{center}
+\caption{ Illustrations of two models which can exhibit time-dependent feedback. They each have two state-variables.  } 
+\label{fig:time-models}
+\end{figure}
+
+\section{Regional feedback -- the two-zone model}
+The simplest idea, as far as I know, of how feedback can be time-dependent is that different regions may equilibrate along different timescales in response to a forcing, and if they also have different feedbacks then this can lead to a time-varying globally averaged feedback. 
+We might think of, say, two regions: a low-latitude region having strong negative feedback and a high-latitude region with some positive feedback mechanism, for simplicity we can think of positive snow and ice surface albedo feedback acting only at high latitudes. The low-latitudes are characterized for the most part by a relatively shallow mixed-layer, whereas at high latitudes the mixed-layer is on average deeper. 
+We can model this situation with a two-zone approach as depicted in Figure \ref{fig:time-models}a. 
+If there is no coupling between the regions and we assume the forcing, $F$, is the same in both regions, then we can simply model them as two mixed-layer models:
+\begin{eqnarray}
+C_1\frac{dT_1}{dt} &=& F + \lambda_1 T_1 \label{eq:twozone_simple} \\
+C_2\frac{dT_2}{dt} &=& F + \lambda_2 T_2 \nonumber \\
+N &=& w_1\cdot C_1\frac{dT_1}{dt}+w_2\cdot C_2\frac{dT_2}{dt}  \nonumber
+\end{eqnarray}
+where $C_1$ and $C_2$ are the heat capacities of the low- and high latitude zones, and $\lambda_1$ and $\lambda_2$ are the regional feedback parameters. Note that these equations are uncoupled, that is, the regions do not interact and we can solve the two equations separately. To get the global mean properties we need to weigh the two regions according to their extent ($w_1, w_2$); for our purposes we will assume they each cover half the Earth. This would be the case if region 1 would cover 30$^\circ$S to 30$^\circ$N latitude and region 2 the mid- and high latitudes in both hemispheres.
+Because the two regions are de-coupled it is straightforward to solve the equations as the weighted sum of two mixed-layer solutions, equation \ref{eq:mlo_solution}. For instance, if we apply an abrupt forcing we get:
+\begin{equation}
+T(t) = -F\cdot  \left( w_1\cdot\frac{1-e^{\frac{\lambda_1}{C_1}t}}{\lambda_1} + w_2\cdot \frac{1-e^{\frac{\lambda_2}{C_2}t}}{\lambda_2} \right)
+\label{eq:twozone-solution}
+\end{equation}
+and we can further calculate the equilibrium of the system as:
+$$T(\infty) = w_1\cdot\frac{-F}{\lambda_1} +  w_2\cdot\frac{-F}{\lambda_2} $$
+which is again simply the weighted equilibrium response of each region.
+
+In equation \ref{eq:twozone-solution} we recognize the two decaying exponentials for each region with e-folding times of $\tau_1=-C_1/\lambda_1$ and $\tau_2=-C_2/\lambda_2$. Thus, if $\lambda_1$ is more negative than $\lambda_2$, then the response timescale of the high latitudes (region 2) is longer than that of the low latitudes (region 1) even in the special case where $C_1=C_2$. You might remember Figure \ref{fig:mlo_plot} where we saw that the more sensitive the mixed-layer model is the longer it takes to equilibrate. This is interesting in that it only takes spatially inhomogeneous feedbacks to cause a time-dependence of the global feedback. The different equilibration time-scale between low- and high latitudes is further amplified if $C_2 > C_1$. 
+
+The time-dependent nature of the feedback in the two-zone model can be seen in Figure \ref{fig:two-zone-model} where I forced with 2, 4, 8 and 16 times pre-industrial CO$_2$.  The result can be compared with simulations from the MPI-ESM1.2 model (Figure \ref{fig:state_dependent_feedback_mpiesm12}) and with the quadratic model (Figure \ref{fig:quadratic_imbalance}). We see that the evolution of the model scales linearly with the forcing so that the shape of each curve is the same. If I would normalize the plot by dividing by the forcing on both axes, i.e. plot $N/F$ versus $T/F$, then the four curves would land on top of each other. If you would try to do the same normalization of runs done with the quadratic model then the curves would not be self-similar, because in the quadratic model feedback is dependent on the absolute temperature. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../Plots/Two_zone_model.pdf}
+\end{center}
+\caption{ Solutions of the two-zone model, equations \ref{eq:twozone_simple}, with different forcing strengths. The figure is comparable to Figures \ref{fig:state_dependent_feedback_mpiesm12} and \ref{fig:quadratic_imbalance}. Here I have chosen $\lambda_1 = -3.0$ Wm$^{-2}$K$^{-1}$, $\lambda_2 = -1.0$ Wm$^{-2}$K$^{-1}$, $C_1$ corresponds to 75 m water and $C_2$ to twice that, and $F_{2x}$ is 4.5 Wm$^{-2}$ as in MPI-ESM1.2. } 
+\label{fig:two-zone-model}
+\end{figure}
+
+We can also compare the result in more detail with the MPI-ESM1.2 model (Figure \ref{fig:time-dependent_abrupt4xCO2}). Here I have exaggerated the parameter choice for the two-zone model a bit, but we see that the two-zone model qualitatively replicates the type of bending that the coupled climate model has. We also see that the quadratic model, which we developed in the previous chapter, exhibits some bending but it is not as strong as in MPI-ESM1.2. One could make the quadratic model match MPI-ESM1.2 better by increasing $b$, but then the model would quickly enter a run-away because the bifurcation temperature would decrease (equation \ref{eq:quadratic_runaway}). Thus, the quadratic model may explain the increase in $ECS$, but not fully the non-linear transient behavior of MPI-ESM1.2. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=10 cm]{../Plots/Time-dependent_models_abrupt4xCO2.pdf}
+\end{center}
+\caption{ Solutions of the different models developed in this course forced with the equivalent of an abruptly applied quadrupled carbon dioxide (4xCO$_2$). The dashed line shows the two-zone model with a coupling coefficient of 3.9 Wm$^{-2}$K$^{-1}$. Thin dark gray lines are linear regressions on the MPI-ESM1.2 data as done in Figure \ref{fig:gregory_hansen}. } 
+\label{fig:time-dependent_abrupt4xCO2}
+\end{figure}
+
+Where the two-zone model does not perform very well is in the temporal behavior (Figure \ref{fig:time-dependent_abrupt4xCO2_timeseries}). Here we see the well-known behavior of the mixed-layer model that it equilibrates too rapidly compared to the coupled climate model (Chapter \ref{chapter:evolution}). It is possible to find combinations of parameters with a larger $C_2$ such that the temporal evolution is improved. One could also think of adding a deep ocean component to the model, such as is done in the two-layer model. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=10 cm]{../Plots/Time-dependent_models_abrupt4xCO2_timeseries.pdf}
+\end{center}
+\caption{ Timeseries of modelled temperature after an abruptly quadrupled CO$_2$, as in Figure \ref{fig:time-dependent_abrupt4xCO2}. } 
+\label{fig:time-dependent_abrupt4xCO2_timeseries}
+\end{figure}
+
+Another note of caution with the two-zone model is that the two regions can hardly be viewed as decoupled. If one region on the Earth would warm more than another then the atmosphere and oceans would try to transport energy from the warmer to the colder region. We can model this as a simple diffusion term, analogous  to the deep ocean heat uptake in the two-layer model. We can modify equations \ref{eq:twozone_simple}, by adding such a diffusive term
+\begin{eqnarray}
+C_1\frac{dT_1}{dt} &=& F + \lambda_1 T_1 - \kappa(T_1-T_2) \label{eq:twozone_coupled} \\
+C_2\frac{dT_2}{dt} &=& F + \lambda_2 T_2 + \kappa(T_1-T_2) \nonumber 
+\end{eqnarray}
+ where $\kappa$ is a diffusion coefficient. Bates (2012) suggests this parameter could have a value of 3.9 Wm$^{-2}$K$^{-1}$, but the conclusions are not overly dependent on this choice, e.g. choosing a value of 1.0 Wm$^{-2}$K$^{-1}$ does not substantially change the results. The coupled two-zone model is plotted in Figures \ref{fig:time-dependent_abrupt4xCO2} and \ref{fig:time-dependent_abrupt4xCO2_timeseries} as a dashed line. We see, perhaps surprisingly, that the coupling of the two regions destroys the time-dependent behavior and that it further reduces $ECS$ compared to the uncoupled version. The mechanism is simple: the more sensitive high-latitude region wants to warm more than the low latitudes, resulting in an anomalous transport from the sensitive to the less sensitive region. This increases the temperature in the low-latitude region resulting in more radiation to space and thus a lower sensitivity.
+
+
+The math and solutions of the two-zone model is easy to understand and the idea that different regions have different feedback strengths is attractive. 
+There are, however, basic problems with the approach when inspecting the behavior of complex climate models; also other problems than those outlined here.
+An alternative to the two-zone approach is that the feedback parameter changes with time, perhaps in response to circulation changes induced by inhomogeneous heating, an idea we shall look at next.
+
+%Nevertheless, I find it is difficult to reconcile with the behavior of complex climate models or observed climate change, for instance, if we look at how the northern high latitudes are currently warming much faster than the global mean. There are high-latitude regions, such as the Atlantic sub-polar gyre south of Greenland and parts of the open Southern Ocean where clearly warming is lagging behind global warming, but there are no strong positive feedbacks associated with these specific regions, on the contrary these regions have no sea ice to begin with and are dominated by negative mixed-phase cloud feedbacks. 
+
+
+\section{The Winton-Held modified two-layer model}
+It was suggested by Winton et al. (2010) that the energy balance is impacted by the ocean heat uptake process through something they call ocean heat uptake efficacy. It has taken me several years to even begin to understand this idea and how we may relate it to the real world, and I am of the opinion that the concept of an ocean heat uptake efficacy is more confusing than what it really needs to be. 
+Let us start by taking a look at their equations which are essentially the two-layer model except that one term is multiplied by a parameter, $\epsilon$, which is the ocean heat uptake efficacy parameter $\epsilon$:
+\begin{eqnarray}
+C\frac{dT}{dt} &=& F + \lambda T- \epsilon\gamma(T-T_d) \label{eq:winton-held} \\
+C_d\frac{dT_d}{dt} &=& \gamma(T-T_d) \nonumber \\
+N &=& C\frac{dT}{dt}+C_d\frac{dT_d}{dt}  \nonumber
+\end{eqnarray}
+At first, this formulation may seem confusing. We remember that the term $\gamma(T-T_d)$ is the deep ocean heat uptake, and that the mixed-layer should give up an equal amount of energy such that energy is conserved within the climate system. But whenever $\epsilon \ne 1$ this is not apparent. To better understand what is going on I find it useful to rewrite the first equation by splitting up the heat uptake term into two terms:
+$$ C\frac{dT}{dt} = F + \lambda T- \gamma(\epsilon-1)(T-T_d) - \gamma(T-T_d)  $$
+from which we see that the actual deep ocean heat uptake term ($\gamma(T-T_d)$) is mirrored in the mixed-layer, but that another term arises. This new term is a kind of temporary feedback that involves the temperature difference between the mixed-layer and the deep ocean. If we add the result to the deep ocean equation to form the system imbalance we thus obtain:
+$$N =  F + \lambda T- \gamma(\epsilon-1)(T-T_d)  $$
+where, in contrast to the standard two-layer model ($N =  F + \lambda T$), the deep ocean temperature $T_d$ now explicitly appears in the energy balance. Typically, $\gamma \approx 1.0$ Wm$^{2}$K$^{-1}$ and estimates of $\epsilon$ varies from 0.83 to 1.82 among coupled climate models, averaging 1.28, according to the study of Geoffroy et al. (2013). 
+
+Let us think of cases with $\epsilon \ge 1$,  which is the case in most coupled climate models, resulting in $\gamma(\epsilon-1) > 0$. If we apply an abrupt forcing to the modified two-layer model then initially the mixed-layer warms but the deep ocean temperature reacts only slowly. Thus, we have an initial effective or apparent feedback parameter:
+$$\frac{dN}{dT}\Bigr|_{t=0} = \lambda - \gamma(\epsilon-1)$$
+which is more negative or steeper than if $\epsilon=1$, where we remember that $dN/dT=\lambda$ (Figure \ref{fig:time-dependent_abrupt4xCO2} compare the black and red lines). On longer timescales the deep ocean temperature begins to equilibrate with the mixed-layer such that $(T-T_d)$ decreases and the effect reverses: the slope is now less steep than the case with $\epsilon=1$.  Again, I have chosen a rather large value of $\epsilon$ in the plots for the purpose of illustration. With a somewhat smaller value of about 1.2 to 1.3 the Winton-Held modified two-layer model matches MPI-ESM1.2 quite well. 
+It is worth noting that the value of $\epsilon$ has no influence on the equilibrium response, whereat $N=0$ and $T=T_d$, such that we retain the usual result that $ECS = -F_{2x}/\lambda$.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=14 cm]{../illustrations/Mauritsen_2016_tropical_pacific}
+\end{center}
+\caption{ Illustration of how cloud-circulation feedbacks can amplify a tropical Pacific surface temperature gradient. The map shows the observed trend in sea surface temperature, and the vertical curves depicts idealized temperature profiles. } 
+\label{fig:pacific}
+\end{figure}
+
+I think that what could physically be going on is that some regions which are in contact with the deep oceans, in particular regions affected by coastal upwelling in the eastern tropical Pacific, or the north Atlantic and the Southern Ocean where deep convection occurs, will initially warm slower than other parts of the world. This is because the upwelling deep ocean water has not yet seen global warming. The atmosphere responds by setting up anomalous circulations such as to create subsidence and/or stronger temperature inversions over the regions that warm slower, an illustration of this process in the eastern Pacific is shown in Figure \ref{fig:pacific}. Stronger inversions are known to be associated with more low-level cloudiness and therefore more reflection of the incoming sunlight. This leads to a temporary negative impact on the radiation balance, while the deep ocean warms up. How this works in the other two regions, Northern Atlantic and the Southern Ocean, is not yet well known, at least to me.
+In Figure \ref{fig:time-models}c I illustrate the Winton-Held modified two-layer model as having a tilted mixed-layer. Although the deep ocean does not appear directly in the surface temperature, the energy imbalance can be affected by surface temperature inhomogeneities. During global warming in some regions the mixed layer will be nearly in equilibrium after a few decades, whereas other parts will be far behind. This results in a patterned warming that is different in the first few decades compared to later. 
+
+\section{Transient response with time-dependent feedback}
+If we apply a transient forcing such as a gradual increase of CO$_2$ then the Winton-Held model will lag behind the corresponding unmodified two-layer model provided $\epsilon > 1.0$. We can see this in experiments displayed in Figure \ref{fig:transient_warming_time-dependent} by comparing the blue and red lines which have the same $ECS$ but different $\epsilon$. In fact, with the larger $\epsilon$ value, the model behaves in the first few decades as if it had a much lower $ECS$ (black curve). 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=11 cm]{../Plots/Time-dependent_TCR.pdf}
+\end{center}
+\caption{ Transient warming in experiments using the Winton-Held model with forcing equivalent of a one percent increase in CO$_2$ per year. This corresponds to a doubling after about 70 years and a quadrupling after about 140 years. The dashed line shows the zero-layer approximation, equation \ref{eq:winton-held-zero}. } 
+\label{fig:transient_warming_time-dependent}
+\end{figure}
+
+We can investigate this transient behavior of the Winton-Held model by making the zero-layer assumption (Chapter \ref{sec:zero-layer}). We remember that on decadal time-scales we may approximate the mixed-layer heat capacity as zero ($C\rightarrow 0$) and the deep ocean heat capacity as infinite ($C_d \rightarrow \infty$), and from equations \ref{eq:winton-held} we obtain:
+\begin{eqnarray}
+0 &=& F + \lambda T- \epsilon\gamma T  \\
+N &=& \gamma T  \nonumber
+\end{eqnarray}
+from which we find that the temperature response can be approximated as:
+\begin{equation}
+T(t) = \frac{F(t)}{\epsilon \gamma - \lambda}
+\label{eq:winton-held-zero}
+\end{equation}
+which we see decreases with increasing $\epsilon$. The result is plotted as a dashed line in Figure \ref{fig:transient_warming_time-dependent}.
+Remember how we used the zero-layer model to interpret the historical warming based on an assumed evolution of the forcing and the instrumental temperature record in Chapter \ref{chapter:historical}. For a given combination of change in $N$, $T$ and $F$ change we obtained a unique estimate of $\lambda$ and hence $ECS$. But with time-dependent feedback there is the additional parameter $\epsilon$ that must be determined; something which we currently don't know how to do. Instead we can ask how the estimated $\lambda$ depends on $\epsilon$, if we know the feedback parameter, $\lambda_o$, that is a solution to the linear model:
+$$ \gamma - \lambda_o = \epsilon \gamma - \lambda$$
+such that:
+\begin{equation}
+ECS(\epsilon) = \frac{-F_{2x}}{\lambda_o+\gamma(\epsilon-1)}
+\label{eq:ECS_time-dependent_feedback}
+\end{equation}
+which increases for increasing $\epsilon$. The parameters used in Figure \ref{fig:transient_warming_time-dependent} were chosen such as to match the best estimate of $ECS$ from the historical warming (black), and the largest $\epsilon$ found among climate models (blue) combined with and ECS according to equation \ref{eq:ECS_time-dependent_feedback}. The two curves match each other well in the first few decades, whereafter the more sensitive model warms somewhat faster.
+In practice, one cannot increase $ECS$ as much as found in the zero-layer version of the Winton-Held model and still retain the same response in the historical setting. This is because on centennial time-scale the deep ocean does respond and so the term $T-T_d$ begins to decline relative to the zero-layer assumption where $T_d \approx 0$. It is left as an exercise to show how large this effect is.
+
+
+
+\newpage
+\vspace{1 cm}
+{\setlength{\parindent}{0cm}
+%\hrule
+
+\begin{exercise}
+Describe, in your own words, how time-dependent feedback differ from state-dependent feedback. 
+\end{exercise}
+
+\begin{exercise}
+A two-zone model has two regions of equal area and equal heat capacities, $C_1=C_2$, but different feedback parameters: $\lambda_1=-4.0$ and $\lambda_2=-1.0$ Wm$^{2}$K$^{-1}$. Calculate the $ECS$ for $F_{2x}=4.0$ Wm$^{2}$ and the e-folding time of each region. Plot, or sketch, the solution in a diagram with global mean temperature on the x-axis and imbalance on the y-axis.
+\end{exercise}
+
+\begin{exercise}
+Estimate iteratively the optimal $ECS$ of the Winton-Held two-layer model running the historical scenario for a large ocean heat uptake efficacy: $\epsilon=2.0$. Do so by first making one experiment with $ECS = 1.78$ K with the standard two-layer model, and then in a separate experiment first set \verb|efficacy = 2.0| in the function call and then increase $ECS$ until you obtain a similar centennial warming. Compare the result with the theoretical estimate. Why are the two estimates different?
+\end{exercise}
+
+}
+
+
+%---------------------------------------------------------------------
+\chapter{The atmospheric water cycle}
+
+The hydrological cycle on Earth is immensely complicated, and really it is a whole scientific field on it's own as water is vital for life on our planet. Water occurs on Earth in three forms: solid, liquid and as a gas. And, throughout this course you may have noticed how water plays multiple roles in shaping the Earth's climate and climate change. Water vapor is the main cause of the Earth's greenhouse effect, and it exerts a strong positive feedback on climate change, clouds might do the same, or the opposite, whereas we know that and snow and ice can reflect sunlight and that by melting amplifies warming. The vast oceans act as the main heat reservoir temporarily damping climate change, and possibly altering the atmospheric circulation and thereby the cloud fields. We haven't talked about precipitation, though, and this will be the topic in this chapter. 
+Studying the water cycle of the atmosphere brings us in many ways back to where we started, namely to radiation balance. %This chapter builds on Held and Soden (2006). 
+
+
+\section{Atmospheric water vapor content}
+Most of the water in the atmosphere is vapor, about 25 kg m$^{-2}$, whereas clouds contain 2-3 orders of magnitude less condensate, some 30-100 g m$^{-2}$ of liquid and a similar amount of ice, on average. Remember that the whole atmosphere weighs in at 10,000 kg m$^{-2}$, so water is just a trace gas. Most of the water vapor is in the lower troposphere below 2-3 km height in the tropics where it is warmest (Figure \ref{fig:tropical_profiles}). As discussed previously in Chapter \ref{chapter:response} this is partly because of the strong dependence of the saturation vapor pressure on temperature, and is also related to how the large scale circulation is subsiding over vast tropical and sub-tropical regions. %Subsiding air parcels dry relatively as they maintain their specific humidity from their last point of saturation and at the same time warm due to increasing pressure. 
+
+We might be interested in how the total amount of water in the atmosphere changes. If in every point the relative humidity stays approximately constant then we can assume that the specific humidity increases according to Clausius-Clapeyron:
+$$\frac{d\ln e_s}{dT} = \frac{L}{R_v T^2} \equiv \alpha(T) $$
+which we can rewrite as 
+$$ \frac{d e_s}{e_s} = \alpha \cdot dT$$
+where $\alpha$ is the relative increase of saturation vapor pressure with warming. For a temperature of 0$^\circ$C this is 0.073, or around 7 percent per degree of warming. For colder temperatures in the upper troposphere $\alpha$ is larger and near the tropical surface (27$^\circ$C) it is smaller with about 6 percent per degree. If $\alpha$ were a constant then solving for $e_s$ would yield an exponential function, but even if this is only approximately true it is good enough for our purposes. 
+
+If the specific humidity on average in every point increases according to Clausius-Clapeyron then also the globally averaged vertically integrated water vapor ($q_{vi}$) also scale with the same relationship, though with an $\alpha$ that is weighed to the lower troposphere as that is where most of the water is. In Figure \ref{fig:mpi-esm12_water_vapor} I plot $q_{vi}$ from simulations with MPI-ESM1.2. Despite very different amounts of CO$_2$ the four simulations essentially collapse on a single line. I also plotted $q_{vi} = q_{vi}(0) \cdot e^{\alpha T}$ (solid) which matches the model behavior surprisingly well. Also the widely used linear approximation $q_{vi} = q_{vi}(0) \cdot \alpha T$ (dashed) works reasonably for up to 3-5 K warming.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../Plots/MPI-ESM12_water_vapor.pdf}
+\end{center}
+\caption{ Atmospheric water vapor in the MPI-ESM1.2 model as a function of temperature relative to pre-industrial. The coloured dots are annual means from simulations with abruptly increased atmospheric CO$_2$. Each simulation is 1000 years. } 
+\label{fig:mpi-esm12_water_vapor}
+\end{figure}
+
+So atmospheric water vapor increases with warming are substantial, e.g. in a 3 K warming case which might occur at the end of the century there will be about 20 percent more water vapor in the atmosphere -- quite a bit. The challenge is to figure out for which aspects of climate change that increase matters.
+
+\section{Global mean precipitation change}
+It is a widespread misunderstanding that global mean precipitation change should scale with the amount of water vapor in the atmosphere as of the Clausius-Clapeyron relationship under climate change. Instead it is important to realize that  precipitation processes release large amounts of energy into the atmosphere, about 80 Wm$^{-2}$ in the global mean. This corresponds to about 3 mm day${-1}$. The atmosphere has a fairly small heat capacity, though, as we calculated earlier it corresponds to about 3.5 m equivalent water. Thus, even a small change in precipitation will have to be balanced by changes in other fluxes. 
+
+It is therefore useful to think about the atmospheric heat budget separately (Figure \ref{fig:energy_hydrological_cycles}). It is made up of three terms, radiation ($R$), sensible heat flux ($S$) and latent heat release ($L\cdot P$) through precipitation:
+\begin{equation}
+C_a\frac{dT_a}{dt} = R + S + L\cdot P
+\label{eq:atmospheric_heat_budget}
+\end{equation}
+where $L=2.5\cdot 10^6$ J kg$^{-1}$K$^{-1}$. On 2-3 years timescales it is reasonable to assume $dT_a/dt\approx 0$. On shorter and sub-annual timescales the approximation is not so good. I find it useful to split the radiative heating term $R$ (which is negative) into solar absorption ($>0$) and thermal emission ($<0$) as done in Figure \ref{fig:energy_hydrological_cycles}. Note that here signs are defined positive into the atmosphere.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=14 cm]{../Illustrations/Energy_hydrological_cycles.pdf}
+\end{center}
+\caption{ Energy balance of the atmosphere. Numbers are fluxes in units of Wm$^{-2}$ taken from MPI-ESM1.2 pre-industrial control simulation, which are for the most part in agreement with observational estimates, Figure \ref{fig:energy_flows}. } 
+\label{fig:energy_hydrological_cycles}
+\end{figure}
+
+It is perhaps surprising that it is the precipitation that appears in the atmospheric heat budget, and not as usual the turbulent surface latent heat flux. To understand this, we need to think about the life of a water molecule in the atmosphere. When the molecule leaves the surface it consumes heat from the surface causing cooling by going from liquid or solid phase into gas phase. So far nothing happens to the atmospheric temperature; the heat is taken from the surface. Our molecule eventually condenses on a cloud droplet releasing latent heat, but if the cloud droplet evaporates again within the atmosphere, which most of them do, the molecule consumes heat again from the atmosphere. A water molecule can condense and evaporate many times while in the atmosphere -- the net heating effect on the atmosphere as a whole is zero. It is only when our molecule precipitates out of the atmosphere as a droplet or as a snow flake that the latent heat is realized. On long timescales, of course, the turbulent latent heat flux has to equal $L\cdot P$, as water molecules are almost conserved within the atmosphere.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=12 cm]{../Plots/MPI-ESM12_precipitation.pdf}
+\end{center}
+\caption{ Precipitation as a function of warming in MPI-ESM1.2. Simulations are the same as Figure \ref{fig:mpi-esm12_water_vapor} including the lines which show the approximated linear and exponential increase of water vapor with warming. } 
+\label{fig:mpi-esm12_precipitation}
+\end{figure}
+
+Let us now look at how precipitation changes with warming in MPI-ESM1.2 (Figure \ref{fig:mpi-esm12_precipitation}). The perhaps most striking feature is that global precipitation hardly changes; even after about 15 K warming it has only increased about 20 percent, compared to a 200 percent increase in water vapor. For comparison I plotted the two lines that matched the water vapor increase. The next thing we notice is that the four simulations do not collapse on top of each other, instead precipitation seems suppressed the more CO$_2$ is applied. This is most obvious in the first year after the CO$_2$ is abruptly applied in each run, where we actually see that precipitation decreases despite substantial warming. The reason for this initial reduction is that increasing CO$_2$ alone leads to reduced radiative cooling, $R$ increases, and so to maintain the atmospheric energy balance $P$ is reduced. As the system warms the precipitation increases again, at a rate of 2-3 percent per degree of warming. The rate decreases in the very warm climates, but is fairly stable up to about 10 K warming.
+
+It has therefore become popular to describe the global mean precipitation change, $\Delta P$, using the linear approximation:
+$$\Delta P \approx A +\eta T_s$$
+where $A$ is an adjustment and $\eta$ is the hydrological cycle sensitivity parameter. The similarity with the linearized energy balance equation \ref{eq:linear_energy_balance} should be apparent. It turns out that $A$ is highly dependent on the type of forcing, whereas $\eta$ is more of an intrinsic feature of the climate system itself. The negative $A$ for a forcing with CO$_2$ is due to a decrease in the radiative cooling of the troposphere. This is maybe surprising, because we learned earlier the increasing CO$_2$ leads to a cooling of the stratosphere, but for the troposphere it works out the other way around. For other forcing agents this can be different, for instance a solar forcing has a positive $A$.
+
+We can investigate the problem more closely by estimating the change in $P$ needed to compensate changes in radiative and sensible heating by assuming $dT_a/dt \approx 0$ in equation \ref{eq:atmospheric_heat_budget}, and re-arranging:
+$$ P = -\frac{R + S}{L}. $$
+One can then calculate the change in each term relative to a control simulation, and further split radiative heating into its solar and infrared parts (Figure \ref{fig:mpi-esm12_atmosphere_budget}). Here I also converted heating terms into units of equivalent millimeters per day to be comparable with figure \ref{fig:mpi-esm12_precipitation}. 
+The precipitation response is mainly balanced by an increase in thermal emission and an enhanced solar absorption. The thermal emission is expected to increase with higher temperatures and so alone leads to more precipitation, but solar absorption within the atmosphere also increases which reduces precipitation. The solar absorption is mostly due to absorption by water vapor, which we saw previously increases exponentially with temperature, but solar heating is roughly linear such that absorption is logarithmic in vertically integrated water vapor. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=11 cm]{../Plots/MPI-ESM12_atmosphere_budget.pdf}
+\end{center}
+\caption{ The thermal emission, solar absorption and sensible heat flux change expressed in equivalent precipitation change. Colors are as in Figure \ref{fig:mpi-esm12_water_vapor}. } 
+\label{fig:mpi-esm12_atmosphere_budget}
+\end{figure}
+
+
+
+We see that turbulent sensible heating plays a fairly marginal role, and in fact most studies neglect it altogether. The flux from the surface to the atmosphere weakens a bit in a warmer climate simply because the atmosphere warms a bit faster than the surface does (think of the moist adiabat) and so the temperature difference decreases leading to less thermal conduction. Since the sensible heat flux into the atmosphere weakens, the missing heating has to be balanced by another source, and so we can assume that precipitation has to increase by $-\Delta S/L$. An equivalent interpretation of the model result is that the stronger precipitation leads to more warming of the atmosphere which then needs less sensible heat transfer to stay balanced. 
+
+The argument given here is often referred to as an energetic {\em constraint} on the hydrological cycle. This should not be mistaken as an expression for us having {\em constrained } the Earth's hydrological sensitivity parameter: although there is broad agreement among models that $\eta$ is between 2 and 3 percent per degree of warming, the admittedly highly uncertain observational estimates point to higher values than that predicted by models. I can see two possibilities for explaining this, either the solar absorption of water vapor is less dependent on temperature, or thermal emission is more effective, than that predicted by models. Either way, improved observations of precipitation will undoubtedly help us understand more about the Earth's energy balance.
+\\
+
+\noindent It should be noted here that there is a long-lasting debate over whether the atmospheric energy budget, or the surface energy budget, is the better perspective for understanding global mean precipitation change, see e.g. the argument between Kraus (1973) and Newell et al. (1975) as to why the ice ages might have been drier than in the present climate. This rivalry continues in the literature until today. I think it is important to realize that these are both diagnostic approaches and that the system always finds a way to reach an equilibrium whereat the atmospheric- and surface energy budgets eventually balances. Whereas I chose the atmospheric energy budget perspective here, which is particularly useful to a system forced by CO$_2$ and to understand how thermal emission has to be balanced by precipitation, one is free to choose the perspective that is found most revealing for the problem at hand. But beware that usually neither diagnostic method will get to the core of separating cause from effect. 
+
+
+
+\section{Precipitation change}
+As fascinating as global mean precipitation change might seem, beyond the key role in the atmospheric energy balance and what we might learn about how the radiative feedbacks function, the practical value of knowing global hydrological sensitivity is next to nothing. Instead, the impacts of precipitation change in a changing climate, in fact, has little to do with the global mean precipitation change. This is because precipitation is highly unevenly distributed in both space and in time, and that it may change in either direction depending on your perspective.
+
+To, perhaps, begin to understand how regional precipitation change it is useful to think about global mean precipitation, water vapor and circulation change together. We may view the atmospheric overturning circulation as an upward mass-flux ($M$) occurring in moist convective clouds to compensate radiative cooling; an assumption that is reasonable in the tropics. The precipitation coming out of these clouds will then scale with saturation vapor pressure at cloud base ($q_s$), such that $P \propto Mq_s$. What we have seen is that global precipitation increases at a rate that is smaller than the rate of increase of water vapor content, and so in this picture we must have the $M$ weakens in a warmer climate. Exactly what that slow-down means in practice, though, is not so obvious.
+
+In the following I shall outline two arguments on how aspects of precipitation might change that both assume as a starting point that circulation does not change. 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=13 cm]{../Illustrations/Water_cycle_buckets.pdf}
+\end{center}
+\caption{ Principle of the tropical water cycle as consisting of magic buckets. To the left is the sub-tropics and the deep tropics are to the right. The size of a magic bucket represents the saturation vapor pressure which is a function of temperature. During convective ascent the bucket shrinks and precipitation has to occur. During descent the bucket grows as it warms, but still contains the amount of water vapor it had at last point of saturation leading to decreasing relative humidity. In the lower troposphere, near or below the trade inversion, the buckets are then being refilled. The cycle leads to a net transport of water from the subtropics toward the ITCZ, and the transport is expected to scale with the size of the bucket near the surface, i.e. with Clausius-Clapeyron. I owe this mental picture to Jack Scheff. } 
+\label{fig:water_cycle_buckets}
+\end{figure}
+
+\subsection{Hadley cell transport change}
+The dryness of the sub-tropics stand in strong contrast to the wetness of the deep tropics, which is caused by the overturning Hadley circulation. The key point is that air parcels rise in the the upward branch in the deep tropics associated with deep convective clouds, and as they leave the cloud they have a specific humidity $q \approx q_s (T)$ which they maintain as they subside in the sub-tropics. When reaching the lower troposphere the parcels relative humidity is practically zero as $q \ll q_s(T)$ at whatever $T$ prevails there. The parcels then start to take up water through surface evaporation, while travelling back towards the Equator underneath the trade inversion, thereby leading to a net equator-ward transport of water vapor. This transport results in that precipitation is less than evaporation (dry conditions) in the sub-tropics, and vice-versa in the tropics (wet conditions).
+I illustrate this process with magic buckets in Figure \ref{fig:water_cycle_buckets}. 
+
+In a warmer climate $q_s$ at the last point of saturation will hardly change, partly because $q_s$ at low temperatures is practically zero, partly because we think the tropopause will rise such as to maintain nearly a constant temperature (Chapter \ref{chapter:response}. But $q_s$ in the boundary layer will increase with Clausius-Clapeyron, and with it the equator-ward transport:
+$$ \frac{\Delta F}{F} \approx \alpha \cdot \Delta T_s  $$
+at least as long as we consider the ocean regions. The argument leads to the popular idea that {\em wet gets wetter, and dry gets drier}, because there is an enhanced transport away from the dry sub-tropics into the already wet deep tropics.
+
+This picture would be modified if the circulation would change. I argued above that the total overturning circulation in the tropics is expected to slow down in a warmer climate, but the mean meridional Hadley circulation is a surprisingly small part of total atmospheric overturning, maybe 10-20 percent. The rest of the overturning is either in the zonal direction or of transient nature, and so it is hard to say how much the Hadley circulation might change. It is possible to observe this happening, though, through the longterm trend in ocean surface salinity. The transport of fresh water away from the sub-tropics leads to increasing salinity.
+
+
+\subsection{Extremes}
+At most places on Earth, most of the time, it does not rain. And when it does, precipitation occurs at very variable rates: the most common is that during some  period of interest, say an hour or a day, it rains a little to moderate amount, and only seldom a large amount of precipitation occurs. These infrequent extreme precipitation events are particularly interesting as they can cause flooding and damage. But also a shift in the occurrence of light precipitation can have important consequences for the ability of vegetation to survive where water is scarce. 
+
+Extreme precipitation events occur for different reasons, but are typically associated with some dynamical phenomenon that lifts air from the lower troposphere high up in the upper troposphere, such as a cumulonimbus cloud, a tropical cyclone, or a synoptic storm. Sometimes an extreme occurs simply because a cloud chooses to rain at an exceptionally high rate, but often extremes are associated with unusual persistence: that a precipitating system resides in a specific region, or above a drainage basin (a region wherein water runs into the same river), rather than moving along, such that the total precipitation accumulated over a few hours or days becomes extreme. 
+\begin{figure}
+\begin{center}
+\includegraphics[height=6 cm]{../Illustrations/Extreme_storm_dynamics.pdf}
+\end{center}
+\caption{ Illustration of an extreme storm. } 
+\label{fig:extreme_storm_dynamics}
+\end{figure}
+
+We may assume, as a starting point, that these dynamical phenomena that leads to extreme precipitation events do not change under global warming, and that the only thing that changes is the water vapor content in the lower troposphere. That somehow weather is the same, except occurring in a thermodynamically altered setting. Let us condense the dynamics to the upward mass-flux in the cloudy part of the extreme storms ($M_e$), such that the precipitation rate can be expressed as $P_e \propto M_e \cdot q_s$. Such an upward mass-flux is associated with a low-level convergence over some storm footprint area (Figure \ref{fig:extreme_storm_dynamics}). If $M_e$ is invariant under climate change, then extreme precipitation scales roughly with the specific humidity in the boundary layer:
+$$ \frac{\Delta P_e}{P_e} \approx \alpha \cdot \Delta T_s.  $$
+If the most extreme precipitation increase with Clausius-Clapeyron, but global mean precipitation increases at a lower rate, then the amount of precipitation falling at light or moderate rates must actually decrease. This has lead to the popular idea that {\em when it rains, it pours}.
+
+There is some observational evidence that extreme precipitation increases faster than this, a phenomenon called super-CC scaling. This could be the case if the dynamics of extreme storms is changing with the environment, i.e. with climate change. It is perhaps natural to think that this could be the case since the release of latent heat is an important source of energy for the storm dynamics. Thus, a larger $q_s$ could strengthen $M_e$ and thus amplify $P_e$ beyond Clausius-Clapeyron.  This is all very speculative at this point and other aspects of climate change could play a role too.
 
 
 %---------------------------------------------------------------------

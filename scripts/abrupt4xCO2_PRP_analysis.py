@@ -13,7 +13,7 @@ plt.rc('text.latex'     , preamble=r'\usepackage{cmbright}')
 
 almost_black            = '#262626'
 
-prp = netcdf.netcdf_file('../Data/mpiesm-1.2.prp_abrupt4xCO2_echam6_prp_means_anomalies.nc')
+prp = netcdf.netcdf_file('../Data/mpiesm-1.2.prp_abrupt4xCO2_echam6_prp_mean_anomalies.nc')
 bot = netcdf.netcdf_file('../Data/mpiesm-1.2.prp_abrupt4xCO2_echam6_BOT_mean_anomalies.nc')
 
 amip4xCO2 = netcdf.netcdf_file('../Data/BOT_echam-6.3.02p4_amip4xCO2_1979-2008_timmean_fldmean_anomaly.nc')
