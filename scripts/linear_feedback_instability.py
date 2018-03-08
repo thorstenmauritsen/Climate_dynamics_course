@@ -36,7 +36,7 @@ plt.rc('text.latex'     , preamble=r'\usepackage{cmbright}')
 
 almost_black            = '#262626'
 
-def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=1.0, T_ml0=0.0, T_deep0=0.0, b=0.0, efficacy=1.0):
+def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T_deep0=0.0, b=0.0, efficacy=1.0):
 
     result = {}
 
@@ -50,8 +50,8 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=1.0, T_ml0=0.0, T
     # Parameters:
     density    = 1000.
     c_w        = 4181.
-    C_ml       = 75*0.7*density*c_w
-    C_deep     = 1000*0.7*density*c_w
+    C_ml       = 50*density*c_w
+    C_deep     = 1200*density*c_w
     lambda_0   = -f2x/ECS
 
     # Initialize state variables:

@@ -25,7 +25,7 @@ f2x        = 3.7
 
 #--------------------------------------------------------------------------
 
-def twolayermodel(forcing_years, input_forcing, gamma=1.0, S=1.0, T_ml0=0.0, T_deep0=0.0, epsilon=0.61):
+def twolayermodel(forcing_years, input_forcing, gamma=0.8, S=1.0, T_ml0=0.0, T_deep0=0.0, epsilon=0.61):
 
     result = {}
 
@@ -39,8 +39,8 @@ def twolayermodel(forcing_years, input_forcing, gamma=1.0, S=1.0, T_ml0=0.0, T_d
     # Parameters:
     density    = 1000.
     c_w        = 4181.
-    C_ml       = 75*0.7*density*c_w
-    C_deep     = 1000*0.7*density*c_w
+    C_ml       = 50*density*c_w
+    C_deep     = 1200*density*c_w
 
     b          = 0.0
     efficacy   = 1.
@@ -94,7 +94,7 @@ def twolayermodel(forcing_years, input_forcing, gamma=1.0, S=1.0, T_ml0=0.0, T_d
 
 #--------------------------------------------------------------------------
 
-nyears     = 2200
+nyears     = 3000
 forcing_years = np.arange(0,nyears)
 input_forcing    = 0*np.ones(nyears)
 random_forcing   = np.random.normal(0,1,nyears)
@@ -124,12 +124,14 @@ axes.set_ylabel('Temperature (K)')
 
 plt.xlim((0,nyears))
 
-axes.text(1300,265,r'$S=1.00\cdot S_o$', color='black')
-axes.text(1300,260,r'$S=1.00\cdot S_o$', color='red')
-axes.text(1300,250,r'$S=0.87\cdot S_o$', color='blue')
-axes.text(1300,255,r'$S=0.88\cdot S_o$', color='purple')
-#axes.text(1300,265,r'$S=0.87\cdot S_o$ + variability', color='pink')
-axes.text(1300,245,r'$S=1.00\cdot S_o$, $\epsilon$=0.46', color='orange')
+tyear = 2000
+
+axes.text(tyear,265,r'$S=1.00\cdot S_o$', color='black')
+axes.text(tyear,260,r'$S=1.00\cdot S_o$', color='red')
+axes.text(tyear,250,r'$S=0.87\cdot S_o$', color='blue')
+axes.text(tyear,255,r'$S=0.88\cdot S_o$', color='purple')
+#axes.text(tyear,265,r'$S=0.87\cdot S_o$ + variability', color='pink')
+axes.text(tyear,245,r'$S=1.00\cdot S_o$, $\epsilon$=0.46', color='orange')
 
 
 axes.xaxis.set_ticks_position('bottom')
