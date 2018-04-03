@@ -8,7 +8,7 @@
 \usepackage{mathtools}
 \usepackage[a4paper, total={6.3in, 8.5in}]{geometry}
 \usepackage[super]{natbib}
-
+\usepackage[autostyle]{csquotes} 
 
 %\usepackage{siunitx}
 %\usepackage[version=3]{mhchem}
@@ -126,7 +126,7 @@ From basic thermodynamics we have learned that an isolated system has a well-def
 \label{fig:energy_flows}
 \end{figure}
 
-It is useful to consider the components of the global mean energy balance (Figure \ref{fig:energy_flows}). Here we consider the fluxes per meter squared surface area of the Earth (total area $510\cdot 10^{12}$ m$^2$). Energy flows in from the sun at 340 Wm$^{-2}$, about 100 of which are reflected back to space by clouds, aerosol particles or the surface. In the atmosphere some of the sunlight is absorbed, mostly by oxygen, ozone and water vapor, and the rest reaches and heats the surface. The surface gets rid of the heat again through emitting infrared radiation, and sensible and latent heat fluxes to the atmosphere. Of the emitted nearly 400 Wm$^{-2}$ infrared radiation most it is absorbed by the atmosphere
+It is useful to consider the components of the global mean energy balance (Figure \ref{fig:energy_flows}). Here we consider the fluxes per meter squared surface area of the Earth (total area $510\cdot 10^{12}$ m$^2$). Energy flows in from the sun at 340 Wm$^{-2}$, about 100 of which are reflected back to space by clouds, aerosol particles or the surface. In the atmosphere some of the sunlight is absorbed, mostly by oxygen, ozone, water vapor and some by aerosol particles, and the rest reaches and heats the surface. The surface gets rid of the heat again through emitting infrared radiation, and sensible and latent heat fluxes to the atmosphere. Of the emitted nearly 400 Wm$^{-2}$ infrared radiation most is absorbed by the atmosphere.
 
 \begin{figure}
 \begin{center}
@@ -147,7 +147,7 @@ Partly because the sunlight is not distributed evenly over the Earth's surface i
 \label{fig:ceres_fluxes}
 \end{figure}
 
-On average, the coldest point in the Earth's troposphere is the tropical tropopause region with temperatures around 200 K (Figure \ref{fig:tropical_profiles}). These low temperatures are achieved through vertical mixing in deep convective clouds wherein localized rapidly rising motion causes adiabatic cooling due to the decreasing pressure with height. If the air was dry the temperature would decrease at a rate of about -10 K km$^{-1}$, but because some latent heat is released as water vapor condenses during the ascent, the actual lapse rate is less, about -6 K km$^{-1}$, tending towards the dry adiabat in the upper troposphere (Figure \ref{fig:tropical_profiles}). This is referred to as the moist adiabat.
+On average, the coldest point in the Earth's troposphere is the tropical tropopause region with temperatures around 200 K (Figure \ref{fig:tropical_profiles}). These low temperatures are achieved through vertical mixing in deep convective clouds wherein localized rapidly rising motion causes adiabatic cooling due to the decreasing pressure with height. If the air was dry the temperature would decrease at a rate of about -10 K km$^{-1}$, but because some latent heat is released as water vapor condenses during the ascent, the actual lapse rate is less, about -6 K km$^{-1}$, tending towards the dry adiabat in the upper troposphere (Figure \ref{fig:tropical_profiles}). This is referred to as the moist adiabat. There is quite a bit more to this, some of which is also interesting to the things we will be doing in this course, but it is beyond our scope to understanding the vertical structure of the troposphere in detail.
 
 Unlike the horizontal temperature gradients at the Earth's surface, mostly from equator to poles, that cause energy to be transported in the oceans and the atmosphere, the vertical temperature gradient of about 100 K in the topical troposphere is not on it's own causing transports to occur. However, as we shall see in a moment radiative cooling causes an upward convective  transport of energy to balance the budget of the atmosphere.
 
@@ -162,9 +162,9 @@ Unlike the horizontal temperature gradients at the Earth's surface, mostly from 
 \section{Radiative properties}
 Let us next focus our attention on the infrared or longwave part of the Earth's radiation budget. A wealth of information can be obtained from studying the spectrum of radiation emitted from the Earth, stars and from other planets. This is because molecules have unique absorption properties that are determined by quantum mechanics. There are a number of ways in which atoms and molecules can absorb a photon, most of which happen at nearly discrete energies. Visible light is able to excite the electron states of atoms and highly energetic ultraviolet photons can split molecules apart. In the infrared, where photons each contain less energy, absorption happens mostly by exciting various modes of vibrations of molecules. 
 
-Some molecules are unable to interact with infrared radiation, in fact the abundant nitrogen (N$_2$) and oxygen (O$_2$) molecules that constitute 99 percent of Earth's atmosphere are unable to absorb the low-energy infrared photons emitted by the Earth's surface. The simple configuration of these molecules with two atoms connected by electron bonds do not allow the absorption of a photon by vibration. More complex molecules with three or more atoms, such as water vapor (H$_2$O), carbon dioxide (CO$_2$), methane (CH$_4$) and ozone (O$_3$), can typically vibrate or rotate in a number of ways and are therefore what we call greenhouse gases. 
+Some molecules are unable to interact with infrared radiation, in fact the abundant nitrogen (N$_2$) and oxygen (O$_2$) molecules that constitute 99 percent of Earth's atmosphere are unable to absorb the low-energy infrared photons emitted by the Earth's surface. The simple configuration of these molecules with two atoms connected by electron bonds do not allow the absorption of a photon by vibration. More complex molecules with three or more atoms, such as water vapor (H$_2$O), carbon dioxide (CO$_2$), methane (CH$_4$) and ozone (O$_3$), can typically vibrate or rotate in a number of ways allowing them to absorb infrared radiation, and are therefore what we call greenhouse gases. 
 
-A useful starting point to appreciate the information in the infrared spectrum is to consider the radiation emitted by an ideal black body which constitutes a continuous and smooth spectrum called the Planck spectrum. Ideal black bodies are not necessarily black: if warm enough they can emit visible light, instead the blackness refers to them absorbing all incoming radiation perfectly, which is necessary to obtain the ideal emission spectrum because emissivity equals absorptivity. Examples of nearly ideal black bodies are the Sun, most solids and liquids. The surface of the Earth, be it the ocean or the land, is closely approximated as a black body. A cloud is also a surprisingly good absorber: a typical low-level liquid cloud consisting of suspended tiny droplets can be a nearly ideal black body if it contains a meager 20 gm${-2}$ of water. Gases, on the other contrary, are usually far from ideal black bodies. 
+A useful starting point to appreciate the information in the infrared spectrum is to consider the radiation emitted by an ideal black body which constitutes a continuous and smooth spectrum called the Planck spectrum. Ideal black bodies are not necessarily black: if warm enough they can emit visible light, instead the blackness refers to them absorbing all incoming radiation perfectly, which is necessary to obtain the ideal emission spectrum because emissivity equals absorptivity. Examples of nearly ideal black bodies are the Sun, most solids and liquids. The surface of the Earth, be it the ocean or the land, is closely approximated as a black body. A cloud is also a surprisingly good absorber: a typical low-level liquid cloud consisting of suspended tiny droplets can be a nearly ideal black body if it contains a meager 20 gm$^{-2}$ of water. Gases, on the other contrary, are usually far from ideal black bodies. 
 
 \begin{figure}
 \begin{center}
@@ -185,11 +185,11 @@ Now, let us compare the ideal black body spectra with the actual spectrum measur
 The reason that parts of the spectrum is suppressed relative to that of a black body with the surface temperature is that it is not only the surface that is emitting but also the greenhouse gases of the atmosphere absorb and emit radiation. The temperature with which they effectively emit is a result of the individual molecules absorption properties, their mixing ratio profiles, and the atmospheric density and temperature profiles (Figure \ref{fig:tropical_profiles}):
 \begin{itemize}
 \item
-Take first carbon dioxide (CO$_2$). It has a uniform and relatively high mixing ratio and it absorbs well around 13-17 $\mu$m (Figure \ref{fig:radiation_spectrum}, blue shading). The result is that most of the emission in the band around 15 $\mu$m comes from the upper troposphere where the atmospheric density is still high enough. Above the tropopause (about 18 km) the temperature rises again, and actually some of the emission in the center of the CO$_2$ dominated band originates in the stratosphere which is somewhat warmer than the troposphere as marked by a spike. 
+Take first carbon dioxide (CO$_2$). It has a uniform and relatively high mixing ratio and it absorbs well around 13-17 $\mu$m (Figure \ref{fig:radiation_spectrum}, blue shading). The result is that most of the emission in the band around 15 $\mu$m comes from the upper troposphere where the atmospheric density is still high enough. Above the tropopause (about 18 km) the temperature rises again, and actually some of the emission in the center of the CO$_2$ dominated band originates in the stratosphere which is somewhat warmer than the tropopause, as marked by a spike. 
 \item
 For the water vapor (H$_2$O) dominated flanks of the spectrum, however, the story is different. Water vapor is most abundant in the lower troposphere (Figure \ref{fig:tropical_profiles}), and most of the radiation emitted by water vapor originates from there. This results in the Earth's spectrum being closer to that of a black body with 260-270 K at the flanks consistent with temperatures at about 5-7 km in the tropics.
 \item
-Finally, let us consider ozone (O$_3$) which increases in mixing ratio with height and is most abundant in the stratosphere where it is produced by photodissociation of oxygen molecules by an ultraviolet photon ($\nu$): 2O$_2 +\nu$ $\rightarrow$ 2O + O$_2$ $\rightarrow$ O + O$_3$ $\rightarrow$ 2O$_2$. Most of the ozone mass is at 20-25 km altitude, whereas the volume mixing ratio peaks higher up at 30-40 km. Ozone absorbs infrared radiation at 9-10 $\mu$m wavelength where we see a brightness temperature of about 270-280 K. Most of this radiation originates in the stratosphere, which is warmer than the upper troposphere, and therefore the depression is not as deep as for the CO$_2$ case.
+Finally, let us consider ozone (O$_3$) which increases in mixing ratio with height and is most abundant in the stratosphere where it is produced by photodissociation of oxygen molecules by an ultraviolet photon ($\nu$): 2O$_2 +\nu$ $\rightarrow$ 2O + O$_2$ $\rightarrow$ O + O$_3$ $\rightarrow$ 2O$_2$. Most of the ozone mass is at 20-25 km altitude, whereas the volume mixing ratio peaks higher up at 30-40 km. Ozone absorbs infrared radiation at 9-10 $\mu$m wavelength where we see a brightness temperature of about 270-280 K. Most of this radiation originates from the stratosphere, which is warmer than the upper troposphere, and therefore the depression is not as deep as for the CO$_2$ case.
 \end{itemize}
 I hope you have now a bit of an impression of the power of the infrared spectrum. We shall return to it on later occasions. 
 
@@ -215,7 +215,7 @@ where $c_p$ is the heat capacity of air and $\rho$ the density of air. Figure \r
 \item
 Water vapor dominates infrared cooling in the troposphere, and is the reason that the pure radiative equilibrium case of Manabe and Strickler (Figure \ref{fig:rce_manabe}) has such a cold troposphere. However, water vapor mixing ratio decreases rapidly with height because the holding capacity decreases with temperature according to Clausius-Clapeyron. At around 15 km altitude, or more importantly around 200 K temperature, the cooling due to water vapor is nearly zero. It is thought that in a warming climate the tropical tropospheric temperature will increase to maintain roughly a moist adiabat, such that the level at which the temperature reaches 200 K moves upward, and with it the water vapor cooling and consequently the tropopause (Hartmann and Larsson\cite{Hartmann2002}). {\em Radiative cooling by water vapor comes to an end.}
 \item
-Another way to look at this is that the heating caused by moist convection, which is to compensate the radiative cooling, can only function as long as the moist and dry adiabats are different. The ascending air inside deep convective clouds follow approximately the moist adiabat which generally has a lower lapse-rate of temperature with height than the dry adiabat. The heating due to convection occurs as the surrounding air subsides, as a result of continuity, instead along a dry adiabat. However, at very cold temperatures, around 200 K, the moist and dry adiabats are practically the same as there is very little water vapor left to condense, and it follows that the convection can no longer heat the troposphere. This sets another control on the tropopause height. {\em Heating by moist convection comes to an end.}
+Another way to look at this is that the heating caused by moist convection, which is to compensate the radiative cooling, can only function as long as the moist and dry adiabats are different. The ascending air inside deep convective clouds follow approximately the moist adiabat which generally has a lower lapse-rate of temperature with height than the dry adiabat. The heating due to convection occurs as the surrounding air subsides instead along a dry adiabat. However, at very cold temperatures, around 200 K, the moist and dry adiabats are practically the same as there is very little water vapor left to condense, and it follows that the convection can no longer heat the troposphere. This sets another control on the tropopause height. {\em Heating by moist convection comes to an end.}
 \item
 Absorption of sunlight by ozone is the main source of heating in the stratosphere and results in the increasing temperature with height which hinders convection from penetrating deeper. Ozone has a relatively long lifetime in the stratosphere but if it ends up in the troposphere it is quickly destroyed. So the ozone layer has to move up to stay above a rising tropopause in a warming climate. If this leads to a thinning of the ozone layer perhaps more ultraviolet radiation can penetrate into and heat the upper troposphere, thereby increasing the temperature of the tropopause. {\em Ozone heating may bound the rise.}
 \end{itemize}
@@ -290,7 +290,7 @@ N &=& R_s + R_b \nonumber \\
    &=& \frac{S_o}{4}(1-\alpha) - \sigma T_e^4,
 \label{eq:black_body_energy_balance}
 \end{eqnarray}
-\noindent where $T_e$ is an effective, or emission, temperature of the Earth that it would have had had it been an ideal black body. The balance  can be solved by setting $N=0$:
+\noindent where $T_e$ is the emission temperature of the Earth that it would have had had it been an ideal black body. The balance  can be solved by setting $N=0$:
 \begin{equation}
 T_e = \sqrt[4]{S_o(1-\alpha)/4\sigma}. 
 \end{equation}
@@ -367,7 +367,7 @@ such that we see that $T_s > T_a$ under all conditions and that they both increa
 \begin{equation}
 f = 2 - \frac{S_o(1-\alpha)}{2\sigma T_s^4},
 \end{equation}
-which for Earth-like conditions gives $f \approx 0.76$, that is, three quarters of the infrared radiation emitted from the surface has to be absorbed by the greenhouse slab if we are to get a surface temperature of 288 K. To obtain balance here, the atmosphere has to be colder than $T_e$, about 242 K. We can understand this as some of the radiation can escape from the surface directly space, so that to obtain energy balance with the incoming solar radiation the atmosphere has to be colder than 255 K such that the average emission temperature is $T_e$. In the limit $f \rightarrow 0$ the atmospheric temperature is about 215 K, but of course, strictly in the limit that temperature looses meaning as no radiation is absorbed and emitted from the atmosphere anymore.
+which for Earth-like conditions gives $f \approx 0.76$, that is, three quarters of the infrared radiation emitted from the surface has to be absorbed by the greenhouse slab if we are to get a surface temperature of 288 K. To obtain balance here, the atmosphere has to be colder than $T_e$, about 242 K. We can understand this as some of the radiation can escape from the surface directly space, so that to obtain energy balance with the incoming solar radiation the atmosphere has to be colder than 255 K such that the average emission temperature is $T_e$. In the limit $f \rightarrow 0$ the atmospheric temperature is about 215 K, but of course, strictly in that limit the atmospheric temperature looses meaning as no radiation is absorbed and emitted from the atmosphere anymore.
 
 
 \section{Greenhouse effect of a gaseous atmosphere}
@@ -375,7 +375,7 @@ Now in practical cases the atmosphere does not consist of a single, or multiple 
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=8 cm]{../illustrations/Gaseous_atmosphere_radiation_level}
+\includegraphics[width=10 cm]{../illustrations/Gaseous_atmosphere_radiation_level}
 \end{center}
 \caption{ Illustration of the concept of a radiation level pressure for an optically thick atmosphere. With more greenhouse gas (red) the radiation level moves upward and therefore the surface and atmosphere has to warm in order to again radiate as $-\sigma T_e$ to space.   } 
 \label{fig:radiation_level}
@@ -387,7 +387,7 @@ As we look at this atmosphere from space the radiation emitted towards us is the
 
 As we add more greenhouse gas to our atmosphere then the pressure thickness, $\Delta p$, required to act as a black body decreases, and so with it $p_r$ becomes smaller. Therefore the emission level moves upward in the atmosphere to lower pressure. But since the emission temperature, $T_e$, is constrained to be that which closes the energy budget of the planet (in the case of Earth $T_e \approx 255$ K) then the whole atmosphere as well as the surface has to warm up. This is because the surface and atmosphere are dynamically coupled by mixing processes to follow closely a certain lapse-rate.
 
-In a nutshell, the reason there is a greenhouse effect is that the atmosphere absorbs some of the radiation emitted by the surface and re-emits at a lower temperature to space. To achieve this the atmosphere has to be colder than the surface; something which is ensured through convective mixing.
+\blockquote{In a nutshell, the reason there is a greenhouse effect is that the atmosphere absorbs some of the radiation emitted by the surface and re-emits at a lower temperature to space. To achieve this the atmosphere has to be colder than the surface; something which is ensured through the combination of radiative atmospheric cooling and convective mixing.}
 
 % ROUND OFF with a section arguing that greenhouse gases cause greenhouse effect if the atmosphere is colder than the surface and further that greenhouse gases, by cooling the atmosphere, ensure this to happen.
 
@@ -927,7 +927,16 @@ Plot the result and verify your inference from the previous exercise.
 }
 
 %---------------------------------------------------------------------
-%\chapter{Sea-level rise}
+\chapter{Global variability}
+\label{chapter:global_variability}
+
+\section{Noise}
+TOA and deep ocean heat uptake
+
+Chris' figure
+
+\section{Climate response to noise}
+
 
 
 
