@@ -480,6 +480,45 @@ If we consider a system with constant $\epsilon$ and $\alpha$ then the only term
 \end{equation}
 for all $T_s$ implying that this system is unconditionally stable. If we insert numbers typical for the Earth we obtain obtain $\lambda_p \approx$ -3.25 Wm$^{-2}$K$^{-1}$ which is surprisingly close to the value obtained from complex climate models, as we shall see later. The second term on the right hand side of equation \ref{eq:lambda_general}, which is broadly to be thought of as water vapor feedback (plus something called lapse-rate feedback), is found in climate models to be about +1.2 Wm$^{-2}$K$^{-1}$, and so is not sufficient to cause instability in current climates. In warmer climates the positive water vapor feedback is thought to increase faster than the negative Planck feedback and so could aid in destabilising the system. Finally, the first term on right hand side of Eq. \ref{eq:lambda_general} is the planetary albedo feedback, which is due to clouds, surface albedo as well as absorption by the atmosphere foremost water vapor. It is left as an exercise to estimate the criterion for instability when considering planetary albedo feedback.
 
+
+\section{Equilibrium climate sensitivity (ECS)}
+So far we have been agnostic as to why the climate system might be out of balance. It could be due to some random fluctuation, a short volcanic eruption, a change in the solar constant, or forced by a change in the atmospheric greenhouse gas concentration. We shall return to radiative forcing in more detail later, but a standard way to define the sensitivity of the climate system is to expose it to a doubling of CO$_2$ relative to the pre-industrial level which reduces the infrared radiation to space and yields a top-of-atmosphere imbalance of:
+$$F_{2x} \approx 3.7 \ \textrm{Wm}^{-2}.$$
+A neat thing about CO$_2$ is that the atmosphere is optically thick in the part of the spectrum dominated by CO$_2$ absorption. This leads to the forcing being almost logarithmic in the concentration so that each doubling (from 1 to 2xCO$_2$, from 2 to 4xCO$_2$ etc.) results in about the same amount of forcing. If we think $F_{2x}$ is a sufficiently small perturbation that the feedback parameter, $\lambda$, can be considered constant then we can write the energy balance equation as:
+\begin{equation}
+N = F_{2x} + \lambda \Delta T
+\label{eq:linear_energy_balance}
+\end{equation}
+where we have linearized around a base state. Imagine that we instantaneously double the CO$_2$ concentration in the atmosphere. At this very moment we have $N=F_{2x}$ and the system will start warming. With the warming ($\Delta T > 0$) feedbacks start acting. If the system is stable ($\lambda < 0$) then the warming will lead to a reduction in the planetary imbalance ($N$). It is quite popular to think of this system as an electric feedback loop circuit (Figure \ref{fig:feedback_illustration}). 
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=9 cm]{../illustrations/Feedback_illustration.pdf}
+	\end{center}
+	\caption{ Illustration of the principle of climate change feedback to external forcing $F$. In case a) the feedback is the product of the total feedback parameter, $\lambda$, and the temperature change. In case b) I divide this into a linear sum corresponding to equation \ref{eq:lambda_linear_sum}, whereby for instance the symbol is $T=\lambda_T \Delta T$. } 
+	\label{fig:feedback_illustration}
+\end{figure}
+
+Eventually, after some time, our system may reach a new equilibrium where $N=0$. Here the temperature change, which we call the equilibrium climate sensitivity (ECS) is:
+\begin{equation}
+\textrm{ECS} = \frac{-F_{2x}}{\lambda}.
+\end{equation}
+The inverse relationship between the total feedback parameter ($\lambda$) and ECS is plotted as the black curve in Figure \ref{fig:feedback_vs_ECS} along with estimates from complex climate models. %All models exhibit higher sensitivity than what would be the case if there would only be Planck feedback (dashed line). 
+The scatter of models around the theoretical line can have several causes, for instance $F_{2x}$ is model-dependent and there may be non-linearities impacting the estimates. Nevertheless, most of the spread in ECS is due to spread in the total feedback parameter, and in the next section we shall further dissect this important quantity.% It is left as an exercise to explore how uncertainty in the strength of feedback mechanisms impact ECS.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=8 cm]{../external_figures/Feedback_vs_ECS.pdf}
+	\end{center}
+	\caption{ Relationship between feedback and equilibrium climate sensitivity to one doubling of CO$_2$, ie. a forcing of 3.7 Wm$^{-2}$. Gray dots show individual CMIP5 climate models, and the dashed line indicates the case with only Planck feedback ($\lambda=\lambda_P$). Adapted from Mauritsen and Stevens \cite{Mauritsen2015}.} 
+	\label{fig:feedback_vs_ECS}
+\end{figure}
+
+
+
+
+
+
 \section{Feedback mechanisms}
 Above we calculated the feedback parameter for the general case (Eq. \ref{eq:lambda_general}) and identified three terms, one related to how planetary albedo changes with temperature, one related to how the effective emissivity changes and one which is directly related to the Planck feedback. Now, if we want to go about understanding and quantifying the feedback it is more convenient to make another division. For instance the planetary albedo is controlled by changes in surface albedo, cloudiness and water vapor, as well as some other factors such as aerosol particles and ozone that we shall ignore here as feedbacks. 
 As a first step let us divide $\lambda$ into contributions due to changes in temperature, water vapor, clouds and surface albedo:
@@ -651,38 +690,6 @@ Complex climate models exhibit no, or only very weak, reductions of anvil area w
 
 % Add a figure with Earth's effective emissivity from CERES, also clear sky
 % Use this to argue that $f$ is larger because the local \epsilon is much smaller in the deep tropics were convective cloud feedbacks act
-
-\section{Equilibrium climate sensitivity (ECS)}
-So far we have been agnostic as to why the climate system might be out of balance. It could be due to some random fluctuation, a short volcanic eruption, a change in the solar constant, or forced by a change in the atmospheric greenhouse gas concentration. We shall return to radiative forcing in more detail later, but a standard way to define the sensitivity of the climate system is to expose it to a doubling of CO$_2$ relative to the pre-industrial level which reduces the infrared radiation to space and yields a top-of-atmosphere imbalance of:
-$$F_{2x} \approx 3.7 \ \textrm{Wm}^{-2}.$$
-A neat thing about CO$_2$ is that the atmosphere is optically thick in the part of the spectrum dominated by CO$_2$ absorption. This leads to the forcing being almost logarithmic in the concentration so that each doubling (from 1 to 2xCO$_2$, from 2 to 4xCO$_2$ etc.) results in about the same amount of forcing. If we think $F_{2x}$ is a sufficiently small perturbation that the feedback parameter, $\lambda$, can be considered constant then we can write the energy balance equation as:
-\begin{equation}
-N = F_{2x} + \lambda \Delta T
-\label{eq:linear_energy_balance}
-\end{equation}
-where we have linearized around a base state. Imagine that we instantaneously double the CO$_2$ concentration in the atmosphere. At this very moment we have $N=F_{2x}$ and the system will start warming. With the warming ($\Delta T > 0$) feedbacks start acting. If the system is stable ($\lambda < 0$) then the warming will lead to a reduction in the planetary imbalance ($N$). It is quite popular to think of this system as an electric feedback loop circuit (Figure \ref{fig:feedback_illustration}). 
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=9 cm]{../illustrations/Feedback_illustration.pdf}
-\end{center}
-\caption{ Illustration of the principle of climate change feedback to external forcing $F$. In case a) the feedback is the product of the total feedback parameter, $\lambda$, and the temperature change. In case b) I divide this into a linear sum corresponding to equation \ref{eq:lambda_linear_sum}, whereby for instance the symbol is $T=\lambda_T \Delta T$. } 
-\label{fig:feedback_illustration}
-\end{figure}
-
-Eventually, after some time, our system may reach a new equilibrium where $N=0$. Here the temperature change, which we call the equilibrium climate sensitivity (ECS) is:
-\begin{equation}
-\textrm{ECS} = \frac{-F_{2x}}{\lambda}.
-\end{equation}
-The inverse relationship between the total feedback parameter ($\lambda$) and ECS is plotted as the black curve in Figure \ref{fig:feedback_vs_ECS} along with estimates from complex climate models. All models exhibit higher sensitivity than what would be the case if there would only be Planck feedback (dashed line). The scatter of models around the theoretical line can have several causes, for instance $F_{2x}$ is model-dependent and there may be non-linearities impacting the estimates. Nevertheless, most of the spread in ECS is due to spread in the total feedback parameter. It is left as an exercise to explore how uncertainty in the strength of feedback mechanisms impact ECS.
-
-\begin{figure}
-\begin{center}
-\includegraphics[width=8 cm]{../external_figures/Feedback_vs_ECS.pdf}
-\end{center}
-\caption{ Relationship between feedback and equilibrium climate sensitivity to one doubling of CO$_2$, ie. a forcing of 3.7 Wm$^{-2}$. Gray dots show individual CMIP5 climate models, and the dashed line indicates the case with only Planck feedback ($\lambda=\lambda_P$). Adapted from Mauritsen and Stevens \cite{Mauritsen2015}.} 
-\label{fig:feedback_vs_ECS}
-\end{figure}
 
 
 
