@@ -76,10 +76,10 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0):
 
 #--------------------------------------------------------------------------
 
-nyears     = 70
+nyears     = 140
 forcing_years = np.arange(0,nyears)
 input_forcing    = f2x*np.ones(nyears)
-rampup = np.linspace(0.0,1.0,nyears)
+rampup = np.linspace(0.0,1.0,nyears)*nyears/70
 
 exp1 = twolayermodel(forcing_years, f2x*rampup )
 exp2 = twolayermodel(forcing_years, 2*f2x*rampup )
@@ -93,24 +93,31 @@ fig, axes = plt.subplots(1,1, figsize=(6,4))
 
 
 
-axes.plot(exp1['time'],exp1['T_ml'],color='blue')
-axes.plot(exp2['time'],exp2['T_ml'],color='green')
-axes.plot(exp3['time'],exp3['T_ml'],color='red')
-axes.plot(exp4['time'],exp4['T_ml'],color='orange')
+pct1, = axes.plot(exp1['time'],exp1['T_ml'],color='blue', label='1 percent per year')
+pct2, = axes.plot(exp2['time'],exp2['T_ml'],color='green', label='2 percent per year')
+pct3, = axes.plot(exp3['time'],exp3['T_ml'],color='red', label='4 percent per year')
+#pct4, = axes.plot(exp4['time'],exp4['T_ml'],color='orange', label='8 percent per year')
 
 axes.plot(exp1['time'],exp1['forcing']/(exp1['gamma']-exp1['lambda_0']),linestyle='--',color='blue')
 axes.plot(exp2['time'],exp2['forcing']/(exp2['gamma']-exp2['lambda_0']),linestyle='--',color='green')
 axes.plot(exp3['time'],exp3['forcing']/(exp3['gamma']-exp3['lambda_0']),linestyle='--',color='red')
-axes.plot(exp4['time'],exp4['forcing']/(exp4['gamma']-exp4['lambda_0']),linestyle='--',color='orange')
+#axes.plot(exp4['time'],exp4['forcing']/(exp4['gamma']-exp4['lambda_0']),linestyle='--',color='orange')
+
+TCR = f2x/(exp1['gamma']-exp1['lambda_0'])
+
+axes.plot((70,70),(0,TCR),linestyle='--',color='blue')
+pTCR = axes.scatter(70, TCR, color='blue', label=r'TCR $\approx$ '+str(round(TCR,1))+' K')
 
 axes.set_xlabel('Time (years)')
 axes.set_ylabel('Temperature (K)')
 
 plt.xlim((0,nyears))
-plt.ylim((0,4.0))
+plt.ylim((0,6.0))
 
 axes.xaxis.set_ticks_position('bottom')
 axes.yaxis.set_ticks_position('left')
+
+axes.legend(handles=(pct1, pct2, pct3, pTCR))
 
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     ticks.set_color(almost_black)

@@ -732,7 +732,7 @@ In the previous chapter we focussed on the stability of stationary states and th
 \section{Heat capacities}
 When we think of the Earth's climate system there are several components that can absorb energy with different heat capacities and with different timescales involved. Usually we think of the oceans as the largest component followed by the atmosphere and cryosphere. There are, however, parts of these components that are closely connected to the surface temperature, and there are parts that are weakly connected to the surface. This means, foremost, that it is meaningful to divide the oceans into two or more parts.
 
-If we start with the atmosphere, we saw in the first chapter how the troposphere is for the most part quickly stirred, mixed or overturned by various motion. Therefore it does not take very long for air to be mixed around the world, roughly on the order of months, though the time it takes to cross the equator can be longer. The stratosphere in turn, we found was in radiative equilibrium and stable stratified; though it isn't motionless. There are quite strong zonal winds, and also there is an overturning circulation called the Brewer-Dobson circulation. The latter starts at the tropical tropopause with upward motion, goes up, poleward and terminates in the high latitudes. It takes, however, on the order of five years. The atmosphere weighs in at nearly 10.000 kg m$^{-2}$, which corresponds to the hydrostatic surface pressure of 98.500 Pa, or about that of a column of 10 meters of liquid water. The specific heat capacity of air is, however, a factor four less than for water (Table \ref{table:capacity}) and so in terms of total heat capacity the atmosphere is equivalent to 2.5 meters of water per unit area. The troposphere is close to 90 percent of the atmospheric mass, and so it is reasonable to disregard the upper atmosphere here. 
+If we start with the atmosphere, we saw in the first chapter how the troposphere is for the most part quickly stirred, mixed or overturned by various motion. Therefore it does not take very long for air to be mixed around the world, roughly on the order of months, though the time it takes to cross the equator can be longer. The stratosphere in turn, we found was in radiative equilibrium and stably stratified; though it isn't motionless. There are quite strong zonal winds, and also there is an overturning circulation called the Brewer-Dobson circulation. The latter starts at the tropical tropopause with upward motion, goes up, poleward and terminates in the high latitudes. It takes, however, on the order of five years. The atmosphere weighs in at nearly 10.000 kg m$^{-2}$, which corresponds to the hydrostatic surface pressure of 98.500 Pa, or about that of a column of 10 meters of liquid water. The specific heat capacity of air is, however, a factor four less than for water (Table \ref{table:capacity}) and so in terms of total heat capacity the atmosphere is equivalent to 2.5 meters of water per unit area. The troposphere is close to 90 percent of the atmospheric mass, and so it is reasonable to disregard the upper atmosphere here. 
 
 There is only a tiny fraction of water vapor in the atmosphere, about 25 kg m$^{-2}$, which corresponds to 2.5 cm if it was all condensed and distributed onto the surface. But the energy it takes to evaporate a kilogram of water is substantial, $L \approx $  2.500.000 J kg$^{-1}$. In the previous chapter we learned that relative humidity stays roughly constant under climate change and that this results in roughly a 7 percent increase in specific humidity per degree warming. Converting this latent heat into an equivalent heat capacity we find that the energy storage due to evaporation of water vapor corresponds to about 1.0 meters of water per unit area.
 
@@ -790,7 +790,7 @@ which clearly reminds us of the special case for a doubling of CO$_2$, $ECS=-F_{
 \begin{center}
 \includegraphics[width=12 cm]{../plots/Mixed_layer_temperature_abrupt_forcing.pdf}
 \end{center}
-\caption{ Numerical solutions to equation \ref{eq:mlo} to an abrupt forcing of $F_{2x}$ with varying values of $ECS$ of 1, 2, 3, 4, and 5 K. The heat capacity is chosen to correspond to that of an ocean covering 70 percent of the surface with a depth of 75 m which is a typical equivalent depth found in complex climate models. The dashed line shows the initial slope and the dots shows the e-folding response at time $\tau$. } 
+\caption{ Numerical solutions to equation \ref{eq:mlo} to an abrupt forcing of $F_{2x}$ with varying values of $ECS$ of 1, 2, 3, 4, and 5 K. The heat capacity is chosen to correspond to that of an ocean covering the entire surface of the Earth with a depth of 50 m which is a typical equivalent depth found in complex climate models. The dashed line shows the initial slope and the dots shows the e-folding response at time $\tau$. } 
 \label{fig:mlo_plot}
 \end{figure}
 
@@ -804,18 +804,19 @@ which depends on the heat capacity and the feedback parameter, and not the forci
 $$T(t) = T(\infty)\left(1-e^{-\frac{t}{\tau}}\right)$$ 
 such that when $t=\tau$ the system has reached a fraction $1-e^{-1}$ of the equilibrium. From this we can readily realize that the more sensitive the system is, the longer it takes to reach equilibrium. In Figure  \ref{fig:mlo_plot} I plotted the response time which increase from roughly 2 to 10 years for $ECS$ from 1 to 5 K. The slower equilibration of the more sensitive models is readily visible: after about 10 years the low sensitivity models have practically reached equilibrium, but the high sensitivity models continue to warm.
 
-Another interesting type of forcing is an fast injection or release of energy. We might think of the forcing as represented by  Dirac's delta function, but the main point is that it should be active only for a short period of time compared to the response time of the system. A volcanic eruption could be considered such a case with reasonable approximation. Whatever the reason, though, the result is that at time $t=0$ we might find the system out of equilibrium such that $T(0) \ne 0$ and subsequently we can set $F=0$. The solution to this is, as was also the case for the abrupt forcing, an exponential function:
-\begin{equation}
-T(t)=T(0)\cdot e^{\frac{\lambda}{C}t},
-\end{equation}
-but where we previously started with $T(0)=0$ we now have the system approaching the equilibrium state $T(\infty)=0$. Notice how for the mixed-layer ocean that the e-folding time, $\tau$, to a delta forcing is the same as for the abrupt forcing.
+Another interesting type of forcing is a fast injection or release of energy. We might think of the forcing as represented by  Dirac's delta function, but the main point is that it should be active only for a short period of time compared to the response time of the system. A volcanic eruption could be considered such a case with reasonable approximation. Whatever the reason, though, the result is that at time $t=0$ we might find the system out of equilibrium such that $T(0) \ne 0$ and subsequently we can set $F=0$. The solution to this is, as was also the case for the abrupt forcing, an exponential function:
+\begin{eqnarray}
+T(t) &=& T(0)\cdot e^{\frac{\lambda}{C}t} \\
+       &=& T(0)\cdot e^{-\frac{t}{\tau}} \nonumber
+\end{eqnarray}
+but where we previously started with $T(0)=0$ we now have the system approaching the equilibrium state $T(\infty)=0$. Notice how for the mixed-layer ocean that the e-folding time, $\tau$, to a delta forcing is the same as that for the abrupt forcing.
 
 
 % Include a case of a delta-forcing? 
 % T(t)=T(0)*e{\frac{\lambda}{C}t}
 
 \subsection{Numerical solutions}
-The mixed-layer model can be readily solved analytically for the case of an abrupt forcing and doing so has several advantages. But as we add complexity to our model and might want to consider forcing that varies in time the analytical solution quickly becomes intractable. Therefore we shall often resort to a numerical solution. The equations we want to solve are generally quite simple such that a basic time-stepping method can be used. We can approximate:
+The mixed-layer model can be readily solved analytically for the case of an abrupt forcing and doing so has several advantages. But as we add complexity to our model and might want to consider noise or forcing that varies in time the analytical solution quickly becomes intractable. Therefore we shall often resort to a numerical solution. The equations we want to solve are generally quite simple such that the first-order Euler time-stepping method can be used. We can approximate:
 $$ \frac{dT}{dt} \approx \frac{\Delta T}{\Delta t}, $$
 where the large $\Delta$ indicate finite changes in temperature and time, rather than infinitesimal, such that we might think of $\Delta T = T(t+\Delta t)-T(t)$. Inserting this into equation \ref{eq:mlo} and rearranging:
 \begin{equation}
@@ -831,9 +832,9 @@ In Python the time integration can be programmed as a for-loop and might look so
 \end{verbatim}
 where we recognize the terms in equations \ref{eq:mlo_imbalance} and \ref{eq:numerical_solution}. The code can readily be extended to solving more complex differential equations that we shall derive later.
 
-Although we shall not use the following methodology during this course, for completeness  of presentation I want to mention that there is  very elegant way to solve the evolution of a climate system to a time-varying forcing. Here it is assumed that a general evolving forcing $F(t)$ can be considered to consist of an additive sequence of many small abrupt forcings, or 'steps'. If, for instance, the surface temperature response to forcing $F_{2x}$ from a doubling if CO$_2$ is $R(t)$ (see Figure \ref{fig:mlo_plot}) then we can estimate the surface temperature evolution as a sum of the response to all previous steps up until the time $t$:
+Although we shall not use the following methodology during this course, for completeness  of presentation I want to mention that there is an elegant way to solve the evolution of a linear climate system to a time-varying forcing. Here it is assumed that a general evolving forcing $F(t)$ can be considered to consist of an additive sequence of many small abrupt forcings, or 'steps'. If, for instance, the surface temperature response to forcing $F_{2x}$ from a doubling if CO$_2$ is $R(t)$ (see Figure \ref{fig:mlo_plot}) then we can estimate the surface temperature evolution as a sum of the response to all previous steps up until the time $t$:
 $$ T(t) \approx \sum_{i=0}^{t-1} \frac{R(t-i)}{F_{2x}}\cdot \left[F(i)-F(i-1)\right], $$
-where the quantity in brackets is the incremental forcing change. The step-response method is particularly useful in that the response function $R$ can also be derived from complex climate models by conducting a single abrupt forcing experiment. Further, one can think of the response function in more general terms to mean anything that varies in time after an abrupt forcing is applied such as local temperature, or even the hydrological cycle, so that we are not limited to think of the global mean surface temperature.
+where the quantity in brackets is the incremental forcing change. The step-response method is particularly useful in that the response function $R$ can also be derived from complex climate models by conducting a single abrupt forcing experiment. Further, one can think of the response function in more general terms to mean anything that varies in time after an abrupt forcing is applied such as local temperature, or even the hydrological cycle, so that we are not limited to think of the global mean surface temperature. The method, however, assumes linearity in that each step solution is independent of the others. In a later chapter we shall introduce non-linearity which will prohibit us from using the step-response method.
 
 
 \section{The two-layer model}
@@ -842,7 +843,7 @@ Although the mixed-layer model is attractive in its simplicity, for the timescal
 N = C\frac{dT}{dt} + C_d\frac{dT_d}{dt}, 
 \label{eq:twolayer-imbalance}
 \end{equation}
-where $T_d$ is the deep ocean temperature. The deep ocean is not in direct contact with the surface and so does neither feel directly the atmospheric feedbacks nor the radiative forcing. It is connected to the mixed-layer by diffusive and/or advective processes such that at some set of states $(T, T_d)$ the net flux is zero; we shall take these to be $T=T_d$. Note that the temperature of the real world deep ocean ($\approx 3^\circ$C) is colder than that of the surface because deep water formation occurs primarily in polar regions; the temperatures in the two-layer model $(T, T_d)$ are to be thought of as relative. We shall further assume the flux is proportional to the difference, such that:
+where $T_d$ is the deep ocean temperature. In this simplest form, it is assumed that the deep ocean is not in direct contact with the surface and so does neither feel directly the atmospheric feedbacks nor the radiative forcing. It is connected to the mixed-layer by diffusive and/or advective processes such that at some set of states $(T, T_d)$ the net flux is zero; we shall take these to be $T=T_d$. Note that the temperature of the real world deep ocean ($\approx 3^\circ$C) is colder than that of the surface because deep water formation occurs primarily in polar regions; the temperatures in the two-layer model $(T, T_d)$ are to be thought of as relative. We shall further assume the flux is proportional to the difference, such that:
 \begin{equation}
 C_d\frac{dT_d}{dt} = \gamma(T-T_d), 
 \label{eq:twolayer-deep}
@@ -854,7 +855,7 @@ C\frac{dT}{dt} = F + \lambda T - \gamma(T-T_d).
 \end{equation}
 The resulting set of coupled differential equations \ref{eq:twolayer-deep} and \ref{eq:twolayer-ml} is the two-layer model. It is helpful to realize that if you insert \ref{eq:twolayer-deep} and \ref{eq:twolayer-ml} into equation \ref{eq:twolayer-imbalance} you get:
 $$N = F + \lambda T,$$
-that is, the imbalance of the two-layer model is determined solely by the mixed-layer temperature and the external forcing. The deep ocean is only 'felt' at the top-of-the-atmosphere through the moderation of the mixed-layer temperature. 
+that is, the imbalance of the two-layer model is determined solely by the mixed-layer temperature and the external forcing. The deep ocean is here only 'felt' at the top-of-the-atmosphere through the moderation of the mixed-layer temperature. We shall later return to a case wherein the deep ocean temperature is allowed to affect the radiation balance.
 
 \begin{figure}
 \begin{center}
@@ -864,7 +865,7 @@ that is, the imbalance of the two-layer model is determined solely by the mixed-
 \label{fig:two_layer_plot}
 \end{figure}
 
-Let us first look at the behavior of the two-layer model starting at rest with $T=T_d=0$ and we apply an abrupt forcing, $F$, at time $t=0$ and then keep it constant forever. Since the imbalance is only determined by the mixed-layer temperature only, we immediately obtain that the longterm equilibrium response is the same as before:
+Let us first look at the behavior of the two-layer model starting at rest with $T=T_d=0$ and we apply an abrupt forcing, $F$, at time $t=0$ and then keep it constant forever. Since the imbalance is purely determined by the mixed-layer temperature only, we immediately obtain that the longterm equilibrium response is the same as before:
 $$ T(\infty)=\frac{-F}{\lambda}.$$
 Likewise, the initial warming rate is determined only by the heat capacity of the mixed-layer, since at time $t=0$ the ocean heat uptake into the deep ocean is zero:
 $$\frac{dT}{dt}\Bigr|_{t=0} = \frac{F}{C}.$$
@@ -872,9 +873,9 @@ Thus, when exerted to an abrupt forcing both the longterm response and the initi
 
 It is when we consider the intermediate timescales of decades to centuries that the mixed-layer and two-layer models behave differently. For the mixed-layer model we were able to derive an exact analytical solution and saw that it behaves as an exponential relaxation towards the equilibrium. It is also possible to derive an exact analytical solutions to the two-layer model, as shown for instance by Geoffroy et al.\cite{geoffroy2013a}, but this is far too complicated for this course and further obtaining the exact solution provides little physical insight. In broad terms, though, we can think of the deep ocean as introducing a slow time-scale, $\tau_d$ which is of the order of centuries, such that the solution is approximately the weighted sum of two exponentials $T(t) \approx \frac{-F}{\lambda}(1-a e^{\frac{-t}{\tau}}-b e^{\frac{-t}{\tau_d}})$, where $a+b=1$. 
 
-Instead, I solved the two-layer model numerically as shown in Figure \ref{fig:two_layer_plot} where I also compare it to the mixed-layer model and the results from a complex climate model, MPI-ESM1.2. We see that the overall behavior of MPI-ESM1.2 is captured well by the two-layer model; a fact that makes the two-layer model a particularly useful starting point for studies of climate dynamics. There are two small differences, though: in the first few years MPI-ESM1.2 warms faster most likely because it also includes some land which has a low heat capacity, and in the long run the warming in MPI-ESM1.2 is a bit slower. The latter may be due to non-linearities in the model's feedback, a theme we shall return to later.
+Instead, I solve the two-layer model numerically as shown in Figure \ref{fig:two_layer_plot} where I also compare it to the mixed-layer model and the results from a complex climate model, MPI-ESM1.2. We see that the overall behavior of MPI-ESM1.2 is captured well by the two-layer model; a fact that makes the two-layer model a particularly useful starting point for studies of climate dynamics. There are two small differences, though: in the first few years MPI-ESM1.2 warms faster most likely because it also includes some land which has a low heat capacity, and on decadal timescales the warming in MPI-ESM1.2 is a bit slower. 
 
-A caveat with the two-layer model is that the single deep-ocean temperature is to represent diverse set of mixing- and advective processes that constitute the Earth's deep ocean circulation. Therefore, to get a reasonable match of the two-layer model to more complex models, such as MPI-ESM1.2, we have to use a somewhat smaller heat capacity than that of the full deep ocean of about 4.000 m depth. Instead, I use a fraction of that, 1.000 m equivalent, to compromise between relatively fast mixing into the upper deep ocean and slow mixing deeper down. One can model this with more levels, or a full three dimensional general ocean circulation model, but this comes at the expense of transparency.
+A caveat with the two-layer model is that the single deep-ocean temperature is to represent a diverse set of mixing- and advective processes that constitute the Earth's deep ocean circulation. Therefore, to get a reasonable match of the two-layer model to more complex models, such as MPI-ESM1.2, we have to use a somewhat smaller heat capacity than that of the full deep ocean of about 4,000 m depth covering some 70 percent of the surface, corresponding to a mean depth of 2,600 m if distributed over the entire Earth's surface. Instead, I use about half of that -- 1,200 m global equivalent -- to compromise between relatively fast mixing into the upper deep ocean and slow mixing deeper down. One can model this with more levels, or a full three dimensional general ocean circulation model, but this comes at the expense of transparency.
 
 Finally, let us take a look at the temperature response of the two-layer model to a delta forcing. Here we imagine that heat is rapidly extracted from- or injected into the mixed-layer such that the deep ocean cannot react, that is, at time $t=0$ we have  $T\ne 0$ and $T_d=0$. If we then evaluate the initial rate of change of the mixed-layer temperature (\ref{eq:twolayer-ml}) then we obtain:
 \begin{equation}
@@ -886,7 +887,7 @@ yielding the result that the deep ocean heat uptake acts to restore the surface 
 \begin{center}
 \includegraphics[width=12 cm]{../plots/Zero-layer-model_rampup.pdf}
 \end{center}
-\caption{ Comparison of the two-layer model (solid curves) to the zero-layer model (dashed lines). The colors indicate the speed of the ramp-up of the forcing: Blue corresponds to 1 percent CO$_2$ concentration increase per year, whereas green is 2 percent, red is 4 percent and orange is 8 percent increase per year. } 
+\caption{ Comparison of the two-layer model (solid curves) to the zero-layer model (dashed lines). The colors indicate the speed of the ramp-up of the forcing: Blue corresponds to 1 percent CO$_2$ concentration increase per year, whereas green is 2 percent, and red is 4 percent increase per year. Marked is also the warming at year 70 in the first experiment which is defined as the transient climate response (TCR).} 
 \label{fig:zero_layer_plot}
 \end{figure}
 
@@ -897,9 +898,9 @@ An approximate diagnostic version of the two-layer model can be obtained for the
 0 = F + \left(\lambda - \gamma \right)T,
 \label{eq:zero-layer}
 \end{equation}
-and from equations \ref{eq:twolayer-imbalance} and \ref{eq:twolayer-deep} we get $N=\gamma T$. Thus, for instance the evolution of the surface temperature is purely a function of the forcing:
+and from equations \ref{eq:twolayer-imbalance} and \ref{eq:twolayer-deep} we get $N=\gamma T$. Thus, the evolution of the surface temperature is purely a function of the forcing:
 $$T(t)=\frac{F(t)}{\gamma-\lambda}.$$
-We call this the zero-layer approximation as there are no layers left that have memory and the result is a purely diagnostic equation relating temperature, forcing and imbalance with bulk properties of the system. I plotted both the zero- and the two-layer models exposed to forcing that increases linearly in time in Figure \ref{fig:zero_layer_plot}. We usually think of experiments with, say, a 1 percent increase in atmospheric CO$_2$ per year, yielding a doubling of the concentration in about 70 years -- this corresponds roughly to the anthropogenic forcing increase since the 1950's. The temperature response after 70 years in this experiment is often referred to as the transient climate response (TCR). Because the forcing is logarithmic in the CO$_2$ concentration this corresponds to a nearly linear increase in time. The zero-layer approximation works surprisingly well on multi-decadal timescales for these types of forcing that changes gradually. In the first decades the zero-layer model overestimates warming as the mixed-layer heat capacity still matters, whereas after about 50-60 years the model underestimates surface warming as the deep ocean begins to warm up. Further, the faster we increase the forcing the more the zero-layer model overestimates the initial warming.
+We call this the zero-layer approximation as there are no layers left that have memory and the result is a purely diagnostic equation relating temperature, forcing and imbalance with bulk properties of the system. I plotted both the zero- and the two-layer models exposed to forcing that increases linearly in time in Figure \ref{fig:zero_layer_plot}. We usually think of experiments with, say, a 1 percent increase in atmospheric CO$_2$ per year, yielding a doubling of the concentration in about 70 years -- this corresponds roughly to the anthropogenic forcing increase since the 1950's. The temperature response after 70 years in this experiment is often referred to as the transient climate response (TCR). Because the forcing is logarithmic in the CO$_2$ concentration this corresponds to a nearly linear increase in time. The zero-layer approximation works surprisingly well on multi-decadal timescales for these types of forcing that changes gradually. In the first decades the zero-layer model overestimates warming as the mixed-layer heat capacity still matters, whereas after about 70 years the model underestimates surface warming as the deep ocean begins to warm up. Further, the faster we increase the forcing the more the zero-layer model overestimates the initial warming.
 The zero-layer model is being extensively used to interpret the instrumental record warming in terms of inferring Earth's climate sensitivity; a theme that we shall return to later.
 
 
@@ -914,7 +915,7 @@ The zero-layer model is being extensively used to interpret the instrumental rec
 {\setlength{\parindent}{0cm}
 %\hrule
 \begin{exercise}
-Observations suggest that Greenland currently looses around 200 km$^3$ ice per year (1 km$^3$ = 10$^9$ m$^3$). Estimate the part of the Earth's energy imbalance that goes into the current melting of the Greenland ice sheet, how much it contributes to global sea level rise in millimeters per year, and how long will it take until Greenland is gone if melt continues at the current pace? Remember the surface area of the Earth is 510$\cdot$10$^{12}$ m$^2$, the oceans cover about 70 percent of the surface, and that the density of ice is about 900 kg m$^{-3}$. 
+Observations suggest that Greenland currently looses around 200 km$^3$ ice per year (1 km$^3$ = 10$^9$ m$^3$). Estimate a) the part of Earth's energy imbalance that goes into the current melting of the Greenland ice sheet, b) how much it contributes to global sea level rise in millimeters per year, and c) how long it will take until Greenland is gone if melt continues at the current pace? Remember the surface area of the Earth is 510$\cdot$10$^{12}$ m$^2$, the oceans cover about 70 percent of the surface, and that the density of ice is about 900 kg m$^{-3}$. 
 \end{exercise}
 
 \begin{exercise}
@@ -926,7 +927,7 @@ The script contains two commented out lines (starting with \#) towards the end t
 \end{exercise}
 
 \begin{exercise}
-Imagine the Earth is hit by an asteroid. The impact whirls debris into the atmosphere which results in a temporary rise of the planetary albedo and hence a surface cooling. The debris is relatively heavy and therefore falls out of the atmosphere within weeks of the impact such that we can consider the asteroid impact a delta forcing. The rapid cooling leaves the system shortly after the impact at $T(0)=-6.0$ K. We shall assume the Earth has an $ECS=3.0$ K and a mixed-layer heat capacity of corresponding to a depth of 75 meters: $C= 0.7 \cdot 75\cdot 1000 \cdot 4181$ J m$^{-2}$K$^{-1}$. 
+Imagine the Earth is hit by an asteroid. The impact whirls debris into the atmosphere which results in a temporary rise of the planetary albedo and hence a surface cooling. The debris is relatively heavy and therefore falls out of the atmosphere within weeks of the impact such that we can consider the asteroid impact a delta forcing. The rapid cooling leaves the system shortly after the impact at $T(0)=-6.0$ K. We shall assume the Earth has an $ECS=3.0$ K and a mixed-layer heat capacity  corresponding to a global mean depth of 50 meters: $C= 50\cdot 1000 \cdot 4181$ J m$^{-2}$K$^{-1}$. 
 If you ignore the deep ocean, how many years would it take until the mixed-layer temperature reaches $T=-1.0$ K?
 If you consider a deep ocean, which is roughly unaffected directly during the asteroid impact such the $T_d(0)=0$, would the surface temperature reach $T=-1.0$ K faster or slower?
 \end{exercise}
@@ -941,20 +942,6 @@ Plot the result and verify your inference from the previous exercise.
 \end{exercise}
 
 }
-
-%---------------------------------------------------------------------
-\chapter{Global variability}
-\label{chapter:global_variability}
-
-\section{Noise}
-TOA and deep ocean heat uptake
-
-Chris' figure
-
-\section{Climate response to noise}
-
-
-
 
 %---------------------------------------------------------------------
 \chapter{External forcing and fast adjustments}
@@ -1154,8 +1141,20 @@ Explain, in your own words, how clouds adjust to an increase in atmospheric CO$_
 
 }
 
+
+
 %---------------------------------------------------------------------
-%\chapter{Natural variability}
+\chapter{Global variability}
+\label{chapter:global_variability}
+
+\section{Noise}
+TOA and deep ocean heat uptake
+
+Chris' figure
+
+\section{Climate response to noise}
+
+
 
 
 %---------------------------------------------------------------------
