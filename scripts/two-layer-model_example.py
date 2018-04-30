@@ -1,9 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import numpy as np                
-import scipy.stats as stat
-import math
-#from netCDF4 import Dataset
 
 # set general text options for plotting
 plt.rc('text'           , usetex=True)
@@ -75,66 +72,32 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0):
     return result
 
 #--------------------------------------------------------------------------
+# Run experiments
 
-nyears     = 140
+nyears     = 100
 forcing_years = np.arange(0,nyears)
 input_forcing    = f2x*np.ones(nyears)
-rampup = np.linspace(0.0,1.0,nyears)*nyears/70
 
-exp1 = twolayermodel(forcing_years, f2x*rampup )
-exp2 = twolayermodel(forcing_years, 2*f2x*rampup )
-exp3 = twolayermodel(forcing_years, 3*f2x*rampup )
-exp4 = twolayermodel(forcing_years, 4*f2x*rampup )
+exp1 = twolayermodel(forcing_years, input_forcing, ECS=1.0 )
+exp2 = twolayermodel(forcing_years, input_forcing, ECS=3.0)
+exp3 = twolayermodel(forcing_years, input_forcing, ECS=10.0)
 
 #--------------------------------------------------------------------------
 # Plot
 
-fig, axes = plt.subplots(1,1, figsize=(6,4))
+fig, axes = plt.subplots(1,1, figsize=(5,4))
 
-
-
-pct1, = axes.plot(exp1['time'],exp1['T_ml'],color='blue', label='1 percent per year')
-pct2, = axes.plot(exp2['time'],exp2['T_ml'],color='green', label='2 percent per year')
-pct3, = axes.plot(exp3['time'],exp3['T_ml'],color='red', label='4 percent per year')
-#pct4, = axes.plot(exp4['time'],exp4['T_ml'],color='orange', label='8 percent per year')
-
-axes.plot(exp1['time'],exp1['forcing']/(exp1['gamma']-exp1['lambda_0']),linestyle='--',color='blue')
-axes.plot(exp2['time'],exp2['forcing']/(exp2['gamma']-exp2['lambda_0']),linestyle='--',color='green')
-axes.plot(exp3['time'],exp3['forcing']/(exp3['gamma']-exp3['lambda_0']),linestyle='--',color='red')
-#axes.plot(exp4['time'],exp4['forcing']/(exp4['gamma']-exp4['lambda_0']),linestyle='--',color='orange')
-
-TCR = f2x/(exp1['gamma']-exp1['lambda_0'])
-
-axes.plot((70,70),(0,TCR),linestyle='--',color='blue')
-pTCR = axes.scatter(70, TCR, color='blue', label=r'TCR $\approx$ '+str(round(TCR,1))+' K')
+axes.plot(exp1['time'],exp1['T_ml'],color='blue')
+axes.plot(exp2['time'],exp2['T_ml'],color='black')
+axes.plot(exp3['time'],exp3['T_ml'],color='red')
 
 axes.set_xlabel('Time (years)')
 axes.set_ylabel('Temperature (K)')
 
-plt.xlim((0,nyears))
-plt.ylim((0,6.0))
-
-axes.xaxis.set_ticks_position('bottom')
-axes.yaxis.set_ticks_position('left')
-
-axes.legend(handles=(pct1, pct2, pct3, pTCR))
-
-for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
-    ticks.set_color(almost_black)
-
-spines_to_remove        = ['top', 'right'] 
-for spine in spines_to_remove:
-    axes.spines[spine].set_visible(False)
-
-spines_to_keep = [ 'bottom', 'left']     
-for spine in spines_to_keep:
-    axes.spines[spine].set_linewidth(0.5)
-    axes.spines[spine].set_color(almost_black)
+plt.xlim(xmin = 0)
+plt.ylim(ymin = 0)
 
 plt.tight_layout()
-plt.savefig('../plots/Zero-layer-model_rampup.pdf', dpi=300)
+plt.savefig('Two_layer_temperature_abrupt_forcing.pdf', dpi=300)
 plt.close()
-
-
-
 

@@ -425,7 +425,7 @@ Derive Equation \ref{eq:ntwo} for a two-layer atmosphere in the same way as done
 \label{chapter:response}
 \vspace{1 cm}
 
-Up until now we considered climates that were stationary, at balance between the absorbed solar radiation and the emitted infrared radiation. We call this a stationary state or a fix-point. But what happens if the system is starting a bit away from that stationary state? Or what happens if we take a system in a stationary state and somehow force it in a way that causes an energy imbalance to occur? This naturally leads us to develop the concepts of radiative forcing, climate change feedbacks and a resulting equilibrium climate sensitivity.
+Up until now we considered climates that were stationary, at balance between the absorbed solar radiation and the emitted infrared radiation. We call this a stationary state or a fix-point. But what happens if the system is starting a bit away from that stationary state? Or what happens if we take a system in a stationary state and force it in a way that causes an energy imbalance to occur? This naturally leads us to develop the concepts of radiative forcing, climate change feedbacks and a resulting equilibrium climate sensitivity.
 In this chapter we shall assume the perturbations are small such that we can linearize the system.  A surprisingly large part of the discussion around climate change is actually limited to this first-order linear regime and so it makes sense to spend some time on it. In a later chapter we shall explore systems wherein linearity can no longer be assumed and the associated concepts begin to fall apart.
 
 \begin{figure}
@@ -438,7 +438,7 @@ In this chapter we shall assume the perturbations are small such that we can lin
 
 
 \section{Climate stability}
-In one perspective the Earth's climate has varied in rich ways in the past, in another perspective it has been remarkably stable (Figure \ref{fig:Paleo_temperature_timeseries}). The past 6.000 years we have had nearly steady temperatures, a period called the Holocene. These relatively mild conditions, wherein modern human civilization developed, have been rare in the past 1.000.000 years wherein the climate has cycled between longer colder glacial periods interrupted by short interglacials. Before that the Earth was warmer than it is today. For instance during Pliocene CO$_2$ concentrations were close to what they are today, about 400 ppm, and temperatures higher than during Holocene by about 2-3 K. Much earlier, during the Eocene temperatures were warmer, maybe by 10-15 K. These differences on the one hand translated into substantially different conditions for life to unfold on the planet. On the other hand, from a physical point of view the Eocene was merely 5 percent warmer than today, as measured on an absolute temperature scale. 
+In one perspective the Earth's climate has varied in rich ways in the past, in another perspective it has been remarkably stable (Figure \ref{fig:Paleo_temperature_timeseries}). The past 6,000 years we have had nearly steady temperatures, a period called the Holocene. These relatively mild conditions, wherein modern human civilization developed, have been rare in the past 1,000,000 years wherein the climate has cycled between longer colder glacial periods interrupted by short interglacials. Before that the Earth was warmer than it is today. For instance during Pliocene CO$_2$ concentrations were close to what they are today, about 400 ppm, and temperatures higher than during Holocene by about 2-3 K. Much earlier, during the Eocene temperatures were warmer, maybe by 10-15 K. These differences on the one hand translated into substantially different conditions for life to unfold on the planet. On the other hand, from a physical point of view the Eocene was merely 5 percent warmer than today, as measured on an absolute temperature scale. 
 On this background it makes intuitive sense to think that Earth's climate is stable to small perturbations in the context of it's known history: The system did not venture to completely different states and it did spend enough time to equilibrate at almost any temperature within the range visited since dinosaurs ruled the Earth 65 million years ago (Figure \ref{fig:Paleo_temperature_timeseries}); we shall return to estimating the time-scales for equilibrating in the next chapter. It is worth pointing out though that the mere fact that temperatures did not substantially change over that period does not imply that the Earth is {\em insensitive} to perturbations, rather climate has been relatively constant due to the compensation between a longterm increase in $S_o$ and a simultaneous decrease in atmospheric CO$_2$ as carbon has been buried in fossil sediments. 
 
 \begin{figure}
@@ -449,7 +449,7 @@ On this background it makes intuitive sense to think that Earth's climate is sta
 \label{fig:feedback_stability_cases}
 \end{figure}
 
-For a state to be stable it must not only have zero imbalance ($N=0$) but it must also be stable to small perturbations. The latter requires that there is some restoring force such that if the system finds itself a bit away from stationarity, then that force will act to move the system back towards the fix-point. We can think of these perturbations as arising due to internal variability, due to weather phenomena or climate variability, or due to external forcing such as fluctuations in the solar constant or changes in atmospheric composition for reasons we consider external to the system, e.g. anthropogenic carbon dioxide emissions. For a complex system such as the Earth's climate this may be difficult to visualize as there is a practically near-infinite number of state-variables. But for many purposes we think of the climate system as having a single state-variable, the global mean surface temperature as we did it in the previous chapter, and in this case we can visualize the problem more easily (Figure \ref{fig:feedback_stability_cases}). In trying to consolidate this one-dimensional view, we may think of all the state variables as being functions of the global mean temperature. 
+For a state to be stable it must not only have zero imbalance ($N=0$) but it must also be stable to small perturbations. The latter requires that there is some restoring force such that if the system finds itself a bit away from stationarity, then that force will act to move the system back towards the fix-point. We can think of these perturbations as arising due to internal variability, i.e weather phenomena or climate variability, or due to external forcing such as fluctuations in the solar constant or changes in atmospheric composition for reasons we consider external to the system, e.g. anthropogenic carbon dioxide emissions. For a complex system such as the Earth's climate this may be difficult to visualize as there is a practically near-infinite number of state-variables. But for many purposes we think of the climate system as having a single state-variable, the global mean surface temperature as we did it in the previous chapter, and in this case we can visualize the problem more easily (Figure \ref{fig:feedback_stability_cases}). In trying to consolidate this one-dimensional view, we may think of all the state variables as being functions of the global mean temperature. 
 
 Now suppose $T_o$ is a fixed-point at which the imbalance is zero and that in {\em some region} above and below $T_o$ the imbalance, $N$, is a continuous and differentiable function of $T$. Then for cases wherein $dN/dT \ne 0$ the fix-points are either stable if $dN/dT < 0$, where the derivative is evaluated at $T_o$, as in some region above $T_o$ the imbalance has to be negative and the system will cool towards $T_o$, and vice-versa if the system is colder than $T_o$ it will warm up again. A similar argument can be made that the system is unstable if $dN/dT > 0$. These two possibilities are displayed as black lines in cases a and c in Figure \ref{fig:feedback_stability_cases}. We shall refer to $dN/dT$ as the feedback parameter ($\lambda$), and the above summarizes that for cases whereat $N(T_o) = 0$ the stability is determined as follows:
 \begin{eqnarray}
@@ -462,6 +462,7 @@ We talked above about stability in {\em some region} around a fix-point, but wha
 
 In the rare limiting cases wherein both $N=0$ and $dN/dT = 0$ at the fix point things get a bit more complicated. In this case it makes sense to evaluate $N$ on either side of the fix point. If $N>0$ at somewhat colder $T$ and $N<0$ at slightly warmer $T$ then the system is stable to small perturbations, as illustrated for the gray case a in Figure \ref{fig:feedback_stability_cases}. The same argument can be used for the limiting unstable case, c. In the marginally stable cases (b) wherein $N$ has the same sign on either side of the fix-point the system is stable to perturbations in one direction and unstable to perturbations in the other direction. Think of yourself as standing on a small plateau on the side of a slippery cliff. If you try to climb up the mountain you will slide back towards the plateau (stable), but if you move a bit in the other direction you fall off the cliff and never get back to your starting point (unstable). Marginally stable fix-points occur when a system undergoes so-called bifurcations, a topic we shall return to in a later chapter.
 
+\section{The stabilizing Planck feedback}
 Now let us be more concrete in applying the stability criterion we derived above. We will start with a version of the energy balance equation that you developed in an exercise of the previous chapter. In this case the greenhouse effect is represented by an effective emissivity, $\epsilon$, which is less than or equal to unity:
 \begin{equation}
 N = \frac{S_o}{4}(1-\alpha) - \epsilon \sigma T_s^4,
@@ -478,13 +479,13 @@ If we consider a system with constant $\epsilon$ and $\alpha$ then the only term
 \lambda_P = - 4 \epsilon \sigma T_s^3 < 0 
 \label{eq:lambda_planck}
 \end{equation}
-for all $T_s$ implying that this system is unconditionally stable. If we insert numbers typical for the Earth we obtain obtain $\lambda_p \approx$ -3.25 Wm$^{-2}$K$^{-1}$ which is surprisingly close to the value obtained from complex climate models, as we shall see later. The second term on the right hand side of equation \ref{eq:lambda_general}, which is broadly to be thought of as water vapor feedback (plus something called lapse-rate feedback), is found in climate models to be about +1.2 Wm$^{-2}$K$^{-1}$, and so is not sufficient to cause instability in current climates. In warmer climates the positive water vapor feedback is thought to increase faster than the negative Planck feedback and so could aid in destabilising the system. Finally, the first term on right hand side of Eq. \ref{eq:lambda_general} is the planetary albedo feedback, which is due to clouds, surface albedo as well as absorption by the atmosphere foremost water vapor. It is left as an exercise to estimate the criterion for instability when considering planetary albedo feedback.
+for all $T_s$ implying that this system is unconditionally stable. If we insert numbers typical for the Earth we obtain $\lambda_p \approx$ -3.25 Wm$^{-2}$K$^{-1}$ which is surprisingly close to the value obtained from complex climate models, as we shall see later. The second term on the right hand side of equation \ref{eq:lambda_general}, which is broadly to be thought of as water vapor feedback (plus something called lapse-rate feedback), is found in climate models to be about +1.2 Wm$^{-2}$K$^{-1}$, and so is not sufficient to cause instability in current climates. In warmer climates the positive water vapor feedback is thought to increase faster than the negative Planck feedback and so could aid in destabilising the system. Finally, the first term on right hand side of Eq. \ref{eq:lambda_general} is the planetary albedo feedback, which is due to clouds, surface albedo as well as absorption by the atmosphere, foremost water vapor. It is left as an exercise to estimate the criterion for instability when considering planetary albedo feedback.
 
 
 \section{Equilibrium climate sensitivity (ECS)}
 So far we have been agnostic as to why the climate system might be out of balance. It could be due to some random fluctuation, a short volcanic eruption, a change in the solar constant, or forced by a change in the atmospheric greenhouse gas concentration. We shall return to radiative forcing in more detail later, but a standard way to define the sensitivity of the climate system is to expose it to a doubling of CO$_2$ relative to the pre-industrial level which reduces the infrared radiation to space and yields a top-of-atmosphere imbalance of:
 $$F_{2x} \approx 3.7 \ \textrm{Wm}^{-2}.$$
-A neat thing about CO$_2$ is that the atmosphere is optically thick in the part of the spectrum dominated by CO$_2$ absorption. This leads to the forcing being almost logarithmic in the concentration so that each doubling (from 1 to 2xCO$_2$, from 2 to 4xCO$_2$ etc.) results in about the same amount of forcing. If we think $F_{2x}$ is a sufficiently small perturbation that the feedback parameter, $\lambda$, can be considered constant then we can write the energy balance equation as:
+A neat thing about CO$_2$ is that the atmosphere is optically thick in most of the spectrum that is dominated by CO$_2$ absorption. This leads to the forcing being almost logarithmic in the concentration so that each doubling (from 1 to 2xCO$_2$, from 2 to 4xCO$_2$ etc.) results in about the same amount of forcing. If we think $F_{2x}$ is a sufficiently small perturbation that the feedback parameter, $\lambda$, can be considered constant then we can write the energy balance equation as:
 \begin{equation}
 N = F_{2x} + \lambda \Delta T
 \label{eq:linear_energy_balance}
@@ -521,7 +522,7 @@ The scatter of models around the theoretical line can have several causes, for i
 
 \section{Feedback mechanisms}
 Above we calculated the feedback parameter for the general case (Eq. \ref{eq:lambda_general}) and identified three terms, one related to how planetary albedo changes with temperature, one related to how the effective emissivity changes and one which is directly related to the Planck feedback. Now, if we want to go about understanding and quantifying the feedback it is more convenient to make another division. For instance the planetary albedo is controlled by changes in surface albedo, cloudiness and water vapor, as well as some other factors such as aerosol particles and ozone that we shall ignore here as feedbacks. 
-As a first step let us divide $\lambda$ into contributions due to changes in temperature, water vapor, clouds and surface albedo:
+As a first step let us divide $\lambda$ into contributions due to changes in temperature, water vapor, clouds and surface albedo (Figure \ref{fig:feedback_illustration}b):
 \begin{equation}
 \lambda =  \lambda_T + \lambda_W + \lambda_C + \lambda_A + ...
 \label{eq:lambda_linear_sum}
@@ -589,11 +590,11 @@ Perhaps the simplest feedback to comprehend is the surface albedo feedback. That
 \begin{center}
 \includegraphics[width=12 cm]{../plots/CERES_Ebaf_shortwave.pdf}
 \end{center}
-\caption{ Shortwave fluxes observed and inferred from the CERES dataset. Black is the downwelling annually averaged sunlight at the top of the atmosphere, on average 340 Wm$^{-2}$. The red line is the downwelling sunlight at the surface (187 Wm$^{-2}$), and the blue is the reflected sunlight at the surface (24 Wm$^{-2}$). Therefor the gray shaded area is the surface absorption. Over the region poleward of 60N the corresponding three numbers are 201, 102, 43 Wm$^{-2}$, respectively. } 
+\caption{ Shortwave fluxes observed and inferred from the CERES dataset. Black is the downwelling annually averaged sunlight at the top of the atmosphere, on average 340 Wm$^{-2}$. The red line is the downwelling sunlight at the surface (187 Wm$^{-2}$), and the blue is the reflected sunlight at the surface (24 Wm$^{-2}$). Therefore the gray shaded area is the surface absorption. Over the region poleward of 60N the corresponding three numbers are 201, 102, 43 Wm$^{-2}$, respectively. } 
 \label{fig:CERES_shortwave}
 \end{figure}
 
-So let us focus on the Arctic region, where most of the surface albedo feedback occurs with respect to warming (Figure \ref{fig:feedback_maps}). As a first attempt at constraining this feedback, let us assume there is no atmosphere and therefore also no clouds. Thus all incoming radiation arrives at the surface, and a fraction $A$ is reflected back to space. Suppose the surface albedo changes by an amount $\Delta A$ for a global warming of $\Delta T$ and let $S$ be the incoming solar radiation. Then regionally the imbalance changes by an amount $S \Delta A / \Delta T$. On average over the region poleward of 60N $S=201$ Wm$^{-2}$ (Figure \ref{fig:CERES_shortwave}). Complex climate models have that most of their Arctic sea ice is gone at a global mean temperature around 20$^\circ$C (currently about 15$^\circ$C), so $\Delta T \approx 5$ K. The observed average effective surface albedo in the region is 0.42 (Figure \ref{fig:CERES_shortwave}), which would then drop to about 0.07 which is that of an open ocean. The area of a spherical cap is $2\pi r^2 (1-\sin\theta)$, where $\theta$ is the angle from the Equator to the pole, whereas we recall the surface area of the whole Earth is $4\pi r^2$. Thus, suppose we consider the region poleward of 60N then that is little less than 7 percent of the Earth's surface; if we restrict this to mainly be the Arctic ocean roughly poleward of 70N then it is only 3 percent of the Earth. Then we can estimate an upper bound on the contribution of the Arctic region to global surface albedo feedback parameter as:
+So let us focus on the Arctic region, where most of the surface albedo feedback occurs with respect to warming (Figure \ref{fig:feedback_maps}). As a first attempt at constraining this feedback, let us assume there is no atmosphere and therefore also no clouds. Thus all incoming radiation arrives at the surface, and a fraction $A$ is reflected back to space. Suppose the surface albedo changes by an amount $\Delta A$ for a global warming of $\Delta T$ and let $S$ be the incoming solar radiation. Then regionally the imbalance changes by an amount $S \Delta A / \Delta T$. On average over the region poleward of 60N we have $S=201$ Wm$^{-2}$ (Figure \ref{fig:CERES_shortwave}). Complex climate models have that most of their Arctic sea ice is gone at a global mean temperature around 20$^\circ$C (currently about 15$^\circ$C), so $\Delta T \approx 5$ K. The observed average effective surface albedo in the region is 0.42 (Figure \ref{fig:CERES_shortwave}), which would then drop to about 0.07 which is that of an open ocean. The area of a spherical cap is $2\pi r^2 (1-\sin\theta)$, where $\theta$ is the angle from the Equator to the pole, whereas we recall the surface area of the whole Earth is $4\pi r^2$. Thus, suppose we consider the region poleward of 60N then that is little less than 7 percent of the Earth's surface; if we restrict this to mainly be the Arctic ocean roughly poleward of 70N then it is only 3 percent of the Earth. Then we can estimate an upper bound on the contribution of the Arctic region to global surface albedo feedback parameter as:
 \begin{equation}
 \frac{\textrm{polar cap area}}{\textrm{global area}} \cdot \frac{\Delta A} {\Delta T} \cdot S \approx 1.0 \ \textrm{Wm}^{-2}\textrm{K}^{-1}.
 \end{equation}
@@ -601,7 +602,7 @@ Now this is a gross overestimate. The reason is that the atmosphere, which we ne
 
 
 \subsection{Water vapor feedback}
-As we saw in the beginning of the course, water vapor is an excellent greenhouse gas in that it absorbs across a wide range of the infrared spectrum. A problem with water vapor is that, unlike CO$_2$, it is highly inhomogeneously distributed in the atmosphere both vertically, horizontally and in time; in Figure  \ref{fig:tropical_profiles} we saw how the average mixing ratio of water vapor in the tropics changes a factor 10.000 from the surface to the tropopause. This is because the lifetime of a water vapor molecule in the troposphere is relatively short, about a week or so, before it is for the most part precipitated out. The maximum amount of water vapor the atmosphere can hold before it starts condensing into cloud droplets is highly temperature dependent, roughly exponential according to the Clausius-Clapeyron relationship. 
+As we saw in the beginning of the course, water vapor is an excellent greenhouse gas in that it absorbs across a wide range of the infrared spectrum. A problem with water vapor is that, unlike CO$_2$, it is highly inhomogeneously distributed in the atmosphere both vertically, horizontally and in time; in Figure  \ref{fig:tropical_profiles} we saw how the average mixing ratio of water vapor in the tropics changes a factor 10.000 from the surface to the tropopause. This is because the lifetime of a water vapor molecule in the troposphere is relatively short, about a week or so, before it is for the most part precipitated out, and that the maximum amount of water vapor the atmosphere can hold before it starts condensing into cloud droplets is highly temperature dependent, roughly exponential according to the Clausius-Clapeyron relationship. 
 
 \begin{figure}
 \begin{center}
@@ -626,18 +627,19 @@ such that the fractional rate of change of the saturation vapor pressure is a si
 
 The reader is reminded that the infrared part of the water vapor feedback only works because the atmosphere is colder than the surface. Thus adding a water vapor molecule to the atmosphere near the surface is less effective than adding it near the tropopause, and so despite the amount of water vapor in the upper troposphere is much smaller than near the surface it still plays an important role in controlling the infrared radiation to space. The troposphere is colder than the surface in most places and at most times. 
 An exception where the atmosphere can be warmer than the surface occurs at high latitudes in winter, and so there raising the emissivity of the atmosphere by adding water vapor will result in more infrared radiation escaping to space. 
-A not negligible part of the water vapor feedback of about 20-30 percent, however, occurs because water vapor absorbs sunlight. This absorption depends less on where in the vertical the water vapor is, and more on the column integrated amount, the latitude and season, as well as the presence of clouds and the reflectivity of the surface.
 It is left as an exercise to estimate the infrared part of the water vapor feedback under the assumption of constant relative humidity using the MODTRAN model and compare the result with that of more complex climate models. 
+
+A not negligible part of the water vapor feedback of about 20-30 percent, however, occurs because water vapor absorbs sunlight. This absorption depends less on where in the vertical the water vapor is, and more on the column integrated amount, the latitude and season, as well as the presence of clouds and the reflectivity of the surface.
 
 % Show a figure with Clausius-Clapeyron, argue that the warming of parcels moving from the upper troposphere to the lower is larger in a warmer climate, hence a slight reduction in RH
 
 \subsection{Cloud feedbacks}
-Clouds are exceptionally complicated, and I would be foolish to even try to account for the many different ways in which clouds could possibly feed back on the Earth's energy balance. And not only are the mechanisms complex and difficult to grasp, they are also the main source of uncertainty in quantifying climate change and clouds impact the strength of other feedback mechanisms as we have seen above in the example of surface albedo feedback. Therefore, cloud feedbacks are very much central to the part of climate sciences that aims at estimating Earth's climate sensitivity. Because it is so complicated, one current trend is to dissect the cloud feedback into separate regimes (Figure \ref{fig:cloud_feedback_illustration}) wherein the hope is that the individual mechanisms can be understood and quantified. It is not at all clear that this is the most effective way to achieve overall progress, though, and climate scientists also pursue other routes to determining feedback. 
+Clouds are exceptionally complicated, and it would be foolish to even try to account for the many different ways in which clouds could possibly feed back on the Earth's energy balance. And not only are the mechanisms complex and difficult to grasp, they are also the main source of uncertainty in quantifying climate change and clouds impact the strength of other feedback mechanisms as we have seen above in the example of surface albedo feedback. Therefore, cloud feedbacks are very much central to the part of climate sciences that aims at estimating Earth's climate sensitivity. Because it is so complicated, one current trend is to dissect the cloud feedback into separate regimes (Figure \ref{fig:cloud_feedback_illustration}) wherein the hope is that the individual mechanisms can be understood and quantified. It is not at all clear that this is the most effective way to achieve overall progress, though, and climate scientists also pursue other routes to determining cloud feedback. 
 Current thinking is that it is useful to divide cloud feedback into three groups:
 \begin{itemize}
 \item Mid- to high latitude mixed-phase clouds
 \item Low-level clouds 
-\item Deep clouds,
+\item Deep clouds
 \end{itemize}
 although one could certainly think of other divisions that would be meaningful. The first two categories act mostly in the shortwave bands by regulating the planetary albedo, whereas the third category is thought to mainly function in the longwave by regulating the infrared radiation emitted to space.
 
@@ -649,11 +651,15 @@ although one could certainly think of other divisions that would be meaningful. 
 \label{fig:cloud_feedback_illustration}
 \end{figure}
 
+\subsubsection{Mixed-phase clouds}
 Ice clouds are generally less reflective to sunlight than are liquid clouds. This is primarily because ice crystals tend to be few and large, whereas cloud droplets tend to be small but many: the cross-section of many small droplets is larger for a given amount of condensate. In a warming climate the isotherms will move upward in the atmosphere and poleward alone resulting in a larger fraction of liquid clouds (Figure \ref{fig:cloud_feedback_illustration}), and so a negative shortwave cloud feedback must result. 
-If all clouds at temperatures below the melting point (0$^\circ$C), then a very strong negative feedback would result. However, it is a bit more complicated. At temperatures above 0$^\circ$C all clouds consist of the liquid phase, and below about -35$^\circ$C all clouds consist of ice phase. Between these temperatures both phases can exist, we say clouds are of mixed phase. The more one can maintain liquid clouds at temperatures below the melting point, the weaker the mixed-phase feedback is as there is simply less ice clouds that can be transformed.
-Signs of what might be dominating negative mixed-phase cloud feedback can be seen in the Southern Ocean, North Pacific and the Arctic in the MPI-ESM-LR model (Figure \ref{fig:feedback_maps}). This is not the only type of cloud feedback in those regions though, and for instance total cloud feedback appears to be positive in the North Atlantic, a region where we would also expect mixed-phase cloud feedback to be active. A couple of recent studies try to observationally constrain mixed-phase feedback. One study finds that complex climate models are on average correct, with some models having stronger and some models having weaker feedback. Another study finds that models as a whole overestimate the strength of the negative mixed-phase cloud feedback.
 
-Low-level clouds in the tropics and sub-tropics on the contrary consist mostly of liquid droplets. They are, nevertheless, consistently identified as the main source of spread in complex climate model feedback, which is likely due to there being a large number of competing mechanisms (Figure \ref{fig:cloud_feedback_illustration}), explaining all of which I couldn't possibly do any justice here. Foremost, the low-level clouds may regulate the planetary albedo either by changing their coverage or by changing their reflectivity. The reflectivity of low-level clouds is mainly controlled by the amount of condensate. We saw previously that in a warmer climate the atmosphere holds more water vapor, as of Clausius-Clapeyron, and so a naive expectation is that low-level clouds will thicken as there is more vapor to condense (adiabatic thickening). Counteracting this, is the mixing of the moist lower atmospheric air with dry air subsiding from aloft: in a warmer climate the difference in specific humidity will be larger between the boundary layer and the subsiding air, and so the mixing down of air (entrainment) results in a larger depression of relative humidity and fewer clouds in a warmer climate. The strength of the mixing, in turn, is controlled by the strength of the temperature inversion above the boundary layer. In some regions of the sub-tropics this inversion is expected to strengthen in a warmer climate resulting in more cloudiness. Overall, complex climate models can exhibit both positive and negative low-level cloud feedbacks, but there is a tendency for observational and fine-scale cloud modeling evidence to favor positive feedback from this regime.
+If all clouds at temperatures below the melting point (0$^\circ$C), then a very strong negative feedback would result. However, it is a bit more complicated. At temperatures above 0$^\circ$C all clouds consist of the liquid phase, and below about -35$^\circ$C all clouds consist of ice phase. Between these temperatures both phases can exist, we say clouds are of mixed phase. The more one can maintain liquid clouds at temperatures below the melting point, the weaker the mixed-phase feedback is as there is simply less ice clouds that can be transformed.
+
+Signs of what might be dominating negative mixed-phase cloud feedback can be seen in the Southern Ocean, North Pacific and the Arctic in the MPI-ESM-LR model (Figure \ref{fig:feedback_maps}). This is not the only type of cloud feedback in those regions though, and for instance total cloud feedback appears to be positive in the North Atlantic, a region where we would also expect mixed-phase cloud feedback to be active. A couple of recent studies try to observationally constrain mixed-phase feedback. One study finds that complex climate models are on average correct, with some models having stronger and some models having weaker feedback. Another study finds that models as a whole overestimate the strength of the negative mixed-phase cloud feedback, implying that models overly dampen global warming.
+
+\subsubsection{Low-level clouds}
+Low-level clouds in the tropics and sub-tropics on the contrary consist mostly of liquid droplets. They are, nevertheless, consistently identified as the main source of spread in complex climate model feedback, which is likely due to there being a large number of competing mechanisms (Figure \ref{fig:cloud_feedback_illustration}), explaining all of which I couldn't possibly do any justice here. Foremost, the low-level clouds may regulate the planetary albedo either by changing their coverage or by changing their reflectivity. The reflectivity of low-level clouds is mainly controlled by the amount of condensate. We saw previously that in a warmer climate the atmosphere holds more water vapor, as of Clausius-Clapeyron, and so a naive expectation is that low-level clouds will thicken as there is more vapor to condense (adiabatic thickening). Counteracting this, is the mixing of the moist lower atmospheric air with dry air subsiding from aloft: in a warmer climate the difference in specific humidity will be larger between the boundary layer and the subsiding air, and so the mixing down of air (top entrainment) results in a larger depression of relative humidity and fewer clouds in a warmer climate. The strength of the mixing, in turn, is controlled by the strength of the temperature inversion above the boundary layer. In some regions of the sub-tropics this inversion is expected to strengthen in a warmer climate resulting in more cloudiness. Overall, complex climate models can exhibit both positive and negative low-level cloud feedbacks, but there is a tendency for observational and fine-scale cloud modeling evidence to favor positive feedback from this regime.
 
 \begin{figure}
 \begin{center}
@@ -663,8 +669,9 @@ Low-level clouds in the tropics and sub-tropics on the contrary consist mostly o
 \label{fig:deep_cloud_feedback_illustration}
 \end{figure}
 
+\subsubsection{Deep clouds}
 Deep cloud feedbacks originate for the most part in the tropical regions. We argued in an earlier chapter that the tropopause might move upward in a warming climate so as to maintain an approximately constant temperature, and with it, presumably also that of the deepest convective cloud tops (anvils). 
-To see how this ascendence of upper level clouds might exert a cloud feedback, let us consider the gray body case with an upper-level cloud that covers a fraction, $f$, which acts as an ideal black body. The cloud is assumed to rise such as to maintain a constant temperature with a warming surface ($dT_a/dT_s=0$, Figure \ref{fig:deep_cloud_feedback_illustration}). Since there is only one unknown in our problem, $T_s$, we also only need to form one energy balance equation; we choose the top of the atmosphere:
+To see how this ascendence of upper level clouds might exert a cloud feedback, let us consider the gray body case with an upper-level cloud that covers a fraction, $f$, which acts as an ideal black body. The cloud is assumed to rise such as to maintain a constant temperature with a warming surface temperature ($dT_a/dT_s=0$, Figure \ref{fig:deep_cloud_feedback_illustration}). Since there is only one unknown in our problem, $T_s$, we also only need to form one energy balance equation; we choose the top of the atmosphere:
 \begin{equation}
 N = \frac{S_o}{4}(1-\alpha) - (1-f) \epsilon \sigma T_s^4 - f\sigma T_a^4.
 \label{eq:anvil_balance}
@@ -673,11 +680,11 @@ First, let us assume that $f$ is constant such that the upper level cloud mainta
 \begin{equation}
 \lambda =  - 4(1-f) \epsilon \sigma T_s^3,
 \end{equation}
-where we note that $dT_a/dT_s=0$. Comparing to the Planck feedback parameter, Equation (\ref{eq:lambda_planck}), we immediately recognize that this can be rewritten as:
+where we remember that $dT_a/dT_s=0$. Comparing to the Planck feedback parameter, Equation (\ref{eq:lambda_planck}), we immediately recognize that this can be rewritten as:
 \begin{equation}
 \lambda =  \lambda_P + f 4 \epsilon \sigma T_s^3,
 \end{equation}
-where the second term is then the fixed anvil temperature (FAT) feedback parameter. Notice how the actual temperature of the cloud, $T_a$, plays no role in determining the strength of the feedback. Since the FAT feedback parameter equals $-f\lambda_P$ we can readily estimate what $f$ has to be around 0.11 to provide the longwave cloud feedback parameter found in complex climate models ($\lambda_{C,LW}$, Table \ref{table:feedbacks}). The estimate of $f$ is smaller than expected since tropical upper-level cirrus clouds cover a larger fraction of the Earth, perhaps twice as much. However, because they consist of few relatively large ice crystal their longwave emissivity is usually less than unity and so in this more realistic setting it requires a larger coverage to reach the same amount of feedback.
+where the second term is then the fixed anvil temperature (FAT) feedback parameter. Notice how the actual temperature of the cloud, $T_a$, plays no role in determining the strength of the feedback. Since the FAT feedback parameter equals $-f\lambda_P$ we can readily estimate what $f$ has to be around 0.11 to provide the longwave cloud feedback parameter found in complex climate models ($\lambda_{C,LW}$, Table \ref{table:feedbacks}). The estimate of $f$ is smaller than expected since tropical upper-level cirrus clouds cover a larger fraction of the Earth, perhaps twice as much. However, because they consist of few relatively large ice crystal their longwave emissivity is usually less than unity and so in this more realistic setting it requires a larger coverage to reach the same amount of feedback. Additionally, deep clouds often occur in regions where there is also abundant water vapor, and thus the planetary emissivity ($\epsilon$) lower, also resulting in the required $f$ to be larger.
 
 Now, let the area $f$ covered with our upper-level black body cloud vary with temperature to emulate an iris-effect. Now the derivative with respect to $T_s$ of Equation (\ref{eq:anvil_balance}) becomes a bit more complicated:
 \begin{eqnarray}
@@ -725,7 +732,7 @@ In the previous chapter we focussed on the stability of stationary states and th
 \section{Heat capacities}
 When we think of the Earth's climate system there are several components that can absorb energy with different heat capacities and with different timescales involved. Usually we think of the oceans as the largest component followed by the atmosphere and cryosphere. There are, however, parts of these components that are closely connected to the surface temperature, and there are parts that are weakly connected to the surface. This means, foremost, that it is meaningful to divide the oceans into two or more parts.
 
-If we start with the atmosphere, we saw in the first chapter how the troposphere is for the most part quickly stirred, mixed or overturned by various motion. Therefore it does not take very long for air to be mixed around the world, roughly on the order of months, though the time it takes to cross the equator can be longer. The stratosphere in turn, we found was in radiative equilibrium and stable stratified; though it isn't motionless. There are quite strong zonal winds, and also there is an overturning circulation called the Brewer-Dobson circulation. The latter starts at the tropical tropopause with upward motion, goes up, poleward and terminates in the high latitudes. It takes, however, on the order of five years. The atmosphere weighs in at nearly 10.000 kg m$^{-2}$, which corresponds to the hydrostatic surface pressure of 98.500 Pa, or about that of a column of 10 meters of liquid water. The specific heat capacity of air is, however, a factor four less than for water (Table \ref{table:capacity}) and so in terms of total heat capacity the atmosphere is equivalent to 2.5 meters of water per unit area. The troposphere is close to 90 percent of the atmospheric mass, and so it is reasonable to disregard the upper atmosphere here. 
+If we start with the atmosphere, we saw in the first chapter how the troposphere is for the most part quickly stirred, mixed or overturned by various motion. Therefore it does not take very long for air to be mixed around the world, roughly on the order of months, though the time it takes to cross the equator can be longer. The stratosphere in turn, we found was in radiative equilibrium and stably stratified; though it isn't motionless. There are quite strong zonal winds, and also there is an overturning circulation called the Brewer-Dobson circulation. The latter starts at the tropical tropopause with upward motion, goes up, poleward and terminates in the high latitudes. It takes, however, on the order of five years. The atmosphere weighs in at nearly 10.000 kg m$^{-2}$, which corresponds to the hydrostatic surface pressure of 98.500 Pa, or about that of a column of 10 meters of liquid water. The specific heat capacity of air is, however, a factor four less than for water (Table \ref{table:capacity}) and so in terms of total heat capacity the atmosphere is equivalent to 2.5 meters of water per unit area. The troposphere is close to 90 percent of the atmospheric mass, and so it is reasonable to disregard the upper atmosphere here. 
 
 There is only a tiny fraction of water vapor in the atmosphere, about 25 kg m$^{-2}$, which corresponds to 2.5 cm if it was all condensed and distributed onto the surface. But the energy it takes to evaporate a kilogram of water is substantial, $L \approx $  2.500.000 J kg$^{-1}$. In the previous chapter we learned that relative humidity stays roughly constant under climate change and that this results in roughly a 7 percent increase in specific humidity per degree warming. Converting this latent heat into an equivalent heat capacity we find that the energy storage due to evaporation of water vapor corresponds to about 1.0 meters of water per unit area.
 
@@ -783,7 +790,7 @@ which clearly reminds us of the special case for a doubling of CO$_2$, $ECS=-F_{
 \begin{center}
 \includegraphics[width=12 cm]{../plots/Mixed_layer_temperature_abrupt_forcing.pdf}
 \end{center}
-\caption{ Numerical solutions to equation \ref{eq:mlo} to an abrupt forcing of $F_{2x}$ with varying values of $ECS$ of 1, 2, 3, 4, and 5 K. The heat capacity is chosen to correspond to that of an ocean covering 70 percent of the surface with a depth of 75 m which is a typical equivalent depth found in complex climate models. The dashed line shows the initial slope and the dots shows the e-folding response at time $\tau$. } 
+\caption{ Numerical solutions to equation \ref{eq:mlo} to an abrupt forcing of $F_{2x}$ with varying values of $ECS$ of 1, 2, 3, 4, and 5 K. The heat capacity is chosen to correspond to that of an ocean covering the entire surface of the Earth with a depth of 50 m which is a typical equivalent depth found in complex climate models. The dashed line shows the initial slope and the dots shows the e-folding response at time $\tau$. } 
 \label{fig:mlo_plot}
 \end{figure}
 
@@ -797,18 +804,19 @@ which depends on the heat capacity and the feedback parameter, and not the forci
 $$T(t) = T(\infty)\left(1-e^{-\frac{t}{\tau}}\right)$$ 
 such that when $t=\tau$ the system has reached a fraction $1-e^{-1}$ of the equilibrium. From this we can readily realize that the more sensitive the system is, the longer it takes to reach equilibrium. In Figure  \ref{fig:mlo_plot} I plotted the response time which increase from roughly 2 to 10 years for $ECS$ from 1 to 5 K. The slower equilibration of the more sensitive models is readily visible: after about 10 years the low sensitivity models have practically reached equilibrium, but the high sensitivity models continue to warm.
 
-Another interesting type of forcing is an fast injection or release of energy. We might think of the forcing as represented by  Dirac's delta function, but the main point is that it should be active only for a short period of time compared to the response time of the system. A volcanic eruption could be considered such a case with reasonable approximation. Whatever the reason, though, the result is that at time $t=0$ we might find the system out of equilibrium such that $T(0) \ne 0$ and subsequently we can set $F=0$. The solution to this is, as was also the case for the abrupt forcing, an exponential function:
-\begin{equation}
-T(t)=T(0)\cdot e^{\frac{\lambda}{C}t},
-\end{equation}
-but where we previously started with $T(0)=0$ we now have the system approaching the equilibrium state $T(\infty)=0$. Notice how for the mixed-layer ocean that the e-folding time, $\tau$, to a delta forcing is the same as for the abrupt forcing.
+Another interesting type of forcing is a fast injection or release of energy. We might think of the forcing as represented by  Dirac's delta function, but the main point is that it should be active only for a short period of time compared to the response time of the system. A volcanic eruption could be considered such a case with reasonable approximation. Whatever the reason, though, the result is that at time $t=0$ we might find the system out of equilibrium such that $T(0) \ne 0$ and subsequently we can set $F=0$. The solution to this is, as was also the case for the abrupt forcing, an exponential function:
+\begin{eqnarray}
+T(t) &=& T(0)\cdot e^{\frac{\lambda}{C}t} \\
+       &=& T(0)\cdot e^{-\frac{t}{\tau}} \nonumber
+\end{eqnarray}
+but where we previously started with $T(0)=0$ we now have the system approaching the equilibrium state $T(\infty)=0$. Notice how for the mixed-layer ocean that the e-folding time, $\tau$, to a delta forcing is the same as that for the abrupt forcing.
 
 
 % Include a case of a delta-forcing? 
 % T(t)=T(0)*e{\frac{\lambda}{C}t}
 
 \subsection{Numerical solutions}
-The mixed-layer model can be readily solved analytically for the case of an abrupt forcing and doing so has several advantages. But as we add complexity to our model and might want to consider forcing that varies in time the analytical solution quickly becomes intractable. Therefore we shall often resort to a numerical solution. The equations we want to solve are generally quite simple such that a basic time-stepping method can be used. We can approximate:
+The mixed-layer model can be readily solved analytically for the case of an abrupt forcing and doing so has several advantages. But as we add complexity to our model and might want to consider noise or forcing that varies in time the analytical solution quickly becomes intractable. Therefore we shall often resort to a numerical solution. The equations we want to solve are generally quite simple such that the first-order Euler time-stepping method can be used. We can approximate:
 $$ \frac{dT}{dt} \approx \frac{\Delta T}{\Delta t}, $$
 where the large $\Delta$ indicate finite changes in temperature and time, rather than infinitesimal, such that we might think of $\Delta T = T(t+\Delta t)-T(t)$. Inserting this into equation \ref{eq:mlo} and rearranging:
 \begin{equation}
@@ -824,9 +832,9 @@ In Python the time integration can be programmed as a for-loop and might look so
 \end{verbatim}
 where we recognize the terms in equations \ref{eq:mlo_imbalance} and \ref{eq:numerical_solution}. The code can readily be extended to solving more complex differential equations that we shall derive later.
 
-Although we shall not use the following methodology during this course, for completeness  of presentation I want to mention that there is  very elegant way to solve the evolution of a climate system to a time-varying forcing. Here it is assumed that a general evolving forcing $F(t)$ can be considered to consist of an additive sequence of many small abrupt forcings, or 'steps'. If, for instance, the surface temperature response to forcing $F_{2x}$ from a doubling if CO$_2$ is $R(t)$ (see Figure \ref{fig:mlo_plot}) then we can estimate the surface temperature evolution as a sum of the response to all previous steps up until the time $t$:
+Although we shall not use the following methodology during this course, for completeness  of presentation I want to mention that there is an elegant way to solve the evolution of a linear climate system to a time-varying forcing. Here it is assumed that a general evolving forcing $F(t)$ can be considered to consist of an additive sequence of many small abrupt forcings, or 'steps'. If, for instance, the surface temperature response to forcing $F_{2x}$ from a doubling if CO$_2$ is $R(t)$ (see Figure \ref{fig:mlo_plot}) then we can estimate the surface temperature evolution as a sum of the response to all previous steps up until the time $t$:
 $$ T(t) \approx \sum_{i=0}^{t-1} \frac{R(t-i)}{F_{2x}}\cdot \left[F(i)-F(i-1)\right], $$
-where the quantity in brackets is the incremental forcing change. The step-response method is particularly useful in that the response function $R$ can also be derived from complex climate models by conducting a single abrupt forcing experiment. Further, one can think of the response function in more general terms to mean anything that varies in time after an abrupt forcing is applied such as local temperature, or even the hydrological cycle, so that we are not limited to think of the global mean surface temperature.
+where the quantity in brackets is the incremental forcing change. The step-response method is particularly useful in that the response function $R$ can also be derived from complex climate models by conducting a single abrupt forcing experiment. Further, one can think of the response function in more general terms to mean anything that varies in time after an abrupt forcing is applied such as local temperature, or even the hydrological cycle, so that we are not limited to think of the global mean surface temperature. The method, however, assumes linearity in that each step solution is independent of the others. In a later chapter we shall introduce non-linearity which will prohibit us from using the step-response method.
 
 
 \section{The two-layer model}
@@ -835,7 +843,7 @@ Although the mixed-layer model is attractive in its simplicity, for the timescal
 N = C\frac{dT}{dt} + C_d\frac{dT_d}{dt}, 
 \label{eq:twolayer-imbalance}
 \end{equation}
-where $T_d$ is the deep ocean temperature. The deep ocean is not in direct contact with the surface and so does neither feel directly the atmospheric feedbacks nor the radiative forcing. It is connected to the mixed-layer by diffusive and/or advective processes such that at some set of states $(T, T_d)$ the net flux is zero; we shall take these to be $T=T_d$. Note that the temperature of the real world deep ocean ($\approx 3^\circ$C) is colder than that of the surface because deep water formation occurs primarily in polar regions; the temperatures in the two-layer model $(T, T_d)$ are to be thought of as relative. We shall further assume the flux is proportional to the difference, such that:
+where $T_d$ is the deep ocean temperature. In this simplest form, it is assumed that the deep ocean is not in direct contact with the surface and so does neither feel directly the atmospheric feedbacks nor the radiative forcing. It is connected to the mixed-layer by diffusive and/or advective processes such that at some set of states $(T, T_d)$ the net flux is zero; we shall take these to be $T=T_d$. Note that the temperature of the real world deep ocean ($\approx 3^\circ$C) is colder than that of the surface because deep water formation occurs primarily in polar regions; the temperatures in the two-layer model $(T, T_d)$ are to be thought of as relative. We shall further assume the flux is proportional to the difference, such that:
 \begin{equation}
 C_d\frac{dT_d}{dt} = \gamma(T-T_d), 
 \label{eq:twolayer-deep}
@@ -847,7 +855,7 @@ C\frac{dT}{dt} = F + \lambda T - \gamma(T-T_d).
 \end{equation}
 The resulting set of coupled differential equations \ref{eq:twolayer-deep} and \ref{eq:twolayer-ml} is the two-layer model. It is helpful to realize that if you insert \ref{eq:twolayer-deep} and \ref{eq:twolayer-ml} into equation \ref{eq:twolayer-imbalance} you get:
 $$N = F + \lambda T,$$
-that is, the imbalance of the two-layer model is determined solely by the mixed-layer temperature and the external forcing. The deep ocean is only 'felt' at the top-of-the-atmosphere through the moderation of the mixed-layer temperature. 
+that is, the imbalance of the two-layer model is determined solely by the mixed-layer temperature and the external forcing. The deep ocean is here only 'felt' at the top-of-the-atmosphere through the moderation of the mixed-layer temperature. We shall later return to a case wherein the deep ocean temperature is allowed to affect the radiation balance.
 
 \begin{figure}
 \begin{center}
@@ -857,7 +865,7 @@ that is, the imbalance of the two-layer model is determined solely by the mixed-
 \label{fig:two_layer_plot}
 \end{figure}
 
-Let us first look at the behavior of the two-layer model starting at rest with $T=T_d=0$ and we apply an abrupt forcing, $F$, at time $t=0$ and then keep it constant forever. Since the imbalance is only determined by the mixed-layer temperature only, we immediately obtain that the longterm equilibrium response is the same as before:
+Let us first look at the behavior of the two-layer model starting at rest with $T=T_d=0$ and we apply an abrupt forcing, $F$, at time $t=0$ and then keep it constant forever. Since the imbalance is purely determined by the mixed-layer temperature only, we immediately obtain that the longterm equilibrium response is the same as before:
 $$ T(\infty)=\frac{-F}{\lambda}.$$
 Likewise, the initial warming rate is determined only by the heat capacity of the mixed-layer, since at time $t=0$ the ocean heat uptake into the deep ocean is zero:
 $$\frac{dT}{dt}\Bigr|_{t=0} = \frac{F}{C}.$$
@@ -865,9 +873,9 @@ Thus, when exerted to an abrupt forcing both the longterm response and the initi
 
 It is when we consider the intermediate timescales of decades to centuries that the mixed-layer and two-layer models behave differently. For the mixed-layer model we were able to derive an exact analytical solution and saw that it behaves as an exponential relaxation towards the equilibrium. It is also possible to derive an exact analytical solutions to the two-layer model, as shown for instance by Geoffroy et al.\cite{geoffroy2013a}, but this is far too complicated for this course and further obtaining the exact solution provides little physical insight. In broad terms, though, we can think of the deep ocean as introducing a slow time-scale, $\tau_d$ which is of the order of centuries, such that the solution is approximately the weighted sum of two exponentials $T(t) \approx \frac{-F}{\lambda}(1-a e^{\frac{-t}{\tau}}-b e^{\frac{-t}{\tau_d}})$, where $a+b=1$. 
 
-Instead, I solved the two-layer model numerically as shown in Figure \ref{fig:two_layer_plot} where I also compare it to the mixed-layer model and the results from a complex climate model, MPI-ESM1.2. We see that the overall behavior of MPI-ESM1.2 is captured well by the two-layer model; a fact that makes the two-layer model a particularly useful starting point for studies of climate dynamics. There are two small differences, though: in the first few years MPI-ESM1.2 warms faster most likely because it also includes some land which has a low heat capacity, and in the long run the warming in MPI-ESM1.2 is a bit slower. The latter may be due to non-linearities in the model's feedback, a theme we shall return to later.
+Instead, I solve the two-layer model numerically as shown in Figure \ref{fig:two_layer_plot} where I also compare it to the mixed-layer model and the results from a complex climate model, MPI-ESM1.2. We see that the overall behavior of MPI-ESM1.2 is captured well by the two-layer model; a fact that makes the two-layer model a particularly useful starting point for studies of climate dynamics. There are two small differences, though: in the first few years MPI-ESM1.2 warms faster most likely because it also includes some land which has a low heat capacity, and on decadal timescales the warming in MPI-ESM1.2 is a bit slower. 
 
-A caveat with the two-layer model is that the single deep-ocean temperature is to represent diverse set of mixing- and advective processes that constitute the Earth's deep ocean circulation. Therefore, to get a reasonable match of the two-layer model to more complex models, such as MPI-ESM1.2, we have to use a somewhat smaller heat capacity than that of the full deep ocean of about 4.000 m depth. Instead, I use a fraction of that, 1.000 m equivalent, to compromise between relatively fast mixing into the upper deep ocean and slow mixing deeper down. One can model this with more levels, or a full three dimensional general ocean circulation model, but this comes at the expense of transparency.
+A caveat with the two-layer model is that the single deep-ocean temperature is to represent a diverse set of mixing- and advective processes that constitute the Earth's deep ocean circulation. Therefore, to get a reasonable match of the two-layer model to more complex models, such as MPI-ESM1.2, we have to use a somewhat smaller heat capacity than that of the full deep ocean of about 4,000 m depth covering some 70 percent of the surface, corresponding to a mean depth of 2,600 m if distributed over the entire Earth's surface. Instead, I use about half of that -- 1,200 m global equivalent -- to compromise between relatively fast mixing into the upper deep ocean and slow mixing deeper down. One can model this with more levels, or a full three dimensional general ocean circulation model, but this comes at the expense of transparency.
 
 Finally, let us take a look at the temperature response of the two-layer model to a delta forcing. Here we imagine that heat is rapidly extracted from- or injected into the mixed-layer such that the deep ocean cannot react, that is, at time $t=0$ we have  $T\ne 0$ and $T_d=0$. If we then evaluate the initial rate of change of the mixed-layer temperature (\ref{eq:twolayer-ml}) then we obtain:
 \begin{equation}
@@ -879,7 +887,7 @@ yielding the result that the deep ocean heat uptake acts to restore the surface 
 \begin{center}
 \includegraphics[width=12 cm]{../plots/Zero-layer-model_rampup.pdf}
 \end{center}
-\caption{ Comparison of the two-layer model (solid curves) to the zero-layer model (dashed lines). The colors indicate the speed of the ramp-up of the forcing: Blue corresponds to 1 percent CO$_2$ concentration increase per year, whereas green is 2 percent, red is 4 percent and orange is 8 percent increase per year. } 
+\caption{ Comparison of the two-layer model (solid curves) to the zero-layer model (dashed lines). The colors indicate the speed of the ramp-up of the forcing: Blue corresponds to 1 percent CO$_2$ concentration increase per year, whereas green is 2 percent, and red is 4 percent increase per year. Marked is also the warming at year 70 in the first experiment which is defined as the transient climate response (TCR).} 
 \label{fig:zero_layer_plot}
 \end{figure}
 
@@ -890,9 +898,9 @@ An approximate diagnostic version of the two-layer model can be obtained for the
 0 = F + \left(\lambda - \gamma \right)T,
 \label{eq:zero-layer}
 \end{equation}
-and from equations \ref{eq:twolayer-imbalance} and \ref{eq:twolayer-deep} we get $N=\gamma T$. Thus, for instance the evolution of the surface temperature is purely a function of the forcing:
+and from equations \ref{eq:twolayer-imbalance} and \ref{eq:twolayer-deep} we get $N=\gamma T$. Thus, the evolution of the surface temperature is purely a function of the forcing:
 $$T(t)=\frac{F(t)}{\gamma-\lambda}.$$
-We call this the zero-layer approximation as there are no layers left that have memory and the result is a purely diagnostic equation relating temperature, forcing and imbalance with bulk properties of the system. I plotted both the zero- and the two-layer models exposed to forcing that increases linearly in time in Figure \ref{fig:zero_layer_plot}. We usually think of experiments with, say, a 1 percent increase in atmospheric CO$_2$ per year, yielding a doubling of the concentration in about 70 years -- this corresponds roughly to the anthropogenic forcing increase since the 1950's. The temperature response after 70 years in this experiment is often referred to as the transient climate response (TCR). Because the forcing is logarithmic in the CO$_2$ concentration this corresponds to a nearly linear increase in time. The zero-layer approximation works surprisingly well on multi-decadal timescales for these types of forcing that changes gradually. In the first decades the zero-layer model overestimates warming as the mixed-layer heat capacity still matters, whereas after about 50-60 years the model underestimates surface warming as the deep ocean begins to warm up. Further, the faster we increase the forcing the more the zero-layer model overestimates the initial warming.
+We call this the zero-layer approximation as there are no layers left that have memory and the result is a purely diagnostic equation relating temperature, forcing and imbalance with bulk properties of the system. I plotted both the zero- and the two-layer models exposed to forcing that increases linearly in time in Figure \ref{fig:zero_layer_plot}. We usually think of experiments with, say, a 1 percent increase in atmospheric CO$_2$ per year, yielding a doubling of the concentration in about 70 years -- this corresponds roughly to the anthropogenic forcing increase since the 1950's. The temperature response after 70 years in this experiment is often referred to as the transient climate response (TCR). Because the forcing is logarithmic in the CO$_2$ concentration this corresponds to a nearly linear increase in time. The zero-layer approximation works surprisingly well on multi-decadal timescales for these types of forcing that changes gradually. In the first decades the zero-layer model overestimates warming as the mixed-layer heat capacity still matters, whereas after about 70 years the model underestimates surface warming as the deep ocean begins to warm up. Further, the faster we increase the forcing the more the zero-layer model overestimates the initial warming.
 The zero-layer model is being extensively used to interpret the instrumental record warming in terms of inferring Earth's climate sensitivity; a theme that we shall return to later.
 
 
@@ -907,7 +915,7 @@ The zero-layer model is being extensively used to interpret the instrumental rec
 {\setlength{\parindent}{0cm}
 %\hrule
 \begin{exercise}
-Observations suggest that Greenland currently looses around 200 km$^3$ ice per year (1 km$^3$ = 10$^9$ m$^3$). Estimate the part of the Earth's energy imbalance that goes into the current melting of the Greenland ice sheet, how much it contributes to global sea level rise in millimeters per year, and how long will it take until Greenland is gone if melt continues at the current pace? Remember the surface area of the Earth is 510$\cdot$10$^{12}$ m$^2$, the oceans cover about 70 percent of the surface, and that the density of ice is about 900 kg m$^{-3}$. 
+Observations suggest that Greenland currently looses around 200 km$^3$ ice per year (1 km$^3$ = 10$^9$ m$^3$). Estimate a) the part of Earth's energy imbalance that goes into the current melting of the Greenland ice sheet, b) how much it contributes to global sea level rise in millimeters per year, and c) how long it will take until Greenland is gone if melt continues at the current pace? Remember the surface area of the Earth is 510$\cdot$10$^{12}$ m$^2$, the oceans cover about 70 percent of the surface, and that the density of ice is about 900 kg m$^{-3}$. 
 \end{exercise}
 
 \begin{exercise}
@@ -919,7 +927,7 @@ The script contains two commented out lines (starting with \#) towards the end t
 \end{exercise}
 
 \begin{exercise}
-Imagine the Earth is hit by an asteroid. The impact whirls debris into the atmosphere which results in a temporary rise of the planetary albedo and hence a surface cooling. The debris is relatively heavy and therefore falls out of the atmosphere within weeks of the impact such that we can consider the asteroid impact a delta forcing. The rapid cooling leaves the system shortly after the impact at $T(0)=-6.0$ K. We shall assume the Earth has an $ECS=3.0$ K and a mixed-layer heat capacity of corresponding to a depth of 75 meters: $C= 0.7 \cdot 75\cdot 1000 \cdot 4181$ J m$^{-2}$K$^{-1}$. 
+Imagine the Earth is hit by an asteroid. The impact whirls debris into the atmosphere which results in a temporary rise of the planetary albedo and hence a surface cooling. The debris is relatively heavy and therefore falls out of the atmosphere within weeks of the impact such that we can consider the asteroid impact a delta forcing. The rapid cooling leaves the system shortly after the impact at $T(0)=-6.0$ K. We shall assume the Earth has an $ECS=3.0$ K and a mixed-layer heat capacity  corresponding to a global mean depth of 50 meters: $C= 50\cdot 1000 \cdot 4181$ J m$^{-2}$K$^{-1}$. 
 If you ignore the deep ocean, how many years would it take until the mixed-layer temperature reaches $T=-1.0$ K?
 If you consider a deep ocean, which is roughly unaffected directly during the asteroid impact such the $T_d(0)=0$, would the surface temperature reach $T=-1.0$ K faster or slower?
 \end{exercise}
@@ -934,7 +942,6 @@ Plot the result and verify your inference from the previous exercise.
 \end{exercise}
 
 }
-
 
 %---------------------------------------------------------------------
 \chapter{External forcing and fast adjustments}
@@ -1134,79 +1141,18 @@ Explain, in your own words, how clouds adjust to an increase in atmospheric CO$_
 
 }
 
-%---------------------------------------------------------------------
-%\chapter{Natural variability}
 
 
 %---------------------------------------------------------------------
 \chapter{Global variability}
 \label{chapter:global_variability}
-Variability is everywhere in the quasi-chaos of the Earth's climate system. We can see this variability firsthand in a time series of the observed changes in global mean surface temperature (GMST), as shown in Figure \ref{fig:variability_01}. The evolution of surface warming is, as we can see, not a straightforward increase over time. Volcanoes constantly drive short cooling episodes followed by "rebound" warming, and the time-varying nature of anthropogenic emissions induces wobbles in the warming trend. But if we were to remove the influence of volcanoes, anthropogenic emissions, and other forcings, what would be left behind? 
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=12 cm]{../plots/Variability01.pdf}
-	\end{center}
-	\caption{ Caption } 
-	\label{fig:variability_01}
-\end{figure}
-
-We call the naturally-occurring unforced variability in the climate system, \textit{internal variability}, because it refers to internal processes in the system that drive variability even in the unforced climate system. These processes are not completely random (we say ``quasi-chaotic''); they follow well-known oscillatory patterns such as the El-Niño Southern Oscillation (ENSO) or the Atlantic Multi-decadal Oscillation (AMO), which are nevertheless difficult to predict. Although internal variability is naturally-occuring, we refer to variability induced by volcanoes and other by non-anthropogenic forcings as \textit{natural variability}. That may be confusing, but it's important to hold the variability relating to forcing separate from the variability inherent in the unforced climate system.
-
-\section{Variability versus forced response}
-One reason why this separation is important relates to our expectations of how the climate behaves or \textit{should} behave given an external forcing. If we compare a simulation of climate and the observations of climate, as shown in Figure \ref{fig:variability_01}, there are decade-long periods when the observations and the simulation diverge. Is the model therefore ``wrong'', or are these fluctuations just internal variability?
-
-We can attempt to estimate internal variability in the historical GMST in several ways, including one cutting-edge method that has become possible due to increasing computational power. If we simulate the evolution of temperature on Earth since the pre-industrial era say, 100 times, but introduce small differences into the model's initial conditions, the chaotic nature of the climate system will transform those differences into substantial variations in the GMST: internal variability. If we accept our model as a good-enough representation of the Earth's GMST evolution and the factors that influence it, then each simulation represents how the GMST \textit{might} have behaved in an almost identical world with slightly different initial conditions.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=12 cm]{../plots/Variability02.pdf}
-	\end{center}
-	\caption{ Caption } 
-	\label{fig:variability_02}
-\end{figure}
-
-In Figure \ref{fig:variability_02} just such an ensemble is depicted, in fact, this is the largest coupled climate model ensemble of the historical period to date: the MPI-ESM grand ensemble. The observations and the single simulation from Figure \ref{fig:variability_01} are also shown, and we see that their deviations lie within the internal variability generated by the ensemble. Both the observations and the single simulation wander up and down, at times amongst the warmest simulations, at times amongst the coolest, but they remain within the bounds of the ensemble.
-
-Because the ensemble is so large, we can even separate the expected forced response from the internal variability. If the distribution in temperature anomalies is Gaussian (it's not but it's very close), then the ensemble mean is an estimator of the true forced response, with a mean standard error that shrinks with ensemble size \textit{n},
-
-\begin{equation}
-	MSE = E \lbrack \left(  \overline{X} - \mu  \right)^{2}  \rbrack = \frac{\sigma^{2}}{n}.
-	\label{eq:mse}
-\end{equation}
-
-The remaining internal variability in a 100-member ensemble mean is therefore small, leaving the forced response (see Figure \ref{fig:variability_03}), which we can then subtract from every ensemble member to isolate the internal variability.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=12 cm]{../plots/Variability03.pdf}
-	\end{center}
-	\caption{ Caption } 
-	\label{fig:variability_03}
-\end{figure}
-
 
 \section{Noise}
-Not everyone has a large ensemble. And for purposes of efficiency or conceptual understanding, we may wish to represent variability in a simpler way than with a coupled climate model. We can represent internal variability, for example, as stochastic noise in the form of an error in the forcing term of the simple models we have already encountered. In the mixed layer model this becomes:
+TOA and deep ocean heat uptake
 
-\begin{equation}
-	C\frac{dT}{dt} = F + \lambda T + \epsilon,
-	\label{eq:mlo-var}
-\end{equation}
-
-There are multiple types of noise. \textit{White noise} represents a Gaussian distribution in the error term, $\epsilon \sim N(\mu,\sigma^{2}) $. It is completely random and has equal power density at all timescales. We could use white noise to represent changes in the forcing. But the mixed layer will save the history of this white noise as heat content... red noise
-
-
-Conceptualise IV as noise
-White noise and red noise
-
-What happens in the mixed and two-layer model?
-Influence of the deep ocean. Perhaps refer to Uwe and Ernst Meier-Reimers paper
+Chris' figure
 
 \section{Climate response to noise}
-
-May consider ECS and influence on auto-correlation.
-
 
 
 
