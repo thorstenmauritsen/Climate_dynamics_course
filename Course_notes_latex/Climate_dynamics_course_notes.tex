@@ -1190,26 +1190,73 @@ The remaining internal variability in a 100-member ensemble mean is therefore sm
 	\label{fig:variability_03}
 \end{figure}
 
-
 \section{Noise}
-Not everyone has a large ensemble. And for purposes of efficiency or conceptual understanding, we may wish to represent variability in a simpler way than with a coupled climate model. We can represent internal variability, for example, as stochastic noise in the form of an error in the forcing term of the simple models we have already encountered. In the mixed layer model this becomes:
+Not everyone has a large ensemble. And for purposes of efficiency or conceptual understanding, we may wish to represent variability in a simpler way than with a coupled climate model. We can represent internal variability in the simple models we have already encountered by replacing the forcing with an error term. In the mixed layer model this becomes:
 
 \begin{equation}
-C\frac{dT}{dt} = F + \lambda T + \epsilon,
+C\frac{dT}{dt} = \epsilon + \lambda T,
 \label{eq:mlo-var}
 \end{equation}
 
-There are multiple types of noise. \textit{White noise} represents a Gaussian distribution in the error term, $\epsilon \sim N(\mu,\sigma^{2}) $. It is completely random and has equal power density at all timescales. We could use white noise to represent changes in the forcing. But the mixed layer will save the history of this white noise as heat content... red noise
+The error term is sampled from a Gaussian distribution $\epsilon \sim N(\mu,\sigma^{2})$, and is independent of past error terms, like rolling a die. We call this type of stochastic process \textit{white noise}. 
+
+So, how does the surface temperature respond to white noise in the forcing? Do we also expect it to have a white noise signature? Not really, since the temperature is not independent at each timestep. If we look back to Equation \ref{eq:numerical_solution} and rearrange, we clearly see the temperature has a memory of the previous timestep.
+\begin{equation}
+T(t+\Delta t) =  \left[1 + \frac{\Delta t \lambda }{C}  \right] T(t) + \frac{\Delta t}{C} \ \epsilon(t), 
+\end{equation}
+The dependence on the previous timestep is reminiscent of a process we call \textit{red noise}.
+
+We can visualise the different colours of noise in our system by calculating their power spectral density. The power spectral density $P$ is a measure of the power at each frequency, which in our system is analogous to the strength of the variability at different time lags. With model output we can calculate $P$ for our desired variable $x(t)$ using a Fourier Transform:
+$$P = \left | \mathcal{F}\{x(t)\}\right | ^{2}$$
+
+Alternatively, and this I find more intuitive for understanding the concept of noise, we can perform a Fourier Transform on the autocorrelation function of $x$:
+
+$$P = \mathcal{F}\{\gamma(\tau)\} ,$$
+
+If we standardise our variable $x$, so that $x \sim (\mu=0,\sigma^{2}=1)$, we can write the autocorrelation function as
+
+$$\gamma(\tau)\ =  \overline{x(t) \ x(t+\tau)}$$.
+
+For white noise, this becomes a delta function, since for $\tau = 0$, the autocorrelation is equal to the variance, which is $=1$ by definition, and for all other time lags the correlation is 0.
+$$\gamma_{W}(\tau)\ =  \overline{x(t) \ x(t+\tau)} = \overline{\epsilon(t) \ \epsilon(t+\tau)} = \delta(0)$$. The power spectrum then takes on a constant value for all frequencies
+$$P = \mathcal{F}\{\gamma_{W}(\tau)\} = const. $$.
+
+Our temperature variable is a bit trickier. If we assume that it is a standardised red noise process, it will take the form
+$$x(t+1) = a x(t) + \sqrt{1-a^{2}} \ \epsilon(t),$$
+and the autocorrelation for $\tau = 1$ is
+
+\begin{equation}
+\begin{aligned}
+\gamma_{R}(1) = {} &  \overline{x(t+1)  x(t)}  = a \overline{x(t)^{2}} + \sqrt{1-a^{2}} \ \overline{\epsilon(t)x(t)}  \\
+& = a \cdot 1 + \sqrt{1-a^{2}} \cdot 0 = a
+\end{aligned}
+\end{equation}
+
+Successive autocorrelation coefficients go like $a^{\tau}$, and although these are discrete values, we can cheat a little and write the autocorrelation function as a continuous function. We also make the function `even' by taking the absolute value of $\tau$, since by definition $\gamma(\tau) =\gamma(-\tau)$:
+
+\begin{equation}
+\gamma_{R}(\tau) = a^{|\tau|} = e^{-R |\tau|}  \\
+\end{equation}
+where $R = ln(a) > 0 $. It can be shown that the Fourier transform of such a function and therefore the Power spectrum is
+$$P_{R} = \mathcal{F} \left \{ e^{-R |\tau|} \right \} = \frac{2R}{R^{2} + \omega^{2}}   \\$$
+where $\omega$ is the frequency.
+
+We can now plot the power spectra for both white and red noise and appreciate their distribution.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=14 cm]{../plots/Variability04.pdf}
+	\end{center}
+	\caption{ Caption } 
+	\label{fig:variability_04}
+\end{figure}
 
 
-Conceptualise IV as noise
-White noise and red noise
 
-What happens in the mixed and two-layer model?
-Influence of the deep ocean. Perhaps refer to Uwe and Ernst Meier-Reimers paper
 
 \section{Climate response to noise}
-
+What happens in the mixed and two-layer model?
+Influence of the deep ocean. Perhaps refer to Uwe and Ernst Meier-Reimers paper
 May consider ECS and influence on auto-correlation.
 
 
