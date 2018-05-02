@@ -54,12 +54,13 @@ def yearmean(inyears,x):
 
 
 def power_spectrum(exp):
-    frequency  = np.linspace(0,12./2.,int(nyears/2))
+    nstep = np.size(exp['T_ml'])
+    frequency  = np.linspace(0,12./2.,int(nstep/2))
     nbins= 40
-    bins = np.exp(np.linspace(-7,2,nbins))
+    bins = np.exp(np.linspace(-9,2,nbins))
     P_ml = np.fft.fft(signal.detrend(exp['T_ml']))
-    P_ml = P_ml[0:int(nyears/2)]
-    data = abs(P_ml)**2
+    P_ml = P_ml[0:int(nstep/2)]
+    data = abs(P_ml)**2/nstep
     XX = np.array([np.mean((bins[binInd], bins[binInd+1])) for binInd in range(nbins-1)])
     YY = np.array([np.mean(data[(frequency > bins[binInd]) & (frequency <= bins[binInd+1])]) for binInd in range(nbins-1)])
     return XX, YY
@@ -207,8 +208,17 @@ plt.close()
 
 fig, axes = plt.subplots(1,2, figsize=(10,5))
 
+
+
 x,y = power_spectrum(exp1)
 axes[1].loglog(1/x, y, color=color1)
+
+timescale=1/x
+axes[1].loglog(timescale,(0.1**2/12/(1+1-2*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
+
+# ECS=1K case:
+alpha=1+exp1['lambda_0']*month/exp1['C_ml']
+axes[1].loglog(timescale,(0.1**2/12/(1+alpha**2-2*alpha*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
 
 x,y = power_spectrum(exp2)
 axes[1].loglog(1/x, y, color=color2)
@@ -227,8 +237,17 @@ axes[1].set_xlabel('Time-scale (years)')
 axes[1].set_title("Two-layer model")
 
 
+
+
 x,y = power_spectrum(mlo1)
 l1, = axes[0].loglog(1/x, y, color=color1, label='ECS = '+str(mlo1['ECS'])+ 'K')
+
+timescale=1/x
+redt, = axes[0].loglog(timescale,(0.1**2/12/(1+1-2*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1, label='Theory')
+
+# ECS=1K case:
+alpha=1+mlo1['lambda_0']*month/mlo1['C_ml']
+axes[0].loglog(timescale,(0.1**2/12/(1+alpha**2-2*alpha*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
 
 x,y = power_spectrum(mlo2)
 l2, = axes[0].loglog(1/x, y, color=color2, label='ECS = '+str(mlo2['ECS'])+ 'K')
@@ -246,10 +265,10 @@ axes[0].set_xlabel('Time-scale (years)')
 axes[0].set_ylabel(r'Power spectral density (K$^2$)')
 axes[0].set_title("Mixed-layer model")
 
-axes[0].legend(handles=[l1, l2, l3, l4, l5], fontsize=10)
+axes[0].legend(handles=[l1, l2, l3, l4, l5, redt], fontsize=10)
 
 
-plt.setp(axes, xlim=(5e-2,2e3), ylim=(1e4,1e12))
+plt.setp(axes, xlim=(1e-1,1e4), ylim=(1e-4,1e6))
 plt.setp(axes, xticks=(0.1, 1, 10, 100, 1000), xticklabels=('0.1', '1', '10', '100', '1000'))
 
 
@@ -276,10 +295,10 @@ axes.scatter(mlo1['ar1t'], mlo1['ECS'], color=colormlm)
 axes.scatter(mlo2['ar1t'], mlo2['ECS'], color=colormlm)
 axes.scatter(mlo3['ar1t'], mlo3['ECS'], color=colormlm)
 
-x=np.arange(0.1,0.95,0.01)
-theoryb = -f2x/(np.log(x)*mlo1['C_ml']/year+mlo1['gamma']*mlo1['efficacy'])
+z=np.arange(0.1,0.95,0.01)
+theoryb = -f2x/(np.log(z)*mlo1['C_ml']/year+mlo1['gamma']*mlo1['efficacy'])
 theoryb[np.where(theoryb<0)] = np.nan
-mlm, = axes.plot(x,theoryb, color=colormlm, label='Mixed-layer model')
+mlm, = axes.plot(z,theoryb, color=colormlm, label='Mixed-layer model')
 
 axes.scatter(exp1['ar1t'], exp1['ECS'], color=colortlm)
 axes.scatter(exp2['ar1t'], exp2['ECS'], color=colortlm)
@@ -287,9 +306,9 @@ axes.scatter(exp3['ar1t'], exp3['ECS'], color=colortlm)
 
 
 
-theorya = -f2x/(np.log(x)*exp1['C_ml']/year+exp1['gamma']*exp1['efficacy'])
+theorya = -f2x/(np.log(z)*exp1['C_ml']/year+exp1['gamma']*exp1['efficacy'])
 theorya[np.where(theorya<0)] = np.nan
-tlm, = axes.plot(x,theorya, color=colortlm, label='Two-layer model')
+tlm, = axes.plot(z,theorya, color=colortlm, label='Two-layer model')
 
 axes.legend(handles=[mlm,tlm,mpim, hadcrut], fontsize=10)
 
