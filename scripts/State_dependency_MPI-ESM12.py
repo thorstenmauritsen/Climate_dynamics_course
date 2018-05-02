@@ -27,7 +27,7 @@ amip4xCO2 = netcdf.netcdf_file('../Data/BOT_echam-6.3.02p4_amip4xCO2_1979-2008_t
 
 # ---------------------------------------------------
 
-fig, axes = plt.subplots(1,1, figsize=(5,7))  
+fig, axes = plt.subplots(1,1, figsize=(5,7))
 
 id=np.arange(0,299)
 idfit=np.arange(0,299)
@@ -101,11 +101,11 @@ axes.spines['bottom'].set_position('zero')
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     ticks.set_color(almost_black)
 
-spines_to_remove        = ['top', 'right'] 
+spines_to_remove        = ['top', 'right']
 for spine in spines_to_remove:
     axes.spines[spine].set_visible(False)
 
-spines_to_keep = [ 'bottom', 'left']     
+spines_to_keep = [ 'bottom', 'left']
 for spine in spines_to_keep:
     axes.spines[spine].set_linewidth(0.5)
     axes.spines[spine].set_color(almost_black)
@@ -138,7 +138,7 @@ plt.close()
 
 #-------------------------------------------------------------
 
-fig, axes = plt.subplots(1,1, figsize=(6,8))  
+fig, axes = plt.subplots(1,1, figsize=(6,8))
 
 xmax=6
 
@@ -183,11 +183,11 @@ axes.spines['bottom'].set_position('zero')
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     ticks.set_color(almost_black)
 
-spines_to_remove        = ['top', 'right'] 
+spines_to_remove        = ['top', 'right']
 for spine in spines_to_remove:
     axes.spines[spine].set_visible(False)
 
-spines_to_keep = [ 'bottom', 'left']     
+spines_to_keep = [ 'bottom', 'left']
 for spine in spines_to_keep:
     axes.spines[spine].set_linewidth(0.5)
     axes.spines[spine].set_color(almost_black)
@@ -198,7 +198,7 @@ plt.close()
 
 #-------------------------------------------------------------
 
-fig, axes = plt.subplots(1,1, figsize=(6,8))  
+fig, axes = plt.subplots(1,1, figsize=(6,8))
 
 xmax=6
 
@@ -235,11 +235,11 @@ axes.spines['bottom'].set_position('zero')
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     ticks.set_color(almost_black)
 
-spines_to_remove        = ['top', 'right'] 
+spines_to_remove        = ['top', 'right']
 for spine in spines_to_remove:
     axes.spines[spine].set_visible(False)
 
-spines_to_keep = [ 'bottom', 'left']     
+spines_to_keep = [ 'bottom', 'left']
 for spine in spines_to_keep:
     axes.spines[spine].set_linewidth(0.5)
     axes.spines[spine].set_color(almost_black)
