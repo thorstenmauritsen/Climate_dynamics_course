@@ -2001,7 +2001,7 @@ If you are stuck in any way I am available via email and will likely respond wit
 
 \section{Attribution of historical warming}
 Suppose that more than a hundred years of research is wrong and the well-mixed greenhouse gases have no effect on the Earth's radiation balance. Could the historical warming then still be forced? 
-If all we know is the global mean temperature then you can begin to explore this idea with the two-layer model by rescaling the different components in the historical forcing. Create at least two sets of scaling factors, $S_i$, such that:
+If all we know is the global mean temperature then you can begin to explore this idea with the two-layer model by rescaling the different components in the historical forcing. Create at least one set of scaling factors, $S_i$, such that:
 $$F = 0\cdot F_{CO_2} + S_{aero}\cdot F_{aero}+ S_{solar}\cdot F_{solar} + ...$$
 where the CO$_2$ and other well-mixed greenhouse gas forcings are scaled to zero, but compensated by other forcings to obtain a reasonable match with observed warming. Remember that you can also use negative $S_i$ to make for instance aerosol or stratospheric ozone forcing positive. %You may for instance present the two, or more, rescaled runs together with the standard setup with $S_i=1$ and judge their ability to explain global warming, but the floor is open.
 For this project you can use the provided two-layer model setup to run the historical case.
@@ -2014,9 +2014,9 @@ For this project you can use the provided two-layer model setup to run the histo
 \section{The underwater volcano}
 As in the previous project, suppose we are all mistaken and that the greenhouse gas forcing is zero, and instead global warming is caused by geothermal heat seeping out of the seabed, e.g. through volcanoes. You must now introduce a deep ocean forcing $F_d$ into the two-layer model equation for the deep ocean:
 $$C_d\frac{dT_d}{dt} = \gamma(T-T_d) + F_d$$
-In the Python code you can do this by inserting an additional argument to the twolayermodel function interface. You now have to invent a forcing time series and adjust its strength such that the model roughly reproduces the observed warming. You may choose to keep some of the non-greenhouse gas forcing components, if you like, though at least the ordinary volcanos and solar forcing should be retained.
+In the Python code you can do this by inserting an additional argument to the twolayermodel function interface. You now have to invent a forcing time series and adjust its strength such that the model roughly reproduces the observed warming, e.g. on the order of 1 K surface warming in 50-100 years. %You may choose to keep some of the non-greenhouse gas forcing components, if you like, though at least the ordinary volcanos and solar forcing should be retained.
 
-One way you might illustrate that this is a bad idea is to calculate the sea level rise that would occur. If you assume the ocean water approximately expands at a rate of roughly $1.5\cdot 10^{-4}$ K$^{-1}$, and remembering that the two-layer model is set up to represent a 75 m mixed-layer plus a 1000 m deep ocean, estimate the sea-level rise to demonstrate that we would have had were global warming due to underwater volcanos.
+One way you might illustrate that this is a bad idea is to calculate the sea level rise that would occur. If you assume the ocean water approximately expands at a rate of roughly $1.5\cdot 10^{-4}$ K$^{-1}$, and remembering that the two-layer model is set up to represent a 50 m mixed-layer plus a 1200 m deep ocean, estimate the sea-level rise to demonstrate that we would have had were global warming due to underwater volcanoes.
 
 
 \section{Create a hiatus}
@@ -2032,7 +2032,11 @@ What is the average forcing change in Wm$^{-2}$ needed in the first 15 years rel
 
 
 \section{Estimating the forcing from CO$_2$ all the way from zero}
-We usually assume that the forcing from CO$_2$ is logarithmic in concentration such that $F_{4x} \approx 2\cdot F_{2x}$ and $F_{8x} \approx 3\cdot F_{2x}$, $F_{0.5x} \approx -F_{2x}$ etc. which is a finding we owe to Svante Arrhenius' epic study from 1896. But how far does the logarithmic assumption work? To investigate this you will use the MODTRAN model to investigate this. You can start from the standard 400 ppm and go up through consecutive doublings e.g. to 6400 ppm and likewise down by halving the concentration. Also figure out what is the total forcing between 0 and 400 ppm. Repeat the exercise with the observer at both 70 km height and also at the tropopause at 18 km height to see how the stratosphere will adjust. You may plot the result and figure out over which range the logarithmic assumption works reasonably, or focus on how stratospheric adjust depends on the CO$_2$ level.
+We usually assume that the forcing from CO$_2$ is logarithmic in concentration such that $F_{4x} \approx 2\cdot F_{2x}$ and $F_{8x} \approx 3\cdot F_{2x}$, $F_{0.5x} \approx -F_{2x}$ etc. which is a finding we owe to Svante Arrhenius' epic study from 1896. But how far does the logarithmic assumption work? To investigate this you will use the MODTRAN model to investigate this. You can start from the standard 400 ppm and go up through consecutive doublings e.g. to 6400 ppm and likewise down by halving the concentration. At which point does the logarithmic approximation stop working? 
+
+You can repeat the exercise with the observer at both 70 km height and also at the tropopause at 18 km height to see how the stratosphere will adjust. 
+
+You may plot the result and figure, perhaps with a logarithmic axis for the CO$_2$ concentration, in order to figure out over which range the logarithmic assumption works reasonably, or you might focus on how stratospheric adjust depends on the CO$_2$ level.
 
 
 \section{Modeling natural variability}
@@ -2051,32 +2055,32 @@ If you plot the time-series of mixed-layer and deep ocean temperatures you will 
 \end{verbatim}
 What happens if you set $ECS$ to a very large number such that $\lambda \rightarrow 0$?
 
-\section{Treating volcanoes in historical simulations}
-Often when we run models with historical forcing we first run our models into equilibrium with pre-industrial forcings that do not contain volcanoes, and then treat volcanoes as a negative forcing as done in figures \ref{fig:historical_forcing} and \ref{fig:historical_two-layer}. Gregory et al. (2013) pointed out that this leads to an artificial cooling, in particular of the deep ocean, over the historical period.
+%\section{Treating volcanoes in historical simulations}
+%Often when we run models with historical forcing we first run our models into equilibrium with pre-industrial forcings that do not contain volcanoes, and then treat volcanoes as a negative forcing as done in figures \ref{fig:historical_forcing} and \ref{fig:historical_two-layer}. Gregory et al. (2013) pointed out that this leads to an artificial cooling, in particular of the deep ocean, over the historical period.
 
-Volcanoes, for all we know, occur randomly every now and then and are a part of the natural boundary conditions for the climate system. Therefore it is more reasonable to run the climate model to equilibrium with the volcanic forcing and then start the historical simulation from a slightly colder climate. This can be done in several ways for the two-layer model. 1) One could repeat the record of volcanic forcing, available for 1750-2011 in the IPCC report, over and over again and eventually the temperature will fluctuate around a new mean. 2) Or one could calculate the equilibrium state from the two-layer model equations. 3) Or finally one can subtract the mean volcanic forcing from the volcanic forcing such that it is on average zero. Either way the result will be a simulation that does not drift due to volcanos. 
+%Volcanoes, for all we know, occur randomly every now and then and are a part of the natural boundary conditions for the climate system. Therefore it is more reasonable to run the climate model to equilibrium with the volcanic forcing and then start the historical simulation from a slightly colder climate. This can be done in several ways for the two-layer model. 1) One could repeat the record of volcanic forcing, available for 1750-2011 in the IPCC report, over and over again and eventually the temperature will fluctuate around a new mean. 2) Or one could calculate the equilibrium state from the two-layer model equations. 3) Or finally one can subtract the mean volcanic forcing from the volcanic forcing such that it is on average zero. Either way the result will be a simulation that does not drift due to volcanos. 
 
-Use the provided two-layer model set up to run the historical case to figure out what the impact is of including volcanos in the pre-industrial state. You could look at both the mixed-layer and deep ocean temperatures to figure out what is going on. If you were to take the standard setup that drifts and increase the $ECS$ in that model, then how high would it need to be to achieve the same amount of warming as the non-drifting version? 
+%Use the provided two-layer model set up to run the historical case to figure out what the impact is of including volcanos in the pre-industrial state. You could look at both the mixed-layer and deep ocean temperatures to figure out what is going on. If you were to take the standard setup that drifts and increase the $ECS$ in that model, then how high would it need to be to achieve the same amount of warming as the non-drifting version? 
 
 
-\section{Estimate $ECS$ from historical warming}
-Write a program that reproduces Figure \ref{fig:ECS_inferred} by evaluating equation \ref{eq:zero_ecs} using Monte-Carlo sampling. As input you can use the estimates provided in Table \ref{table:input} and assume that the probability distributions of all entities are gaussian. Explore how sensitive the results are to the input, e.g. the assumed mean and standard deviation for aerosol. What would it take to make the median estimate larger than, say 3.0 K?
-To do this exercise in Python, you need to load relevant modules, and sample each entity a large number of times. In this example I make a million samples (note that some computers may have trouble with large sample sizes) of the temperature change:
-\begin{verbatim}
-     import matplotlib.pyplot as plt
-     import numpy as np
-     import scipy.stats as stats
+%\section{Estimate $ECS$ from historical warming}
+%Write a program that reproduces Figure \ref{fig:ECS_inferred} by evaluating equation \ref{eq:zero_ecs} using Monte-Carlo sampling. As input you can use the estimates provided in Table \ref{table:input} and assume that the probability distributions of all entities are gaussian. Explore how sensitive the results are to the input, e.g. the assumed mean and standard deviation for aerosol. What would it take to make the median estimate larger than, say 3.0 K?
+%To do this exercise in Python, you need to load relevant modules, and sample each entity a large number of times. In this example I make a million samples (note that some computers may have trouble with large sample sizes) of the temperature change:
+%\begin{verbatim}
+%     import matplotlib.pyplot as plt
+%     import numpy as np
+%     import scipy.stats as stats
 
-     nsamp = int(1e6)
+%     nsamp = int(1e6)
 
-     delta_T = np.random.normal(0.77, 0.08, nsamp)
-     ...
-\end{verbatim}
-Then plot the results probability distribution function. You can also use the scipy.stats package to calculate the 5 and 95 percentiles of your samples, e.g for the 5th percentile:
-\begin{verbatim}
-     stats.scoreatpercentile(samples,5)
-\end{verbatim}
-The method of estimating $ECS$  with equation \ref{eq:zero_ecs} was first invented by Gregory et al. (2002), and later updated and refined by Otto et al. (2013) and Lewis and Curry (2014).
+%     delta_T = np.random.normal(0.77, 0.08, nsamp)
+%     ...
+%\end{verbatim}
+%Then plot the results probability distribution function. You can also use the scipy.stats package to calculate the 5 and 95 percentiles of your samples, e.g for the 5th percentile:
+%\begin{verbatim}  
+%     stats.scoreatpercentile(samples,5)
+%\end{verbatim}
+%The method of estimating $ECS$  with equation \ref{eq:zero_ecs} was first invented by Gregory et al. (2002), and later updated and refined by Otto et al. (2013) and Lewis and Curry (2014).
 
 
 \section{Fit two-layer model to GCM}
