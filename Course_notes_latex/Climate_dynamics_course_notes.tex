@@ -881,6 +881,7 @@ A caveat with the two-layer model is that the single deep-ocean temperature is t
 Finally, let us take a look at the temperature response of the two-layer model to a delta forcing. Here we imagine that heat is rapidly extracted from- or injected into the mixed-layer such that the deep ocean cannot react, that is, at time $t=0$ we have  $T\ne 0$ and $T_d=0$. If we then evaluate the initial rate of change of the mixed-layer temperature (\ref{eq:twolayer-ml}) then we obtain:
 \begin{equation}
 \frac{dT}{dt}\Bigr|_{t=0} = \frac{T(0)}{C}\left[\lambda - \gamma\right],
+\label{eqn:T-perturbation}
 \end{equation}
 yielding the result that the deep ocean heat uptake acts to restore the surface temperature faster towards it's original state. Remember that $\lambda$ is likely somewhere in the range -1 to -2 Wm$^{-2}$K$^{-1}$, and so the effect of $\gamma$ is to nearly double the restoration rate relative to that of the mixed-layer model: if the delta forcing was for instance due to a volcanic eruption that lead to a cooling of the mixed-layer, then the deep ocean will transfer heat towards the surface thereby warming the mixed-layer up again. It is left as exercises to explore this case.
 
@@ -1198,17 +1199,22 @@ Error = E \lbrack \sqrt{\left(  \overline{T} - \mu  \right)^{2}}  \rbrack = \fra
 \label{eq:mse}
 \end{equation}
 
-Where $E[x]$ is the value of $x$ that we expect if we average over many estimates, $\overline{T}$ is our estimate of the true forced response in temperature $\mu$, and $\sigma$ is the standard deviation of our distribution. For the grand ensemble, the $\sigma$ is around 0.1 K for yearly values of temperature, and so with $n=100$ we have an mean standard error of only 0.01 K. This allows us to get very close to the true forced response, $\mu$.  By subtracting the ensemble mean from every ensemble member, we can also isolate the internal variability: $T' = T - \overline{T}$ (see Figure \ref{fig:variability_03}).
+Where $E[x]$ is the value of $x$ that we expect if we average over many estimates, $\overline{T}$ is our estimate of the true forced response in temperature $\mu$, and $\sigma$ is the standard deviation of our distribution. For the grand ensemble, the $\sigma$ is around 0.1 K for yearly values of temperature, and so with $n=100$ we have an mean standard error of only 0.01 K. This allows us to get very close to the true forced response, $\mu$.  By subtracting the ensemble mean from every ensemble member, we can also isolate the internal variability: $T' = T - \overline{T}$, as shown in Figure \ref{fig:variability_03}).
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=12 cm]{../plots/Variability03.pdf}
+		\includegraphics[width=14 cm]{../plots/Variability03.pdf}
 	\end{center}
 	\caption{ Caption } 
 	\label{fig:variability_03}
 \end{figure}
 
-\section{Noise}
+\section{Sources of variability}
+The noisy blue band in Figure \ref{fig:variability_03} is not insignificant, in fact it envelops all the warming that takes place until about the mid 1970s. So where does all this variability come from? 
+
+Here it helps to think about where the surface temperature is located in space. On the land, it is a very thin layer indeed, but in the ocean, the surface temperature is closely related to the mixed layer, which is about 50--100m in depth, depending on where you look. This mixed layer earns its name because it is well-mixed, and changes in temperature at the surface are rapidly mixed through the layer over the course of months. Since this mixed layer has a much larger heat capacity than the land surface -- it covers more of the surface, is much deeper and has a larger specific heat capacity than the land -- it dominates the heat budget of the surface temperature. When we look at the sources of variability in surface warming, the vast majority should in some way influence the heat budget of the mixed layer, especially on interannual timescales and above.
+
+The oscillations like ENSO and the AMO that we mentioned at the start of the chapter can influence the heat budget of the surface temperature in multiple ways. These oscillations changes the temperature patterns on the surface, which changes temperature gradients that influence the winds. These can drive variations in the ocean circulation, which may either increase or decrease the heat drawn down from the mixed layer to greater depths. In a similar fashion, the temperature gradients influence atmospheric circulations and clouds, and can therefore lead to wobbles in the net long- and shortwave radiation reaching the surface. Deviation from the expected spatial warming pattern also implies that some regions warm more (and some less) than expected. If these regions have different feedbacks strengths due to regional atmospheric conditions, then the feedback response to warming can also be influenced by variability. Then, once this noise in the energy budget reaches the surface layer and changes the temperature, we expect a response from the radiative feedbacks and the ocean heat uptake that dampens these deviations and drives the warming back the other way, just as we described in Equation \ref{eqn:T-perturbation}. A schematic of these effects on the mixed layer can be seen in Figure \ref{fig:variability_hiatus}a.
 
 \begin{figure}
 	\begin{center}
@@ -1218,7 +1224,10 @@ Where $E[x]$ is the value of $x$ that we expect if we average over many estimate
 	\label{fig:variability_hiatus}
 \end{figure}
 
-Not everyone has a large ensemble. And for purposes of efficiency or conceptual understanding, we may wish to represent variability in a simpler way than with a coupled climate model. We can represent internal variability in the simple models we have already encountered by replacing the forcing with an error term. In the mixed layer model this becomes:
+Until quite recently, it was thought that under global warming forcing only the ocean heat uptake could lead to such variations in temperature, because the atmospheric energy balance was net positive. This became a hot topic when, from 1998--2012, the global surface warming seemed to slow down significantly, almost to stop. But as we have already learned in this chapter, the forced response is quite separate from internal variability. Figure \ref{fig:variability_hiatus}b shows the energy source of internal variability in the grand ensemble when the variability is so strongly negative, that it equals a deviation similar to that seen during the warming slowdown (--0.17 K/decade over 15 years). Most of the grey dots fall into the middle segment, where the variability is caused by energy fluctuations in \textit{both} the atmospheric and ocean component. The coloured dots are two observational budgets for the 2000s, which present starkly different explanations for the slowdown. This indicates just how hard it is to isolate the atmospheric and oceanic components of internal variability in the observed surface heat budget, but that is another story.
+
+\section{Noise in the simple models}
+For purposes of efficiency or conceptual understanding, we may wish to represent variability in a simpler way than with a coupled climate model. In the mixed-layer and two-layer models, which we have already encountered, we can simulate internal variability by replacing the forcing with a noise term, $\epsilon$. In the mixed-layer model this becomes:
 
 \begin{equation}
 C\frac{dT}{dt} = \epsilon + \lambda T,
