@@ -974,6 +974,7 @@ Such  changes in cloudiness can result in an adjustment term $-\delta \alpha \cd
 In the following we shall go over two methods to estimate forcing, and then take a closer look at the forcing from CO$_2$. There are of course many other ways the Earth system can be forced, some of which we shall look at in a later chapter in the context of historical warming. 
 
 \section{The Gregory- and the Hansen methods}
+\label{sec:gregory-hansen}
 There are many ways to estimate the radiative forcing in climate models. Here I will go over the two practical methods that are most widely used today namely those suggested by Gregory et al. (2004) and Hansen et al. (2005). Both methods build on the idea of the linear framework we developed earlier wherein the energy balance is a function of forcing and feedback:
 $$N=F+\lambda T$$
 where $F$ and $\lambda$ are assumed to be constants. 
@@ -2037,28 +2038,44 @@ What is the average forcing change in Wm$^{-2}$ needed in the first 15 years rel
 
 
 \section{Estimating the forcing from CO$_2$ all the way from zero}
-We usually assume that the forcing from CO$_2$ is logarithmic in concentration such that $F_{4x} \approx 2\cdot F_{2x}$ and $F_{8x} \approx 3\cdot F_{2x}$, $F_{0.5x} \approx -F_{2x}$ etc. which is a finding we owe to Svante Arrhenius' epic study from 1896. But how far does the logarithmic assumption work? To investigate this you will use the MODTRAN model to investigate this. You can start from the standard 400 ppm and go up through consecutive doublings e.g. to 6400 ppm and likewise down by halving the concentration. At which point does the logarithmic approximation stop working? 
+We usually assume that the forcing from CO$_2$ is logarithmic in concentration such that $F_{4x} \approx 2\cdot F_{2x}$ and $F_{8x} \approx 3\cdot F_{2x}$, $F_{0.5x} \approx -F_{2x}$ etc. which is a finding we owe to Svante Arrhenius' epic study from 1896. But how far does the logarithmic assumption work? To investigate this you will use the MODTRAN model to investigate this. You can start from the standard 400 ppm and go up through consecutive doublings e.g. to 6400 ppm and likewise down by halving the concentration. At which point does the logarithmic approximation stop working? You can repeat the exercise with the observer at both 70 km height and also at the tropopause at 18 km height to see how the stratosphere will adjust. 
 
-You can repeat the exercise with the observer at both 70 km height and also at the tropopause at 18 km height to see how the stratosphere will adjust. 
-
-You may plot the result and figure, perhaps with a logarithmic axis for the CO$_2$ concentration, in order to figure out over which range the logarithmic assumption works reasonably, or you might focus on how stratospheric adjust depends on the CO$_2$ level.
+You may plot the result, perhaps with a logarithmic axis for the CO$_2$ concentration, in order to figure out over which range the logarithmic assumption works reasonably, or you might focus on how stratospheric adjust depends on the CO$_2$ level.
 
 
-\section{Modeling natural variability}
-The two-layer model does not exhibit natural variability on its own. But we can model the effect of 'weather' by introducing random year-to-year variation in the radiation balance. This is easy to do in the two-layer model; here I create input for a 10000-year long run with random noise sampled from a  gaussian distribution as forcing:
+\section{Forcing and Feedback in MPI-ESM1.2}
+We often assume that the feedback parameter $\lambda$ is a constant, but if one forces some climate models with more the $F_{2x}$ then they start to exhibit non-linearities. In the MPI-ESM1.2 coupled climate model we have a quite rapid increase of $ECS$ from less than 3 K for one doubling and up to 10 K for the fourth doubling ($F_{8x} \rightarrow F_{16x}$). Your task is to figure out whether it is the forcing that increases or the negative feedback that weakens, or do they both conspire to increase ECS? You can use the Gregory-method (section \ref{sec:gregory-hansen}), e.g. on the first 10 years to estimate forcing, and over years 100-1000 to estimate the longterm feedback parameter.
+
+You can load the netcdf files from the MPI-ESM1.2 experiments into Python and calculate the surface temperature and top-of-atmosphere imbalance using for instance this command to load the 2xCO$_2$ experiment:
 \begin{verbatim}
-     nyears = 10000
-     forcing_years = np.arange(0,nyears)
-     input_forcing = np.random.normal(0,1,nyears)
+from scipy.io import netcdf
+mpiesm_2x = netcdf.netcdf_file('mpiesm-1.2.00_abrupt2xCO2_anomaly.nc')
+N_2x = mpiesm_2x.variables['trad0'][:,0,0]+mpiesm_2x.variables['srad0'][:,0,0]
+T_2x = mpiesm_2x.variables['tsurf'][:,0,0]
 \end{verbatim}
-If you plot the time-series of mixed-layer and deep ocean temperatures you will notice there is considerable low-frequency variability despite the fact that the year-to-year forcing is random. The heat reservoirs act as a memory that bears resemblance to random walk, brownian motion or red noise (Hasselmann 1976). There is, however, a restoring force through the feedback parameter that keeps the system in place and tends to dampen variability. Explore the controls of natural variability in this system, e.g. by changing $ECS$. It may come in handy to compare power-spectra between the mixed-layer and deep ocean, and between runs with different settings. Here is an example of how this can be done:
-\begin{verbatim}
-     frequency = np.linspace(0,12/2,nyears/2)
-     P_ml = np.fft.fft(exp1['T_ml'])
-     P_ml = P_ml[0:int(nyears/2)]
-     axes.plot(frequency,abs(P_ml)**2)
-\end{verbatim}
-What happens if you set $ECS$ to a very large number such that $\lambda \rightarrow 0$?
+The files have already been globally and annually average, and I have subtracted the control simulation values.
+
+%\section{Modeling natural variability}
+%The two-layer model does not exhibit natural variability on its own. But we can model the effect of 'weather' by introducing random year-to-year variation in the radiation balance. This is easy to do in the two-layer model; here I create input for a 10000-year long run with random noise sampled at the monthly timescale from a  gaussian distribution as forcing with a standard deviation of 0.1 Wm$^{-2}$:
+%\begin{verbatim}
+%     nmonths = 10000*12
+%     forcing_years = np.arange(0,nmonths)/12
+%     input_forcing = np.random.normal(0,0.1,nmonths)
+%\end{verbatim}
+%If you plot the time-series of mixed-layer and deep ocean temperatures you will notice there is considerable low-frequency variability despite the fact that the month-to-month forcing is random. The heat reservoirs act as a memory that bears resemblance to random walk, brownian motion or red noise (Hasselmann 1976). There is, however, a restoring force through the feedback parameter that keeps the system in place and tends to dampen variability. Explore the controls of natural variability in this system, e.g. by changing $ECS$, $\gamma$ or mixed-layer depth. 
+%What happens if you set $ECS$ to a very large number such that $\lambda \rightarrow 0$, or if your mixed-layer becomes very thin? How does the deep ocean heat uptake affect the results.
+%
+%It may come in handy to compare power-spectra between the mixed-layer and deep ocean, and between runs with different settings. Here is an example of how this can be done:
+%\begin{verbatim}
+%frequency = np.linspace(0,1/2,nmonths/2)
+%P_ml = np.fft.fft(exp['T_ml'])
+%P_ml = P_ml[0:int(nmonths/2)]
+%axes.plot(1/frequency,abs(P_ml)**2/nmonths)
+%\end{verbatim}
+%You may also want to calculate year-1 autocorrelation, whereby you need to remember the output is monthly data:
+%\begin{verbatim}
+%ar1t = np.min(np.corrcoef(exp['T_ml'][:-12],exp['T_ml'][12:]))
+%\end{verbatim}
 
 %\section{Treating volcanoes in historical simulations}
 %Often when we run models with historical forcing we first run our models into equilibrium with pre-industrial forcings that do not contain volcanoes, and then treat volcanoes as a negative forcing as done in figures \ref{fig:historical_forcing} and \ref{fig:historical_two-layer}. Gregory et al. (2013) pointed out that this leads to an artificial cooling, in particular of the deep ocean, over the historical period.
@@ -2087,21 +2104,21 @@ What happens if you set $ECS$ to a very large number such that $\lambda \rightar
 %\end{verbatim}
 %The method of estimating $ECS$  with equation \ref{eq:zero_ecs} was first invented by Gregory et al. (2002), and later updated and refined by Otto et al. (2013) and Lewis and Curry (2014).
 
-
-\section{Fit two-layer model to GCM}
-We often assume that the feedback parameter $\lambda$ is a constant, but if one forces some climate models with more the $F_{2x}$ then they start to exhibit non-linearities. In the MPI-ESM1.2 coupled climate model we have a quite rapid increase of $ECS$ from less than 3 K for one doubling and up to 10 K for the fourth doubling ($F_{8x} \rightarrow F_{16x}$). Bloch-Johnson et al. (2015) suggested that this model behavior could be described as a simple Taylor expansion of the feedback parameter such that:
-$$\lambda(T) = \lambda_o + b*T + ...$$
-where $\lambda_o$ and $b$ are coefficients. 
-Now take the standard two-layer model and load in data from a set of 1000-year simulations with MPI-ESM1.2 with abruptly applied 2, 4, 8 and 16 times pre-industrial CO$_2$, plotting $N$ versus $T$ for each experiment as in Figure \ref{fig:gregory_hansen}. You can assume forcing is logarithmic in CO$_2$ concentration, but you may need to adapt to the specific model's $F_{2x}$ as described in chapter \ref{chapter:forcing}. Next, try to find $\lambda_o$ and $b$ such that the two-layer model reasonably matches the complex model. What happens if you force the two-model with these parameter settings harder?
-
-You can load the netcdf files from the MPI-ESM1.2 experiments into Python and calculate the surface temperature and top-of-atmosphere imbalance using for instance this command:
-\begin{verbatim}
-     from scipy.io import netcdf
-     mpiesm_2x = netcdf.netcdf_file('mpiesm-1.2.00_abrupt2xCO2_anomaly.nc')
-     N_2x = mpiesm_2x.variables['trad0'][:,0,0]+bot.variables['srad0'][:,0,0]
-     T_2x = mpiesm_2x.variables['tsurf'][:,0,0]
-\end{verbatim}
-The files have already been globally and annually average, and I have subtracted the control simulation values.
+%
+%\section{Fit two-layer model to GCM}
+%We often assume that the feedback parameter $\lambda$ is a constant, but if one forces some climate models with more the $F_{2x}$ then they start to exhibit non-linearities. In the MPI-ESM1.2 coupled climate model we have a quite rapid increase of $ECS$ from less than 3 K for one doubling and up to 10 K for the fourth doubling ($F_{8x} \rightarrow F_{16x}$). Bloch-Johnson et al. (2015) suggested that this model behavior could be described as a simple Taylor expansion of the feedback parameter such that:
+%$$\lambda(T) = \lambda_o + b*T + ...$$
+%where $\lambda_o$ and $b$ are coefficients. 
+%Now take the standard two-layer model and load in data from a set of 1000-year simulations with MPI-ESM1.2 with abruptly applied 2, 4, 8 and 16 times pre-industrial CO$_2$, plotting $N$ versus $T$ for each experiment as in Figure \ref{fig:gregory_hansen}. You can assume forcing is logarithmic in CO$_2$ concentration, but you may need to adapt to the specific model's $F_{2x}$ as described in chapter \ref{chapter:forcing}. Next, try to find $\lambda_o$ and $b$ such that the two-layer model reasonably matches the complex model. What happens if you force the two-model with these parameter settings harder?
+%
+%You can load the netcdf files from the MPI-ESM1.2 experiments into Python and calculate the surface temperature and top-of-atmosphere imbalance using for instance this command:
+%\begin{verbatim}
+%     from scipy.io import netcdf
+%     mpiesm_2x = netcdf.netcdf_file('mpiesm-1.2.00_abrupt2xCO2_anomaly.nc')
+%     N_2x = mpiesm_2x.variables['trad0'][:,0,0]+bot.variables['srad0'][:,0,0]
+%     T_2x = mpiesm_2x.variables['tsurf'][:,0,0]
+%\end{verbatim}
+%The files have already been globally and annually average, and I have subtracted the control simulation values.
 
 %\begin{figure}
 %\begin{center}
