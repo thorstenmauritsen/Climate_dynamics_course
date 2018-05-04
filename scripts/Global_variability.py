@@ -66,7 +66,7 @@ def power_spectrum(exp):
     return XX, YY
 
 
-def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T_deep0=0.0, b=0.0, efficacy=1.0, sigma=0.1):
+def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T_deep0=0.0, b=0.0, efficacy=1.0, sigma=2.42):
 
     result = {}
 
@@ -91,14 +91,14 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T
     T_ml[0]    = T_ml0
     T_deep[0]  = T_deep0
     imbalance  = np.zeros(nstep)
-    
+
     # Integrate:
-    imbalance[0] = np.nan 
+    imbalance[0] = np.nan
     for t in range(0, nstep-1):
-        T_ml[t+1]      = T_ml[t] + (forcing[t]+(lambda_0+b*T_ml[t])*T_ml[t]-efficacy*gamma*(T_ml[t]-T_deep[t]))*delta_time/C_ml + noise[t]
+        T_ml[t+1]      = T_ml[t] + (forcing[t] + noise[t] +(lambda_0+b*T_ml[t])*T_ml[t]-efficacy*gamma*(T_ml[t]-T_deep[t]))*delta_time/C_ml
         T_deep[t+1]    = T_deep[t] + gamma*(T_ml[t]-T_deep[t])*delta_time/C_deep
         imbalance[t+1] = (C_ml*(T_ml[t+1]-T_ml[t]) + C_deep*(T_deep[t+1]-T_deep[t]))/delta_time
-    
+
     # Output result and settings for this run:
     result['time'] = timeyears
     result['forcing'] = forcing
@@ -111,7 +111,7 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T
 #    result['T_ml'] = yearmean(timeyears,T_ml)
 #    result['T_deep'] = yearmean(timeyears,T_deep)
 #    result['imbalance'] = yearmean(timeyears,imbalance)
-    
+
     result['ECS'] = ECS
     result['C_ml'] = C_ml
     result['C_deep'] = C_deep
@@ -120,9 +120,9 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T
     result['b'] = b
     result['efficacy'] = efficacy
     result['sigma'] = sigma
-    
-    result['ar1t'] = np.min(np.corrcoef(T_ml[:-1],T_ml[1:]))**12    
-        
+
+    result['ar1t'] = np.min(np.corrcoef(T_ml[:-1],T_ml[1:]))**12
+
     return result
 
 #--------------------------------------------------------------------------
@@ -189,11 +189,11 @@ axes.yaxis.set_ticks_position('left')
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
     ticks.set_color(almost_black)
 
-spines_to_remove        = ['top', 'right'] 
+spines_to_remove        = ['top', 'right']
 for spine in spines_to_remove:
     axes.spines[spine].set_visible(False)
 
-spines_to_keep = [ 'bottom', 'left']     
+spines_to_keep = [ 'bottom', 'left']
 for spine in spines_to_keep:
     axes.spines[spine].set_linewidth(0.5)
     axes.spines[spine].set_color(almost_black)
@@ -214,11 +214,13 @@ x,y = power_spectrum(exp1)
 axes[1].loglog(1/x, y, color=color1)
 
 timescale=1/x
-axes[1].loglog(timescale,(0.1**2/12/(1+1-2*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
+#axes[1].loglog(timescale,(0.1**2/12/(1+1-2*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
+
+axes[1].loglog(timescale,((exp5['sigma']*month/exp5['C_ml'])**2/12/(1+1-2*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
 
 # ECS=1K case:
 alpha=1+exp1['lambda_0']*month/exp1['C_ml']
-axes[1].loglog(timescale,(0.1**2/12/(1+alpha**2-2*alpha*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
+axes[1].loglog(timescale,((exp1['sigma']*month/exp1['C_ml'])**2/12/(1+alpha**2-2*alpha*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
 
 x,y = power_spectrum(exp2)
 axes[1].loglog(1/x, y, color=color2)
@@ -243,11 +245,11 @@ x,y = power_spectrum(mlo1)
 l1, = axes[0].loglog(1/x, y, color=color1, label='ECS = '+str(mlo1['ECS'])+ 'K')
 
 timescale=1/x
-redt, = axes[0].loglog(timescale,(0.1**2/12/(1+1-2*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1, label='Theory')
+redt, = axes[0].loglog(timescale,((mlo5['sigma']*month/mlo5['C_ml'])**2/12/(1+1-2*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1, label='Theory')
 
 # ECS=1K case:
 alpha=1+mlo1['lambda_0']*month/mlo1['C_ml']
-axes[0].loglog(timescale,(0.1**2/12/(1+alpha**2-2*alpha*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
+axes[0].loglog(timescale,((mlo1['sigma']*month/mlo1['C_ml'])**2/12/(1+alpha**2-2*alpha*np.cos(2*np.pi*x/12))),color='gray',lw=1.5,linestyle='--', zorder=1)
 
 x,y = power_spectrum(mlo2)
 l2, = axes[0].loglog(1/x, y, color=color2, label='ECS = '+str(mlo2['ECS'])+ 'K')
@@ -262,13 +264,13 @@ x,y = power_spectrum(mlo5)
 l5, = axes[0].loglog(1/x, y, color=color5, label=r'ECS $\approx$ $\infty$')
 
 axes[0].set_xlabel('Time-scale (years)')
-axes[0].set_ylabel(r'Power spectral density (K$^2$)')
+axes[0].set_ylabel(r'Power spectral density (K$^2 \Delta t$)')
 axes[0].set_title("Mixed-layer model")
 
 axes[0].legend(handles=[l1, l2, l3, l4, l5, redt], fontsize=10)
 
 
-plt.setp(axes, xlim=(1e-1,1e4), ylim=(1e-4,1e6))
+plt.setp(axes, xlim=(1e-1,1e4), ylim=(1e-5,1e5))
 plt.setp(axes, xticks=(0.1, 1, 10, 100, 1000), xticklabels=('0.1', '1', '10', '100', '1000'))
 
 
@@ -312,7 +314,7 @@ tlm, = axes.plot(z,theorya, color=colortlm, label='Two-layer model')
 
 axes.legend(handles=[mlm,tlm,mpim, hadcrut], fontsize=10)
 
-axes.set_xlabel(r'Year-1 lag correlation ($\alpha_{1T}$)')
+axes.set_xlabel(r'Year-1 lag correlation ($\alpha_{1yr}$)')
 axes.set_ylabel('ECS (K)')
 
 plt.setp(axes, xlim=(0,1), ylim=(0,6))
