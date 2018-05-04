@@ -1177,21 +1177,21 @@ Explain, in your own words, how clouds adjust to an increase in atmospheric CO$_
 	\begin{center}
 		\includegraphics[width=16 cm]{../plots/Variability02.pdf}
 	\end{center}
-	\caption{ Caption } 
+	\caption{  Historical warming as simulated by the MPI-ESM grand ensemble and from the HadCRUT4 observational product. A single simulation from the ensemble is highlighted to demonstrate the effect of internal variability.  } 
 	\label{fig:variability_02}
 \end{figure}
 
-Variability is everywhere in the Earth's chaotic climate system.  Take for example the El-Ni\~no Southern Oscillation (ENSO) or the Atlantic Multi-decadal Oscillation (AMO), patterns that bring with them many changes in climate and weather. Since these oscillatory patterns are difficult to predict, but not completely random, we often refer to the climate system as ``quasi-chaotic''. They form part of the naturally-occurring variability called \textit{internal variability}, which refers to internal processes in the system that occur even when the system is not forced. But beware: when we refer \textit{natural variability} we mean something different: we mean the variability induced by natural forcing, such as volcanoes. That may be confusing, but it's important to hold the concept of forced variability separate from internal variability that occurs even in the unforced system.
+Variability is everywhere in the Earth's chaotic climate system.  Take for example the El-Ni\~no Southern Oscillation (ENSO) or the Atlantic Multi-decadal Oscillation (AMO), patterns that bring with them many changes in climate and weather. Since these oscillatory patterns are difficult to predict, but not completely random, we refer to the climate system as ``quasi-chaotic''. Such naturally-occurring variability is called \textit{internal variability}, because it refers to internal processes in the system that occur even when the system is not forced. But beware, when we speak about \textit{natural variability} we mean something different: we mean the variability induced by natural forcing, such as volcanoes. That may be confusing, but it's important to hold the concept of forced variability separate from internal variability, which occurs even in the unforced system.
 
-Let's take as an example one aspect of the climate: the global mean surface temperature. The evolution of surface warming is, as we can see in Figure \ref{fig:variability_02}, not a straightforward increase over time, but highly variable. Volcanoes periodically drive short cooling episodes and the time-varying nature of anthropogenic emissions induce wobbles in the warming trend. We'll address how the forced historical warming arises in the next chapter. But if we were to remove the influence of all of these forcings, but natural and anthropogenic, how large would the remaining internal variability in surface temperature be? And, what mechanisms drive it? This chapter will explore these questions.
+Let's take as an example one aspect of the global variability of climate: the global mean surface temperature. The evolution of surface warming is, as we can see in Figure \ref{fig:variability_02}, not a straightforward increase over time, but highly variable. Volcanoes periodically drive short cooling episodes and the time-varying nature of anthropogenic emissions induce wobbles in the warming trend. We'll address how the forced historical warming arises in the next chapter. But if we were to remove the influence of all of these forcings, both natural and anthropogenic, how large would the remaining internal variability in surface temperature be? And, what mechanisms drive it? This chapter will explore these questions.
 
 \section{Variability versus forced response}
 \label{sec:varvsforced}
-One reason for separating the forced response from internal variability relates to our expectations of how the climate behaves or \textit{should} behave. If we compare a single simulation of climate and the observations of climate, as shown in Figure \ref{fig:variability_02}, there are decade-long periods when the observations and the simulation diverge substantially. Is the model therefore ``wrong''? Does it fail to represent what it should represent: the evolution in surface warming? Or are these fluctuations just the product of internal variability, and do we therefore not expect the simulation and observations to match on these decadal timescales?
+One reason for separating the forced response from internal variability relates to our expectations of how the climate behaves or \textit{should} behave. If we compare a single simulation of climate and the observations of climate, as shown in Figure \ref{fig:variability_02}, there are decade-long periods when the observations and the simulation diverge substantially. Is the model therefore ``wrong''? Does it fail to represent what it should represent: the evolution in surface warming? Or are these fluctuations just the product of internal variability, and should we therefore not expect the simulation and observations to match on these decadal timescales?
 
 We can attempt to estimate internal variability in the historical warming in several ways, including one method that has become possible due to increasing computational power. If we simulate the evolution of temperature on Earth since the pre-industrial era say, 100 times, but introduce small differences into each simulation's initial conditions, the quasi-chaotic nature of the climate system will transform those differences into substantial variations over time. Because each simulation is exposed to exactly the same forcing, the resulting differences between each simulation must represent the internal variability. If we accept our model as a good-enough representation of the Earth's surface warming, then each simulation represents how the temperature \textit{might} have behaved in a world identical to our own, except for some tiny disturbances that occurred over 150 years ago.
 
-In Figure \ref{fig:variability_02} just such an ensemble is depicted: the MPI-ESM grand ensemble. The observations and the single simulation lie well within the internal variability generated by this ensemble. Both the observations and the single simulation wander up and down; sometimes they are among the warmest of simulations, and sometimes among the coolest, but they remain on the long-term within the bounds of the ensemble. Therefore, we can say that the observations and the single simulation appear to agree both with each other and with the grand ensemble, within the bounds of internal variability.
+In Figure \ref{fig:variability_02} just such an ensemble is depicted: the MPI-ESM grand ensemble. The observations and the single simulation lie well within the internal variability generated by this ensemble. Both the observations and the single simulation wander up and down; sometimes they are among the warmest of simulations, and sometimes among the coolest, but they remain on the long-term within the bounds of the ensemble. Therefore, we can say that the observations and the single simulation appear to agree both with each other and with the ensemble, within the bounds of internal variability.
 
 Because the ensemble is so large, we can even separate the expected forced response from the internal variability. If we assume that the distribution in temperature anomalies is Gaussian (it's very close), then the ensemble mean warming becomes an estimator of the model's forced response. The mean standard error, which is the expected error we get when we try to estimate the true forced response, shrinks with the ensemble size \textit{n} according to
 
@@ -1200,37 +1200,39 @@ Error = E \lbrack \sqrt{\left(  \overline{T} - \mu  \right)^{2}}  \rbrack = \fra
 \label{eq:mse}
 \end{equation}
 
-Where $E[x]$ is the value of $x$ that we expect if we average over many estimates, $\overline{T}$ is our estimate of the true forced response in temperature $\mu$, and $\sigma$ is the standard deviation of our distribution. For the grand ensemble, the $\sigma$ is around 0.1 K for yearly values of temperature, and so with $n=100$ we have an mean standard error of only 0.01 K. This allows us to get very close to the true forced response, $\mu$.  By subtracting the ensemble mean from every ensemble member, we can also isolate the internal variability: $T' = T - \overline{T}$, as shown in Figure \ref{fig:variability_03}).
+Where $E[x]$ is the value of $x$ that we expect if we average over many estimates, $\overline{T}$ is one estimate of the true forced response in temperature $\mu$, and $\sigma$ is the standard deviation of our distribution. For the grand ensemble, the $\sigma$ is around 0.1 K for yearly values of temperature, and so with $n=100$ we have an mean standard error of only 0.01 K. This allows us to get very close to the true forced response, $\mu$.  By subtracting the ensemble mean from every ensemble member, we can also isolate the internal variability: $T' = T - \overline{T}$, as shown in Figure \ref{fig:variability_03}).
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=14 cm]{../plots/Variability03.pdf}
+		\includegraphics[width=16 cm]{../plots/Variability03.pdf}
 	\end{center}
-	\caption{ Caption } 
+	\caption{The ensemble mean (forced response) and the ensemble anomalies (internal variability) of historical warming in the MPI-ESM grand ensemble.} 
 	\label{fig:variability_03}
 \end{figure}
 
 \section{Sources of variability}
 The noisy blue band in Figure \ref{fig:variability_03} is not insignificant, in fact it envelops all the warming that takes place until about the mid 1970s. So where does all this variability come from? 
 
-Here it helps to think about where the surface temperature is located in space. On the land, it is a very thin layer indeed, but in the ocean, the surface temperature is closely related to the mixed layer, which is about 50--100m in depth, depending on where you look. As we learned in Chapter \ref{chapter:evolution}, the mixed layer earns its name because it is well-mixed, and changes in temperature at the surface are rapidly mixed through the layer over the course of months. Since this mixed layer has a much larger heat capacity than the land surface -- it covers more of the surface, is much deeper and has a larger specific heat capacity than the land -- it dominates the heat budget of the surface temperature. When we look at the sources of variability in surface warming, the vast majority should influence the heat budget of the mixed layer, especially on interannual timescales and above.
+Here it helps to think about where the surface temperature is located. On the land, the surface is a very thin layer indeed, but in the ocean, the surface is closely related to the mixed layer, which is about 50--100m in depth, depending on where you look. As we learned in Chapter \ref{chapter:evolution}, the mixed layer earns its name because it is well-mixed: changes in temperature at the surface are rapidly mixed through the layer over the course of months. Since this mixed layer has a much larger heat capacity than the land surface -- it covers more of the surface, is much deeper and has a larger specific heat capacity than the land -- it dominates the heat budget of the surface temperature. When we look at the sources of variability in surface warming, the vast majority should influence the heat budget of the mixed layer, especially on interannual timescales and above.
 
-The oscillations like ENSO and the AMO that we mentioned at the start of the chapter can influence the heat budget of the surface temperature in multiple ways. These oscillations changes the temperature patterns on the surface, which changes temperature gradients that influence the winds. These can drive variations in the ocean circulation, which may either increase or decrease the heat drawn down from the mixed layer to greater depths. In a similar fashion, the temperature gradients influence atmospheric circulations and clouds, and can therefore lead to wobbles in the net long- and shortwave radiation reaching the surface. Deviation from the expected spatial warming pattern also implies that some regions warm more (and some less) than expected. If these regions have different feedbacks strengths due to regional atmospheric conditions, then the feedback response to warming can also be influenced by variability. Then, once this noise in the energy budget reaches the surface layer and changes the temperature, we expect a response from the radiative feedbacks and the ocean heat uptake that dampens these deviations and drives the warming back the other way, just as we described in Equation \ref{eqn:T-perturbation}. A schematic of these effects on the mixed layer can be seen in Figure \ref{fig:variability_hiatus}a.
+The oscillations like ENSO and the AMO that we mentioned at the start of the chapter can influence the heat budget of the surface temperature in multiple ways. These oscillations change the temperature patterns on the surface, which change temperature gradients that in turn influence the winds. Wind anomalies drive variations in the ocean circulation, which may either increase or decrease the heat drawn down from the mixed layer to greater depths. In a similar fashion, the temperature gradients influence atmospheric circulations and clouds, which can induce wobbles in the net long- and shortwave radiation reaching the surface. Deviation from the expected spatial warming pattern also implies that some regions warm more (and some less) than expected. If these regions have different feedbacks strengths due to regional atmospheric conditions, then the feedback response to warming can also be influenced by such variability. Once this noise in the surface energy budget is felt by the temperature, radiative feedbacks and the ocean heat uptake respond by dampening these temperature deviations, driving the warming or cooling back toward the expected temperature (just as we described in Equation \ref{eqn:T-perturbation}). A schematic of these effects on the mixed layer can be seen in Figure \ref{fig:variability_hiatus}a.
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=12 cm]{../illustrations/Variability_hiatus.pdf}
+		\includegraphics[width=17 cm]{../illustrations/Variability_hiatus.pdf}
 	\end{center}
-	\caption{ Caption } 
+	\caption{ a) A schematic of how noise in two-layer model: the surface energy budget is effected by variability in atmospheric and oceanic energy fluxes, and the resulting response in radiative feedbacks and ocean heat uptake dampen the resulting change in temperature. b) Internal variability in the surface energy budget of the grand ensemble during 15-year periods in which variability in surface temperature was at least as strong as during the surface warming slowdown observed from 1998--2012. Coloured dots represent two energy budgets constructed from two observations products for the 2000s \cite{Hedemann2017}.} 
 	\label{fig:variability_hiatus}
 \end{figure}
 
 \section{The global surface-warming slowdown}
-Until quite recently, it was thought that under global warming, only the ocean heat uptake could lead to such variations in temperature, because the atmospheric energy balance is net positive due to positive forcing from anthropogenic emissions. This became a hot topic when, from 1998--2012, the global surface warming seemed to slow down significantly, almost to stop. But as we have already learned in this chapter, the forced response is quite separate from internal variability. Figure \ref{fig:variability_hiatus}b shows the internal variability of energy entering the mixed layer in the grand ensemble, with the signal from historical forcing removed, just like we did with temperature in Section \ref{sec:varvsforced}. The grey dots show periods of 15 years when the variability in temperature is so strongly negative, that it equals a deviation similar to that seen during the 1998--2012 warming slowdown (--0.17 K/decade over 15 years). Most of the grey dots fall into the middle segment, where the variability is caused by energy fluctuations in \textit{both} the atmospheric and ocean component. So in the ensemble, slowdowns in warming  like the 1998--2012 event are caused by noise in both the ocean \textit{and} the atmospheric heat fluxes. 
+Until quite recently, it was thought that under global warming, only the ocean heat uptake could lead to such variations in temperature, because the atmospheric energy balance is net positive due to positive forcing from anthropogenic emissions. This became a hot topic when, from 1998--2012, the global surface warming seemed to slow down significantly, almost to stop. But as we have already learned in this chapter, the forced response is quite separate from internal variability. 
+
+Figure \ref{fig:variability_hiatus}b shows the energy entering the mixed layer in the grand ensemble, but with the signal from historical forcing removed. This leaves the internal variability in the surface energy budget, in the same way we calculated internal variability in temperature in Section \ref{sec:varvsforced}. The grey dots show periods of 15 years when the variability in temperature is so strongly negative, that it equals a deviation similar to that seen during the 1998--2012 warming slowdown (--0.17 K/decade over 15 years). Most of the grey dots fall into the middle segment, where the variability is caused by energy fluctuations in \textit{both} the atmospheric and ocean component. So in the ensemble, slowdowns in warming  like the 1998--2012 event are caused by noise in both the ocean \textit{and} the atmospheric heat fluxes\cite{Hedemann2017}. 
 
 The coloured dots are two observational budgets for the 2000s, which present starkly different explanations for the slowdown. This indicates just how hard it is to isolate the atmospheric and oceanic components of internal variability in the observed surface heat budget, but that is another story.
 
-\section{Noise in the simple models}
+\section{Types of noise}
 For purposes of efficiency or conceptual understanding, we may wish to represent variability in a simpler way than with a coupled climate model. In the mixed-layer and two-layer models, which we have already encountered, we can simulate internal variability by replacing the forcing with a noise term, $\epsilon$. In the mixed-layer model this becomes:
 
 \begin{equation}
@@ -1238,106 +1240,126 @@ C\frac{dT}{dt} = \epsilon + \lambda T,
 \label{eq:mlo-var}
 \end{equation}
 
-The noise term is sampled from a Gaussian distribution $\epsilon \sim N(\mu=0,\sigma^{2}=1)$. Crucially, this sort of noise has no memory, much like rolling a die: whatever noise we `roll' for the current timestep has no effect on what noise we will `roll' in the next timestep. We call this type of stochastic process \textit{white noise}.
+The noise term is sampled from a Gaussian distribution $\epsilon \sim N(\mu=0,\sigma=1)$. Crucially, this sort of noise has no memory, much like rolling a die: whatever noise we `roll' for the current timestep has no effect on what noise we will `roll' in the next timestep. We call this type of stochastic process \textit{white noise}.
 
-How does the surface temperature respond to white noise in the forcing? Do we also expect it to have a white noise signature? Let's have a look at a simple example and assume for the moment that $\lambda = 0$ and $C=1$. The change in temperature with time will simply be $$\frac{dT}{dt} = \epsilon .$$ Now we discretise the process using Euler's method (from Chapter \ref{chapter:evolution}) with timestep $\Delta t = 1$, giving $$\Delta T = \epsilon.$$  Starting at $T_0=0$,  the first timestep will be $$T_1 =\epsilon_1,$$  the second timestep will be  $$T_2 =\epsilon_1 + \epsilon_2 ,$$ and so forth until the $n^{th}$ timestep: $$T_2 =\epsilon_1 + \epsilon_2 + ... +  \epsilon_n.$$
+How does the surface temperature respond to white noise in the forcing? Do we also expect it to have a white noise signature? Let's have a look at a simple example by assuming for the moment that $\lambda = 0$ and $C=1$. The change in temperature with time will simply be $$\frac{dT}{dt} = \epsilon(t) .$$ Now we discretise the process using Euler's method (from Chapter \ref{chapter:evolution}) with timestep $\Delta t = 1$, giving $$\Delta T = \epsilon_i .$$  Starting at $T_0=0$,  the first timestep will be $$T_1 =\epsilon_1,$$  the second timestep will be  $$T_2 =\epsilon_1 + \epsilon_2 ,$$ and so forth, until the $n^{th}$ timestep: $$T_n =\epsilon_1 + \epsilon_2 + ... +  \epsilon_n.$$
 
-The mixed layer absorbs and stores the noise terms and therefore, unlike white noise, remembers the previous states of the system since $t_0$. Now we said before that the mean of this white noise in the forcing is $E[\epsilon]=\mu=0$, and it therefore makes sense that integrating the white noise process will not change our mean: 
-
+The mixed layer absorbs and stores the noise terms and therefore, unlike white noise, remembers the previous states of the system since $t_0$. Now we said before that the mean of this white noise is $E[\epsilon]=\mu=0$, and it therefore makes sense that integrating the white over time will not change our mean: 
 \begin{equation}
-E[T_n] = E[\sum_{i=1}^n{\epsilon_i}] = \sum_{i=1}^n{E[\epsilon_i]} = \mu = 0 .
+E[T_n] = E[\sum_{i=1}^n{\epsilon_i}] = \sum_{i=1}^n{E[\epsilon_i]} = n \cdot \mu = 0 .
 \end{equation}
 
-But the variance of the temperature is critically different from white noise. If we calculate the expected variance for the nth term, we can see why:
+But the variance of the temperature is critically different from white noise. If we calculate the expected variance for the $n^{th}$ term, we can see why:
 
 \begin{equation}
-E[T_n^2] = E\left[ \left( \sum_{i=1}^n{\epsilon_i} \right)^{2} \right] =  \sum_{j=1}^n \sum_{i=1}^n{E\left[\epsilon_j\epsilon_i \right]} =  \sum_{i=1}^n{E[\epsilon_i^{2}]} = n\sigma^{2} = n.
+\begin{split}
+E[T_n^2]  &  = E\left[ \left( \sum_{i=1}^n{\epsilon_i} \right)^{2} \right]   =E \left[ \ \epsilon_1(\epsilon_1 + \epsilon_2 + ... \  \epsilon_n ) +  \epsilon_2 (\epsilon_1 + \epsilon_2 + ... \ \epsilon_n ) + ... \ \right] \\
+&=E \left[ \epsilon_1^2 \right] + E \left[ \epsilon_2^2 \right] + ... \ =  n\sigma^{2}.
+\end{split}
 \end{equation}
-The variance of this type of noise therefore grows proportionally to the number of timesteps, and is strongest on longer timescales and therefore lower frequencies. Although this noise has lots of names, including random walk noise and Brownian noise, we prefer \textit{red noise}; this draws an analogy with red light, which is also strongest at lower frequencies. Red noise is the integral of white noise.
+
+This means that the standard deviation of the red noise increases with the square root of the number of timesteps, times the standard deviation of the underlying white noise process:
+
+$$\sqrt{E[T_n^2]} = \sqrt{n} \  \sigma$$
+
+The variance of this type of noise, which is the integral of white noise, is thus strongest on longer timescales and lower frequencies. Although this type of noise has lots of names, including random walk noise and Brownian noise, we prefer \textit{red noise}; this draws an analogy with red light, which is also strongest at lower frequencies.
 
 \section{Noise in the mixed-layer model}
-Now, let's get a bit smarter and include more realistic values for our mixed-layer model. If we look back to Euler approximation in Equation \ref{eq:numerical_solution} and rearrange, we can see how the temperature in one timestep relates to the previous timestep (this is called a recurrence relation):
+Now, let's get a bit clever and include more realistic values for our mixed-layer model. If we look back to Euler approximation in Equation \ref{eq:numerical_solution} and rearrange, we can see how the temperature in one timestep relates to the previous timestep (this is called a recurrence relation):
 \begin{equation}
 T(t+\Delta t) =  \left[1 + \frac{\Delta t \lambda }{C}  \right] T(t) + \frac{\Delta t}{C} \ \epsilon(t).
 \end{equation}
 
-The first term on the left hand side, which we will call $\alpha$, is not necessarily equal to 1, as in our pure red noise example. Taking the values $\lambda = -3.7 \ Wm^{-2}K^{-1}$ , $C=50*1000*4181 \ Jm^{-2}$ , and a timestep of one month $\Delta t=30*3600*24 \ s$ (we need high-enough resolution in the time step):
+Using a timestep of one month, a standard deviation for $\epsilon$ of $\sigma=0.7$ W m$^{-2}$ approximately matches the standard deviation of observed monthly values of the top of the atmosphere imbalance, with the seasonal cycle removed. So we have a white noise process driving temperature with the following distribution:  $\frac{\Delta t}{C}\epsilon \sim N(\mu=0,\sigma=0.7 \cdot 0.0123= 0.0087)$ K month$^{-1}$ .
+
+The first term on the right hand side, which we will call $\alpha$, is not necessarily equal to 1, as in our pure red noise example. Taking the values $\lambda = -3.7 \ $Wm$^{-2}$K$^{-1}$ , $C=50 \cdot 1000 \cdot4181 \ $Jm$^{-2},$  and a timestep of one month ($\Delta t=30 \cdot3600 \cdot24 \ s$):
 
 \begin{equation}
 \alpha = \left[1 + \frac{\Delta t \lambda }{C}  \right] \approx 1 - 0.0124 \cdot \lambda = 0.95 
 \end{equation}
 
-In this set-up our mixed-layer system is more forgetful than pure red noise;  it only remembers 95\% of the temperature in the previous timestep. This is an effect of the negative $\lambda$ term, since it works to dampen the temperature anomalies in the mixed-layer over time. In other words, the strength of $\lambda$ affects the memory of the system.
+In this set-up our mixed-layer system is more forgetful than pure red noise;  it only remembers 95\% of the temperature from one month to the next. This is an effect of the negative $\lambda$ term, which works to dampen the temperature anomalies in the mixed-layer over time. In other words, the strength of $\lambda$ affects the memory of the system.
 
-Let's examine this idea more closely. If we have a strongly negative $\lambda$, then we would expect the correlation between two consecutive timesteps to be weak. Whereas if our $\lambda$ is weak, the correlation will be strong. Theoretically then, we should be able to  determine the equilibrium climate sensitivity of our model, and potentially the true Earth, simply by examining the correlation between the global mean surface temperature in two consecutive timesteps.  This correlation is also called the lag-1 correlation and can be calculated as follows:
-
-\begin{equation}
-\begin{aligned}
-\gamma_{R}(1) = {} &  \overline{x(t+1)  x(t)}  = a \overline{x(t)^{2}} + \sqrt{1-a^{2}} \ \overline{\epsilon(t)x(t)}  \\
-& = a \cdot 1 + \sqrt{1-a^{2}} \cdot 0 = a
-\end{aligned}
-\end{equation}
-
-Figure ... shows the relationship between the equilibrium climate sensitivity,  $ECS = \frac{-F_{2x}}{\lambda} $ for $F_{2x}=3.7 $ Wm$^{-2}$ in the mixed-layer and two-layer model. The black line 
-
-We can visualise the different colours of noise in our system by calculating their power spectral density. The power spectral density $P$ is a measure of the power at each frequency, which in our system is analogous to the strength of the variability at different time lags. With model output we can calculate $P$ for our desired variable $x(t)$ using a Fourier Transform:
-$$P = \left | \mathcal{F}\{x(t)\}\right | ^{2}$$
-
-Alternatively, and this I find more intuitive for understanding the concept of noise, we can perform a Fourier Transform on the autocorrelation function of $x$:
-
-$$P = \mathcal{F}\{\gamma(\tau)\} ,$$
-
-If we standardise our variable $x$, so that $x \sim (\mu=0,\sigma^{2}=1)$, we can write the autocorrelation function as
-
-$$\gamma(\tau)\ =  \overline{x(t) \ x(t+\tau)}$$.
-
-For white noise, this becomes a delta function, since for $\tau = 0$, the autocorrelation is equal to the variance, which is $=1$ by definition, and for all other time lags the correlation is 0.
-$$\gamma_{W}(\tau)\ =  \overline{x(t) \ x(t+\tau)} = \overline{\epsilon(t) \ \epsilon(t+\tau)} = \delta(0)$$. The power spectrum then takes on a constant value for all frequencies
-$$P = \mathcal{F}\{\gamma_{W}(\tau)\} = const. $$.
-
-Our temperature variable is a bit trickier. If we assume that it is a standardised red noise process, it will take the form
-$$x(t+1) = a x(t) + \sqrt{1-a^{2}} \ \epsilon(t),$$
-and the autocorrelation for $\tau = 1$ is
-
-\begin{equation}
-\begin{aligned}
-\gamma_{R}(1) = {} &  \overline{x(t+1)  x(t)}  = a \overline{x(t)^{2}} + \sqrt{1-a^{2}} \ \overline{\epsilon(t)x(t)}  \\
-& = a \cdot 1 + \sqrt{1-a^{2}} \cdot 0 = a
-\end{aligned}
-\end{equation}
-
-Successive autocorrelation coefficients go like $a^{\tau}$, and although these are discrete values, we can cheat a little and write the autocorrelation function as a continuous function. We also make the function `even' by taking the absolute value of $\tau$, since by definition $\gamma(\tau) =\gamma(-\tau)$:
-
-\begin{equation}
-\gamma_{R}(\tau) = a^{|\tau|} = e^{-R |\tau|}  \\
-\end{equation}
-where $R = ln(a) > 0 $. It can be shown that the Fourier transform of such a function and therefore the Power spectrum is
-$$P_{R} = \mathcal{F} \left \{ e^{-R |\tau|} \right \} = \frac{2R}{R^{2} + \omega^{2}}   \\$$
-where $\omega$ is the frequency.
-
-We can now plot the power spectra for both white and red noise and appreciate their distribution.
-
+Let's examine this idea more closely. If we have a strongly negative $\lambda$, then we would expect the correlation between two consecutive timesteps to be weak. Whereas if our $\lambda$ is weak, the correlation will be strong. Theoretically then, we should be able to  determine the equilibrium climate sensitivity of our model, and potentially the true Earth, simply by examining the `auto-correlation' of the global mean surface temperature between consecutive timesteps. It's common practice to take the year-1 lag correlation (the correlation between two consecutive years), and we can calculate this using the auto-correlation between two time months, which is simply $\alpha$. By continued application of the lag-1 auto-correlation over 12 months we get the year-1 lag correlation: $$\alpha_{1yr} = \alpha^{12} = 0.54 \ .$$
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=14 cm]{../plots/Variability04.pdf}
+		\includegraphics[width=15 cm]{../plots/Global_variability_lag-correlation.pdf}
 	\end{center}
-	\caption{ Caption } 
+	\caption{ The relations between the year-1 lag correlation and the equilibrium climate sensitivity for the mixed-layer model, the two-layer model, the coupled model MPI-ESM1.1 and an observational study \cite{Cox2018}. } 
+	\label{fig:lag_correlation}
+\end{figure}
+Figure \ref{fig:lag_correlation} shows the relationship between the equilibrium climate sensitivity,  $ECS = \frac{-F_{2x}}{\lambda} $ for $F_{2x}=3.7 $ Wm$^{-2}$, and $\alpha_{1yr}$ in the mixed-layer and two-layer model. The black line represents a recent observational study \cite{Cox2018}. Notice that the implied ECS is surprisingly low, less than one in fact, if we use our simple models as a reference. However, the behaviour of a coupled model lies nowhere near the relationships implied by our simple models. Why might there be such differences in behaviour between our simple models and the fully coupled model? 
+
+Actually, we don't really know the answer to this question. Part of the explanation may have  to do with the effect of deep ocean heat uptake.  We can see the difference that adding an additional layer to the system has in Figure \ref{fig:lag_correlation}. On short timescales, the ocean heat uptake acts like an additional `feedback' term, as we learned in Chapter \ref{chapter:evolution} from Equation \ref{eqn:T-perturbation}. But on longer timescales, as the heat reservoir of the deep ocean reaches equilibrium with the surface temperature, this additional feedback vanishes. This means that the 2-layer model can have the same year-1 lag correlation, but a higher climate sensitivity than the mixed-layer model. Part of the reason that the coupled model does not agree with the simple models may be that full ocean has stronger heat uptake on short timescales compared to the 2-layer model. In the final section of this chapter, we will visualise the effect of this ocean heat uptake and feedbacks over different timescales by calculating the power spectral density.
+
+\section{Visualising variability with power spectra}
+The power spectral density $P$ is a measure of the power at each frequency, which in our system is analogous to the contribution to the variability from different timescales. The following section is just a short introduction and skips some of the details of how we calculate the power spectrum. For a good introduction to stochastic processes and power spectra, see Chapters 10 and 11 of von Storch and Zwiers (2003) \cite{VonStorch2003}.
+
+With model output we can calculate $P$ for our desired variable $x(t)$ using a Fourier transform:
+
+\begin{equation}
+P(\omega) = \left | \mathcal{F}\{x(t)\}\right | ^{2}
+\label{eqn_four1}
+\end{equation}
+
+The frequency, which is the inverse of time, is represented by $\omega$. Alternatively, and this is more intuitive for understanding the concept of noise, we can perform a Fourier transform on the autocovariance function of $x$:
+
+\begin{equation}
+P(\omega) = \mathcal{F}\{\gamma(\tau)\} ,
+\label{eqn_fou}
+\end{equation}
+
+Where the auto-covariance function is determined by the covariance between terms at increasing time lags ($\tau$):
+
+\begin{equation}
+\gamma(\tau) = E\left[ (x_t - \mu_x) (x_{t+\tau} - \mu_x)\right] ,
+\label{eqn_autoco}
+\end{equation}
+
+where $\mu_x$ is the mean of $x$.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=16 cm]{../plots/Variability04.pdf}
+	\end{center}
+	\caption{Theoretical power spectral density for white noise with $\sigma$ = 0.0087 K month$^{-1}$, pure red noise, and red noise with lag-1 auto-correlation $\rho(1) = \alpha=0.95$. A monthly timestep is used to calculate the theoretical curves, but the time axis is in years. } 
 	\label{fig:variability_04}
 \end{figure}
 
+The auto-covariance is simply the variance of the first term (of the underlying white noise process) times the auto-correlation, which we already calculated at lag-1 ($\tau=1$) in the previous section:
+\begin{equation}
+\gamma(\tau) = \rho(\tau) \cdot \sigma^2 ,
+\label{eqn_autocorr}
+\end{equation}
 
+%If we standardise our variable $x$, so that $x \sim (\mu=0,\sigma^{2}=1)$, we can write the autocorrelation function as
+%
+%$$\gamma(\tau)\ =  \overline{x(t) \ x(t+\tau)}$$.
 
+For white noise, the auto-correlation function is the delta function, since $\tau = 0$ returns perfect correlation, which is 1 by definition, whereas for all other time lags the correlation is 0, because noise terms from different timesteps are independent of each other. The Fourier transform of the delta function is equal to 1 and so the power spectrum of white noise is equal to the variance for all frequencies:
+$$P_W = \mathcal{F}\{\gamma_W(\tau)\} =\mathcal{F}\{\sigma^2 \delta(0)\} = \sigma^2 .$$
 
-\section{Climate response to noise}
-What happens in the mixed and two-layer model?
-Influence of the deep ocean. Perhaps refer to Uwe and Ernst Meier-Reimers paper
-May consider ECS and influence on auto-correlation.
+For the red noise process, we have already calculated the monthly lag-1 coefficient $\rho(\tau=1)$ for our system, $\alpha$. The other values of the auto-correlation function follow by iteration:
 
+\begin{equation}
+\rho(\tau)_R = \alpha^{ |  \tau | },
+\label{eqn_autocorr_red}
+\end{equation}
 
+The Fourier transform yields:
+\begin{equation}
+P_{R}(\omega) = \frac{\sigma^2}{1+\alpha^2 - 2 \alpha cos(2 \pi \omega)}  \\
+\end{equation}
 
+If $\lambda=0$ and climate sensitivity is infinite, we get $\alpha=1$ pure red noise, yielding the red curve in Figure \ref{fig:variability_04} . For $\lambda=-3.7$ Wm$^{-2}$ and ECS=1 K, we calculated $\alpha$ = 0.95, yielding the orange curve in Fig \ref{fig:variability_04}. A negative feedback cause the variance to hit a limit of maximum power on long timescales, since the system finally forgets its history, whereas the pure red noise never forgets, and the variance continues to grow to infinity.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=17 cm]{../plots/Global_variability_spectrum.pdf}
+	\end{center}
+	\caption{Power spectra for the mixed-layer model and two-layer model, run with different values of ECS, each for 100,000 years and monthly timesteps. The theoretical curves match the values calculated in Figure \ref{fig:variability_04} for ECS=$\infty$ and ECS=1. } 
+	\label{fig:spectrum_models}
+\end{figure}
 
-
-
+Let's use the Fourier transform to calculate the power spectra  directly from the simple model output, this time using Equation \ref{eqn_four1} instead of relying on our noise theory. We will have to run the model over many timesteps. Since we are now dealing with long, but nevertheless limited time series, the spectral density values become more error prone, especially at longer timescales, for which there are simply less data available -- you need a timeseries twice the length of your desired time-lag to calculate only one data point for the auto-covariance function. Nevertheless, the mixed-layer values follow our theory very closely. The two-layer model, because of the ocean heat uptake, deviates from the theory. This is especially noticeable for $ECS=\infty$: here the curve levels off, deviating from the linear increase we expect of a pure red noise process. This is the result of the `feedback-like' effect of the ocean heat uptake, $\gamma T$. But ocean heat uptake is not a true negative feedback: we can also see on longer timescales that the power again begins to increase, after the heat reservoir of the deep ocean has had time to equilibrate with the surface temperature fluctuations. At these timescales, the two-layer model behaves like a very deep mixed layer. If we were to run the two-layer model for billions of years, we would see how the $ECS=\infty$ line returns to a linearly increasing trend, as we expect from the pure red-noise theory.
 %---------------------------------------------------------------------
 \chapter{Historical warming}
 \label{chapter:historical}
