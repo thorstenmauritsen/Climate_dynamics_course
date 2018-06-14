@@ -171,7 +171,35 @@ pml3 = qubicon(forcing_years, input_forcing, gamma=0,ECS=3.7/1.5
 ,b=1./2.,T_ml0 = 1.0
 ,sigma=0.)
 
-#### two layer
+###### Testing variability
+input_forcing = np.ones(nyears)
+
+vml1 = qubicon(forcing_years, -2.*input_forcing, gamma=0,ECS=3.7/1.5
+,b=1./2., T_ml0 = -1.0
+,sigma=2.42)
+
+vml2 = qubicon(forcing_years, 0.*input_forcing, gamma=0,ECS=3.7/1.5
+,b=1./2., T_ml0 = 0.0
+,sigma=2.42)
+
+vml3 = qubicon(forcing_years, 1.*input_forcing, gamma=0,ECS=3.7/1.5
+,b=1./2.,T_ml0 = 1.0
+,sigma=2.42)
+
+vtl1 = qubicon(forcing_years, -2.*input_forcing, gamma=0.5,ECS=3.7/1.5
+,b=1./2., T_ml0 = -1.0, T_deep0 = -1.0
+,sigma=2.42)
+
+vtl2 = qubicon(forcing_years, 0.*input_forcing, gamma=0.5,ECS=3.7/1.5
+,b=1./2., T_ml0 = 0.0, T_deep0 = 0.
+,sigma=2.42)
+
+vtl3 = qubicon(forcing_years, 1.*input_forcing, gamma=0.5,ECS=3.7/1.5
+,b=1./2.,T_ml0 = 1.0, T_deep0 = 1.0
+,sigma=2.42)
+
+
+#### Two layer
 nyears        = 10000
 forcing_years = np.arange(0,nyears)
 input_forcing = np.empty(nyears)
@@ -336,6 +364,72 @@ plt.tight_layout()
 plt.savefig('../plots/Stability_tlm.pdf', dpi=300)
 plt.close()
 
+#------------------------------------------------
+
+# Plot Histogram
+
+fig, axes = plt.subplots(1,1, figsize=(7,3.5))
+
+
+bins = np.arange(-1.,1.,0.02)
+#print(bins)
+n, obins, patches = plt.hist(vml1['T_ml'],
+                            bins + np.mean(vml1['T_ml']), normed=1,
+                            facecolor=color1, alpha=0.6,
+                            label='T = Mixed layer')
+n, obins, patches = plt.hist(vml2['T_ml'],
+                            bins + np.mean(vml2['T_ml']), normed=1,
+                            facecolor=color1, alpha=0.6)
+n, obins, patches = plt.hist(vml3['T_ml'],
+                            bins + np.mean(vml3['T_ml']), normed=1,
+                            facecolor=color1, alpha=0.6)
+
+
+n, obins, patches = plt.hist(vtl1['T_ml'],
+                            bins + np.mean(vtl1['T_ml']), normed=1,
+                            facecolor=color5, alpha=0.6,
+                            label='T = Two layer')
+n, obins, patches = plt.hist(vtl2['T_ml'],
+                            bins + np.mean(vtl2['T_ml']), normed=1,
+                            facecolor=color5, alpha=0.6)
+n, obins, patches = plt.hist(vtl3['T_ml'],
+                            bins + np.mean(vtl3['T_ml']), normed=1,
+                            facecolor=color5, alpha=0.6)
+
+#plt.title("Histogram with 'auto' bins")
+axes.set_ylabel(r'Frequency [%]',fontsize=12)
+axes.set_xlabel(r'Temperature [K]',fontsize=12)
+
+
+
+xmax = max(axes.get_xlim())
+xmin = min(axes.get_xlim())
+plt.xlim((xmin,xmax))
+ymax = max(axes.get_ylim())
+
+
+axes.xaxis.set_ticks_position('bottom')
+axes.yaxis.set_ticks_position('left')
+
+for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
+    ticks.set_color(almost_black)
+
+spines_to_remove        = ['top', 'right']
+for spine in spines_to_remove:
+    axes.spines[spine].set_visible(False)
+
+spines_to_keep = [ 'bottom', 'left']
+for spine in spines_to_keep:
+    axes.spines[spine].set_linewidth(0.5)
+    axes.spines[spine].set_color(almost_black)
+
+axes.legend(fontsize=10,frameon=False)
+plt.setp(axes, xlim=(-1.5,1.5))
+
+plt.tight_layout()
+plt.savefig('../plots/Stability_vari_1.pdf', dpi=300)
+plt.close()
+
 #----------------------------------------------------------
 
 fig, axes = plt.subplots(1,1, figsize=(6,3.5))
@@ -344,25 +438,24 @@ TT = np.linspace(-2.,2.,200)
 NT = -TT**3 + 3*TT
 VT = 1./4. * TT**4 - 3./2. * TT**2
 
+NT2 = -TT**3 + 3*TT + 1
+NT3 = -TT**3 + 3*TT - 1
+
+VT2 = 1./4. * TT**4 - 3./2. * TT**2 + TT
+VT3 = 1./4. * TT**4 - 3./2. * TT**2 - TT
 #axes.plot((0.3,0.8),(2.1,4.3),linestyle='--', color='black')
 
 colormlm = 'red'
 colortlm = 'blue'
 
-mlm, = axes.plot(TT,VT, color=colormlm, label='Potential')
+lin1, = axes.plot(TT,VT, color=color1, label='Potential')
+lin2, = axes.plot(TT,NT, color=color1, label='N(T)',alpha=0.5)
+lin3, = axes.plot(TT,VT2, color=color2, label='F= +1')
+lin4, = axes.plot(TT,NT2, color=color2 ,alpha=0.5)
+lin5, = axes.plot(TT,VT3, color=color5, label='F = -1')
+lin6, = axes.plot(TT,NT3, color=color5 ,alpha=0.5)
 
-#nmean=12*10
-#krnl = np.ones((nmean))/(nmean*1.)
-#qub1_Tmn = np.convolve(qub1['T_ml'], krnl, mode='valid')
-#qub1_Nmn = np.convolve(qub1['imbalance'], krnl, mode='valid')
-#argnan = ~np.isnan(qub1_Nmn)
-#print(np.max(qub1_Tmn[argnan]),np.min(qub1_Tmn[argnan]))
-#print(np.max(qub1_Nmn[argnan]),np.min(qub1_Nmn[argnan]))
-#axes.plot( qub1_Tmn[argnan] ,qub1_Nmn[argnan],'o', color='gray')
-
-tlm, = axes.plot(TT,NT, color=colortlm, label='N(T)')
-
-axes.legend(handles=[mlm,tlm], fontsize=10)
+axes.legend(handles=[lin1,lin2,lin3,lin5], fontsize=10)
 
 axes.set_xlabel(r'T')
 axes.set_ylabel('Wm-2')
@@ -380,5 +473,5 @@ axes.xaxis.set_label_coords(0.9, 0.1)
 axes.yaxis.set_label_coords(-0.05, 0.6)
 
 plt.tight_layout()
-plt.savefig('../plots/Stability_03.pdf', dpi=300)
+plt.savefig('../plots/Stability_theory.pdf', dpi=300)
 plt.close()
