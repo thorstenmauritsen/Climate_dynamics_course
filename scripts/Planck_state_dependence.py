@@ -34,15 +34,16 @@ meraner_lambda_T = np.array([-4.27,-4.11,-4.30,-4.28])
 
 fig, axes = plt.subplots(1,1, figsize=(6,4))  
 
-axes.plot(temperature, lambda_planck, color='blue')
+hfixed, = axes.plot(temperature, lambda_planck, color='blue', label='Variable emissivity')
 #axes.plot(temperature, test, color='green')
-axes.plot(temperature, lambda_solar, color='black')
+hvariable, = axes.plot(temperature, lambda_solar, color='black', label='Fixed emissivity')
+hmeraner = axes.scatter(meraner_T, meraner_lambda_T, color='red', label=r'ECHAM6 temperature feedback: 2, 4, 8 and 16xCO$_2$')
 
-axes.scatter(meraner_T, meraner_lambda_T, color='red')
+axes.legend(handles=[hmeraner,hfixed,hvariable], fontsize=10, loc=2, frameon=False)
 
-axes.text(280,-1.0,r'ECHAM6 temperature feedback: 2, 4, 8 and 16xCO$_2$', color='red')
-axes.text(280,-1.4,'Solar forced, fixed emissivity', color='black')
-axes.text(280,-1.8,'Emissivity forced', color='blue')
+#axes.text(280,-1.0,r'ECHAM6 temperature feedback: 2, 4, 8 and 16xCO$_2$', color='red')
+#axes.text(280,-1.4,'Solar forced, fixed emissivity', color='black')
+#axes.text(280,-1.8,'Emissivity forced', color='blue')
 
 
 axes.text(temperature[0], lambda_planck[0]+0.1, r'$\epsilon = $ '+str(emissivity[0]), color='blue',va='bottom', ha='center')
@@ -52,7 +53,8 @@ axes.text(temperature[-1], lambda_planck[-1]-0.1, r'$\epsilon = $ '+str(emissivi
 axes.set_xlabel('Surface temperature (K)')
 axes.set_ylabel(r'Feedback parameter (Wm$^{-2}$K$^{-1}$)')
 
-plt.ylim((-6,-1))
+plt.ylim((-6,0))
+plt.xlim((275,349))
 
 axes.yaxis.set_ticks_position('left')
 axes.xaxis.set_ticks_position('top')

@@ -219,7 +219,7 @@ pratio, hratio = np.histogram(ratio,np.arange(0,1,0.005))
 fig, axes = plt.subplots(1,1, figsize=(5,3))
 
 
-#axes.plot(bin_centers, pTCR, color='deepskyblue', label='TCR')
+axes.plot(bin_centers, pTCR, color='deepskyblue', label='TCR')
 axes.plot(bin_centers, pECS, color='black', label='ECS')
 
 axes.set_xlim([0, 6])
@@ -231,7 +231,7 @@ axes.set_xlabel('Temperature [K]')
 axes.set_ylabel('Probability')
 
 axes.text(xmax*0.8,ymax*0.7,'ECS: '+summaryStats(ECS[id]), color='black', va='top', ha='right', fontsize=10)
-#axes.text(xmax*0.8,ymax*0.61, 'TCR: '+summaryStats(TCR[id]), color='deepskyblue', va='top', ha='right', fontsize=10)
+axes.text(xmax*0.8,ymax*0.61, 'TCR: '+summaryStats(TCR[id]), color='deepskyblue', va='top', ha='right', fontsize=10)
 
 
 for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
