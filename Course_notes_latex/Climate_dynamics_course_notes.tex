@@ -1425,12 +1425,29 @@ I showed in chapter \ref{chapter:evolution} that the two-layer model can be redu
 $$T(t) = \frac{F(t)}{\gamma-\lambda}$$
 and the planetary imbalance is:
 $$N(t) = \gamma T(t),$$
-where we remember that $\lambda$ is the feedback parameter which is negative for stable systems, and $\gamma$ is the deep ocean heat uptake coefficient which is on the order of 1 Wm$^{-2}$K$^{-1}$.
-Now we are interested in estimating Earth's equilibrium climate sensitivity, $ECS=-F_{2x}/\lambda$, based on the observed warming. If we assume the zero-layer model applies we may simply compare two different times, $t_1$ and $t_2$, since $T$ and $F$ are proportional and define differences such that e.g. $\Delta T = T(t_2)-T(t_1)$ to get:
-$$\Delta T = \frac{\Delta F}{\gamma-\lambda}$$
+where we remember that $\lambda$ is the feedback parameter which is negative for stable systems, and $\gamma$ is the deep ocean heat uptake coefficient which is on the order of 1 Wm$^{-2}$K$^{-1}$. If we assume the zero-layer model applies we may simply compare two different times, $t_1$ and $t_2$, since $T$ and $F$ are proportional and define differences such that e.g. $\Delta T = T(t_2)-T(t_1)$ to get:
+\begin{equation}
+\Delta T = \frac{\Delta F}{\gamma-\lambda}
+\label{eq:hist_dT}
+\end{equation}
 and 
-$$\Delta N = \gamma \Delta T.$$
-Next, we can eliminate $\gamma$ by combining the two equations, and then insert the definition of $ECS$ in order to obtain:
+\begin{equation}
+\Delta N = \gamma \Delta T.
+\label{eq:hist_dN}
+\end{equation}
+
+\noindent
+First, and as a simplest case, we could be interested in interpreting the historical record as a simple transient and so the warming as a measure of of Earth's transient climate response ($TCR$) discussed in Section \ref{sec:zero-layer}. To remind you, $TCR$ is the warming that occurs during a gradual increase of CO$_2$ on multi-decadal timescales at the time of doubling whereat the forcing is $F_{2x}$. We then have:
+$$TCR = \frac{F_{2x}}{\gamma-\lambda}$$
+and since $\gamma-\lambda$ is assumed to be a constant property of the climate system, we can obtain that:
+\begin{equation}
+TCR= \frac{F_{2x} \cdot \Delta T}{\Delta F}.
+\label{eq:zero_tcr}
+\end{equation}
+
+
+Likewise, we are interested in estimating Earth's equilibrium climate sensitivity, $ECS=-F_{2x}/\lambda$, based on the observed warming. 
+We can eliminate $\gamma$ by combining equations \ref{eq:hist_dT} and \ref{eq:hist_dN}, and then insert the definition of $ECS$ in order to obtain:
 $$\Delta T = \frac{\Delta F}{\frac{\Delta N}{\Delta T}+\frac{F_{2x}}{ECS}}$$
 and re-arrange in order to isolate $ECS$:
 \begin{equation}
@@ -1438,41 +1455,42 @@ ECS = \frac{F_{2x}\cdot \Delta T}{\Delta F - \Delta N}.
 \label{eq:zero_ecs}
 \end{equation}
 
-\noindent
-Now we see that the problem of determining ECS boils down to estimating the change in temperature, forcing and planetary imbalance between two periods. The periods can in principle be chosen freely, it is not required that one period is at stationarity. It is, however, important that the assumptions made in the zero-layer model are reasonable fulfilled, for instance that the forcing is changing gradually on decadal time-scales. Looking at figure \ref{fig:historical_forcing} we see that volcanic forcing is the perfect counter-example of a gradually changing forcing. This leaves us with periods in the late 19th Century, one in the mid-20th Century and the early 21st Century. In table \ref{table:input} I provide the difference between the former and the latter. 
 
 \begin{table}
-  \caption{Input for the observations-based analysis. Changes are between the period 2005-2015 minus 1859-1882. Uncertainties are standard deviations of the assumed gaussian distributions. The lower part of the table specifies the individual contributions to the total forcing change.  }
-  \vspace{0.5 cm}
-  \centering
-  \begin{tabular}{lrlr}
-    \hline
-    Quantity & Value &  & Source\\
-    \hline
-    Temperature change, $\Delta T$     & 0.77&$\pm$ 0.08 K                  & HadCRUT4\citep{Morice:2012dw} \\
-    Total forcing change, $\Delta F$      & 2.16&$\pm$ 0.59 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\    
-    Planetary imbalance, 2005-2015, $N(t_2)$            & 0.71&$\pm$ 0.06 Wm$^{-2}$   & Johnson et al.\citep{Johnson:2016do} \\
-    Planetary imbalance, 1859-1882, $N(t_1)$                     & 0.15&$\pm$ 0.075 Wm$^{-2}$ & Lewis and Curry\citep{Lewis:2014jt} \\    
-    \hline
-    Greenhouse gas forcing change   & 2.53&$\pm$ 0.18 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\    
-    Aerosol forcing change                  &-0.69&$\pm$ 0.55 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\    
-    Black carbon on snow change      & 0.02&$\pm$ 0.02 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\     
-    Stratospheric water vapor change& 0.06&$\pm$ 0.03 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\        
-    Land use change                          &-0.10&$\pm$ 0.06 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\        
-    Ozone change                              & 0.29&$\pm$ 0.12 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\        
-    Contrails                                        & 0.05& Wm$^{-2}$                     & IPCC\citep{IPCC:2013is} \\        
-    Natural forcing change                  & -0.005 &  Wm$^{-2}$                & IPCC\citep{IPCC:2013is} \\ 
-    \hline
-    Forcing for doubled CO$_2$ ($F_{2\times}$)           & 3.71&$\pm$ 0.26 Wm$^{-2}$   & \\        
-    \hline
-  \end{tabular}
-  \label{table:input}
+	\caption{Input for the observations-based analysis. Changes are between the period 2005-2015 minus 1859-1882. Uncertainties are standard deviations of the assumed gaussian distributions. The lower part of the table specifies the individual contributions to the total forcing change.  }
+	\vspace{0.5 cm}
+	\centering
+	\begin{tabular}{lrlr}
+		\hline
+		Quantity & Value &  & Source\\
+		\hline
+		Temperature change, $\Delta T$     & 0.77&$\pm$ 0.08 K                  & HadCRUT4\citep{Morice:2012dw} \\
+		Total forcing change, $\Delta F$      & 2.16&$\pm$ 0.59 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\    
+		Planetary imbalance, 2005-2015, $N(t_2)$            & 0.71&$\pm$ 0.06 Wm$^{-2}$   & Johnson et al.\citep{Johnson:2016do} \\
+		Planetary imbalance, 1859-1882, $N(t_1)$                     & 0.15&$\pm$ 0.075 Wm$^{-2}$ & Lewis and Curry\citep{Lewis:2014jt} \\    
+		\hline
+		Greenhouse gas forcing change   & 2.53&$\pm$ 0.18 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\    
+		Aerosol forcing change                  &-0.69&$\pm$ 0.55 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\    
+		Black carbon on snow change      & 0.02&$\pm$ 0.02 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\     
+		Stratospheric water vapor change& 0.06&$\pm$ 0.03 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\        
+		Land use change                          &-0.10&$\pm$ 0.06 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\        
+		Ozone change                              & 0.29&$\pm$ 0.12 Wm$^{-2}$   & IPCC\citep{IPCC:2013is} \\        
+		Contrails                                        & 0.05& Wm$^{-2}$                     & IPCC\citep{IPCC:2013is} \\        
+		Natural forcing change                  & -0.005 &  Wm$^{-2}$                & IPCC\citep{IPCC:2013is} \\ 
+		\hline
+		Forcing for doubled CO$_2$ ($F_{2\times}$)           & 3.71&$\pm$ 0.26 Wm$^{-2}$   & \\        
+		\hline
+	\end{tabular}
+	\label{table:input}
 \end{table}
 
-Inserting values from Table \ref{table:input} in Equation \ref{eq:zero_ecs} we obtain $ECS \approx$ 1.78 K. This number is fairly low compared to suggestions that $ECS$ likely is between 1.5 and 4.5 K, a result that has puzzled scientists in the past five years. There are a number of suggestions out there for why these estimates are low-biased ranging from the temperature record not having global coverage, that feedback is non-constant between decadal and centennial timescales, natural variability, to forcings act differently and cannot simply be added.
+\noindent
+Now we see that the problem of determining $TCR$ and $ECS$ boils down to estimating the change in temperature, forcing and planetary imbalance between two periods. The periods can in principle be chosen freely, it is not required that one period is at stationarity. It is, however, important that the assumptions made in the zero-layer model are reasonable fulfilled, for instance that the forcing is changing gradually on decadal time-scales. Looking at figure \ref{fig:historical_forcing} we see that volcanic forcing is the perfect counter-example of a gradually changing forcing. This leaves us with periods in the late 19th Century, one in the mid-20th Century and the early 21st Century. In table \ref{table:input} I provide the difference between the former and the latter. 
 
-Here we shall instead look at what the uncertainty in each term in equation  \ref{eq:zero_ecs} means for uncertainty in $ECS$ inferred by this method. It is not so straight-forward (I believe it is impossible) to use regular error-analysis that you might have learned in earlier courses because of the division by a difference. Further, not all errors are independent. For instance the change in $\Delta F$ contains a contribution from CO$_2$ that has errors that are dependent on errors in $F_{2x}$. Therefore we resort to Monte-Carlo sampling.
 
+Inserting values from Table \ref{table:input} in Equations \ref{eq:zero_tcr} and \ref{eq:zero_ecs} we obtain $TCR \approx$ 1.32 K and $ECS \approx$ 1.78 K. These numbers are fairly low compared to suggestions that $TCR$ is likely between 1 and 2.5 K and $ECS$ likely is between 1.5 and 4.5 K, a result that has puzzled scientists in the past five years. There are a number of suggestions out there for why these estimates might be low-biased ranging from the temperature record not having global coverage, that feedback is non-constant between decadal and centennial timescales, natural variability, to forcings act differently and cannot simply be added.
+
+Here we shall instead look at what the uncertainty in each term in equations  \ref{eq:zero_tcr} and \ref{eq:zero_ecs} means for uncertainty in $TCR$ and $ECS$ inferred by this method. It is not so straight-forward (I believe it is impossible) to use regular error-analysis that you might have learned in earlier courses because of the division by a difference. Further, not all errors are independent. For instance the change in historical $\Delta F$ contains a contribution from CO$_2$ that has errors that are dependent on errors in $F_{2x}$. Therefore we resort to Monte-Carlo sampling.
 In Monte-Carlo sampling methods you assume probability-distribution functions for all terms in the expression you are interested in estimating (e.g. equation \ref{eq:zero_ecs}), then draw random samples from those distributions. The random samples are then used to evaluate random estimates of the expression. Here we shall use the gaussian distribution, referred to as the normal distribution. In Python you can the ask for example for 10 samples from the gaussian distribution with mean equal 0.0 and standard deviation of 1.0 as follows:
 \begin{verbatim}
    > import numpy as np
@@ -1481,7 +1499,7 @@ In Monte-Carlo sampling methods you assume probability-distribution functions fo
 \end{verbatim}
 If you would sample enough, perhaps a few million times, and plot the probability distribution you would get something very close to a gaussian distribution.
 
-Now we can do the same for each quantity in equation \ref{eq:zero_ecs}. We will simply assume that they are gaussian with the standard deviations listed in Table \ref{table:input}. Already by looking at the uncertainties it is clear that the numerator is fairly well constrained with errors of about 10 percent, but the denominator $(\Delta F - \Delta N)$ can cause more uncertainty in $ECS$. This is particularly the case if $\Delta F$ becomes small so that we divide by a small number and $ECS$ can become large. 
+Now we can do the same for each quantity in equations \ref{eq:zero_tcr} and \ref{eq:zero_ecs}. We will simply assume that they are gaussian with the standard deviations listed in Table \ref{table:input}. Already by looking at the uncertainties it is clear that the numerator is fairly well constrained with errors of about 10 percent, but the denominator of \ref{eq:zero_ecs}, $(\Delta F - \Delta N)$, can cause substantial uncertainty in $ECS$. This is particularly the case if $\Delta F$ becomes small so that we divide by a small number and $ECS$ can become large. 
 In figure \ref{fig:ECS_inferred_forcing} I plot the non-aerosol and the aerosol forcing, and their sum. We see how aerosol forcing is assumed much more uncertain than the uncertainty in all other forcing components together, and that aerosol forcing is dominating the uncertainty in total forcing. We can understand this as for independent random errors the standard deviations add in quadrature, such the standard deviation of the total forcing is the square root of the sum of squared standard deviations:
 $$ \sigma_{total} = \sqrt{\sigma_{aerosol}^2 + \sigma_{non-aerosol}^2}$$
 
@@ -1489,26 +1507,67 @@ $$ \sigma_{total} = \sqrt{\sigma_{aerosol}^2 + \sigma_{non-aerosol}^2}$$
 \begin{center}
 \includegraphics[width=10 cm]{../plots/ECS_inferred_forcing.pdf}
 \end{center}
-\caption{ Monte-Carlo sampled forcing change used to estimate $ECS$ from historical warming. I plot probability distributions for aerosol, non-aerosol and total forcing change. } 
+\caption{ Monte-Carlo sampled forcing change used to estimate $TCR$ and $ECS$ from historical warming. I plot probability distributions for aerosol, non-aerosol and total forcing change. } 
 \label{fig:ECS_inferred_forcing}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=10 cm]{../plots/ECS_inferred.pdf}
+	\end{center}
+	\caption{ Monte-Carlo sampled probability distributions of $TCR$ and $ECS$ as calculated using equations \ref{eq:zero_tcr} and \ref{eq:zero_ecs} using values from table \ref{table:input}. The median value and the 5-95 percent interval of the distribution is printed. Here I have additionally sampled $F_{2x}$ in such a way that it correlates with greenhouse gas forcing, though this has little impact on the results and can be ignored. } 
+	\label{fig:ECS_inferred}
 \end{figure}
 
 With the resulting distribution of $\Delta F$, and likewise randomly sampled $\Delta T$ and $\Delta N$, we can now calculate a corresponding distribution of $ECS$ following equation \ref{eq:zero_ecs} as displayed in Figure \ref{fig:ECS_inferred}. We see that the method results in a highly skewed distribution giving most weight to lower-end $ECS$ and a long tail towards higher values (actually, a few samples have $ECS > \infty$). Given the strong weight on low-end $ECS$ this type of estimates is somewhat at odds with other evidence suggesting $ECS$ is most likely around 3 K, or sometimes higher. One possible reason for this could be that the feedback parameter is different when the system is out of balance; an effect we shall investigate in the next chapter.
 
+
+
+\section{Committed warming}
+The danish artist, author and inventor Storm P. supposedly\footnote{It remains under debate if he was the first to make the statement, but physicist Niels Bohr cites Storm P. } once upon a time stated:{\em "It is difficult to make predictions, especially about the future"}. Such is also the case when climate scientists try to predict what the temperature of the Earth might be, say, at the end of the century. Most of the uncertainty in this respect actually arises from aspects that are not considered in this course, e.g. the development of society, technology and political decisions. But there is a useful concept which does not depend on things happening in the future and nicely provides us with a lower bound on future warming. The idea is to calculate the future warming that arises solely due to past actions, often referred to as the committed warming, or more creatively as there is {\em 'warming in the pipeline'}, after James Hansen. There are two main reasons there is committed warming at the medium and long term: the system is currently out of balance ($N\ne 0$) and CO$_2$ has a long lifetime in the climate system. We shall look at these two aspects.
+
 \begin{figure}
-\begin{center}
-\includegraphics[width=10 cm]{../plots/ECS_inferred.pdf}
-\end{center}
-\caption{ Monte-Carlo sampled probability distribution of $ECS$ as calculated using equation \ref{eq:zero_ecs} using values from table \ref{table:input}. The median value and the 5-95 percent interval of the distribution is printed. Here I have additionally sampled $F_{2x}$ in such a way that it correlates with greenhouse gas forcing, though this has  little impact on the results and can be ignored. } 
-\label{fig:ECS_inferred}
+	\begin{center}
+		\includegraphics[width=\textwidth]{../external_figures/Committed_warming.pdf}
+	\end{center}
+	\caption{ Committed warming estimates based on historical warming, reproduced from Mauritsen and Pincus (2017). Five cases are displayed with increasing complexity. The error bars display the 5-95 percent confidence intervals based on Monte-Carlo sampling. } 
+	\label{fig:committed_warming}
 \end{figure}
 
+When we consider the longterm effect of the system being out of balance we shall, somewhat artificially, first assume that all relevant boundary conditions do not change through time. In this case the forcing applied up until now will remain constant. Since the system has only responded partially by $\Delta T$ to this forcing, there is remaining warming to be realized as the deep ocean equilibrates. If we assume that the feedback parameter ($\lambda$) remains the same at all times then this remaining warming is simply $-N/\lambda$, and we can add this on top of $\Delta T$ and replace $\lambda$ to obtain a first approximation to the committed warming:
+\begin{equation}
+T_a \approx \Delta T + N \cdot \frac{ECS}{F_{2x}}
+\end{equation}
+and inserting numbers from Table \ref{table:input} we obtain $T_a \approx$ 1.11 K around the year 2010. There are a number of small subtleties to this, for instance the period 1859-1882 is not really pre-industrial and further there has been substantial emissions of CO$_2$ since 2010, such that the when taking these factors into account I find a committed warming in this case of 1.25 K (Figure \ref{fig:committed_warming}). 
+
+Aerosol particles have a fairly short lifetime in the atmosphere of about a week. Thus, if we were to stop fossil fuel burning, then the associated aerosol cooling would also be quickly removed which would add forcing ($-F_{aero}$) on top of the currently remaining imbalance. Removing a forcing is of course not strictly speaking a forcing in itself, but rather what happens is that some of the greenhouse gas forcing, which was previously masked by aerosols, is now unleashed. We can estimate the resulting committed warming:
+\begin{equation}
+T_b \approx \Delta T + \left[ N - F_{aero} \right] \cdot \frac{ECS}{F_{2x}}
+\end{equation}
+Unsurprisingly, the committed warming increases further in this case, but the removal of aerosol forcing leads to a very substantial rise in the upper end of uncertainty. This is because a strong aerosol cooling is associated with both a large $ECS$ and a strong masking effect. 
+
+One can move on and also take into account other short-lived forcing agents, such as methane, which results in a slight reduction to $T_c$. One might also only consider end-of-century warming, which can be reasonably approximated by replacing $ECS$ with $TCR$ in the expressions ($T_d$). Finally, we  can also took into account the carbon uptake of the deep ocean on these timescales ($T_e$). 
+
+The concept of committed warming is useful, I think, in communicating the climate change problem in that it clearly delineates already committed warming from possible future action. It also defies the idea, held by the majority of the public, that the climate system will go "back to normal" when we stop emitting CO$_2$, as is the case for most other environmental problems. However, be warned as there are many different definitions of committed warming, including some which involves economic commitments to investments and so there is not a clear definition.
 
 
+\newpage
+\vspace{1 cm}
+{\setlength{\parindent}{0cm}
+	%\hrule
+
+	\begin{exercise}
+	Explain your own words the zero-layer assumption and why this is a reasonable approximation for the overall 20th Century warming.
+	\end{exercise}
+
+
+	\begin{exercise}
+	Explore impact of aerosol forcing on the $TCR$ and $ECS$ estimates. You can do this by simply adding and subtracting one standard deviation of the aerosol forcing (Table \ref{table:input}). Shortly discuss the results.
+	\end{exercise}
 
 %---------------------------------------------------------------------
 \chapter{State-dependent feedback}
-In the previous chapters we assumed that perturbations were small enough that feedbacks could be considered approximately constant. However, there are good reasons to think that for even modestly warmer or colder climates that feedback mechanisms could change in strength. 
+In the previous chapters we assumed that perturbations were small enough that feedbacks could be considered approximately constant. However, there are good reasons to think that for even modestly warmer or colder climates  feedback mechanisms could change in strength. 
 It turns out that all the feedbacks, surface albedo, temperature, water vapor and clouds may depend on the climate state, and understanding and quantifying the underlying processes -- and what it means for the interpretation of Earth's past and possible futures -- are subject to ongoing scientific debate. %Thus I will only discuss them qualitatively here. 
 
 
@@ -1523,7 +1582,7 @@ N = \frac{S_o}{4}(1-\alpha) - \epsilon \sigma T_s^4
 \end{equation}
 where for present-day Earth-like conditions $T_s\approx 288$ K, $\alpha \approx 0.29$ and $\epsilon \approx 0.61$, and we have shown in an exercise that the equilibrium surface temperature at $N=0$ is:
 $$T_s = \sqrt[4]{\frac{S_o(1-\alpha)}{4\epsilon\sigma}}.$$
-Now, let us imagine that the planetary albedo ($\alpha$) no longer a constant but instead it is a simple function of global mean surface temperature such that:
+Now, let us imagine that the planetary albedo ($\alpha$) is no longer a constant, but instead a simple function of global mean surface temperature such that:
 %\[
 \begin{equation}
 \alpha(T_s) = 
@@ -1556,7 +1615,7 @@ that is, in this case the slope of the absorbed shortwave (blue) is steeper than
 \begin{center}
 \includegraphics[width=11 cm]{../Plots/Snowball_Earth_pseudo_potential.pdf}
 \end{center}
-\caption{ Pseudo potential curve for the snow-ball Earth instability case. The system has three equilibria $V$ is local minimum or maximum, two of which are stable and one is unstable.  } 
+\caption{ Pseudo potential curve for the snow-ball Earth instability case. The system has three equilibria where $V$ is local minimum or maximum, two of which are stable and one is unstable.  } 
 \label{fig:snowball_pseudo_potential}
 \end{figure}
 
@@ -1599,12 +1658,12 @@ One model that does exhibit a substantial rise in $ECS$ in a warmer climate is t
 It will take a few thousand years to equilibrate a coupled model with a forcing, and so the displayed runs have not yet reached a stationary state. But we can get a good idea of where the runs are headed by fitting a line to the output and then extrapolate to zero. Because of the bending I chose to use the years 100 to 1000 of each run for the estimate; the results are shown in the lower part of Figure \ref{fig:mpiesm12_wide_range}. We can now estimate $ECS$ for each of the doublings as the difference between the equilibria:
 \begin{center}
 \begin{tabular}{l|r} 
- & $ECS$  \\
+ & $ECS$ [K]  \\
 \hline
-1xCO$_2$ to 2xCO$_2$     & 2.77 K \\
-2xCO$_2$ to 4xCO$_2$     & 3.61 K \\
-4xCO$_2$ to 8xCO$_2$     & 4.92 K \\
-8xCO$_2$ to 16xCO$_2$     & 9.80 K 
+1xCO$_2$ to 2xCO$_2$     & 2.77  \\
+2xCO$_2$ to 4xCO$_2$     & 3.61  \\
+4xCO$_2$ to 8xCO$_2$     & 4.92  \\
+8xCO$_2$ to 16xCO$_2$     & 9.80  
 \end{tabular}
 \end{center}
 where we see that $ECS$ roughly triples from the first to the fourth doubling of CO$_2$. The difference is mainly due to a change in slope, which we remember is the feedback parameter. On the contrary, the forcing from each doubling is not changing in a way that explains the rise in $ECS$. 
@@ -1618,8 +1677,8 @@ where we see that $ECS$ roughly triples from the first to the fourth doubling of
 \end{figure}
 
 \subsection{Possible mechanisms}
-Next, we will explore why $ECS$ increases in MPI-ESM1.2. Here the reader is cautioned, though, that the mechanisms are different between models, even model versions as I found quite different results for the predecessor of this model (MPI-ESM). 
-We now can analyse these runs as we did in Chapter \ref{chapter:forcing} by splitting up the radiation balance into contributions from temperature, water vapor, clouds and surface albedo: $N=N_T+N_W+N_C+N_A$. The evolution of the four terms are shown in Figure \ref{fig:state_dependent_feedback_mpiesm12}. At first sight, not much changes across the displayed range. But one has to remember that it is the sum of four components that make up the total imbalance. I calculated the slope of each term on years 100 to 300 for the two runs:
+Next, we will explore why $ECS$ increases in MPI-ESM1.2. Here the reader is cautioned, though, that the mechanisms are different between models. 
+We can now  analyse these runs as we did in Chapter \ref{chapter:forcing} by splitting up the radiation balance into contributions from temperature, water vapor, clouds and surface albedo: $N=N_T+N_W+N_C+N_A$. The evolution of the four terms are shown in Figure \ref{fig:state_dependent_feedback_mpiesm12}. At first sight, not much changes across the displayed range. But one has to remember that it is the sum of four components that make up the total imbalance. I calculated the slope of each term on years 100 to 300 for the two runs:
 \begin{center}
   \begin{tabular}{l|rr} 
 Feedback parameter (Wm$^{-2}$K$^{-1}$) & 2xCO$_2$ & 16xCO$_2$  \\
@@ -1645,7 +1704,7 @@ Clouds are the main contributors to the rise in $ECS$ in MPI-ESM1.2. However, cl
 \subsubsection{Water vapor feedback}
 There is broad agreement among models of various types that water vapor feedback will get stronger in a warmer climate. 
 To be honest, I am actually not quite sure why that is. 
-I think, though, that it has to do with the water vapor absorption bands, unlike those of CO$_2$, being far from saturated such that the atmosphere can be considered optically thin with respect to water vapor. This also means that some of the radiation emitted by the surface escapes directly to space. As temperature rise the water vapor content increases roughly exponentially. The induced greenhouse effect, though, increases faster than logarithmically, and so the end result is a strengthening water vapor feedback. 
+I think, though, that it has to do with the water vapor absorption bands, unlike those of CO$_2$, being far from saturated such that the atmosphere can be considered optically thin with respect to water vapor in parts of the spectrum. This also means that some of the radiation emitted by the surface escapes directly to space. As temperature rise the water vapor content increases roughly exponentially. The induced greenhouse effect, though, increases faster than logarithmically, and so the end result is a strengthening water vapor feedback. 
 Beware, though, that I am here at the limit of my understanding. 
 
 
@@ -1653,8 +1712,8 @@ Beware, though, that I am here at the limit of my understanding.
 
 
 \subsubsection{Surface albedo feedback}
-Whereas the surface albedo feedback from melting snow and ice may have played an important role in climates colder than present, as we saw in the example of the snow-ball Earth instability, it will not play a significant role in a warmer climate where it may be close to zero. On average, for instance, climate models predict that Arctic spring sea ice is practically gone by about 4-7 K above pre-industrial temperatures; summer sea ice a bit earlier. 
-Other factors may influence the surface albedo, though, foremost vegetation or the lack thereof. For instance a forest absorbs more sunlight than grass-lands, and deserts are actually quite reflective. Thus, shifts in the extent of the different vegetation types can induce surface albedo feedbacks too.
+Whereas the surface albedo feedback from melting snow and ice may have played an important role in climates colder than present, as we saw in the example of the snow-ball Earth instability, it will not play a significant role in a much warmer climate where it may be close to zero. On average, for instance, climate models predict that Arctic spring sea ice is practically gone by about 4-7 K above pre-industrial temperatures; summer sea ice a bit earlier. 
+Other factors may influence the surface albedo, though, foremost vegetation, or the lack thereof. For instance a forest absorbs more sunlight than grass-lands, and deserts are actually quite reflective. Thus, shifts in the extent of the different vegetation types can induce surface albedo feedbacks too.
 The Earth's currently remaining ice sheets, Greenland and Antarctica, would also eventually cause a surface albedo feedback as they adjust to a warmer climate. This process takes, as argued earlier, thousands of years because the ice sheets are very thick. Such a process is not included in the simulations with MPI-ESM1.2.
 
 \begin{figure}
@@ -1673,18 +1732,17 @@ To get started we are reminded that the Planck feedback of the gray body is:
 \label{eq:planck_feedback_3}
 \end{equation}
 from which we see that $\lambda_p$ not only depends on $T_s$, but also on the planetary emissivity $\epsilon$. The equilibrium temperature of this system is:
-\begin{equation}
+$$
 T_s = \sqrt[4]{\frac{S_o(1-\alpha)}{4\epsilon\sigma}}
-\end{equation}
-from which we see that $T_s$ depends on $S_o$, $\alpha$ and $\epsilon$. If we now consider the case where we are increasing atmospheric CO$_2$ we can model this with small reductions of emissivity $\delta \epsilon$ corresponding to increasing the greenhouse effect:
-\begin{equation}
-F = - \delta \epsilon \cdot \sigma T_s^4
-\end{equation}
-from which we see that a one percent reduction in $\epsilon$ gives $F\approx 3.9$ Wm$^{-2}$, roughly equal to that of a doubling of CO$_2$. If we ignore any changes in $S_o$ and $\alpha$ we see that:
+$$
+from which we see that $T_s$ depends on $S_o$, $\alpha$ and $\epsilon$. If we now consider the case where we are increasing atmospheric CO$_2$ we can model this with small reductions of emissivity $\delta \epsilon$ corresponding to increasing the greenhouse effect leading to warmer stationary state $T_s$.
+If we ignore any changes in $S_o$ and $\alpha$ we see that stationary states are characterised by:
 $$T_s \propto \epsilon^{-\frac{1}{4}}$$
 Inserting this into \ref{eq:planck_feedback_3} we get that in this limiting case:
-$$\lambda_p \propto \epsilon^{\frac{1}{4}}$$
-which means that as the system warms due to a decreasing emissivity the Planck feedback must also weaken slowly. The case is shown in blue in Figure \ref{fig:planck_state_dependence} for a range of emissivities from 0.7 to 0.3. As a contrasting case I plotted the Planck feedback for the case that temperature increases due to an increasing solar forcing $S_o$ such that $\lambda_p \propto T_s^3$ as black. For comparison the estimates of temperature feedback, which includes Planck and lapse-rate feedbacks, from the ECHAM6 model in Meraner et al. (2013) is shown in red. The latter supports nearly constant $\lambda_T$ as also found with MPI-ESM1.2.
+\begin{equation}
+\lambda_p \propto T_s^{-1}
+\end{equation}
+which means that as the system warms due to a decreasing emissivity the Planck feedback must also weaken slowly in the vicinity of stationary states. The case is shown in blue in Figure \ref{fig:planck_state_dependence} for a range of emissivities from 0.7 to 0.3. As a contrasting case I plotted the Planck feedback for the case where $\epsilon$ is constant such that $\lambda_p \propto T_s^3$ as black. For comparison the estimates of temperature feedback, which includes Planck and lapse-rate feedbacks, from the ECHAM6 model in Meraner et al. (2013) is shown in red. The latter supports nearly constant $\lambda_T$ as also found with MPI-ESM1.2.
 
 % It should be possible to express the state-dependence in temperature rather than emissivity which would make the result clearer. Isolate epsilon in equation 7.4 and substitute into 7.3.
 
@@ -1716,7 +1774,11 @@ T_b=\frac{-\lambda_o}{2b}
 \end{equation}
 such that fix-points below $T_b$ are stable and fix-points above $T_b$ are unstable. This leads to a so-called run-away feedback situation where the system warms and the imbalance increases more and more leading to further warming. This actually happens to our fit to MPI-ESM1.2 (Figure \ref{fig:quadratic_imbalance}) for a forcing corresponding to 16xCO$_2$ as shown by the dashed extension. Also the full MPI-ESM model can exhibit a run-away, even if it is difficult to make the code work at high temperatures. Popp et al. (2016) made several modifications to the model and found that the modified model has an unstable regime and if forced hard it will settle in a very warm moist greenhouse (Figure \ref{fig:popp}). In principle this situation could be modelled by adding a cubic term to equation \ref{eq:quadratic}:
 $$N=F+\lambda_o T_s+ bT_s^2+cT_s^3$$
-which could then have a stable fix-point at high temperatures for certain combinations of $\lambda_o$, $b$ and $c$. The overall behavior of this system is reminiscent of the snow-ball Earth instability which also had two stable fix-points with an unstable fix-point in between them.
+which could then have a stable fix-point at high temperatures for certain combinations of $\lambda_o$, $b$ and $c$. Here it is easy to realize that there is global stability to arbitrary forcing if $c<0$. The overall behavior of this system is reminiscent of the snow-ball Earth instability which also had two stable fix-points with an unstable fix-point in between them.
+
+\vspace{0.5 cm}
+
+HERE I MIGHT ADD A SECTION PROVING GLOBAL STABILITY IF $c<0$. 
 
 %\section{Runaway feedback}
 
@@ -1754,16 +1816,17 @@ Apply different forcing strengths and estimate iteratively at which forcing the 
 
 %---------------------------------------------------------------------
 \chapter{Time-dependent feedback}
+\label{chapter:time-dependent}
 The idea that climate feedbacks are time-dependent can be mind-boggling. In a deterministic dynamical system the only thing that determines the evolution moving forward in time is the current state combined with the boundary conditions. 
-So when we refer to time-dependent feedbacks then formally these are also state-dependent feebdacks. 
+So when we refer to time-dependent feedbacks then formally these are also state-dependent feedbacks. 
 The way I think about it is that a feedback change following the application of a forcing is defined as time-dependent if the behavior does not depend on which stationary state the system starts from or, equivalently, how strongly it is forced. This is in contrast with the examples from the previous chapter where the radiation balance depends explicitly on the temperature of the system. 
-To obtain such behavior the system needs to have at least two state-variables; something which is not hard to find in the complex climate systems we often deal with. In this chapter I will go over two simple models that have exactly two state-variables such that they can exhibit time-dependency of their feedback. 
+To obtain such purely time-dependent behavior the system needs to have at least two state-variables; something which is not hard to find in the complex climate systems we often deal with. In this chapter I will go over two simple models that have exactly two state-variables such that they can exhibit time-dependency of their feedback. 
 \\
 
 A bit the background for this topic is the type of non-linearity or "bending" in a plot of imbalance versus temperature such as Figure \ref{fig:gregory_hansen} or Figure \ref{fig:mpiesm12_wide_range}, which we tried to explain in the previous chapter using state-dependent feedback. From the reasoning above it is clear that a purely time-dependent feedback cannot explain the rise in $ECS$ under strong forcing we found in MPI-ESM1.2 in the previous chapter. But there is a component to the bending that occurs in the first few decades after an abrupt forcing has been applied which does actually exhibit signs of a time-dependent behavior; something that occurs regardless how strongly the model is forced. And, there are even some climate models, such as the Hadley Centre climate model, which do not exhibit a rise in $ECS$ with warming, but still has stronger bending than MPI-ESM1.2. 
 \\
 
-The reason scientists are currently very interested in the phenomenon is that a time-dependent feedback may impact the transient response to forcing. As we shall see the time-dependent feedback can lead to a temporary suppression of warming as the system equilibrates. The effect can have important consequences for the interpretation of historical warming we made in Chapter \ref{chapter:historical}, where we assumed that the system was linear. The current challenge, I think, is to figure out {\em how} time-dependent feedback may be on planet Earth.
+The reason scientists are currently very interested in the phenomenon is that a time-dependent feedback may impact the transient response to forcing. As we shall see the time-dependent feedback can lead to a temporary suppression of warming as the system equilibrates. The effect can have important consequences for the interpretation of historical warming we made in Chapter \ref{chapter:historical}, where we assumed that the system was linear. The current challenge in the field, I think, is to figure out {\em how} time-dependent feedback may be on planet Earth.
 
 \begin{figure}
 \begin{center}
@@ -1795,7 +1858,7 @@ which is again simply the weighted equilibrium response of each region.
 
 In equation \ref{eq:twozone-solution} we recognize the two decaying exponentials for each region with e-folding times of $\tau_1=-C_1/\lambda_1$ and $\tau_2=-C_2/\lambda_2$. Thus, if $\lambda_1$ is more negative than $\lambda_2$, then the response timescale of the high latitudes (region 2) is longer than that of the low latitudes (region 1) even in the special case where $C_1=C_2$. You might remember Figure \ref{fig:mlo_plot} where we saw that the more sensitive the mixed-layer model is the longer it takes to equilibrate. This is interesting in that it only takes spatially inhomogeneous feedbacks to cause a time-dependence of the global feedback. The different equilibration time-scale between low- and high latitudes is further amplified if $C_2 > C_1$. 
 
-The time-dependent nature of the feedback in the two-zone model can be seen in Figure \ref{fig:two-zone-model} where I forced with 2, 4, 8 and 16 times pre-industrial CO$_2$.  The result can be compared with simulations from the MPI-ESM1.2 model (Figure \ref{fig:state_dependent_feedback_mpiesm12}) and with the quadratic model (Figure \ref{fig:quadratic_imbalance}). We see that the evolution of the model scales linearly with the forcing so that the shape of each curve is the same. If I would normalize the plot by dividing by the forcing on both axes, i.e. plot $N/F$ versus $T/F$, then the four curves would land on top of each other. If you would try to do the same normalization of runs done with the quadratic model then the curves would not be self-similar, because in the quadratic model feedback is dependent on the absolute temperature. 
+The purely time-dependent nature of the feedback in the two-zone model can be seen in Figure \ref{fig:two-zone-model} where I forced with 2, 4, 8 and 16 times pre-industrial CO$_2$.  The result can be compared with simulations from the MPI-ESM1.2 model (Figure \ref{fig:state_dependent_feedback_mpiesm12}) and with the quadratic model (Figure \ref{fig:quadratic_imbalance}). We see that the evolution of the model scales linearly with the forcing so that the shape of each curve is the same. If I would normalize the plot by dividing by the forcing on both axes, i.e. plot $N/F$ versus $T/F$, then the four curves would land on top of each other. If you would try to do the same normalization of runs done with the quadratic model then the curves would not be self-similar, because in the quadratic model feedback is dependent on the absolute temperature. And so in that case $N/F$ is not a unique function of $T/F$. 
 
 \begin{figure}
 \begin{center}
@@ -1848,11 +1911,11 @@ C\frac{dT}{dt} &=& F + \lambda T- \epsilon\gamma(T-T_d) \label{eq:winton-held} \
 C_d\frac{dT_d}{dt} &=& \gamma(T-T_d) \nonumber \\
 N &=& C\frac{dT}{dt}+C_d\frac{dT_d}{dt}  \nonumber
 \end{eqnarray}
-At first, this formulation may seem confusing. We remember that the term $\gamma(T-T_d)$ is the deep ocean heat uptake, and that the mixed-layer should give up an equal amount of energy such that energy is conserved within the climate system. But whenever $\epsilon \ne 1$ this is not apparent. To better understand what is going on I find it useful to rewrite the first equation by splitting up the heat uptake term into two terms:
+At first, this formulation may seem confusing. We remember that the term $\gamma(T-T_d)$ is the deep ocean heat uptake, and that the mixed-layer should give up an equal amount of energy such that energy is conserved within the climate system. But whenever $\epsilon \ne 1$ this is not apparent. To better understand what is going on, I find it useful to rewrite the first equation by splitting up the heat uptake term into two terms:
 $$ C\frac{dT}{dt} = F + \lambda T- \gamma(\epsilon-1)(T-T_d) - \gamma(T-T_d)  $$
 from which we see that the actual deep ocean heat uptake term ($\gamma(T-T_d)$) is mirrored in the mixed-layer, but that another term arises. This new term is a kind of temporary feedback that involves the temperature difference between the mixed-layer and the deep ocean. If we add the result to the deep ocean equation to form the system imbalance we thus obtain:
 $$N =  F + \lambda T- \gamma(\epsilon-1)(T-T_d)  $$
-where, in contrast to the standard two-layer model ($N =  F + \lambda T$), the deep ocean temperature $T_d$ now explicitly appears in the energy balance. Typically, $\gamma \approx 1.0$ Wm$^{2}$K$^{-1}$ and estimates of $\epsilon$ varies from 0.83 to 1.82 among coupled climate models, averaging 1.28, according to the study of Geoffroy et al. (2013). 
+where, in contrast to the standard two-layer model ($N =  F + \lambda T$), the deep ocean temperature $T_d$ now explicitly appears in the energy balance. Typically, $\gamma \approx 1.0$ Wm$^{-2}$K$^{-1}$ and estimates of $\epsilon$ varies from 0.83 to 1.82 among coupled climate models, averaging 1.28, according to the study of Geoffroy et al. (2013). 
 
 Let us think of cases with $\epsilon \ge 1$,  which is the case in most coupled climate models, resulting in $\gamma(\epsilon-1) > 0$. If we apply an abrupt forcing to the modified two-layer model then initially the mixed-layer warms but the deep ocean temperature reacts only slowly. Thus, we have an initial effective or apparent feedback parameter:
 $$\frac{dN}{dT}\Bigr|_{t=0} = \lambda - \gamma(\epsilon-1)$$
@@ -1867,7 +1930,7 @@ It is worth noting that the value of $\epsilon$ has no influence on the equilibr
 \label{fig:pacific}
 \end{figure}
 
-I think that what could physically be going on is that some regions which are in contact with the deep oceans, in particular regions affected by coastal upwelling in the eastern tropical Pacific, or the north Atlantic and the Southern Ocean where deep convection occurs, will initially warm slower than other parts of the world. This is because the upwelling deep ocean water has not yet seen global warming. The atmosphere responds by setting up anomalous circulations such as to create subsidence and/or stronger temperature inversions over the regions that warm slower, an illustration of this process in the eastern Pacific is shown in Figure \ref{fig:pacific}. Stronger inversions are known to be associated with more low-level cloudiness and therefore more reflection of the incoming sunlight. This leads to a temporary negative impact on the radiation balance, while the deep ocean warms up. How this works in the other two regions, Northern Atlantic and the Southern Ocean, is not yet well known, at least to me.
+I think that what could physically be going on is that some regions which are in contact with the deep oceans, in particular regions affected by coastal upwelling in the eastern tropical Pacific, or the north Atlantic and the Southern Ocean where deep convection occurs, will initially warm slower than other parts of the world. This is because the upwelling deep ocean water has not yet seen global warming. The atmosphere responds by setting up anomalous circulations such as to create subsidence and/or stronger temperature inversions over the regions that warm slower, an illustration of this process in the eastern Pacific is shown in Figure \ref{fig:pacific}. This is because the tropical free tropospheric temperature is closely tied to the temperature in the warmest deep convective regions. Stronger inversions are known to be associated with more low-level cloudiness and therefore more reflection of the incoming sunlight. This leads to a temporary negative impact on the radiation balance, while the deep ocean warms up. How this works in the other two regions, Northern Atlantic and the Southern Ocean, is not yet well known, at least to me.
 In Figure \ref{fig:time-models}c I illustrate the Winton-Held modified two-layer model as having a tilted mixed-layer. Although the deep ocean does not appear directly in the surface temperature, the energy imbalance can be affected by surface temperature inhomogeneities. During global warming in some regions the mixed layer will be nearly in equilibrium after a few decades, whereas other parts will be far behind. This results in a patterned warming that is different in the first few decades compared to later. 
 
 \section{Transient response with time-dependent feedback}
@@ -1883,7 +1946,7 @@ If we apply a transient forcing such as a gradual increase of CO$_2$ then the Wi
 
 We can investigate this transient behavior of the Winton-Held model by making the zero-layer assumption (Chapter \ref{sec:zero-layer}). We remember that on decadal time-scales we may approximate the mixed-layer heat capacity as zero ($C\rightarrow 0$) and the deep ocean heat capacity as infinite ($C_d \rightarrow \infty$), and from equations \ref{eq:winton-held} we obtain:
 \begin{eqnarray}
-0 &=& F + \lambda T- \epsilon\gamma T  \\
+0 &=& F + \lambda T- \epsilon\gamma T \label{eq:zero_wh} \\
 N &=& \gamma T  \nonumber
 \end{eqnarray}
 from which we find that the temperature response can be approximated as:
@@ -1891,16 +1954,19 @@ from which we find that the temperature response can be approximated as:
 T(t) = \frac{F(t)}{\epsilon \gamma - \lambda}
 \label{eq:winton-held-zero}
 \end{equation}
-which we see decreases with increasing $\epsilon$. The result is plotted as a dashed line in Figure \ref{fig:transient_warming_time-dependent}.
-Remember how we used the zero-layer model to interpret the historical warming based on an assumed evolution of the forcing and the instrumental temperature record in Chapter \ref{chapter:historical}. For a given combination of change in $N$, $T$ and $F$ change we obtained a unique estimate of $\lambda$ and hence $ECS$. But with time-dependent feedback there is the additional parameter $\epsilon$ that must be determined; something which we currently don't know how to do. Instead we can ask how the estimated $\lambda$ depends on $\epsilon$, if we know the feedback parameter, $\lambda_o$, that is a solution to the linear model:
-$$ \gamma - \lambda_o = \epsilon \gamma - \lambda$$
-such that:
+which we see decreases with increasing $\epsilon$. The result is plotted as a dashed line in Figure \ref{fig:transient_warming_time-dependent} showing a decent match with the two-layer model on multi-decadal timescales.
+
+Remember how we used the zero-layer model to interpret the historical warming based on an assumed evolution of the forcing and the instrumental temperature record in Chapter \ref{chapter:historical}. For a given combination of change in $N$, $T$ and $F$ change we obtained a unique estimate of $\lambda$ and hence $ECS$. But with time-dependent feedback there is the additional parameter $\epsilon$ that must be determined; something which we currently don't know how to do. 
+
+To see how $\epsilon$ affects our historically inferred estimate of $ECS$ (Chapter \ref{chapter:historical}), we can insert the definition of $ECS = -F_{2x}/\lambda$ in Equations \ref{eq:zero_wh} and re-arrange:
 \begin{equation}
-ECS(\epsilon) = \frac{-F_{2x}}{\lambda_o+\gamma(\epsilon-1)}
+ECS(\epsilon) = \frac{F_{2x}\cdot \Delta T}{\Delta F -\epsilon\Delta N}
 \label{eq:ECS_time-dependent_feedback}
-\end{equation}
-which increases for increasing $\epsilon$. The parameters used in Figure \ref{fig:transient_warming_time-dependent} were chosen such as to match the best estimate of $ECS$ from the historical warming (black), and the largest $\epsilon$ found among climate models (blue) combined with and ECS according to equation \ref{eq:ECS_time-dependent_feedback}. The two curves match each other well in the first few decades, whereafter the more sensitive model warms somewhat faster.
-In practice, one cannot increase $ECS$ as much as found in the zero-layer version of the Winton-Held model and still retain the same response in the historical setting. This is because on centennial time-scale the deep ocean does respond and so the term $T-T_d$ begins to decline relative to the zero-layer assumption where $T_d \approx 0$. It is left as an exercise to show how large this effect is.
+\end{equation} 
+which increases for increasing $\epsilon$: with the CMIP5 model mean $\epsilon = 1.28$ the best estimate of $ECS =$ 1.78 K (Chapter \ref{chapter:historical}) increases to 1.98 K. Therefore, for time-dependent feedback to play an important role in our inference of $ECS$ from historical warming then $\epsilon$ of Earth must be larger, towards the upper end of what is found in CMIP5 models. 
+In fact, the parameters used in Figure \ref{fig:transient_warming_time-dependent} were chosen such as to match the best estimate of $ECS$ from the historical warming (black), and the largest $\epsilon$ found among climate models (blue) combined with an $ECS$ according to equation \ref{eq:ECS_time-dependent_feedback}. The two curves match each other well on decadal timescales, whereafter the more sensitive model warms somewhat faster. It is left as an exercise to explore this in the historical setting.
+
+%In practice, one cannot increase $ECS$ as much as found in the zero-layer version of the Winton-Held model (Equation \ref{eq:ECS_time-dependent_feedback}) and still retain the same response in the historical setting. This is because on centennial time-scale the deep ocean does respond and so the term $T-T_d$ begins to decline relative to the zero-layer assumption where $T_d \approx 0$. It is left as an exercise to show how large this effect is.
 
 
 
@@ -1918,7 +1984,7 @@ A two-zone model has two regions of equal area and equal heat capacities, $C_1=C
 \end{exercise}
 
 \begin{exercise}
-Estimate iteratively the optimal $ECS$ of the Winton-Held two-layer model running the historical scenario for a large ocean heat uptake efficacy: $\epsilon=2.0$. Do so by first making one experiment with $ECS = 1.78$ K with the standard two-layer model, and then in a separate experiment first set \verb|efficacy = 2.0| in the function call and then increase $ECS$ until you obtain a similar centennial warming. Compare the result with the theoretical estimate. Why are the two estimates different?
+Estimate iteratively the optimal $ECS$ of the Winton-Held two-layer model running the historical scenario for a large ocean heat uptake efficacy: $\epsilon=2.0$. Do so by first making one experiment with $ECS = 1.78$ K with the standard two-layer model, and then in a separate experiment first set \verb|efficacy = 2.0| in the function call and then increase $ECS$ until you obtain a similar centennial warming. Compare the result with the theoretical estimate (Equation \ref{eq:ECS_time-dependent_feedback}). Why are the two estimates different?
 \end{exercise}
 
 }
