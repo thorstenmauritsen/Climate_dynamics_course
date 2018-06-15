@@ -135,17 +135,20 @@ c=0.0, efficacy=1.0, sigma=2.42):
     return result
 
 #--------------------------------------------------------------------------
-
-
-
-
-
 nyears        = 10000
 forcing_years = np.arange(0,nyears)
 input_forcing = 0*np.linspace(0.0,1.0,nyears)
 
 
 qub1 = qubicon(forcing_years, input_forcing, gamma=0,ECS=-3.7/3
+,c=-1.0
+,sigma=30.0)
+
+
+##### Periodic forcing
+input_forcing = 0.8 * np.sin(np.linspace(0.0,2*np.pi,nyears))
+
+qub2 = qubicon(forcing_years, input_forcing, gamma=0,ECS=-3.7/3
 ,c=-1.0
 ,sigma=30.0)
 
@@ -232,19 +235,16 @@ color5                  = 'orange'
 
 lw=1.0
 
-#axes.plot(exp4['time'],exp4['T_ml'],lw=lw,color=color4)
-
-#axes.plot(exp1['time'],exp1['T_ml'],lw=lw,color=color1)
-
-
-axes.plot(qub1['time'],qub1['T_ml'],lw=lw,color=color1)
+axes.plot(qub1['time'],qub1['T_ml'],lw=lw,color=color1,alpha=0.6)
+axes.plot(qub2['time'],qub2['T_ml'],lw=lw,color=color5,alpha=0.6)
 
 
+ax2 = axes.twinx()
+ax2.plot(qub2['time'],qub2['forcing'],lw=lw,color=color5,alpha=1.0)
+ax2.set_ylabel('Forcing')
+#ax2.tick_params('y')
 
-#axes.text(10,3.5,'ECS = '+str(exp1['ECS'])+r' K, $\epsilon$ = '+str(exp1['efficacy']), color=color1)
 
-
-#axes.set_xlabel('Time (years)')
 axes.set_xlabel('Time (y)')
 axes.set_ylabel(r'Temperature (K)')
 
@@ -432,9 +432,9 @@ plt.close()
 
 #----------------------------------------------------------
 
-fig, axes = plt.subplots(1,1, figsize=(6,3.5))
+fig, (ax1, ax2) = plt.subplots(1,2, figsize=(6,3.5))
 
-TT = np.linspace(-2.,2.,200)
+TT = np.linspace(-4.,4.,200)
 NT = -TT**3 + 3*TT
 VT = 1./4. * TT**4 - 3./2. * TT**2
 
@@ -443,35 +443,52 @@ NT3 = -TT**3 + 3*TT - 1
 
 VT2 = 1./4. * TT**4 - 3./2. * TT**2 + TT
 VT3 = 1./4. * TT**4 - 3./2. * TT**2 - TT
-#axes.plot((0.3,0.8),(2.1,4.3),linestyle='--', color='black')
 
 colormlm = 'red'
 colortlm = 'blue'
 
-lin1, = axes.plot(TT,VT, color=color1, label='Potential')
-lin2, = axes.plot(TT,NT, color=color1, label='N(T)',alpha=0.5)
-lin3, = axes.plot(TT,VT2, color=color2, label='F= +1')
-lin4, = axes.plot(TT,NT2, color=color2 ,alpha=0.5)
-lin5, = axes.plot(TT,VT3, color=color5, label='F = -1')
-lin6, = axes.plot(TT,NT3, color=color5 ,alpha=0.5)
+lin1, = ax2.plot(TT,VT, color=color1, label='F = 0',alpha=0.7)
+lin3, = ax2.plot(TT,VT2, color=color2, label='F =  1',alpha=0.7)
+lin5, = ax2.plot(TT,VT3, color=color5, label='F = -1',alpha=0.7)
 
-axes.legend(handles=[lin1,lin2,lin3,lin5], fontsize=10)
 
-axes.set_xlabel(r'T')
-axes.set_ylabel('Wm-2')
+#plt.xticks((-2,-1,1,2))
+#plt.yticks((-3,-2,-1,1,2,3))
 
-plt.setp(axes, xlim=(-2.1,2.1), ylim=(-3,3))
+lin2, = ax1.plot(TT,NT, color=color1, label='F = 0'  ,alpha=0.7)
+lin4, = ax1.plot(TT,NT2, color=color2, label='F =  1',alpha=0.7)
+lin6, = ax1.plot(TT,NT3, color=color5, label='F = -1',alpha=0.7)
 
-spines_to_remove        = ['top', 'right']
-for spine in spines_to_remove:
-    axes.spines[spine].set_visible(False)
-axes.spines['bottom'].set_position('zero')
-axes.spines['left'].set_position('zero')
-axes.yaxis.set_ticks_position('none')
-axes.xaxis.set_ticks_position('none')
-axes.xaxis.set_label_coords(0.9, 0.1)
-axes.yaxis.set_label_coords(-0.05, 0.6)
+plt.setp(ax1, xticks=(-2,-1,1,2),yticks=(-3,-2,-1,1,2,3))
+plt.setp(ax2, xticks=(-3,-2,-1,1,2,3),yticks=(-4,-2,2,4))
 
+
+#plt.xticks((-3,-2,-1,1,2,3))
+#plt.yticks((-4,-2,2,4))
+
+ax2.legend(handles=[lin1,lin3,lin5], frameon=False,
+fontsize=10,bbox_to_anchor=(0.92,1))
+
+for axes in (ax1,ax2):
+    spines_to_remove        = ['top', 'right']
+    for spine in spines_to_remove:
+        axes.spines[spine].set_visible(False)
+
+    axes.spines['bottom'].set_position('zero')
+    axes.spines['left'].set_position('zero')
+    axes.yaxis.set_ticks_position('none')
+    axes.xaxis.set_ticks_position('none')
+    axes.xaxis.set_label_coords(1.1, -0.1)
+    axes.yaxis.set_label_coords(-0.1, 0.5)
+
+fig.text(0.5, 0.04, 'Temperature [K]', ha='center')
+
+ax1.set_ylabel('Wm$^{-2}$')
+
+plt.setp(ax1,title='Imbalance')
+plt.setp(ax2,title='Potential')
+plt.setp(ax2, xlim=(-3.,3.), ylim=(-5,5))
+plt.setp(ax1, xlim=(-2.,2.), ylim=(-3.5,3.5))
 plt.tight_layout()
 plt.savefig('../plots/Stability_theory.pdf', dpi=300)
 plt.close()
