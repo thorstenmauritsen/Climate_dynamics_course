@@ -1264,7 +1264,7 @@ $$\sqrt{E[T_n^2]} = \sqrt{n} \  \sigma$$
 
 The variance of this type of noise, which is the integral of white noise, is thus strongest on longer timescales and lower frequencies. Although this type of noise has lots of names, including random walk noise and Brownian noise, we prefer \textit{red noise}; this draws an analogy with red light, which is also strongest at lower frequencies.
 
-\section{Noise in the mixed-layer model}
+\section{Noise in the mixed-layer model}\label{noise-mlm}
 Now, let's get a bit clever and include more realistic values for our mixed-layer model. If we look back to Euler approximation in Equation \ref{eq:numerical_solution} and rearrange, we can see how the temperature in one timestep relates to the previous timestep (this is called a recurrence relation):
 \begin{equation}
 T(t+\Delta t) =  \left[1 + \frac{\Delta t \lambda }{C}  \right] T(t) + \frac{\Delta t}{C} \ \epsilon(t).
@@ -2022,6 +2022,27 @@ Variability in a linear world, shift of pdf, likelyhood of extremes increase dra
 N=F+\lambda_o T + b T^2
 \end{equation}
 
+In section \ref{noise-mlm} we rearranged the mixed-layer model to look like an auto-regressive process, also known as `AR(1)', that retains memory of the previous timestep via the memory parameter:
+\begin{equation}
+\alpha = \left[1 + \frac{\Delta t \lambda }{C}  \right] 
+\end{equation}
+
+The variance of an AR(1) process is determined by this memory parameter and the driving white noise process. For the mixed layer model, this white noise process is the noise in the radiative forcing, $\sigma_F$, and the variance in the temperature can be described by:
+
+\begin{equation}
+\sigma^{2}_T = \frac{\sigma^{2}_F}{1 - \alpha^{2}}
+\end{equation}
+
+A strong memory in the system implies $\alpha$ is close to unity, and that the variability is large ($\alpha$=1  is a pure red noise process, whose variability grows with each timestep to infinity).
+
+For the quadratic model, $\alpha$ is dependent on temperature. Our $\lambda$ can no longer be determined by $\lambda_0$, but must be more generally described as the change in the energy balance with warming:
+\begin{equation}
+\lambda(T) = \frac{dN}{dT} = \lambda_0 + 2bT
+\end{equation}
+
+As the system temperature increases, the second-order term becomes increasingly important. For our parameter choice of $\lambda_0 < 0$ and $b > 0$, $\lambda$ becomes less negative with temperature, increasing the value of $\alpha$ towards unity.  
+
+%\approx 1 - 0.0124 \cdot \lambda
 \section{Bi-stable climate variability}
 
 
