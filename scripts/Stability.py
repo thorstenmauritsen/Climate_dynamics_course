@@ -112,6 +112,7 @@ c=0.0, efficacy=1.0, sigma=2.42):
     result['time'] = timeyears
     result['forcing'] = forcing
     result['T_ml'] = T_ml
+    result['T_ml0'] = T_ml0
     result['T_deep'] = T_deep
     result['imbalance'] = imbalance
 
@@ -177,29 +178,33 @@ pml3 = qubicon(forcing_years, input_forcing, gamma=0,ECS=3.7/1.5
 ###### Testing variability
 input_forcing = np.ones(nyears)
 
-vml1 = qubicon(forcing_years, -2.*input_forcing, gamma=0,ECS=3.7/1.5
-,b=1./2., T_ml0 = -1.0
-,sigma=2.42)
 
-vml2 = qubicon(forcing_years, 0.*input_forcing, gamma=0,ECS=3.7/1.5
+
+vml1 = qubicon(forcing_years, 0.*input_forcing, gamma=0,ECS=3.7/1.5
 ,b=1./2., T_ml0 = 0.0
-,sigma=2.42)
+,sigma=1.)
 
-vml3 = qubicon(forcing_years, 1.*input_forcing, gamma=0,ECS=3.7/1.5
-,b=1./2.,T_ml0 = 1.0
-,sigma=2.42)
+vml2 = qubicon(forcing_years, 3/4.*input_forcing, gamma=0,ECS=3.7/1.5
+,b=1./2., T_ml0 = (3. - np.sqrt(3))  / 2.
+,sigma=1.)
 
-vtl1 = qubicon(forcing_years, -2.*input_forcing, gamma=0.5,ECS=3.7/1.5
-,b=1./2., T_ml0 = -1.0, T_deep0 = -1.0
-,sigma=2.42)
+vml3 = qubicon(forcing_years, 10./9. * input_forcing, gamma=0,ECS=3.7/1.5
+,b=1./2.,T_ml0 = 4./3.
+,sigma=1.)
 
-vtl2 = qubicon(forcing_years, 0.*input_forcing, gamma=0.5,ECS=3.7/1.5
+
+vtl1 = qubicon(forcing_years, 0.*input_forcing, gamma=0.5,ECS=3.7/1.5
 ,b=1./2., T_ml0 = 0.0, T_deep0 = 0.
-,sigma=2.42)
+,sigma=1.)
 
-vtl3 = qubicon(forcing_years, 1.*input_forcing, gamma=0.5,ECS=3.7/1.5
-,b=1./2.,T_ml0 = 1.0, T_deep0 = 1.0
-,sigma=2.42)
+vtl2 = qubicon(forcing_years, 3./4. *input_forcing, gamma=0.5,ECS=3.7/1.5
+,b=1./2., T_ml0 = (3. - np.sqrt(3))  / 2., T_deep0 = (3. - np.sqrt(3))  / 2.
+,sigma=1.)
+
+vtl3 = qubicon(forcing_years, 10./9. * input_forcing, gamma=0.5,ECS=3.7/1.5
+,b=1./2.,T_ml0 = 4./3, T_deep0 = 4./3
+
+,sigma=1.)
 
 
 #### Two layer
@@ -371,33 +376,51 @@ plt.close()
 fig, axes = plt.subplots(1,1, figsize=(7,3.5))
 
 
-bins = np.arange(-1.,1.,0.02)
+bins = np.arange(-.3,.3,0.005)
 #print(bins)
 n, obins, patches = plt.hist(vml1['T_ml'],
                             bins + np.mean(vml1['T_ml']), normed=1,
                             facecolor=color1, alpha=0.6,
-                            label='T = Mixed layer')
+                            label='T = Mixed layer',histtype='stepfilled')
 n, obins, patches = plt.hist(vml2['T_ml'],
                             bins + np.mean(vml2['T_ml']), normed=1,
-                            facecolor=color1, alpha=0.6)
+                            facecolor=color1, alpha=0.6,histtype='stepfilled')
 n, obins, patches = plt.hist(vml3['T_ml'],
                             bins + np.mean(vml3['T_ml']), normed=1,
-                            facecolor=color1, alpha=0.6)
+                            facecolor=color1, alpha=0.6,histtype='stepfilled')
 
 
 n, obins, patches = plt.hist(vtl1['T_ml'],
                             bins + np.mean(vtl1['T_ml']), normed=1,
                             facecolor=color5, alpha=0.6,
-                            label='T = Two layer')
+                            label='T = Two layer', histtype='stepfilled')
 n, obins, patches = plt.hist(vtl2['T_ml'],
                             bins + np.mean(vtl2['T_ml']), normed=1,
-                            facecolor=color5, alpha=0.6)
+                            facecolor=color5, alpha=0.6,
+                            histtype='stepfilled')
 n, obins, patches = plt.hist(vtl3['T_ml'],
                             bins + np.mean(vtl3['T_ml']), normed=1,
-                            facecolor=color5, alpha=0.6)
+                            facecolor=color5, alpha=0.6,
+                            histtype='stepfilled')
+
+i=0
+for exp in (vml1,vml2,vml3):
+    temp_lam = exp['lambda_0'] + 2. * exp['b'] * exp['T_ml0']
+    temp_sig = exp['sigma']/(year/month)**0.5 * month / exp['C_ml']
+    temp_var =np.sqrt(temp_sig**2 / (1 - (1+temp_lam * month / exp['C_ml'])**2))
+
+    if i == 0:
+        hdls, = axes.plot((exp['T_ml0']-2 * temp_var,exp['T_ml0']+ 2 *temp_var),(-0.5,-0.5),color='black',
+        lw=2,alpha=0.5,label=r'$\pm \ 2 \sigma$, theory')
+    else:
+        axes.plot((exp['T_ml0']- 2 * temp_var,exp['T_ml0']+ 2 * temp_var),(-0.5,-0.5),color='black',lw=2,alpha=0.5)
+
+
+    i+=1
+
 
 #plt.title("Histogram with 'auto' bins")
-axes.set_ylabel(r'Frequency [%]',fontsize=12)
+axes.set_ylabel(r'Frequency [\%]',fontsize=12)
 axes.set_xlabel(r'Temperature [K]',fontsize=12)
 
 
@@ -424,7 +447,7 @@ for spine in spines_to_keep:
     axes.spines[spine].set_color(almost_black)
 
 axes.legend(fontsize=10,frameon=False)
-plt.setp(axes, xlim=(-1.5,1.5))
+plt.setp(axes, xlim=(-0.1,1.7))
 
 plt.tight_layout()
 plt.savefig('../plots/Stability_vari_1.pdf', dpi=300)
