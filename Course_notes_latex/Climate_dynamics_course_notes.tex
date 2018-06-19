@@ -2033,11 +2033,12 @@ A strong memory in the system implies $\alpha$ is close to unity, and that the v
 	\label{fig:variability_shift_linear}
 \end{figure}
 
+
 The nice thing about the linear model is that nothing which determines the amount of variability (Equation \ref{eq:sigma_linear_theory}) depends on forcing or mean temperature, and therefore we predict that deviations around any stationary state will be the same. I plot two warmer climates in Figure \ref{fig:variability_shift_linear}, where we see that the probability distribution is simply translated to fluctuate around a new equilibrium as I add small forcing. 
 
 
 
-\section{Variability when approaching an instability}
+\section{On the edge of catastrophe}
 
 \begin{figure}
 	\begin{center}
@@ -2047,9 +2048,14 @@ The nice thing about the linear model is that nothing which determines the amoun
 	\label{fig:parabolic_theory}
 \end{figure}
 
+
+We saw how non-linear changes in extremes can occur, even when there is no tipping point. So, how will we ever be able to tell if we are approaching a tipping point?  Some claim that we will see the approach to a tipping point, because the system behaviour will begin to change. Let's build a system with a tipping point by taking an example we have already studied, temperature-dependent climate feedbacks, which we can approximate with a quadratic equation,
+
 \begin{equation}
-	N=F+\lambda_o T + b T^2
+N=F+\lambda_0 T + b T^2.
 \end{equation}
+
+Here, $\lambda_0$ is the feedback at $T=0$ and $b$ determines how the feedback changes with warming. If we choose $b=\frac{1}{2}$,  $\lambda_0 = \frac{3}{2}$, and $F=0$, we have a system in equilibrium ($N=0$) at $T=0$. But if we perturb the system with $F_C = \frac{9}{8}$ Wm$^{-2}$, we raise the imbalance curve so that it just touches the zero-intercept at $T_C=1.5$ K, which is an unstable equilibrium. Any positive perturbation in temperature above $1.5$ K (or additional forcing) will lead to runaway warming, as shown in Figure \ref{fig:parabolic_theory}. We can also see this reflected in the potential curves that we encountered in Chapter \ref{chapter:state-dependent}. The case with zero forcing still contains a local minimum, where our system can safely remain, but perturbing the system with the critical forcing $F_C$ leads to the stable limit, where there is no longer a local minimum in the potential.
 
 \begin{figure}
 	\begin{center}
@@ -2060,13 +2066,13 @@ The nice thing about the linear model is that nothing which determines the amoun
 \end{figure}
 
 
+We can see what happens when we approach this tipping point by slowly inching the mixed-layer model towards $F_C$. The orange curve in Figure \ref{fig:bifurc_parabolic} shows this slow increase in forcing, starting at an equilibrium solution of $F=1,T_{eq}=1$ and moving over 5000 monthly timesteps to just above $F_C$, where the forcing is held constant. After the mixed layer has responded to the additional $\frac{1}{8}$ Wm$^{-2}$ forcing, which still takes a surprising amount of time, it breaches the critical temperature $T_{C}=1.5$ and runs away to infinity.
 
-For the quadratic model, $\alpha$ is dependent on temperature. Our $\lambda$ can no longer be determined by $\lambda_0$, but must be more generally described as the change in the energy balance with warming:
-\begin{equation}
-\lambda(T) = \frac{dN}{dT} = \lambda_0 + 2bT
-\end{equation}
+Now, what happens when we add variability to the system? The blue curve in Figure \ref{fig:bifurc_parabolic} shows how the mixed layer model behaves when we add white noise to the forcing, approximately equal to the  observed variability in the TOA imbalance. The system shoots exceeds the tipping point much more readily, which is no great surprise, since positive anomalies in the noise can help the system overshoot the required tipping point $T_C$, from which it does not return.
 
-As the system temperature increases, the second-order term becomes increasingly important. For our parameter choice of $\lambda_0 < 0$ and $b > 0$, $\lambda$ becomes less negative with temperature, increasing the value of $\alpha$ towards unity.  
+Now look more closely at the blue curve. Does it appear to get noisier as it approaches the tipping point? For a comparison, see what happens when we add the exact same white noise to the equilibrium case, $F=0,T=0$, which is the black curve. The variability is considerably smaller than that of the blue curve, even though the white noise process driving that noise is the same (in fact, it is \textit{identical}, because we seeded the random number generator with the same seed). The increase in variability near the tipping point is what some claim will act as an early-warning signal of an approaching catastrophe.
+
+Let's investigate why the variability might increase near the tipping point in this way. (CHRIS CONTINUE HERE)
 
 \begin{figure}
 	\begin{center}
@@ -2076,6 +2082,12 @@ As the system temperature increases, the second-order term becomes increasingly 
 	\label{fig:variability_shift_parabolic}
 \end{figure}
 
+For the quadratic model, $\alpha$ is dependent on temperature. Our $\lambda$ can no longer be determined by $\lambda_0$, but must be more generally described as the change in the energy balance with warming:
+\begin{equation}
+\lambda(T) = \frac{dN}{dT} = \lambda_0 + 2bT
+\end{equation}
+
+As the system temperature increases, the second-order term becomes increasingly important. For our parameter choice of $\lambda_0 < 0$ and $b > 0$, $\lambda$ becomes less negative with temperature, increasing the value of $\alpha$ towards unity.  
 
 
 
