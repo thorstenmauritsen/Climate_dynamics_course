@@ -76,6 +76,8 @@ c=0.0, efficacy=1.0, sigma=2.42):
     time       = delta_time*np.arange(0,nstep,dtype=float) + min(forcing_years)*year
     timeyears  = time/year
     forcing    = np.interp(timeyears,forcing_years,input_forcing)
+
+    np.random.seed(5)
     noise      = np.random.normal(0.0, sigma/(year/delta_time)**0.5, nstep)
 
     # Parameters:
@@ -392,15 +394,15 @@ n, obins, patches = plt.hist(vml3['T_ml'],
 
 n, obins, patches = plt.hist(vtl1['T_ml'],
                             bins + np.mean(vtl1['T_ml']), normed=1,
-                            facecolor=color5, alpha=0.6,
+                            facecolor=color3, alpha=0.6,
                             label='T = Two layer', histtype='stepfilled')
 n, obins, patches = plt.hist(vtl2['T_ml'],
                             bins + np.mean(vtl2['T_ml']), normed=1,
-                            facecolor=color5, alpha=0.6,
+                            facecolor=color3, alpha=0.6,
                             histtype='stepfilled')
 n, obins, patches = plt.hist(vtl3['T_ml'],
                             bins + np.mean(vtl3['T_ml']), normed=1,
-                            facecolor=color5, alpha=0.6,
+                            facecolor=color3, alpha=0.6,
                             histtype='stepfilled')
 
 i=0
@@ -409,14 +411,21 @@ for exp in (vml1,vml2,vml3):
     temp_sig = exp['sigma']/(year/month)**0.5 * month / exp['C_ml']
     temp_var =np.sqrt(temp_sig**2 / (1 - (1+temp_lam * month / exp['C_ml'])**2))
 
-    if i == 0:
-        hdls, = axes.plot((exp['T_ml0']-2 * temp_var,exp['T_ml0']+ 2 *temp_var),(-0.5,-0.5),color='black',
-        lw=2,alpha=0.5,label=r'$\pm \ 2 \sigma$, theory')
-    else:
-        axes.plot((exp['T_ml0']- 2 * temp_var,exp['T_ml0']+ 2 * temp_var),(-0.5,-0.5),color='black',lw=2,alpha=0.5)
+    sigma = temp_var
+    mu = exp['T_ml0']
+    bins_ = np.arange(-3*sigma,3*sigma,0.005) + mu
 
+    if i==0:
+        hdls, = axes.plot(bins_, 1/(sigma * np.sqrt(2 * np.pi)) *
+        np.exp( - (bins_ - mu)**2 / (2 * sigma**2) ),
+        linewidth=2, color=color5,label=r'theory')
+    else:
+        axes.plot(bins_, 1/(sigma * np.sqrt(2 * np.pi)) *
+        np.exp( - (bins_ - mu)**2 / (2 * sigma**2) ),
+        linewidth=2, color=color5)
 
     i+=1
+
 
 
 #plt.title("Histogram with 'auto' bins")
