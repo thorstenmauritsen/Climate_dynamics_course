@@ -2015,10 +2015,16 @@ In section \ref{noise-mlm} we rearranged the mixed-layer model to look like an a
 	\alpha = \left[1 + \frac{\Delta t \lambda }{C}  \right] 
 \end{equation}
 
-The variance of an AR(1) process is determined by this memory parameter and the driving white noise process. For the mixed layer model, this white noise process is the noise in the radiative forcing, $\sigma_F$, and the variance in the temperature can be described by:
+The variance of an AR(1) process is determined by this memory parameter and the driving white noise process. For the mixed layer model, this driving white noise is in the radiative forcing, $\sigma_F$, in units of Wm$^{-2}$, which we must first convert to the equivalent standard deviation in temperature by accounting for the size of the timestep and the depth of the mixed layer:
 
 \begin{equation}
-	\sigma^{2}_T = \frac{\sigma^{2}_F}{1 - \alpha^{2}}
+\sigma_Z = \sigma_F \frac{\Delta t}{C}
+\end{equation}
+
+Now the total variance in the temperature can be described by:
+
+\begin{equation}
+	\sigma^{2}_T = \frac{\sigma^{2}_Z}{1 - \alpha^{2}}
 \end{equation}
 
 A strong memory in the system implies $\alpha$ is close to unity, and that the variability is large ($\alpha$=1  is a pure red noise process, whose variability grows with each timestep to infinity).
