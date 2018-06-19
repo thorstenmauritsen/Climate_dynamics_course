@@ -1994,10 +1994,6 @@ Estimate iteratively the optimal $ECS$ of the Winton-Held two-layer model runnin
 %---------------------------------------------------------------------
 \chapter{Global variability and climate catastrophes}
 
-Certain aspects of climate change depend mainly on the mean state, for instance thermosteric sea level rise scales foremost with the global mean temperature. However, in many cases it is mainly during weather extremes that we spur the changing climate; cold-spells and heat waves imprint themselves in our memory and cause damages. Many of these extremes are associated with absolute thresholds. For instance, most mammals die from heat stress if the wet bulb temperature exceeds around 35$^\circ$C, and extreme precipitation only becomes a severe problem when the water can no longer run off in natural watersheds and existing sewers. The former is a case that hardly ever occurs in the present-day climate, but may become frequent in the future.
-
-Much of this can be understood from simple linear shifts in variability around a mean state. In this case the processes that cause the variability do not depend on the mean state of the system. 
-
 Shifts of pdf
  
 tipping-points
@@ -2008,6 +2004,29 @@ Quadratic and qubic
 
 
 \section{Variability in a linear world}
+
+
+
+
+
+In section \ref{noise-mlm} we rearranged the mixed-layer model to look like an auto-regressive process, also known as `AR(1)', that retains memory of the previous timestep via the memory parameter:
+\begin{equation}
+	\alpha = \left[1 + \frac{\Delta t \lambda }{C}  \right] 
+\end{equation}
+
+The variance of an AR(1) process is determined by this memory parameter and the driving white noise process. For the mixed layer model, this white noise process is the noise in the radiative forcing, $\sigma_F$, and the variance in the temperature can be described by:
+
+\begin{equation}
+	\sigma^{2}_T = \frac{\sigma^{2}_F}{1 - \alpha^{2}}
+\end{equation}
+
+A strong memory in the system implies $\alpha$ is close to unity, and that the variability is large ($\alpha$=1  is a pure red noise process, whose variability grows with each timestep to infinity).
+
+
+Certain aspects of climate change depend mainly on the mean state, for instance thermosteric sea level rise scales foremost with the global mean temperature. However, in many cases it is mainly during weather extremes that we spur the changing climate; cold-spells and heat waves imprint themselves in our memory and cause damages. Many of these extremes are associated with absolute thresholds. For instance, most mammals die from heat stress if the wet bulb temperature exceeds around 35$^\circ$C, and extreme precipitation only becomes a severe problem when the water can no longer run off in natural watersheds and existing sewers. The former is a case that hardly ever occurs in the present-day climate, but may become frequent in the future.
+
+Much of this can be understood from simple linear shifts in variability around a mean state. In this case the processes that cause the variability do not depend on the mean state of the system. 
+
 
 Variability in a linear world, shift of pdf, likelyhood of extremes increase dramatically
 
@@ -2030,6 +2049,10 @@ Variability in a linear world, shift of pdf, likelyhood of extremes increase dra
 	\label{fig:parabolic_theory}
 \end{figure}
 
+\begin{equation}
+	N=F+\lambda_o T + b T^2
+\end{equation}
+
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=15 cm]{../plots/Stability_mlm}
@@ -2039,22 +2062,6 @@ Variability in a linear world, shift of pdf, likelyhood of extremes increase dra
 \end{figure}
 
 
-\begin{equation}
-N=F+\lambda_o T + b T^2
-\end{equation}
-
-In section \ref{noise-mlm} we rearranged the mixed-layer model to look like an auto-regressive process, also known as `AR(1)', that retains memory of the previous timestep via the memory parameter:
-\begin{equation}
-\alpha = \left[1 + \frac{\Delta t \lambda }{C}  \right] 
-\end{equation}
-
-The variance of an AR(1) process is determined by this memory parameter and the driving white noise process. For the mixed layer model, this white noise process is the noise in the radiative forcing, $\sigma_F$, and the variance in the temperature can be described by:
-
-\begin{equation}
-\sigma^{2}_T = \frac{\sigma^{2}_F}{1 - \alpha^{2}}
-\end{equation}
-
-A strong memory in the system implies $\alpha$ is close to unity, and that the variability is large ($\alpha$=1  is a pure red noise process, whose variability grows with each timestep to infinity).
 
 For the quadratic model, $\alpha$ is dependent on temperature. Our $\lambda$ can no longer be determined by $\lambda_0$, but must be more generally described as the change in the energy balance with warming:
 \begin{equation}
