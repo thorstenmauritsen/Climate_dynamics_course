@@ -429,8 +429,8 @@ for exp in (vml1,vml2,vml3):
 
 
 #plt.title("Histogram with 'auto' bins")
-axes.set_ylabel(r'Frequency [\%]',fontsize=12)
-axes.set_xlabel(r'Temperature [K]',fontsize=12)
+axes.set_ylabel(r'Frequency (\%)',fontsize=12)
+axes.set_xlabel(r'Temperature (K)',fontsize=12)
 
 
 
@@ -513,15 +513,14 @@ for axes in (ax1,ax2):
     axes.xaxis.set_label_coords(1.1, -0.1)
     axes.yaxis.set_label_coords(-0.1, 0.5)
 
-fig.text(0.5, 0.04, 'Temperature [K]', ha='center')
+fig.text(0.5, 0.0, 'Temperature (K)', ha='center')
 
-ax1.set_ylabel('Wm$^{-2}$')
-ax2.set_ylabel('Wm$^{-2}$ K')
+ax1.set_ylabel('Imbalance (Wm$^{-2})$')
+ax2.set_ylabel('Potential (Wm$^{-2}$ K)')
 
-plt.setp(ax1,title='Imbalance')
-plt.setp(ax2,title='Potential')
+
 plt.setp(ax2, xlim=(-3.,3.), ylim=(-5,5))
-plt.setp(ax1, xlim=(-3.,3.), ylim=(-3.5,3.5))
+plt.setp(ax1, xlim=(-3.,3.), ylim=(-3.1,3.1))
 plt.tight_layout()
 plt.savefig('../plots/Stability_theory.pdf', dpi=300)
 plt.close()
@@ -548,8 +547,8 @@ lin3, = ax2.plot(TT,VT2, color=color5, label='F =  9/8',alpha=0.7)
 lin2, = ax1.plot(TT,NT, color=color1, label='F = 0'  ,alpha=0.7)
 lin4, = ax1.plot(TT,NT2, color=color5, label='F = 9/8',alpha=0.7)
 
-plt.setp(ax1, xticks=(-3,-2,-1,1,2,3),yticks=(-3,-2,-1,1,2,3))
-plt.setp(ax2, xticks=(-3,-2,-1,1,2,3),yticks=())
+plt.setp(ax1, xticks=(-2,-1,1,2,3),yticks=(-1,1,2,3))
+plt.setp(ax2, xticks=(-2,-1,1,2,3),yticks=())
 
 
 #plt.xticks((-3,-2,-1,1,2,3))
@@ -570,15 +569,13 @@ for axes in (ax1,ax2):
     axes.xaxis.set_label_coords(1.1, -0.1)
     axes.yaxis.set_label_coords(-0.1, 0.5)
 
-fig.text(0.5, 0.04, 'Temperature [K]', ha='center')
+fig.text(0.5, 0.04, 'Temperature (K)', ha='center')
 
-ax1.set_ylabel('Wm$^{-2}$')
-ax2.set_ylabel('Wm$^{-2}$ K')
+ax1.set_ylabel('Imbalance (Wm$^{-2})$')
+ax2.set_ylabel('Potential (Wm$^{-2}$ K)')
 
-plt.setp(ax1,title='Imbalance')
-plt.setp(ax2,title='Potential')
-plt.setp(ax2, xlim=(-3.,3.), ylim=(-5,5))
-plt.setp(ax1, xlim=(-3.,3.), ylim=(-3.5,3.5))
+plt.setp(ax2, xlim=(-2.,3.8), ylim=(-2.,3.5))
+plt.setp(ax1, xlim=(-2.,3.8), ylim=(-2.,3.5))
 plt.tight_layout()
 plt.savefig('../plots/Stability_theory_parabolic.pdf', dpi=300)
 plt.close()
