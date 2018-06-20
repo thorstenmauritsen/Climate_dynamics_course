@@ -301,6 +301,7 @@ xmax = max(axes.get_xlim())
 plt.xlim((0,xmax))
 ymax = max(axes.get_ylim())
 
+axes.plot((0,xmax),(1.5,1.5),linestyle='--', color=almost_black, linewidth=0.5)
 
 axes.xaxis.set_ticks_position('bottom')
 axes.yaxis.set_ticks_position('left')
@@ -347,6 +348,7 @@ axes.set_ylabel(r'Temperature (K)')
 xmax = max(axes.get_xlim())
 plt.xlim((0,xmax))
 ymax = max(axes.get_ylim())
+
 
 
 axes.xaxis.set_ticks_position('bottom')
