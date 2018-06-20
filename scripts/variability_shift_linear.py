@@ -114,7 +114,7 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T
 
 #--------------------------------------------------------------------------
 
-nyears        = 100000
+nyears        = 1000000
 forcing_years = np.arange(0,nyears)
 input_forcing = 0*np.linspace(0.0,1.0,nyears)
 
