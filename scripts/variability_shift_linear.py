@@ -114,7 +114,7 @@ def twolayermodel(forcing_years, input_forcing, ECS=3.0, gamma=0.8, T_ml0=0.0, T
 
 #--------------------------------------------------------------------------
 
-nyears        = 1000000
+nyears        = 100000
 forcing_years = np.arange(0,nyears)
 input_forcing = 0*np.linspace(0.0,1.0,nyears)
 
@@ -165,7 +165,7 @@ for spine in spines_to_keep:
     axes.spines[spine].set_color(almost_black)
 
 plt.tight_layout()
-plt.savefig('../plots/variability_shift_timeseries.pdf', dpi=300)
+#plt.savefig('../plots/variability_shift_timeseries.png', dpi=600)
 plt.close()
 
 
@@ -252,5 +252,5 @@ for spine in spines_to_keep:
 
 
 plt.tight_layout()
-plt.savefig('../plots/variability_shift_distribution.pdf', dpi=300)
+plt.savefig('../plots/variability_shift_distribution.png', dpi=600)
 plt.close()

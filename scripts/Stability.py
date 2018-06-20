@@ -276,7 +276,7 @@ for spine in spines_to_keep:
     axes.spines[spine].set_color(almost_black)
 
 plt.tight_layout()
-plt.savefig('../plots/Stability_qubicon.pdf', dpi=300)
+plt.savefig('../plots/Stability_qubicon.png', dpi=600)
 plt.close()
 
 
@@ -321,7 +321,7 @@ plt.setp(axes, ylim=(-0.3,3.))
 axes.legend(fontsize=10,frameon=False)
 
 plt.tight_layout()
-plt.savefig('../plots/Stability_mlm.pdf', dpi=300)
+plt.savefig('../plots/Stability_mlm.png', dpi=600)
 plt.close()
 
 
@@ -368,7 +368,7 @@ plt.setp(axes, ylim=(-0.3,3.))
 axes.legend(fontsize=10,frameon=False)
 
 plt.tight_layout()
-plt.savefig('../plots/Stability_tlm.pdf', dpi=300)
+plt.savefig('../plots/Stability_tlm.png', dpi=600)
 plt.close()
 
 #------------------------------------------------
@@ -459,7 +459,7 @@ axes.legend(fontsize=10,frameon=False)
 plt.setp(axes, xlim=(-0.1,1.7))
 
 plt.tight_layout()
-plt.savefig('../plots/Stability_vari_1.pdf', dpi=300)
+plt.savefig('../plots/Stability_vari_1.png', dpi=600)
 plt.close()
 
 #----------------------------------------------------------
@@ -522,7 +522,7 @@ ax2.set_ylabel('Potential (Wm$^{-2}$ K)')
 plt.setp(ax2, xlim=(-3.,3.), ylim=(-5,5))
 plt.setp(ax1, xlim=(-3.,3.), ylim=(-3.1,3.1))
 plt.tight_layout()
-plt.savefig('../plots/Stability_theory.pdf', dpi=300)
+plt.savefig('../plots/Stability_theory.png', dpi=600)
 plt.close()
 
 #----------------------------------------------------------
@@ -577,5 +577,5 @@ ax2.set_ylabel('Potential (Wm$^{-2}$ K)')
 plt.setp(ax2, xlim=(-2.,3.8), ylim=(-2.,3.5))
 plt.setp(ax1, xlim=(-2.,3.8), ylim=(-2.,3.5))
 plt.tight_layout()
-plt.savefig('../plots/Stability_theory_parabolic.pdf', dpi=300)
+plt.savefig('../plots/Stability_theory_parabolic.png', dpi=600)
 plt.close()
