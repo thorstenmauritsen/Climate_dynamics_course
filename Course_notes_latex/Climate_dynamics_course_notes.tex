@@ -2029,12 +2029,16 @@ A strong memory in the system implies $\alpha$ is close to unity, and that the v
 	\begin{center}
 		\includegraphics[width=15 cm]{../Plots/variability_shift_distribution.pdf}
 	\end{center}
-	\caption{ Shifts in variability of monthly temperature in the linear mixed-layer model. Left panel shows the probability distributions of three 1,000,000 year runs with different forcing. The orange curve shows the gaussian with zero mean and standard deviation according to Equation (\ref{eq:sigma_linear_theory}). Right panel shows the predicted (solid line) and actual probability of exceeding 0.5 K for a month as a function of the longterm mean temperature.  } 
+	\caption{ Shifts in variability of monthly temperature in the linear mixed-layer model. Left panel shows the probability distributions of three 1,000,000 year runs with different forcing. The orange curve shows the gaussian with zero mean and standard deviation according to Equation (\ref{eq:sigma_linear_theory}). Right panel shows the theoretical prediction (solid line) and actual probability of exceeding 0.5 K for a month as a function of the longterm mean temperature.  } 
 	\label{fig:variability_shift_linear}
 \end{figure}
 
 
-The nice thing about the linear model is that nothing which determines the amount of variability (Equation \ref{eq:sigma_linear_theory}) depends on forcing or mean temperature, and therefore we predict that deviations around any stationary state will be the same. I plot two warmer climates in Figure \ref{fig:variability_shift_linear}, where we see that the probability distribution is simply translated to fluctuate around a new equilibrium as I add small forcing. 
+The nice thing about the linear model is that nothing which determines the amount of variability (Equation \ref{eq:sigma_linear_theory}) depends on forcing or mean temperature, and therefore deviations around any stationary state will be statistically the same. I plot two warmer climates in Figure \ref{fig:variability_shift_linear}, where we see that the probability distribution is simply translated to fluctuate around a new equilibrium as I add small forcing. 
+This simplicity of the linear system where mean-state and variability are independent puts us in the fortunate situation that we can predict the properties of extremes in a changing climate. In this thought out example we might be interested in knowing how often a certain threshold is exceeded, e.g. 0.5 K warmer than usual. We find that whereas in our control climate, this threshold is only exceeded about 1 percent of the time, we call this the 99th percentile extreme event, the probability increases dramatically as the system warms (Figure \ref{fig:variability_shift_linear}, right panel). The linear theory (black curve) is simply the probability of the gaussian curve with a given mean and the standard deviation according to Equation (\ref{eq:sigma_linear_theory}), which makes for a good prediction of the actual probability obtained from long runs with added forcing.
+
+Many problems of predicting extremes with changing climate, if not most, are of this kind or can be closely approximated using linear theory: simply observed the probability distribution over sufficient time, and then translate that into a warmer climate. In this case we can even make predictions that things will happen in the future which have not yet occurred. 
+A challenge with detecting extremes and attributing them to a shift in climate is that they, by the nature of the problem, do not occur very often and are in most practical cases associated with weather phenomena which may well not have a gaussian probability distribution. Thus, it is difficult to state unequivocally that {\em this particular event is caused by global warming}; scientists usually make more reserved statements. There is currently efforts ongoing in the community of trying to achieve a level of scientific confidence that would make more definitive statements possible. 
 
 
 
@@ -2124,16 +2128,6 @@ where, for simplicity we can consider cases with $b=0$. We immediately recognize
 %Plant example
 %Couple 3-4 qubicons
 
-\newpage
-\vspace{1 cm}
-{\setlength{\parindent}{0cm}
-	%\hrule
-	
-	\begin{exercise}
-		Describe, in your own words 
-	\end{exercise}
-	
-}
 
 
 

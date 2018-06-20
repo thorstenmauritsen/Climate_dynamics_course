@@ -221,7 +221,7 @@ axes = ax[1]
 x=np.linspace(0,1.2,1000)
 
 
-axes.plot(x,100*stats.norm.sf(0.5, loc=x, scale=std),color='black')
+axes.plot(x,100*stats.norm.sf(0.5, loc=x, scale=stdtheory),color='black')
 
 axes.scatter(np.mean(exp1['T_ml'][ns:]), 100 - stats.percentileofscore(exp1['T_ml'][ns:],0.5), zorder=10, color=color1)
 axes.scatter(np.mean(exp2['T_ml'][ns:]), 100 - stats.percentileofscore(exp2['T_ml'][ns:],0.5), zorder=10, color=color2)
