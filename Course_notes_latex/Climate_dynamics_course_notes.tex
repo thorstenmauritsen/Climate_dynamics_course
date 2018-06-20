@@ -1993,17 +1993,17 @@ Estimate iteratively the optimal $ECS$ of the Winton-Held two-layer model runnin
 
 
 %---------------------------------------------------------------------
-\chapter{Global variability and climate catastrophes}
+\chapter{Catastrophes}
+\label{chapter:catastrophes}
 
+A climatic catastrophe is sometimes referred to as a forced transition of a climate system to a new state at a rate which is more rapid than the rate of change of the external forcing (freely from {\em wikipedia}). In this case we may be thinking of some aspect of the climate that is being changed through external forcing at an accelerating rate or all of a sudden over a short period of time. One can also imagine that something, which didn't happen before, suddenly starts to happen. In order to qualify as a catastrophe we usually also think of it having a large negative impact on something, say society or nature, but here in this course that is not central, rather we will focus on the physics of generalized catastrophes.
 
-A climatic catastrophe is sometimes referred to as a forced transition of climate system to a new climate state at a rate which is more rapid than the rate of change of the external forcing (freely from {\em wikipedia}). In this case we may be thinking of some aspect of the climate that is being changed through external forcing at an accelerating rate or all of a sudden over a short period of time. One can also imagine that something, which didn't happen before, suddenly starts to happen. In order to qualify as a catastrophe we usually also think of it having a large negative impact on something, say society or nature, but here in this course that is not central.
-
-In recent years in particular so-called tipping points have caught attention, the idea being that there are some thresholds in the system whereat it behaves non-linearly such that going back is not as simple as just returning the forcing to what it was before. These involve bifurcations, as we studied them in Chapter \ref{chapter:state-dependent}. These cases we shall model using quadratic and qubic energy balances. 
+In recent years so-called tipping points have caught attention, the idea being that there are some thresholds in the system whereat it behaves non-linearly such that going back is not as simple as just returning the forcing to what it was before. These involve bifurcations, as we studied them in Chapter \ref{chapter:state-dependent}. These cases we shall model using quadratic and qubic energy balances. 
 But also a strong increase in extreme events of some kind would usually be considered catastrophic even if this would not necessarily involve a bifurcation. We shall consider this case first as it can be modeled using the linear mixed-layer model.
 
 
 
-\section{Climatic extremes in a linear world}
+\section{Extremes in a linear world}
 Extreme events are typically considered things that happen rarely, e.g. once a year, a decade or century. The more extreme the event is, the more rare they are, at least as long as the climate within which they occur is not changing. 
 If the climate changes it is in fact mainly during weather extremes that we spur this happening; cold-spells and heat waves imprint themselves in our memory and cause damages. Many of these extremes are associated with absolute thresholds. For instance, most mammals die from heat stress if the wet bulb temperature exceeds around 35$^\circ$C, and extreme precipitation only becomes a severe problem when the water can no longer run off in natural watersheds and existing sewers, and end up flooding things we care about. %The former is a case that hardly ever occurs in the present-day climate, but may become frequent in the future.
 As a simplest possible example, let us consider natural variability in the mixed-layer model:
@@ -2022,7 +2022,7 @@ Now the total variance in the temperature can be described by:
 	\sigma^{2}_T = \frac{\sigma^{2}_Z}{1 - \alpha^{2}}
 	\label{eq:sigma_linear_theory}
 \end{equation}
-A strong memory in the system implies $\alpha$ is close to unity, and that the variability is large. For the extreme case $\alpha$=1  is a pure red noise process, whose variability grows with each timestep to infinity. To demonstrate that this theoretical expression is accurate I plot the corresponding gaussian curve on top of the probability distribution of temperature from a very long run in Figure \ref{fig:variability_shift_linear}. 
+A strong memory in the system implies $\alpha$ is close to unity, and that the variability is large. For the extreme case $\alpha$=1  is a pure red noise process, whose variability grows with each timestep to infinity, $\sigma_T \rightarrow \infty$. To demonstrate that this theoretical expression is accurate I plot the corresponding gaussian curve on top of the probability distribution of temperature from a very long run in Figure \ref{fig:variability_shift_linear}. 
 \\
 
 \begin{figure}
@@ -2035,10 +2035,10 @@ A strong memory in the system implies $\alpha$ is close to unity, and that the v
 
 
 The nice thing about the linear model is that nothing which determines the amount of variability (Equation \ref{eq:sigma_linear_theory}) depends on forcing or mean temperature, and therefore deviations around any stationary state will be statistically the same. I plot two warmer climates in Figure \ref{fig:variability_shift_linear}, where we see that the probability distribution is simply translated to fluctuate around a new equilibrium as I add small forcing. 
-This simplicity of the linear system where mean-state and variability are independent puts us in the fortunate situation that we can predict the properties of extremes in a changing climate. In this thought out example we might be interested in knowing how often a certain threshold is exceeded, e.g. 0.5 K warmer than usual. We find that whereas in our control climate, this threshold is only exceeded about 1 percent of the time, we call this the 99th percentile extreme event, the probability increases dramatically as the system warms (Figure \ref{fig:variability_shift_linear}, right panel). The linear theory (black curve) is simply the probability of the gaussian curve with a given mean and the standard deviation according to Equation (\ref{eq:sigma_linear_theory}), which makes for a good prediction of the actual probability obtained from long runs with added forcing.
+This simplicity of the linear system where mean-state and variability are independent puts us in the fortunate situation that we can predict the properties of extremes in a changing climate. We might be interested in knowing how often a certain threshold is exceeded, e.g. 0.5 K warmer than usual. We find that in our control climate, this threshold is only exceeded about 1 percent of the time, we call this the 99th percentile extreme event. However, the probability increases dramatically as the system warms (Figure \ref{fig:variability_shift_linear}, right panel). The linear theory (black curve) is the probability of the gaussian curve with a given mean and standard deviation according to Equation (\ref{eq:sigma_linear_theory}), which makes for a good prediction of the actual probability obtained from long runs with added forcing (dots).
 
-Many problems of predicting extremes with changing climate, if not most, are of this kind or can be closely approximated using linear theory: simply observed the probability distribution over sufficient time, and then translate that into a warmer climate. In this case we can even make predictions that things will happen in the future which have not yet occurred. 
-A challenge with detecting extremes and attributing them to a shift in climate is that they, by the nature of the problem, do not occur very often and are in most practical cases associated with weather phenomena which may well not have a gaussian probability distribution. Thus, it is difficult to state unequivocally that {\em this particular event is caused by global warming}; scientists usually make more reserved statements. There is currently efforts ongoing in the community of trying to achieve a level of scientific confidence that would make more definitive statements possible. 
+Many problems of predicting extremes with changing climate, if not most, are of this kind or can be closely approximated using linear theory: simply observe the probability distribution over sufficient time, and then translate that into a warmer climate. In this case we can even make predictions that things will happen in the future which have not yet occurred. 
+A challenge with detecting extremes and attributing them to a shift in climate is that they, by the nature of the problem, do not occur very often and are in most practical cases associated with weather phenomena which may well not have a gaussian probability distribution. Thus, it is difficult to state unequivocally that {\em this particular event is caused by global warming}; scientists usually make more reserved statements. There are efforts ongoing in the community of trying to achieve a level of scientific confidence that would make more definitive statements possible. 
 
 
 
