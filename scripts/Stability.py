@@ -195,15 +195,15 @@ vml3 = qubicon(forcing_years, 10./9. * input_forcing, gamma=0,ECS=3.7/1.5
 ,sigma=1.)
 
 
-vtl1 = qubicon(forcing_years, 0.*input_forcing, gamma=0.5,ECS=3.7/1.5
+vtl1 = qubicon(forcing_years, 0.*input_forcing, gamma=1.0,ECS=3.7/1.5
 ,b=1./2., T_ml0 = 0.0, T_deep0 = 0.
 ,sigma=1.)
 
-vtl2 = qubicon(forcing_years, 3./4. *input_forcing, gamma=0.5,ECS=3.7/1.5
+vtl2 = qubicon(forcing_years, 3./4. *input_forcing, gamma=1.0,ECS=3.7/1.5
 ,b=1./2., T_ml0 = (3. - np.sqrt(3))  / 2., T_deep0 = (3. - np.sqrt(3))  / 2.
 ,sigma=1.)
 
-vtl3 = qubicon(forcing_years, 10./9. * input_forcing, gamma=0.5,ECS=3.7/1.5
+vtl3 = qubicon(forcing_years, 10./9. * input_forcing, gamma=1.0,ECS=3.7/1.5
 ,b=1./2.,T_ml0 = 4./3, T_deep0 = 4./3
 
 ,sigma=1.)
@@ -383,7 +383,7 @@ bins = np.arange(-.3,.3,0.005)
 n, obins, patches = plt.hist(vml1['T_ml'],
                             bins + np.mean(vml1['T_ml']), normed=1,
                             facecolor=color1, alpha=0.6,
-                            label='T = Mixed layer',histtype='stepfilled')
+                            label='T = Mixed-layer model',histtype='stepfilled')
 n, obins, patches = plt.hist(vml2['T_ml'],
                             bins + np.mean(vml2['T_ml']), normed=1,
                             facecolor=color1, alpha=0.6,histtype='stepfilled')
@@ -395,7 +395,7 @@ n, obins, patches = plt.hist(vml3['T_ml'],
 n, obins, patches = plt.hist(vtl1['T_ml'],
                             bins + np.mean(vtl1['T_ml']), normed=1,
                             facecolor=color3, alpha=0.6,
-                            label='T = Two layer', histtype='stepfilled')
+                            label='T = Two-layer model', histtype='stepfilled')
 n, obins, patches = plt.hist(vtl2['T_ml'],
                             bins + np.mean(vtl2['T_ml']), normed=1,
                             facecolor=color3, alpha=0.6,
@@ -426,7 +426,9 @@ for exp in (vml1,vml2,vml3):
 
     i+=1
 
-
+    
+axes.plot((1.5,1.5),(0,10),linestyle='--',color='black')
+axes.text(1.5,10, r'$T_b$', ha='center', va='bottom')
 
 #plt.title("Histogram with 'auto' bins")
 axes.set_ylabel(r'Frequency (\%)',fontsize=12)
@@ -515,8 +517,8 @@ for axes in (ax1,ax2):
 
 fig.text(0.5, 0.0, 'Temperature (K)', ha='center')
 
-ax1.set_ylabel('Imbalance (Wm$^{-2})$')
-ax2.set_ylabel('Potential (Wm$^{-2}$ K)')
+ax1.set_title('Imbalance (Wm$^{-2})$')
+ax2.set_ylabel('Pseudo-potential (Wm$^{-2}$ K)')
 
 
 plt.setp(ax2, xlim=(-3.,3.), ylim=(-5,5))
@@ -571,8 +573,8 @@ for axes in (ax1,ax2):
 
 fig.text(0.5, 0.04, 'Temperature (K)', ha='center')
 
-ax1.set_ylabel('Imbalance (Wm$^{-2})$')
-ax2.set_ylabel('Potential (Wm$^{-2}$ K)')
+ax1.set_title('Imbalance (Wm$^{-2})$')
+ax2.set_title('Psuedo-potential (Wm$^{-2}$ K)')
 
 plt.setp(ax2, xlim=(-2.,3.8), ylim=(-2.,3.5))
 plt.setp(ax1, xlim=(-2.,3.8), ylim=(-2.,3.5))
