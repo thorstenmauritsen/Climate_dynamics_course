@@ -2044,6 +2044,7 @@ A challenge with detecting extremes and attributing them to a shift in climate i
 
 
 \section{On the edge of catastrophe}
+\label{sec:ontheedge}
 
 \begin{figure}
 	\begin{center}
@@ -2056,7 +2057,7 @@ A challenge with detecting extremes and attributing them to a shift in climate i
 A different class of catastrophes occur if a system undergoes bifurcations (Chapter \ref{chapter:state-dependent}), sometimes popularized as tipping points: if forcing is applied beyond a certain threshold the system might undergo rapid, unstoppable and irreversible change that we classify as a catastrophe. 
 So, how will we ever be able to tell if we are approaching a tipping point climate catastrophe?  Some claim that we will see a change in system behavior close to a tipping point, and that this can warn us if a catastrophe is imminent. To understand why, let's first build a system with such a tipping point, by taking an example we have already studied, temperature-dependent climate feedbacks. We can approximate the energy imbalance at the top of the atmosphere with a quadratic equation,
 \begin{equation}
-N=F+\lambda_0 T + b T^2, \nonumber
+N=F+\lambda_0 T + b T^2 + e, \label{eq:quadratic_catastrophe}
 \end{equation}
 where $\lambda_0$ is the feedback parameter at $T=0$ and $b$ determines how the feedback changes with warming. If we choose $b=\frac{1}{2}$,  $\lambda_0 = \frac{3}{2}$, and $F=0$, we have a system in equilibrium ($N=0$) at $T=0$. But if we perturb the system with $F_b =\frac{\lambda_o^2}{4b} = \frac{9}{8}$ Wm$^{-2}$ (Section \ref{sec:quadratic}), we raise the imbalance curve so that it just touches the zero-intercept at $T_b=1.5$ K, which is the bifurcation point. Any positive perturbation in temperature above $1.5$ K (or indeed any additional forcing) will lead to runaway warming, because the change in imbalance with warming becomes positive, as shown in Figure \ref{fig:parabolic_theory}. We can also see this reflected in the pseudo-potential curves that we encountered in Chapter \ref{chapter:state-dependent}. The case with zero forcing still contains a local minimum, where our system can safely remain, but perturbing the system with the critical forcing $F_b$ pushes it to the  limit of instability.
 We can see what happens when we approach this tipping point by slowly inching the mixed-layer model towards $F_b$. The orange curve in Figure \ref{fig:bifurc_parabolic} shows this slow increase in forcing, starting at an equilibrium solution of $F=1,T=1$ and moving over 5000 monthly timesteps to just above $F_b$, where the forcing is held constant. After the mixed layer has responded to the additional $\frac{1}{8}$ Wm$^{-2}$ forcing, which still takes a surprising amount of time, it breaches the bifurcation temperature $T_b=1.5$ and runs away to infinity.
@@ -2066,7 +2067,7 @@ We can see what happens when we approach this tipping point by slowly inching th
 	\begin{center}
 		\includegraphics[width=15 cm]{../plots/Stability_mlm.png}
 	\end{center}
-	\caption{The mixed layer model with temperature-dependent feedbacks is forced from an equilibrium state, $[F=1,T=1]$, slowly toward the tipping point, and held at just about the critical forcing $[F_b=\frac{9}{8}]$. The orange line represents a case without variability, and the blue line a case with variability that is approximately equal to the observed variability at the top of the atmosphere. The black line has identical variability to the blue line, but rests in stable equilibrium at $[F=0,T=0]$.} 
+	\caption{The mixed-layer model with temperature-dependent feedbacks is forced from an equilibrium state, $[F=1,T=1]$, slowly toward the tipping point, and held at just about the critical forcing $[F_b=\frac{9}{8}]$. The orange line represents a case without variability, and the blue line a case with variability that is approximately equal to the observed variability at the top of the atmosphere. The black line has identical variability to the blue line, but rests in stable equilibrium at $[F=0,T=0]$.} 
 	\label{fig:bifurc_parabolic}
 \end{figure}
 
@@ -2092,31 +2093,48 @@ This means that for the AR(1) process, the memory parameter $\alpha$ is dependen
 Not so for the two-layer model, though. If we introduce a second layer. Here, the ocean heat uptake term $-\gamma (T-T_d)$ acts like a kind of negative feedback which on short timescales, before the deep ocean temperature has time to adjust, draws the upper ocean temperature towards the longterm mean. As a result the broadening of the variability found for the mixed-layer model is much less pronounced for the two-layer model (Figure \ref{fig:variability_shift_parabolic}). Thus, if the real Earth's global climate was approaching a bifurcation, then the deep ocean might hinder us from detecting the catastrophe before it is too late. 
 
 \section{Bi-stable climate variability}
-
-
-
-
+A number of phenomena are thought to be bi-stable, or exhibit bi-modality. In an earlier chapter we looked at the snow-ball Earth instability which had two solutions for a certain boundary conditions. I argued that the threshold for going from a present-day like to a snow-ball state was probably too large to be accomplished by natural variability. But there could be other problems wherein multiple stable or quasi-stable states are thought to exist, and natural variability can be sufficient cause a transition. 
+We can represent such problems in the simplest possible way as 
 \begin{equation}
-N=F+\lambda_o T + b T^2 + c T^3
+N=F+\lambda_o T + c T^3 + e \label{eq:qubic_catastrophe}
 \end{equation}
-where, for simplicity we can consider cases with $b=0$. We immediately recognize this as a third order polynomial which may have 1, 2 or 3 roots insofar as $c \ne 0$. 
-
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=15 cm]{../plots/Stability_qubicon.png}
-	\end{center}
-	\caption{ Caption } 
-	\label{fig:bi-stable_timeseries}
-\end{figure}
+where, for simplicity we set the quadratic coefficient to zero, $b=0$, cf. Equation \ref{eq:quadratic_catastrophe}. We immediately recognize this as a third order polynomial which may have either 1, 2 or 3 roots, insofar as $c \ne 0$. It is easy to realize that if $c<0$ then either 1 or 2 of the roots are stable stationary states, whereas for $c>0$ there may be either zero or 1 stable stationary states. 
 
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=15 cm]{../plots/Stability_theory.png}
 	\end{center}
-	\caption{ Caption } 
+	\caption{ Display of Equation \ref{eq:qubic_catastrophe} for different $F$. Left panel shows the imbalance, right panel shows the pseudo-potential. } 
 	\label{fig:bi-stable_theory}
 \end{figure}
+
+The imbalance and the associated pseudo-potential for the case $c<0$ combined with different $F$ are displayed in Figure \ref{fig:bi-stable_theory}. We see that there are two stable stationary states close to $\pm 2 $ K and an unstable state at 0 K; remember that stability is determined by the sign of the slope, see Chapter \ref{chapter:response}. 
+For the case $F=0$ the pseudo-potential is symmetric with two equally deep minima. Thus, there is no difference between the two solutions, and, given enough time and sufficient noise ($e$) to ensure frequent shifts between the two, we expect the system to exhibit a symmetric probability distribution of temperature. Indeed, we see that the residence time around each fix-point is about equal (Figure \ref{fig:bi-stable_histogram}). Here we can also see that the distribution is not simply a combination of two gaussians, but each is skewed towards zero. This we can understand from the discussion in Section \ref{sec:ontheedge}: the local feedback parameter is smaller closer to 0 K and so it takes longer to return from anomalies in this direction than from anomalies at large positive or negative temperatures.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=15 cm]{../plots/Qubicon_histogram.png}
+	\end{center}
+	\caption{ Probability distributions of temperature for the case of Equation \ref{eq:qubic_catastrophe} with either zero- or slightly positive forcing, $F$.  } 
+	\label{fig:bi-stable_histogram}
+\end{figure}
+
+If we apply a constant forcing $F$ to the bi-stable system (Equation \ref{eq:qubic_catastrophe}) then the pseudo-potential becomes asymmetric (Figure \ref{fig:bi-stable_theory}). The two minima are not equally deep, and it takes less noise to force a transition from the shallow to the deep minimum than the other way around. This asymmetry results in a substantial shift in the probability distribution of temperature towards the deeper minimum (Figure \ref{fig:bi-stable_histogram}), whereas the position of the two modes does not move very far, the longterm mean temperature change is substantial. This is in fact amazing as for a fairly small forcing we get a large change in the mean temperature. If we had taken a linear view and evaluated $\lambda$ at a fix-point we would have come to a temperature change which is an order of magnitude less. Thus, living in a bi-stable world can be treacherous.
+\\
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=15 cm]{../plots/Stability_qubicon.png}
+	\end{center}
+	\caption{ Timeseries of temperature with zero $F$ (gray) and slowly time-varying $F$ (orange). } 
+	\label{fig:bi-stable_timeseries}
+\end{figure}
+
+Some rather controversial ideas suggest that climate in the Pleistocene, i.e. the ice-ages occurring in the past million years, can be and expression of a bi-stability between cold glacial states and mild inter-glacial periods. 
+In fact, whereas the response to white noise of the bi-stable system may appear as random shifts back and forth between two states, the strong sensitivity to small changes in $F$ can be used to make the erratic system play in tune. If we apply a small and slowly varying forcing, in this case a simple sinusoidal, then the system temperature responds by following the forcing most of the time, though not always (Figure \ref{fig:bi-stable_timeseries}). We can think of the Earth's orbit as causing a slightly varying forcing which shifts the preferred state back and forth between glacial and interglacials. This is all speculative though.
+\\
+
+\section{Complexity reduces risk of encountering tipping points}
+I will end this chapter with a note of caution. Whereas the idea of the climate system containing tipping-points caused by non-linearities is both fascinating and frightening at the same time, the evidence that such phenomena actually exist in the real world is scarce, at best. Often the dramatic non-linear behavior found here is mostly features of the simple low-order systems that we resorted to. More complex systems with more degrees of freedom tend to behave more like a linear system without tipping-points. And even where a certain behavior appears as tipping-point, it may not actually be one, i.e. an irreversible catastrophe. 
 
 
 %\section{Complexity reduces risk of encountering tipping points}

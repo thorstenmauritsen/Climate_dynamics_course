@@ -142,22 +142,32 @@ nyears        = 10000
 forcing_years = np.arange(0,nyears)
 input_forcing = 0*np.linspace(0.0,1.0,nyears)
 
+noise = 35
 
 qub1 = qubicon(forcing_years, input_forcing, gamma=0,ECS=-3.7/3
 ,c=-1.0
-,sigma=30.0)
+,sigma=noise)
 
 
 ##### Periodic forcing
-input_forcing = 0.8 * np.sin(np.linspace(0.0,2*np.pi,nyears))
+input_forcing = 0.8 * np.sin(np.linspace(0.0,3*2*np.pi,nyears))
 
 qub2 = qubicon(forcing_years, input_forcing, gamma=0,ECS=-3.7/3
 ,c=-1.0
-,sigma=30.0)
+,sigma=noise)
 
+###### Long runs with shifted forcing:
+nyears        = 1000000
+forcing_years = np.arange(0,nyears)
+input_forcing = 0*np.linspace(0.0,1.0,nyears)
+#noise=
+qublong1  = qubicon(forcing_years, input_forcing, gamma=0,ECS=-3.7/3,c=-1.0,sigma=noise)
+qublong2  = qubicon(forcing_years, input_forcing+0.5, gamma=0,ECS=-3.7/3,c=-1.0,sigma=noise)
 
 
 ###### mixed layer
+nyears        = 10000
+forcing_years = np.arange(0,nyears)
 input_forcing = np.empty(nyears)
 input_forcing[:int(nyears/2.)] = np.linspace(1.0,9./8.+0.0001,int(nyears/2.))
 input_forcing[int(nyears/2.):] = 9./8.+0.0001
@@ -245,9 +255,11 @@ lw=1.0
 axes.plot(qub1['time'],qub1['T_ml'],lw=lw,color=color1,alpha=0.6)
 axes.plot(qub2['time'],qub2['T_ml'],lw=lw,color=color5,alpha=0.6)
 
+plt.ylim((-3,3))
 
 ax2 = axes.twinx()
-ax2.plot(qub2['time'],qub2['forcing'],lw=lw,color=color5,alpha=1.0)
+ax2.plot(qub1['time'],qub1['forcing'],lw=lw*3,color=color1,alpha=0.6)
+ax2.plot(qub2['time'],qub2['forcing'],lw=lw*3,color='darkorange',alpha=1.0)
 ax2.set_ylabel('Forcing')
 #ax2.tick_params('y')
 
@@ -255,9 +267,9 @@ ax2.set_ylabel('Forcing')
 axes.set_xlabel('Time (y)')
 axes.set_ylabel(r'Temperature (K)')
 
-xmax = max(axes.get_xlim())
+xmax = max(qub1['time'])
 plt.xlim((0,xmax))
-ymax = max(axes.get_ylim())
+
 
 
 axes.xaxis.set_ticks_position('bottom')
@@ -279,6 +291,41 @@ plt.tight_layout()
 plt.savefig('../plots/Stability_qubicon.png', dpi=600)
 plt.close()
 
+#------------------------------------------------
+
+# Plot Histogram of Qubicon
+
+fig, axes = plt.subplots(1,1, figsize=(7,3.5))
+
+bins = np.arange(-3,3,0.05)
+
+axes.hist(qublong1['T_ml'], bins=bins, histtype='stepfilled', normed=1, color=color1, alpha=0.5, label=r'F = 0.0 Wm$^{-2}$, mean T = '+str(round(np.mean(qublong1['T_ml']),1))+' K')
+axes.hist(qublong2['T_ml'], bins=bins, histtype='stepfilled', normed=1, color=color5, alpha=0.5, label=r'F = 0.5 Wm$^{-2}$, mean T = '+str(round(np.mean(qublong2['T_ml']),1))+' K')
+
+axes.legend(frameon=False, loc=2)
+
+axes.xaxis.set_ticks_position('bottom')
+axes.yaxis.set_ticks_position('none')
+axes.get_yaxis().set_visible(False)
+
+axes.set_xlabel('Temperature (K)')
+
+for ticks in axes.xaxis.get_ticklines() + axes.yaxis.get_ticklines():
+    ticks.set_color(almost_black)
+
+spines_to_remove        = ['top', 'right', 'left']
+for spine in spines_to_remove:
+    axes.spines[spine].set_visible(False)
+
+spines_to_keep = [ 'bottom']
+for spine in spines_to_keep:
+    axes.spines[spine].set_linewidth(0.5)
+    axes.spines[spine].set_color(almost_black)
+
+
+plt.tight_layout()
+plt.savefig('../plots/Qubicon_histogram.png', dpi=600)
+plt.close()
 
 #------------------------------------------------
 
@@ -484,16 +531,16 @@ colormlm = 'red'
 colortlm = 'blue'
 
 lin1, = ax2.plot(TT,VT, color=color1, label='F = 0',alpha=0.7)
-lin3, = ax2.plot(TT,VT2, color=color2, label='F =  1',alpha=0.7)
-lin5, = ax2.plot(TT,VT3, color=color5, label='F = -1',alpha=0.7)
+lin3, = ax2.plot(TT,VT2, color=color5, label='F =  1',alpha=0.7)
+#lin5, = ax2.plot(TT,VT3, color=color5, label='F = -1',alpha=0.7)
 
 
 #plt.xticks((-2,-1,1,2))
 #plt.yticks((-3,-2,-1,1,2,3))
 
 lin2, = ax1.plot(TT,NT, color=color1, label='F = 0'  ,alpha=0.7)
-lin4, = ax1.plot(TT,NT2, color=color2, label='F =  1',alpha=0.7)
-lin6, = ax1.plot(TT,NT3, color=color5, label='F = -1',alpha=0.7)
+lin4, = ax1.plot(TT,NT2, color=color5, label='F =  1',alpha=0.7)
+#lin6, = ax1.plot(TT,NT3, color=color5, label='F = -1',alpha=0.7)
 
 plt.setp(ax1, xticks=(-3,-2,-1,1,2,3),yticks=(-3,-2,-1,1,2,3))
 plt.setp(ax2, xticks=(-3,-2,-1,1,2,3),yticks=())
@@ -502,7 +549,7 @@ plt.setp(ax2, xticks=(-3,-2,-1,1,2,3),yticks=())
 #plt.xticks((-3,-2,-1,1,2,3))
 #plt.yticks((-4,-2,2,4))
 
-ax2.legend(handles=[lin1,lin3,lin5], frameon=False,
+ax2.legend(handles=[lin1,lin3], frameon=False,
 fontsize=10,bbox_to_anchor=(0.92,1))
 
 for axes in (ax1,ax2):
@@ -520,7 +567,7 @@ for axes in (ax1,ax2):
 fig.text(0.5, 0.0, 'Temperature (K)', ha='center')
 
 ax1.set_title('Imbalance (Wm$^{-2})$')
-ax2.set_ylabel('Pseudo-potential (Wm$^{-2}$ K)')
+ax2.set_title('Pseudo-potential (Wm$^{-2}$ K)')
 
 
 plt.setp(ax2, xlim=(-3.,3.), ylim=(-5,5))
