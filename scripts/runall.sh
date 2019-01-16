@@ -1,0 +1,25 @@
+python CERES_flux_zonalmean.py
+python Chapter5-Variability-GMST.ipynb
+python ECS_inferred_historical.py
+python ECS_time-dependent_feedback.py
+python Global_variability.py
+python Planck_state_dependence.py
+python Precipition_MPI-ESM12.py
+python Snowball_Earth.py
+python Snowball_twolayer.py
+python Stability.py
+#python State_dependency_MPI-ESM12-jupyter.ipynb
+# this one needs to be run through ipython: python State_dependency_MPI-ESM12.py
+#python State_dependency_MPI-ESM12_hack.py
+python Stratospheric_adjustment.py
+python Two-layer_time-dependency.py
+python abrupt4xCO2_PRP_analysis.py
+python linear_feedback_instability.py
+python mixed-layer-model.py
+python runaway_modul.py
+python two-layer-model.py
+python two-layer-model_example.py
+python two-layer-model_historical.py
+python two-zone_model.py
+python variability_shift_linear.py
+python zero-layer-model.py

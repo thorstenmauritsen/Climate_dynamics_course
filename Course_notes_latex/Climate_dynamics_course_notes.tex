@@ -28,7 +28,7 @@
 % Makes nice font:
 \renewcommand{\familydefault}{\sfdefault}
 
-\newcommand{\DocTitle}{Climate Dynamics Course Notes}
+\newcommand{\DocTitle}{Global Climate Course Notes}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -102,9 +102,9 @@ Usually we think of the climate as something that is static, we think of average
 {\bf \LARGE Scope of the course}
 \\
 \\
-\noindent In the Climate Dynamics course I hope to bring you close to the forefront of current knowledge in climate dynamics, and ideally to inspire you to ask interesting questions on your own. Beyond this ideal, I hope to provide you with a solid basis for appreciating the stability of Earth's climate, and how and why we think it has, and is, changing. You will learn about forcing, feedback mechanisms and climate sensitivity, about the timescales involved in the climate system, and I will have a special focus on instrumental record warming. 
+\noindent In the course I hope to bring you close to the forefront of current knowledge in climate dynamics, and ideally to inspire you to ask interesting questions on your own. Beyond this ideal, I hope to provide you with a solid basis for appreciating the stability of Earth's climate, and how and why we think it has, and is, changing. You will learn about forcing, feedback mechanisms and climate sensitivity, about the timescales involved in the climate system, and I will have a special focus on instrumental record warming. 
 
-The course is theoretical in the sense that we will be working with abstraction: simple models that explain some aspect of the system in a distilled way, either ignoring a number of factors or condensing them into simpler formulations. We will work both analytically and with simple computational models. 
+%The course is theoretical in the sense that we will be working with abstraction: simple models that explain some aspect of the system in a distilled way, either ignoring a number of factors or condensing them into simpler formulations. We will work both analytically and with simple computational models. 
 
 
 
@@ -453,7 +453,7 @@ For a state to be stable it must not only have zero imbalance ($N=0$) but it mus
 
 Now suppose $T_o$ is a fixed-point at which the imbalance is zero and that in {\em some region} above and below $T_o$ the imbalance, $N$, is a continuous and differentiable function of $T$. Then for cases wherein $dN/dT \ne 0$ the fix-points are either stable if $dN/dT < 0$, where the derivative is evaluated at $T_o$, as in some region above $T_o$ the imbalance has to be negative and the system will cool towards $T_o$, and vice-versa if the system is colder than $T_o$ it will warm up again. A similar argument can be made that the system is unstable if $dN/dT > 0$. These two possibilities are displayed as black lines in cases a and c in Figure \ref{fig:feedback_stability_cases}. We shall refer to $dN/dT$ as the feedback parameter ($\lambda$), and the above summarizes that for cases whereat $N(T_o) = 0$ the stability is determined as follows:
 \begin{eqnarray}
-\lambda(T_o) < 0&:& T_o \textrm{ is a stable fix-point} \nonumber \\  
+\lambda(T_o) < 0&:& T_o \textrm{ is a stable fix-point} \nonumber \\Â  
 \lambda(T_o) > 0&:& T_o \textrm{ is an unstable fix-point} \nonumber
 \end{eqnarray}
 which is the take-home message of this section.
@@ -540,7 +540,7 @@ It turns out to be meaningful to divide the temperature feedback parameter into 
 \begin{equation}
 \lambda_T \approx \lambda_P + \lambda_{LR}.
 \end{equation}
-The planck feedback is therefore always negative, whereas the lapse-rate feedback could be either positive or negative: If the troposphere warms faster than the surface temperature then the system can radiate more to space relative to the case where warming was vertically uniform. This is the case in the tropics where the troposphere is vertically mixed by deep convective clouds (as in Figure \ref{fig:planck_LR}). At high latitudes, however, the surface may well warm faster than the troposphere such that the lapse-rate feedback is a positive feedback mechanism acting to amplify regional warming (Pithan and Mauritsen \cite{Pithan2014}). However, because the tropics cover a much larger area the lapse-rate feedback is thought to be on average negative.
+The planck feedback is therefore always negative, whereas the lapse-rate feedback could be either positive or negative: If the troposphere warms faster than the surface temperature then the system can radiate more to space relative to the case where warming was vertically uniform. This is the case in the tropics where the troposphere is vertically mixed by deep convective clouds (as in Figure \ref{fig:planck_LR}). At high latitudes, however, the surface may well warm faster than the troposphere such that the lapse-rate feedback is a positive feedback mechanism acting to amplify regional warming (Pithan and MauritsenÂ \cite{Pithan2014}). However, because the tropics cover a much larger area the lapse-rate feedback is thought to be on average negative.
 
 It is worth noting that the division of feedback parameters chosen here is only one of many possible divisions, a few of which makes sense. A powerful recent development has been to include some of the water vapor feedback into the temperature feedback, namely that which would occur if relative humidity stayed fixed (Held and Shell\cite{Held2012}). This is effective since, as we shall argue next, changes in relative humidity tend to be small in climate models. 
 
@@ -681,7 +681,7 @@ First, let us assume that $f$ is constant such that the upper level cloud mainta
 \begin{equation}
 \lambda =  - 4(1-f) \epsilon \sigma T_s^3,
 \end{equation}
-where we remember that $dT_a/dT_s=0$. Comparing to the Planck feedback parameter, Equation (\ref{eq:lambda_planck}), we immediately recognize that this can be rewritten as:
+where we remember that $dT_a/dT_s=0$. Comparing to the Planck feedback parameter, EquationÂ (\ref{eq:lambda_planck}), we immediately recognize that this can be rewritten as:
 \begin{equation}
 \lambda =  \lambda_P + f 4 \epsilon \sigma T_s^3,
 \end{equation}
@@ -719,7 +719,7 @@ How does the water vapor feedback depend on locality? How does your estimate com
 \end{exercise}
 
 \begin{exercise}
-Estimate the ECS using the complex climate model ensemble mean feedback factors $ \lambda_P + \lambda_{W+LR} + \lambda_C + \lambda_A$ as listed in Table $\ $ \ref{table:feedbacks}. Note that you are to use the sum of the water vapor and lapse-rate feedbacks. What happens to ECS if each feedback is one standard deviation larger, respectively, smaller? Repeat the calculations without cloud feedback. 
+Estimate the ECS using the complex climate model ensemble mean feedback factors $ \lambda_P + \lambda_{W+LR} + \lambda_C + \lambda_A$ as listed in TableÂ $\ $Â \ref{table:feedbacks}. Note that you are to use the sum of the water vapor and lapse-rate feedbacks. What happens to ECS if each feedback is one standard deviation larger, respectively, smaller? Repeat the calculations without cloud feedback. 
 \end{exercise}
 
 }
@@ -994,7 +994,7 @@ As we expect for the system to be stable (Chapter 3) the slope of the linear fit
 
 Hansen et al. (2005) took a somewhat different approach to estimating forcing in models. They suggested using simulations with atmosphere-only models, wherein the sea surface temperature is held fixed, so as to not allow the system to warm in response to a change in boundary conditions. Often these are referred to as AMIP experiments. One will make two simulations, a control and one with a forcing applied, for instance increased CO$_2$. If $T=0$ we simply have that the forcing equals the change in the radiation imbalance between the two experiments. Unfortunately -- or perhaps fortunately -- the whole Earth is not covered by ocean. The land and sea ice covered regions can change their temperatures in response to the changed atmospheric composition. This alters the global mean surface temperature a little bit, for a quadrupled CO$_2$ concentration approximately by 0.5 K. We can write this as:
 $$F = N -\lambda \delta T$$
-where $N$ is determined from the difference between the two runs, $\delta T$ is the small change in surface temperature and $\lambda$ is taken to be the longterm average slope as determined using the Gregory-method. In figure \ref{fig:gregory_hansen} I display the Hansen method estimate with the red line, yielding $F_{4x} \approx 9.2$ Wm$^{-2}$, corresponding to $F_{2x} \approx 4.6$ Wm$^{-2}$, or a substantially larger value than found with the Gregory et al. (2004) method.
+where $N$ is determined from the difference between the two runs, $\delta T$ is the small change in surface temperature and $\lambda$ is taken to be the longterm average slope as determined using the Gregory-method. In figure \ref{fig:gregory_hansen} I display the Hansen method estimate with the red line, yielding $F_{4x} \approxÂ 9.2$ Wm$^{-2}$, corresponding to $F_{2x} \approxÂ 4.6$ Wm$^{-2}$, or a substantially larger value than found with the Gregory et al. (2004) method.
 
 The two methods can be brought into agreement by relaxing the requirement that $\lambda$ is constant. We note that the first few years the imbalance is somewhat above the longterm mean fitted line. If we fit a line to just the first 10 years we see that the slope is substantially steeper with $\lambda \approx -1.8$ Wm$^{-2}$K$^{-1}$ and has an intercept close to that obtained with the Hansen-method. 
 We shall return to the interesting causes and implications of $\lambda$ not being a constant at several later occasions, however, already below we shall see that it has something to do with clouds.
@@ -1002,9 +1002,9 @@ We shall return to the interesting causes and implications of $\lambda$ not bein
 \section{Components of the radiative forcing from CO$_2$}
 So far we have focussed on the total forcing from e.g. an increase in the solar constant or the atmospheric CO$_2$, and we have discussed loosely the adjustments that might occur. Here we shall formalize this a bit more by assuming that we  can separate the total imbalance change into contributions from CO$_2$ itself, as well as temperature, water vapor, clouds and surface albedo, and we shall then assume each of them are linear in global mean surface temperature change such that:
 \begin{eqnarray}
-N &\approx& \sum{ N_i}     \label{eq:prp} \\
- &\approx&  N_{CO_2} +  N_{T} +  N_{W}  +  N_{C}  +  N_{A} \nonumber  \\
-  &\approx& F^*_{2xCO_2} + F_T  + F_W + F_C + F_A + \left(\lambda_T + \lambda_W + \lambda_C + \lambda_A \right)\cdot T \nonumber \\
+N &\approx& \sum{ N_i} Â    \label{eq:prp} \\
+ &\approx&  N_{CO_2} +  N_{T} +  N_{W}  +  N_{C}  +  N_{A}Â \nonumber  \\
+  &\approx& F^*_{2xCO_2} + F_T  + F_W + F_C + F_A + \left(\lambda_T + \lambda_W + \lambda_C + \lambda_A \right)\cdot TÂ \nonumber \\
   &=& F_{2x} + \lambda \cdot T \nonumber
 %  \label{eq:prp}
 \end{eqnarray}
@@ -1388,7 +1388,7 @@ Human activity, the sun and volcanoes have had important impacts on the Earth's 
 \begin{itemize}
 \itemsep0em
 %\setlength\itemsep{0 cm}
-\item CO$_2$ is emitted from fossil fuel burning and is partly stored on a short timescale in the atmosphere, partly in vegetation and the upper ocean. It is the most important positive forcing. CO$_2$ is chemically inert, and is only slowly removed into the deep ocean and eventually sediments on timescales of centuries to multiple millennia. 
+\itemÂ CO$_2$ is emitted from fossil fuel burning and is partly stored on a short timescale in the atmosphere, partly in vegetation and the upper ocean. It is the most important positive forcing. CO$_2$ is chemically inert, and is only slowly removed into the deep ocean and eventually sediments on timescales of centuries to multiple millennia. 
 \item Other well-mixed greenhouse gases also contribute substantial positive forcing. These tend to have somewhat shorter life-times than CO$_2$, e.g. CH$_4$ stays in the atmosphere for about 10 years. 
 \item Ozone change due to human activity include ozone depletion in the stratosphere and ozone increases in the troposphere as a result of pollution. The latter is more important. The lifetime of the related pollutants are roughly days to months in the troposphere and decades for those affecting ozone in the stratosphere.
 \item Stratospheric water vapor can increase over natural levels due to methane oxidation (2O$_2$ + CH$_4 + \nu \rightarrow $ CO$_2$ + 2H$_2$O). The lifetime of stratospheric water is several years.
@@ -1852,7 +1852,7 @@ N &=& w_1\cdot C_1\frac{dT_1}{dt}+w_2\cdot C_2\frac{dT_2}{dt}  \nonumber
 where $C_1$ and $C_2$ are the heat capacities of the low- and high latitude zones, and $\lambda_1$ and $\lambda_2$ are the regional feedback parameters. Note that these equations are uncoupled, that is, the regions do not interact and we can solve the two equations separately. To get the global mean properties we need to weigh the two regions according to their extent ($w_1, w_2$); for our purposes we will assume they each cover half the Earth. This would be the case if region 1 would cover 30$^\circ$S to 30$^\circ$N latitude and region 2 the mid- and high latitudes in both hemispheres.
 Because the two regions are de-coupled it is straightforward to solve the equations as the weighted sum of two mixed-layer solutions, equation \ref{eq:mlo_solution}. For instance, if we apply an abrupt forcing we get:
 \begin{equation}
-T(t) = -F\cdot  \left( w_1\cdot\frac{1-e^{\frac{\lambda_1}{C_1}t}}{\lambda_1} + w_2\cdot \frac{1-e^{\frac{\lambda_2}{C_2}t}}{\lambda_2} \right)
+T(t) = -F\cdot Â \left( w_1\cdot\frac{1-e^{\frac{\lambda_1}{C_1}t}}{\lambda_1} + w_2\cdot \frac{1-e^{\frac{\lambda_2}{C_2}t}}{\lambda_2} \right)
 \label{eq:twozone-solution}
 \end{equation}
 and we can further calculate the equilibrium of the system as:
@@ -2225,7 +2225,7 @@ The precipitation response is mainly balanced by an increase in thermal emission
 
 We see that turbulent sensible heating plays a fairly marginal role, and in fact most studies neglect it altogether. The flux from the surface to the atmosphere weakens a bit in a warmer climate simply because the atmosphere warms a bit faster than the surface does (think of the moist adiabat) and so the temperature difference decreases leading to less thermal conduction. Since the sensible heat flux into the atmosphere weakens, the missing heating has to be balanced by another source, and so we can assume that precipitation has to increase by $-\Delta S/L$. An equivalent interpretation of the model result is that the stronger precipitation leads to more warming of the atmosphere which then needs less sensible heat transfer to stay balanced. 
 
-The argument given here is often referred to as an energetic {\em constraint} on the hydrological cycle. This should not be mistaken as an expression for us having {\em constrained } the Earth's hydrological sensitivity parameter: although there is broad agreement among models that $\eta$ is between 2 and 3 percent per degree of warming, the admittedly highly uncertain observational estimates point to higher values than that predicted by models. I can see two possibilities for explaining this, either the solar absorption of water vapor is less dependent on temperature, or thermal emission is more effective, than that predicted by models. Either way, improved observations of precipitation will undoubtedly help us understand more about the Earth's energy balance.
+The argument given here is often referred to as an energetic {\em constraint} on the hydrological cycle. This should not be mistaken as an expression for us having {\em constrained }Â the Earth's hydrological sensitivity parameter: although there is broad agreement among models that $\eta$ is between 2 and 3 percent per degree of warming, the admittedly highly uncertain observational estimates point to higher values than that predicted by models. I can see two possibilities for explaining this, either the solar absorption of water vapor is less dependent on temperature, or thermal emission is more effective, than that predicted by models. Either way, improved observations of precipitation will undoubtedly help us understand more about the Earth's energy balance.
 \\
 
 \noindent It should be noted here that there is a long-lasting debate over whether the atmospheric energy budget, or the surface energy budget, is the better perspective for understanding global mean precipitation change, see e.g. the argument between Kraus (1973) and Newell et al. (1975) as to why the ice ages might have been drier than in the present climate. This rivalry continues in the literature until today. I think it is important to realize that these are both diagnostic approaches and that the system always finds a way to reach an equilibrium whereat the atmospheric- and surface energy budgets eventually balances. Whereas I chose the atmospheric energy budget perspective here, which is particularly useful to a system forced by CO$_2$ and to understand how thermal emission has to be balanced by precipitation, one is free to choose the perspective that is found most revealing for the problem at hand. But beware that usually neither diagnostic method will get to the core of separating cause from effect. 

@@ -46,8 +46,8 @@ axes.legend(handles=[hmeraner,hfixed,hvariable], fontsize=10, loc=2, frameon=Fal
 #axes.text(280,-1.8,'Emissivity forced', color='blue')
 
 
-axes.text(temperature[0], lambda_planck[0]+0.1, r'$\epsilon = $ '+str(emissivity[0]), color='blue',va='bottom', ha='center')
-axes.text(temperature[-1], lambda_planck[-1]-0.1, r'$\epsilon = $ '+str(emissivity[-1]), color='blue',va='top', ha='center')
+axes.text(temperature[0], lambda_planck[0]+0.1, r'$\epsilon = $ '+str(round(emissivity[0],2)), color='blue',va='bottom', ha='center')
+axes.text(temperature[-1], lambda_planck[-1]-0.1, r'$\epsilon = $ '+str(round(emissivity[-1],2)), color='blue',va='top', ha='center')
 
 
 axes.set_xlabel('Surface temperature (K)')
