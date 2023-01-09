@@ -299,8 +299,8 @@ fig, axes = plt.subplots(1,1, figsize=(7,3.5))
 
 bins = np.arange(-3,3,0.05)
 
-axes.hist(qublong1['T_ml'], bins=bins, histtype='stepfilled', normed=1, color=color1, alpha=0.5, label=r'F = 0.0 Wm$^{-2}$, mean T = '+str(round(np.mean(qublong1['T_ml']),1))+' K')
-axes.hist(qublong2['T_ml'], bins=bins, histtype='stepfilled', normed=1, color=color5, alpha=0.5, label=r'F = 0.5 Wm$^{-2}$, mean T = '+str(round(np.mean(qublong2['T_ml']),1))+' K')
+axes.hist(qublong1['T_ml'], bins=bins, histtype='stepfilled', density=1, color=color1, alpha=0.5, label=r'F = 0.0 Wm$^{-2}$, mean T = '+str(round(np.mean(qublong1['T_ml']),1))+' K')
+axes.hist(qublong2['T_ml'], bins=bins, histtype='stepfilled', density=1, color=color5, alpha=0.5, label=r'F = 0.5 Wm$^{-2}$, mean T = '+str(round(np.mean(qublong2['T_ml']),1))+' K')
 
 axes.legend(frameon=False, loc=2)
 
@@ -430,27 +430,27 @@ fig, axes = plt.subplots(1,1, figsize=(7,3.5))
 bins = np.arange(-.3,.3,0.005)
 #print(bins)
 n, obins, patches = plt.hist(vml1['T_ml'],
-                            bins + np.mean(vml1['T_ml']), normed=1,
+                            bins + np.mean(vml1['T_ml']), density=1,
                             facecolor=color1, alpha=0.6,
                             label='T = Mixed-layer model',histtype='stepfilled')
 n, obins, patches = plt.hist(vml2['T_ml'],
-                            bins + np.mean(vml2['T_ml']), normed=1,
+                            bins + np.mean(vml2['T_ml']), density=1,
                             facecolor=color1, alpha=0.6,histtype='stepfilled')
 n, obins, patches = plt.hist(vml3['T_ml'],
-                            bins + np.mean(vml3['T_ml']), normed=1,
+                            bins + np.mean(vml3['T_ml']), density=1,
                             facecolor=color1, alpha=0.6,histtype='stepfilled')
 
 
 n, obins, patches = plt.hist(vtl1['T_ml'],
-                            bins + np.mean(vtl1['T_ml']), normed=1,
+                            bins + np.mean(vtl1['T_ml']), density=1,
                             facecolor=color3, alpha=0.6,
                             label='T = Two-layer model', histtype='stepfilled')
 n, obins, patches = plt.hist(vtl2['T_ml'],
-                            bins + np.mean(vtl2['T_ml']), normed=1,
+                            bins + np.mean(vtl2['T_ml']), density=1,
                             facecolor=color3, alpha=0.6,
                             histtype='stepfilled')
 n, obins, patches = plt.hist(vtl3['T_ml'],
-                            bins + np.mean(vtl3['T_ml']), normed=1,
+                            bins + np.mean(vtl3['T_ml']), density=1,
                             facecolor=color3, alpha=0.6,
                             histtype='stepfilled')
 

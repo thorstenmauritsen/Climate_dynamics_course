@@ -25,6 +25,17 @@ abrupt16xCO2_bot = netcdf.netcdf_file('../Data/mpiesm-1.2.prp_abrupt16xCO2_echam
 
 amip4xCO2 = netcdf.netcdf_file('../Data/BOT_echam-6.3.02p4_amip4xCO2_1979-2008_timmean_fldmean_anomaly.nc')
 
+# --------------------------------------------------
+
+# To calculate slopes on a series with NaN:
+
+def calculating_slope(x,y,n):
+
+        idx = np.isfinite(x) & np.isfinite(y)
+        slope = np.polyfit(x[idx], y[idx], n)
+
+        return slope
+
 # ---------------------------------------------------
 
 fig, axes = plt.subplots(1,1, figsize=(5,7))
@@ -88,8 +99,8 @@ plt.ylim(-60,60)
 
 fit_T_2xCO2   = np.polyfit(T_2xCO2[idfit],N_tmp_2xCO2[idfit],1)
 fit_T_4xCO2   = np.polyfit(T_4xCO2[idfit],N_tmp_4xCO2[idfit],1)
-fit_T_8xCO2   = np.polyfit(T_8xCO2[idfit],N_tmp_8xCO2[idfit],1)
-fit_T_16xCO2   = np.polyfit(T_16xCO2[idfit],N_tmp_16xCO2[idfit],1)
+fit_T_8xCO2   = calculating_slope(T_8xCO2[idfit],N_tmp_8xCO2[idfit],1)
+fit_T_16xCO2   = calculating_slope(T_16xCO2[idfit],N_tmp_16xCO2[idfit],1)
 
 axes.set_xlabel(r'Global mean temperature change, $T_s$ (K)')
 axes.set_ylabel(r'Top-of-atmosphere imbalance, $N$ (Wm$^{-2}$)')

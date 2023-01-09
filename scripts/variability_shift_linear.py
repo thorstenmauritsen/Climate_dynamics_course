@@ -180,9 +180,9 @@ xbins = np.linspace(-0.7,2,100)
 
 ns = 10000
 
-axes.hist(exp1['T_ml'][ns:], bins=xbins, histtype='stepfilled', normed=1, color=color1)
-axes.hist(exp2['T_ml'][ns:], bins=xbins, histtype='stepfilled', normed=1, color=color2, alpha=0.8)
-axes.hist(exp3['T_ml'][ns:], bins=xbins, histtype='stepfilled', normed=1, color=color3, alpha=0.8)
+axes.hist(exp1['T_ml'][ns:], bins=xbins, histtype='stepfilled', density=1, color=color1)
+axes.hist(exp2['T_ml'][ns:], bins=xbins, histtype='stepfilled', density=1, color=color2, alpha=0.8)
+axes.hist(exp3['T_ml'][ns:], bins=xbins, histtype='stepfilled', density=1, color=color3, alpha=0.8)
 
 std       = np.std(exp1['T_ml'][ns:])
 stdtheory = ((exp1['sigma']/(year/month)**0.5 * month /exp1['C_ml'])**2/(1-(1+month*exp1['lambda_0']/exp1['C_ml'])**2))**0.5
