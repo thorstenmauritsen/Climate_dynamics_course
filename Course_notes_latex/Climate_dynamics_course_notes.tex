@@ -39,6 +39,8 @@
 \cfoot{}
 \cfoot{}
 
+\setlength{\headheight}{15pt}
+
 % Remove to get numbers:
 %\bibliographystyle{plainnat}
 %\bibpunct{(}{)}{;}{a}{}{,}
@@ -2172,17 +2174,17 @@ If the specific humidity on average in every point increases according to Clausi
 \label{fig:mpi-esm12_water_vapor}
 \end{figure}
 
-So atmospheric water vapor increases with warming are substantial, e.g. in a 3 K warming case which might occur at the end of the century there will be about 20 percent more water vapor in the atmosphere -- quite a bit. The challenge is to figure out for which aspects of climate change that increase matters.
+So atmospheric water vapor increases with warming are substantial, e.g. in a 3 K warming case which might occur at the end of the century there will be about 20 percent more water vapor in the atmosphere -- quite a bit. The challenge is to figure out for which aspects of climate change that increase matters, something which is a lot less straightforward than it might seem.
 
 \section{Global mean precipitation change}
-It is a widespread misunderstanding that global mean precipitation change should scale with the amount of water vapor in the atmosphere as of the Clausius-Clapeyron relationship under climate change. Instead it is important to realize that  precipitation processes release large amounts of energy into the atmosphere, about 80 Wm$^{-2}$ in the global mean. This corresponds to about 3 mm day${-1}$. The atmosphere has a fairly small heat capacity, though, as we calculated earlier it corresponds to about 3.5 m equivalent water. Thus, even a small change in precipitation will have to be balanced by changes in other fluxes. 
+It is a widespread misunderstanding that global mean precipitation change should scale with the amount of water vapor in the atmosphere as of the Clausius-Clapeyron relationship under climate change. Instead it is important to realize that  precipitation processes release large amounts of energy into the atmosphere, about 80 Wm$^{-2}$ in the global mean. This corresponds to about 3 mm day${-1}$. The atmosphere has a fairly small heat capacity, though, as we calculated earlier it corresponds to about 3.5 m equivalent water. Thus, even a small change in precipitation must be balanced by changes in other fluxes on longer time scales. 
 
 It is therefore useful to think about the atmospheric heat budget separately (Figure \ref{fig:energy_hydrological_cycles}). It is made up of three terms, radiation ($R$), sensible heat flux ($S$) and latent heat release ($L\cdot P$) through precipitation:
 \begin{equation}
 C_a\frac{dT_a}{dt} = R + S + L\cdot P
 \label{eq:atmospheric_heat_budget}
 \end{equation}
-where $L=2.5\cdot 10^6$ J kg$^{-1}$K$^{-1}$. On 2-3 years timescales it is reasonable to assume $dT_a/dt\approx 0$. On shorter and sub-annual timescales the approximation is not so good. I find it useful to split the radiative heating term $R$ (which is negative) into solar absorption ($>0$) and thermal emission ($<0$) as done in Figure \ref{fig:energy_hydrological_cycles}. Note that here signs are defined positive into the atmosphere.
+where $L=2.5\cdot 10^6$ J kg$^{-1}$. On 2-3 years timescales it is reasonable to assume $dT_a/dt\approx 0$. On shorter and sub-annual timescales the approximation it is not so accurate, although still a useful concept. I find it useful to split the radiative heating term $R$ (which is negative) into solar absorption ($>0$) and thermal emission ($<0$) as done in Figure \ref{fig:energy_hydrological_cycles}. Note that here signs are defined positive into the atmosphere.
 
 \begin{figure}
 \begin{center}
@@ -2192,7 +2194,9 @@ where $L=2.5\cdot 10^6$ J kg$^{-1}$K$^{-1}$. On 2-3 years timescales it is reaso
 \label{fig:energy_hydrological_cycles}
 \end{figure}
 
-It is perhaps surprising that it is the precipitation that appears in the atmospheric heat budget, and not as usual the turbulent surface latent heat flux. To understand this, we need to think about the life of a water molecule in the atmosphere. When the molecule leaves the surface it consumes heat from the surface causing cooling by going from liquid or solid phase into gas phase. So far nothing happens to the atmospheric temperature; the heat is taken from the surface. Our molecule eventually condenses on a cloud droplet releasing latent heat, but if the cloud droplet evaporates again within the atmosphere, which most of them do, the molecule consumes heat again from the atmosphere. A water molecule can condense and evaporate many times while in the atmosphere -- the net heating effect on the atmosphere as a whole is zero. It is only when our molecule precipitates out of the atmosphere as a droplet or as a snow flake that the latent heat is realized. On long timescales, of course, the turbulent latent heat flux has to equal $L\cdot P$, as water molecules are almost conserved within the atmosphere.
+It is perhaps surprising that it is the precipitation that appears in the atmospheric heat budget, and not as usual the turbulent surface latent heat flux. To understand this, we need to think about the life of a water molecule in the atmosphere. When the molecule leaves the surface it consumes heat from the surface causing cooling by going from liquid or solid phase into gas phase. So far nothing happens to the atmospheric temperature; the heat is taken from the surface. Our molecule eventually condenses on a cloud droplet releasing latent heat, but if the cloud droplet evaporates again within the atmosphere, which most of them do, the molecule consumes heat again from the atmosphere. A water molecule can condense and evaporate many times while in the atmosphere -- the net heating effect on the atmosphere as a whole is still zero. It is only when our molecule precipitates out of the atmosphere as a droplet or as a snow flake that the latent heat is realized. On long timescales, of course, the turbulent latent heat flux has to equal $L\cdot P$, as water molecules are almost conserved within the atmosphere.
+
+There is a small caveat to this which has to do with snow. A water molecule that falls out as a snow or hail has undergone two phase transitions: from gas to liquid to solid. Or directly from gas to solid, but this does not change things. The second transition to solid releases an extra $0.3\cdot 10^6$ J kg$^{-1}$. However, since most of the precipitation falls as liquid the error made by ignoring this process is only about one percent of the precipation budget, but it matters if one is trying to carefully close the energy budget or perhaps studying a much colder climate.
 
 \begin{figure}
 \begin{center}
@@ -2206,12 +2210,12 @@ Let us now look at how precipitation changes with warming in MPI-ESM1.2 (Figure 
 
 It has therefore become popular to describe the global mean precipitation change, $\Delta P$, using the linear approximation:
 $$\Delta P \approx A +\eta T_s$$
-where $A$ is an adjustment and $\eta$ is the hydrological cycle sensitivity parameter. The similarity with the linearized energy balance equation \ref{eq:linear_energy_balance} should be apparent. It turns out that $A$ is highly dependent on the type of forcing, whereas $\eta$ is more of an intrinsic feature of the climate system itself. The negative $A$ for a forcing with CO$_2$ is due to a decrease in the radiative cooling of the troposphere. This is maybe surprising, because we learned earlier the increasing CO$_2$ leads to a cooling of the stratosphere, but for the troposphere it works out the other way around. For other forcing agents this can be different, for instance a solar forcing has a positive $A$.
+where $A$ is an adjustment and $\eta$ is the hydrological cycle sensitivity parameter. The similarity with the linearized energy balance equation \ref{eq:linear_energy_balance} should be apparent. It turns out that $A$ is highly dependent on the type of forcing, whereas $\eta$ is more of an intrinsic feature of the climate system itself. The negative $A$ for a forcing with CO$_2$ is due to a decrease in the radiative cooling of the troposphere. This is maybe surprising, because we learned earlier that increasing CO$_2$ leads to a cooling of the stratosphere, but for the troposphere it works out the other way around. For other forcing agents this can be different.
 
 We can investigate the problem more closely by estimating the change in $P$ needed to compensate changes in radiative and sensible heating by assuming $dT_a/dt \approx 0$ in equation \ref{eq:atmospheric_heat_budget}, and re-arranging:
 $$ P = -\frac{R + S}{L}. $$
 One can then calculate the change in each term relative to a control simulation, and further split radiative heating into its solar and infrared parts (Figure \ref{fig:mpi-esm12_atmosphere_budget}). Here I also converted heating terms into units of equivalent millimeters per day to be comparable with figure \ref{fig:mpi-esm12_precipitation}. 
-The precipitation response is mainly balanced by an increase in thermal emission and an enhanced solar absorption. The thermal emission is expected to increase with higher temperatures and so alone leads to more precipitation, but solar absorption within the atmosphere also increases which reduces precipitation. The solar absorption is mostly due to absorption by water vapor, which we saw previously increases exponentially with temperature, but solar heating is roughly linear such that absorption is logarithmic in vertically integrated water vapor. 
+The precipitation response is mainly balanced by an increase in thermal emission and an enhanced solar absorption. The thermal emission is expected to increase with higher temperatures and so alone leads to more precipitation, but solar absorption within the atmosphere also increases which reduces precipitation. The solar absorption is mostly due to absorption by water vapor, which we saw previously increases exponentially with temperature, but solar heating is roughly linear in temperature, from which it follows that solar absorption must be approximately logarithmic in vertically integrated water vapor. 
 
 \begin{figure}
 \begin{center}
@@ -2221,23 +2225,27 @@ The precipitation response is mainly balanced by an increase in thermal emission
 \label{fig:mpi-esm12_atmosphere_budget}
 \end{figure}
 
-
-
-We see that turbulent sensible heating plays a fairly marginal role, and in fact most studies neglect it altogether. The flux from the surface to the atmosphere weakens a bit in a warmer climate simply because the atmosphere warms a bit faster than the surface does (think of the moist adiabat) and so the temperature difference decreases leading to less thermal conduction. Since the sensible heat flux into the atmosphere weakens, the missing heating has to be balanced by another source, and so we can assume that precipitation has to increase by $-\Delta S/L$. An equivalent interpretation of the model result is that the stronger precipitation leads to more warming of the atmosphere which then needs less sensible heat transfer to stay balanced. 
+We see that turbulent sensible heating plays a fairly marginal role, and in fact most studies neglect it altogether. The flux from the surface to the atmosphere weakens a bit in a warmer climate simply because the atmosphere warms a bit faster than the surface does (think of the moist adiabat) and so the temperature difference decreases leading to less thermal conduction from the surface to the atmosphere. Since the sensible heat flux into the atmosphere weakens, the missing heating has to be balanced by another source, and so we can assume that precipitation has to increase by $-\Delta S/L$. An equivalent interpretation of the model result is that the stronger precipitation leads to more warming of the atmosphere which then needs less sensible heat transfer to stay balanced. 
 
 The argument given here is often referred to as an energetic {\em constraint} on the hydrological cycle. This should not be mistaken as an expression for us having {\em constrained } the Earth's hydrological sensitivity parameter: although there is broad agreement among models that $\eta$ is between 2 and 3 percent per degree of warming, the admittedly highly uncertain observational estimates point to higher values than that predicted by models. I can see two possibilities for explaining this, either the solar absorption of water vapor is less dependent on temperature, or thermal emission is more effective, than that predicted by models. Either way, improved observations of precipitation will undoubtedly help us understand more about the Earth's energy balance.
 \\
 
-\noindent It should be noted here that there is a long-lasting debate over whether the atmospheric energy budget, or the surface energy budget, is the better perspective for understanding global mean precipitation change, see e.g. the argument between Kraus (1973) and Newell et al. (1975) as to why the ice ages might have been drier than in the present climate. This rivalry continues in the literature until today. I think it is important to realize that these are both diagnostic approaches and that the system always finds a way to reach an equilibrium whereat the atmospheric- and surface energy budgets eventually balances. Whereas I chose the atmospheric energy budget perspective here, which is particularly useful to a system forced by CO$_2$ and to understand how thermal emission has to be balanced by precipitation, one is free to choose the perspective that is found most revealing for the problem at hand. But beware that usually neither diagnostic method will get to the core of separating cause from effect. 
+\noindent It should be noted here that there is a long-lasting debate over whether the atmospheric energy budget, or the surface energy budget, is the better perspective for understanding global mean precipitation change, see e.g. the argument between Kraus (1973) and Newell et al. (1975) as to why the ice ages might have been drier than in the present climate. This rivalry continues in the literature until today. I think it is important to realize that these are both diagnostic approaches and that the system always finds a way to reach an equilibrium whereat the atmospheric- and surface energy budgets eventually balances. Whereas I chose the atmospheric energy budget perspective here, which is particularly useful to a system forced by CO$_2$ and to understand how thermal emission has to be balanced by precipitation, one is free to choose the perspective that is found most revealing for the problem at hand. But beware that neither diagnostic method will get to the core of separating cause from effect -- it is a chicken and egg problem\footnote{Actually, the chicken and egg problem is solvable if you think about evolution.}. 
 
 
 
 \section{Precipitation change}
-As fascinating as global mean precipitation change might seem, beyond the key role in the atmospheric energy balance and what we might learn about how the radiative feedbacks function, the practical value of knowing global hydrological sensitivity is next to nothing. Instead, the impacts of precipitation change in a changing climate, in fact, has little to do with the global mean precipitation change. This is because precipitation is highly unevenly distributed in both space and in time, and that it may change in either direction depending on your perspective.
+As fascinating as global mean precipitation change might seem, beyond the key role in the atmospheric energy balance and what we might learn about how the radiative feedbacks function, the practical value of knowing global hydrological sensitivity is next to nothing. Instead, the impacts of precipitation change in a changing climate, in fact, has little to do with the global mean precipitation change. This is because precipitation is highly unevenly distributed in both space and in time, and that it may change in either direction depending on where you are.
 
-To, perhaps, begin to understand how regional precipitation change it is useful to think about global mean precipitation, water vapor and circulation change together. We may view the atmospheric overturning circulation as an upward mass-flux ($M$) occurring in moist convective clouds to compensate radiative cooling; an assumption that is reasonable in the tropics. The precipitation coming out of these clouds will then scale with saturation vapor pressure at cloud base ($q_s$), such that $P \propto Mq_s$. What we have seen is that global precipitation increases at a rate that is smaller than the rate of increase of water vapor content, and so in this picture we must have the $M$ weakens in a warmer climate. Exactly what that slow-down means in practice, though, is not so obvious.
+To, perhaps, begin to understand how regional precipitation change it is useful to think about global mean precipitation, water vapor and circulation change together. We may view the atmospheric overturning circulation as an upward mass-flux ($M$) occurring in moist convective clouds to compensate radiative cooling; an assumption that is reasonable in the tropics. The precipitation coming out of these clouds will then scale with saturation vapor pressure at cloud base ($q_s$), such that $P \propto Mq_s$. What we have seen is that global precipitation increases at a rate that is smaller than the rate of increase of water vapor content, and so in this picture we must have the $M$ weakens in a warmer climate: there is a {\em global overturning circulation slow-down}.
 
-In the following I shall outline two arguments on how aspects of precipitation might change that both assume as a starting point that circulation does not change. 
+In the following I shall outline an argument on how aspects of precipitation might change that both assume as a starting point that circulation does not change, and then one where it does. 
+
+
+
+\subsection{Hadley cell transport change}
+The dryness of the sub-tropics stand in strong contrast to the wetness of the deep tropics, which is caused by the overturning Hadley circulation. The key point is that air parcels rise in the the upward branch in the deep tropics associated with deep convective clouds, and as they leave the cloud they have a specific humidity $q \approx q_s (T)$ which they maintain as they subside in the sub-tropics. When reaching the lower troposphere the parcels relative humidity is practically zero as $q \ll q_s(T)$ at whatever $T$ prevails there. The parcels then start to take up water through surface evaporation, while travelling back towards the Equator underneath the trade inversion, thereby leading to a net equator-ward transport of water vapor. This transport results in that precipitation is less than evaporation (dry conditions) in the sub-tropics, and vice-versa in the tropics (wet conditions).
+I illustrate this process with magic buckets in Figure \ref{fig:water_cycle_buckets}. 
 
 \begin{figure}
 \begin{center}
@@ -2247,20 +2255,37 @@ In the following I shall outline two arguments on how aspects of precipitation m
 \label{fig:water_cycle_buckets}
 \end{figure}
 
-\subsection{Hadley cell transport change}
-The dryness of the sub-tropics stand in strong contrast to the wetness of the deep tropics, which is caused by the overturning Hadley circulation. The key point is that air parcels rise in the the upward branch in the deep tropics associated with deep convective clouds, and as they leave the cloud they have a specific humidity $q \approx q_s (T)$ which they maintain as they subside in the sub-tropics. When reaching the lower troposphere the parcels relative humidity is practically zero as $q \ll q_s(T)$ at whatever $T$ prevails there. The parcels then start to take up water through surface evaporation, while travelling back towards the Equator underneath the trade inversion, thereby leading to a net equator-ward transport of water vapor. This transport results in that precipitation is less than evaporation (dry conditions) in the sub-tropics, and vice-versa in the tropics (wet conditions).
-I illustrate this process with magic buckets in Figure \ref{fig:water_cycle_buckets}. 
-
 In a warmer climate $q_s$ at the last point of saturation will hardly change, partly because $q_s$ at low temperatures is practically zero, partly because we think the tropopause will rise such as to maintain nearly a constant temperature (Chapter \ref{chapter:response}. But $q_s$ in the boundary layer will increase with Clausius-Clapeyron, and with it the equator-ward transport:
 $$ \frac{\Delta F}{F} \approx \alpha \cdot \Delta T_s  $$
 at least as long as we consider the ocean regions. The argument leads to the popular idea that {\em wet gets wetter, and dry gets drier}, because there is an enhanced transport away from the dry sub-tropics into the already wet deep tropics.
 
-This picture would be modified if the circulation would change. I argued above that the total overturning circulation in the tropics is expected to slow down in a warmer climate, but the mean meridional Hadley circulation is a surprisingly small part of total atmospheric overturning, maybe 10-20 percent. The rest of the overturning is either in the zonal direction or of transient nature, and so it is hard to say how much the Hadley circulation might change. It is possible to observe this happening, though, through the longterm trend in ocean surface salinity. The transport of fresh water away from the sub-tropics leads to increasing salinity.
+This picture would be modified if the circulation would change. I argued above that the total overturning circulation in the tropics is expected to slow down in a warmer climate, but the mean meridional Hadley circulation is a surprisingly small part of total atmospheric overturning, maybe 10-20 percent. The rest of the overturning is either in the zonal direction or of transient nature, and so it is hard to say how much the Hadley circulation might change. It is possible to observe this happening, though, through the longterm trend in ocean surface salinity: the transport of fresh water away from the sub-tropics leads to locally increasing salinity.
+
+An argument similar to this can also be made for the mid-latitude storm tracks. These are regions with more precipitation than evaporation, fed by transport of moist and warm air out of the sub tropics. Thus, if the circulation does not change too much, then the mean precipitation at mid-latitudes will increase with global warming.
+
+\subsection{Intertropical convergence zone shifts}
+The upward branch of the Hadley circulation, the Intertropical Convergence Zone (ITCZ), I think it is fair to say is the dominant pattern of precipitation. As argued in the previous section, the thermodynamic response in the absence of circulation change is that precipitation here will strengthen in a warmer climate. But there are also a lot of focus on whether it might move north or south. 
+
+To understand why this is interesting, it is important to note that the ITCZ is not actually a static thing, rather it migrates with the Sun as the seasons progress, and zonal means show that there are peaks at either side of the equator. The seasonal Monsoon rains can be viewed as an extension of this, but let us not open up that Pandora's box. If you live near the edge of the region where the ITCZ precipitation turns around in the summer season, for example in the Sahel in Africa, it can be a matter of life and death if the rainy season actually reaches your position, and in that case how intensely and for how long it rains. The Sahel region has seen decadal swings in the amount of precipitation which has been linked to shifts in the ITCZ.
+
+\begin{figure}
+\begin{center}
+\includegraphics[height=8 cm]{../external_figures/Kang_etal_2009_ITCZ}
+\end{center}
+\caption{ Illustration of the hemispheric asymmetry in energy balance and how this may shift the ITCZ into the warmer hemisphere. From Kang et al. (2009). } 
+\label{fig:itcz_shifts}
+\end{figure}
+
+One idea that has emerged is that hemispherically differential heating or changing ocean heat transport across the equator can cause the ITCZ to shift (e.g. Kang et al. 2009). To understand this, we need to appreciate that the ITCZ circulation is a kind of direct thermal cell: it acts to reduce the temperature gradient by rising motion where it is warm and sinking motion where it is colder, combined low level winds from cold to warm and in the opposite direction aloft to close the loop. The same phenomenon can be observed in many places, for instance the sea breeze. The main difference is that clouds are involved, but this does not change the qualitative argument.
+
+In the original study by Kang et al. (2009) they applied at change in the ocean currents such that they would cool one hemisphere and warm the other. Such changes might be the result of a slow-down of the Atlantic Meridional Overturning Circulation (AMOC). Voigt et al. (2014) studied hemispheric contrasts in surface albedo, resulting in the same shift: the darker surface results in warmer temperatures and a shift of the ITCZ. It is tempting to think that also reflective aerosols that are mostly emitted in the Northern Hemisphere may have been involved in the decline in Sahelian rainfall from the 1950s to the 80s, and subsequent rebound, but I am not aware that this has been proven yet. 
 
 
-\subsection{Extremes}
-At most places on Earth, most of the time, it does not rain. And when it does, precipitation occurs at very variable rates: the most common is that during some  period of interest, say an hour or a day, it rains a little to moderate amount, and only seldom a large amount of precipitation occurs. These infrequent extreme precipitation events are particularly interesting as they can cause flooding and damage. But also a shift in the occurrence of light precipitation can have important consequences for the ability of vegetation to survive where water is scarce. 
+\section{Extremes}
+At most places on Earth, most of the time, it does not rain. And when it does, precipitation occurs at very variable rates: the most common is that during some  period of interest, say an hour or a day, it rains a little to moderate amount, and only seldom a large amount of precipitation occurs. These infrequent extreme precipitation events are particularly interesting as they can cause flooding and damage. But also a shift in the occurrence of light precipitation can have important consequences for the ability of vegetation to survive where water is scarce, we think of this as droughts. 
 
+
+\subsection{Extreme precipitation}
 Extreme precipitation events occur for different reasons, but are typically associated with some dynamical phenomenon that lifts air from the lower troposphere high up in the upper troposphere, such as a cumulonimbus cloud, a tropical cyclone, or a synoptic storm. Sometimes an extreme occurs simply because a cloud chooses to rain at an exceptionally high rate, but often extremes are associated with unusual persistence: that a precipitating system resides in a specific region, or above a drainage basin (a region wherein water runs into the same river), rather than moving along, such that the total precipitation accumulated over a few hours or days becomes extreme. 
 \begin{figure}
 \begin{center}
@@ -2276,72 +2301,104 @@ If the most extreme precipitation increase with Clausius-Clapeyron, but global m
 
 There is some observational evidence that extreme precipitation increases faster than this, a phenomenon called super-CC scaling. This could be the case if the dynamics of extreme storms is changing with the environment, i.e. with climate change. It is perhaps natural to think that this could be the case since the release of latent heat is an important source of energy for the storm dynamics. Thus, a larger $q_s$ could strengthen $M_e$ and thus amplify $P_e$ beyond Clausius-Clapeyron.  This is all very speculative at this point and other aspects of climate change could play a role too.
 
+\subsection{Droughts}
+Droughts can be a bit hard to define, since we perhaps we mostly think of it as how vegetation responds or if it is hard for humans and animals to find fresh water to drink. But if we think of it more in terms of the physical process of precipitation not falling on the ground there is a bit we can say already from what we have learned so far:
+
+\begin{itemize}
+\item The global mean precipitation increases by 2-3 percent per degree of warming
+\item Strong or extreme precipitation increases by 7  percent, or even more, per degree of warming
+\end{itemize}
+
+I direct consequence of these two points is that either light precipitation has to weaken, the time between precipitation events has to be longer, or a combination of both. There is no other way to reconcile these. That is the global mean picture, but it needs not apply everywhere. If we take information from climate models, there are regions that are projected to have an increase in mean precipitation close to 7 percent per degree of warming, and so in those regions the drought probability may not necessarily increase per this argument. But for many regions around the globe this is not the case, and so the flip-side of {\em when it rains, it pours} is that it rains less often. I am sorry, but I have not come up with a catchy phrase for this.
+
+The drought may result not just from a lack of precipitation, but also due to loss of water through evaporation. It really is about a balance. Once the drought is there, there is not much more water to evaporate, but how fast the evaporation happens is an important control on the likelihood of droughts to occur. Recall the simple image of the Hadley circulation (Fig. \ref{fig:water_cycle_buckets}). In the dry regions to the left evaporation may increase in a warmer climate because the subsiding air is usually almost depleted of water vapor and if temperatures are higher it may take up more, as of Clausius-Clapeyron. Thus, not only are these regions likely to see more infrequent precipitation, but also a faster loss of soil moisture in between. 
+
+%An interesting question is if there is a feedback between droughts and precipitation? 
+
+There is an interesting catch to droughts when it comes to plants. To grow and survive plants need sunlight, water and CO$_2$ as the basic ingredients of photosynthesis. Most plants take up water mainly through their roots, whereas CO$_2$ is taken up from the air through little holes on the leaves called stomata. These holes can change in size depending on the need for the plant to take up CO$_2$. The problem for the plant is that also water evaporates easily through the holes, so it is a trade-off to get sufficient CO$_2$ in, and loosing valuable water molecules. However, if the CO$_2$ concentration in the air is higher the stomata needs to be less open in order to catch enough CO$_2$ molecules, which means also less water is lost in a warmer world. There is a lot more to this, for instance not all plants are react this way, and also they may respond to temperature itself. 
+ 
+A lot of things around droughts also depend on other factors, for example local conditions or even human interference. For instance, water supply in many mountaneous regions depends on melt of snow higher up in the mountains. This way, even if the snow may fall only in a short period of time, a continuous flow of water results in the streams and rivers surrounding. And human interference is also common, for example through irrigation fields can grow in regions that are otherwise too dry, and vice-versa over-use of water may make a naturally lush region experience droughts. But if we just focus on climate change we can say that on average droughts are going to increase under global warming in many regions around the globe, preferentially but not limited to those that are already dry today. 
+
+
+\section{How much do we know about the hydrological cycle?}
+It is perhaps easy to think that given the nice theoretical arguments I provided in this chapter that we are able to accurately describe future changes in the hydrological cycle. This is pretty far from the truth when it comes to concrete information in specific regions. As an example, I show a summarising figure from the sixth IPCC report released in 2021 regarding extreme precipitation. As you can see many regions show an increase, but for equally many we have insufficient information. And only for one region, Northern Europe (NEU), the authors of the report had high confidence in the results. This is actually typical of our ability to project aspects of the hydrological cycle change under global warming, there is surprisingly little we know -- so lot's of research to be made!
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=15 cm]{../external_figures/AR6_heavy_precipitation}
+\end{center}
+\caption{ Regional information about extreme precipitation from the sixth IPCC report (AR6, 2021). } 
+\label{fig:extreme_precipitation_AR6}
+\end{figure}
+
+
+
 
 %---------------------------------------------------------------------
-\clearpage
-\appendix
-\chapter{Projects}
+% \clearpage
+% \appendix
+% \chapter{Projects}
 
-Below I describe the projects. There is quite a diversity to choose from, and I expect you need to spend 5-10 hours on it, including making the experiments work and looking for background information. 
-Each group or person gets to show two slides. One with the project title and the participant names on it; the slide can be used to introduce the problem/idea. The second slide will show the main result or finding. In each project I may ask several questions, but you get to choose what you find most interesting and present it, and/or think of other questions on your own, as inspired by the project. Please make sure graphics are clear, axes and lines are correctly labeled and colors, lines and symbols are well-chosen for clarity. Do not clutter the second slide with many small figures.
+% Below I describe the projects. There is quite a diversity to choose from, and I expect you need to spend 5-10 hours on it, including making the experiments work and looking for background information. 
+% Each group or person gets to show two slides. One with the project title and the participant names on it; the slide can be used to introduce the problem/idea. The second slide will show the main result or finding. In each project I may ask several questions, but you get to choose what you find most interesting and present it, and/or think of other questions on your own, as inspired by the project. Please make sure graphics are clear, axes and lines are correctly labeled and colors, lines and symbols are well-chosen for clarity. Do not clutter the second slide with many small figures.
 
-\vspace{0.5 cm}
-\noindent
-You need to provide your slides to me before the presentation lecture, preferably via email. The safest is to convert it to pdf format. The presentations will take no more than 5 minutes each. 
+% \vspace{0.5 cm}
+% \noindent
+% You need to provide your slides to me before the presentation lecture, preferably via email. The safest is to convert it to pdf format. The presentations will take no more than 5 minutes each. 
 
-\vspace{0.5 cm}
-\noindent
-If you are stuck in any way I am available via email and will likely respond within a day; please make sure to describe your issue explicitly and, if applicable, also the computer and programs you are using.
+% \vspace{0.5 cm}
+% \noindent
+% If you are stuck in any way I am available via email and will likely respond within a day; please make sure to describe your issue explicitly and, if applicable, also the computer and programs you are using.
 
-\section{Attribution of historical warming}
-Suppose that more than a hundred years of research is wrong and the well-mixed greenhouse gases have no effect on the Earth's radiation balance. Could the historical warming then still be forced? 
-If all we know is the global mean temperature then you can begin to explore this idea with the two-layer model by rescaling the different components in the historical forcing. Create at least one set of scaling factors, $S_i$, such that:
-$$F = 0\cdot F_{CO_2} + S_{aero}\cdot F_{aero}+ S_{solar}\cdot F_{solar} + ...$$
-where the CO$_2$ and other well-mixed greenhouse gas forcings are scaled to zero, but compensated by other forcings to obtain a reasonable match with observed warming. Remember that you can also use negative $S_i$ to make for instance aerosol or stratospheric ozone forcing positive. %You may for instance present the two, or more, rescaled runs together with the standard setup with $S_i=1$ and judge their ability to explain global warming, but the floor is open.
-For this project you can use the provided two-layer model setup to run the historical case.
+% \section{Attribution of historical warming}
+% Suppose that more than a hundred years of research is wrong and the well-mixed greenhouse gases have no effect on the Earth's radiation balance. Could the historical warming then still be forced? 
+% If all we know is the global mean temperature then you can begin to explore this idea with the two-layer model by rescaling the different components in the historical forcing. Create at least one set of scaling factors, $S_i$, such that:
+% $$F = 0\cdot F_{CO_2} + S_{aero}\cdot F_{aero}+ S_{solar}\cdot F_{solar} + ...$$
+% where the CO$_2$ and other well-mixed greenhouse gas forcings are scaled to zero, but compensated by other forcings to obtain a reasonable match with observed warming. Remember that you can also use negative $S_i$ to make for instance aerosol or stratospheric ozone forcing positive. %You may for instance present the two, or more, rescaled runs together with the standard setup with $S_i=1$ and judge their ability to explain global warming, but the floor is open.
+% For this project you can use the provided two-layer model setup to run the historical case.
 
-\vspace{0.5 cm}
-\noindent
-{\em More formal attribution efforts will use other information than just the global mean temperature. Different forcings have characteristic patterns, fingerprints, that can be estimated using complex climate models and used to show that most of the $S_i$ are close to one.  }
-
-
-\section{The underwater volcano}
-As in the previous project, suppose we are all mistaken and that the greenhouse gas forcing is zero, and instead global warming is caused by geothermal heat seeping out of the seabed, e.g. through volcanoes. You must now introduce a deep ocean forcing $F_d$ into the two-layer model equation for the deep ocean:
-$$C_d\frac{dT_d}{dt} = \gamma(T-T_d) + F_d$$
-In the Python code you can do this by inserting an additional argument to the twolayermodel function interface. You now have to invent a forcing time series and adjust its strength such that the model roughly reproduces the observed warming, e.g. on the order of 1 K surface warming in 50-100 years. %You may choose to keep some of the non-greenhouse gas forcing components, if you like, though at least the ordinary volcanos and solar forcing should be retained.
-
-One way you might illustrate that this is a bad idea is to calculate the sea level rise that would occur. If you assume the ocean water approximately expands at a rate of roughly $1.5\cdot 10^{-4}$ K$^{-1}$, and remembering that the two-layer model is set up to represent a 50 m mixed-layer plus a 1200 m deep ocean, estimate the sea-level rise to demonstrate that we would have had were global warming due to underwater volcanoes.
+% \vspace{0.5 cm}
+% \noindent
+% {\em More formal attribution efforts will use other information than just the global mean temperature. Different forcings have characteristic patterns, fingerprints, that can be estimated using complex climate models and used to show that most of the $S_i$ are close to one.  }
 
 
-\section{Create a hiatus}
-The surface warmed more slowly than expected from 1998--2012, an event which many people call `the hiatus'. One possible explanation for the hiatus is that we forgot to account for certain forcings in models: e.g. the solar-cycle minimum or stratospheric aerosols due to small volcanic eruptions during this period. Reproduce a hiatus in the 2-layer model. Ramp up the forcing incrementally to $F_{2x}$ over 70 years and then hold the forcing constant out to year 140. Produce a second run, but this time try to keep the temperature evolution after year 70 constant by decreasing the forcing at a constant rate from year 70 onward.  This code might be useful:
-\begin{verbatim}
-    nyears             = 140
-    forcing_years      = np.arange(0,nyears)
-    input_forcing      = f2x*np.linspace(0.,2.,nyears)
-    input_forcing[70:] = input_forcing[70]
-    ...
-\end{verbatim}
-What is the average forcing change in Wm$^{-2}$ needed in the first 15 years relative to the constant forcing case? Note here that the output of the model is monthly means. What average forcing change would you need to produce a constant temperature after year 70 in the zero-layer model? Can you explain the difference between the two models? %Estimates in the literature suggest that the neglected forcings should be around --0.2 to --0.3 Wm$^{-2}$; do you think these forcings could explain the hiatus?
+% \section{The underwater volcano}
+% As in the previous project, suppose we are all mistaken and that the greenhouse gas forcing is zero, and instead global warming is caused by geothermal heat seeping out of the seabed, e.g. through volcanoes. You must now introduce a deep ocean forcing $F_d$ into the two-layer model equation for the deep ocean:
+% $$C_d\frac{dT_d}{dt} = \gamma(T-T_d) + F_d$$
+% In the Python code you can do this by inserting an additional argument to the twolayermodel function interface. You now have to invent a forcing time series and adjust its strength such that the model roughly reproduces the observed warming, e.g. on the order of 1 K surface warming in 50-100 years. %You may choose to keep some of the non-greenhouse gas forcing components, if you like, though at least the ordinary volcanos and solar forcing should be retained.
+
+% One way you might illustrate that this is a bad idea is to calculate the sea level rise that would occur. If you assume the ocean water approximately expands at a rate of roughly $1.5\cdot 10^{-4}$ K$^{-1}$, and remembering that the two-layer model is set up to represent a 50 m mixed-layer plus a 1200 m deep ocean, estimate the sea-level rise to demonstrate that we would have had were global warming due to underwater volcanoes.
 
 
-\section{Estimating the forcing from CO$_2$ all the way from zero}
-We usually assume that the forcing from CO$_2$ is logarithmic in concentration such that $F_{4x} \approx 2\cdot F_{2x}$ and $F_{8x} \approx 3\cdot F_{2x}$, $F_{0.5x} \approx -F_{2x}$ etc. which is a finding we owe to Svante Arrhenius' epic study from 1896. But how far does the logarithmic assumption work? To investigate this you will use the MODTRAN model to investigate this. You can start from the standard 400 ppm and go up through consecutive doublings e.g. to 6400 ppm and likewise down by halving the concentration. At which point does the logarithmic approximation stop working? You can repeat the exercise with the observer at both 70 km height and also at the tropopause at 18 km height to see how the stratosphere will adjust. 
+% \section{Create a hiatus}
+% The surface warmed more slowly than expected from 1998--2012, an event which many people call `the hiatus'. One possible explanation for the hiatus is that we forgot to account for certain forcings in models: e.g. the solar-cycle minimum or stratospheric aerosols due to small volcanic eruptions during this period. Reproduce a hiatus in the 2-layer model. Ramp up the forcing incrementally to $F_{2x}$ over 70 years and then hold the forcing constant out to year 140. Produce a second run, but this time try to keep the temperature evolution after year 70 constant by decreasing the forcing at a constant rate from year 70 onward.  This code might be useful:
+% \begin{verbatim}
+%     nyears             = 140
+%     forcing_years      = np.arange(0,nyears)
+%     input_forcing      = f2x*np.linspace(0.,2.,nyears)
+%     input_forcing[70:] = input_forcing[70]
+%     ...
+% \end{verbatim}
+% What is the average forcing change in Wm$^{-2}$ needed in the first 15 years relative to the constant forcing case? Note here that the output of the model is monthly means. What average forcing change would you need to produce a constant temperature after year 70 in the zero-layer model? Can you explain the difference between the two models? %Estimates in the literature suggest that the neglected forcings should be around --0.2 to --0.3 Wm$^{-2}$; do you think these forcings could explain the hiatus?
 
-You may plot the result, perhaps with a logarithmic axis for the CO$_2$ concentration, in order to figure out over which range the logarithmic assumption works reasonably, or you might focus on how stratospheric adjust depends on the CO$_2$ level.
+
+% \section{Estimating the forcing from CO$_2$ all the way from zero}
+% We usually assume that the forcing from CO$_2$ is logarithmic in concentration such that $F_{4x} \approx 2\cdot F_{2x}$ and $F_{8x} \approx 3\cdot F_{2x}$, $F_{0.5x} \approx -F_{2x}$ etc. which is a finding we owe to Svante Arrhenius' epic study from 1896. But how far does the logarithmic assumption work? To investigate this you will use the MODTRAN model to investigate this. You can start from the standard 400 ppm and go up through consecutive doublings e.g. to 6400 ppm and likewise down by halving the concentration. At which point does the logarithmic approximation stop working? You can repeat the exercise with the observer at both 70 km height and also at the tropopause at 18 km height to see how the stratosphere will adjust. 
+
+% You may plot the result, perhaps with a logarithmic axis for the CO$_2$ concentration, in order to figure out over which range the logarithmic assumption works reasonably, or you might focus on how stratospheric adjust depends on the CO$_2$ level.
 
 
-\section{Forcing and Feedback in MPI-ESM1.2}
-We often assume that the feedback parameter $\lambda$ is a constant, but if one forces some climate models with more the $F_{2x}$ then they start to exhibit non-linearities. In the MPI-ESM1.2 coupled climate model we have a quite rapid increase of $ECS$ from less than 3 K for one doubling and up to 10 K for the fourth doubling ($F_{8x} \rightarrow F_{16x}$). Your task is to figure out whether it is the forcing that increases or the negative feedback that weakens, or do they both conspire to increase ECS? You can use the Gregory-method (section \ref{sec:gregory-hansen}), e.g. on the first 10 years to estimate forcing, and over years 100-1000 to estimate the longterm feedback parameter.
+% \section{Forcing and Feedback in MPI-ESM1.2}
+% We often assume that the feedback parameter $\lambda$ is a constant, but if one forces some climate models with more the $F_{2x}$ then they start to exhibit non-linearities. In the MPI-ESM1.2 coupled climate model we have a quite rapid increase of $ECS$ from less than 3 K for one doubling and up to 10 K for the fourth doubling ($F_{8x} \rightarrow F_{16x}$). Your task is to figure out whether it is the forcing that increases or the negative feedback that weakens, or do they both conspire to increase ECS? You can use the Gregory-method (section \ref{sec:gregory-hansen}), e.g. on the first 10 years to estimate forcing, and over years 100-1000 to estimate the longterm feedback parameter.
 
-You can load the netcdf files from the MPI-ESM1.2 experiments into Python and calculate the surface temperature and top-of-atmosphere imbalance using for instance this command to load the 2xCO$_2$ experiment:
-\begin{verbatim}
-from scipy.io import netcdf
-mpiesm_2x = netcdf.netcdf_file('mpiesm-1.2.00_abrupt2xCO2_anomaly.nc')
-N_2x = mpiesm_2x.variables['trad0'][:,0,0]+mpiesm_2x.variables['srad0'][:,0,0]
-T_2x = mpiesm_2x.variables['tsurf'][:,0,0]
-\end{verbatim}
-The files have already been globally and annually average, and I have subtracted the control simulation values.
+% You can load the netcdf files from the MPI-ESM1.2 experiments into Python and calculate the surface temperature and top-of-atmosphere imbalance using for instance this command to load the 2xCO$_2$ experiment:
+% \begin{verbatim}
+% from scipy.io import netcdf
+% mpiesm_2x = netcdf.netcdf_file('mpiesm-1.2.00_abrupt2xCO2_anomaly.nc')
+% N_2x = mpiesm_2x.variables['trad0'][:,0,0]+mpiesm_2x.variables['srad0'][:,0,0]
+% T_2x = mpiesm_2x.variables['tsurf'][:,0,0]
+% \end{verbatim}
+% The files have already been globally and annually average, and I have subtracted the control simulation values.
 
 %\section{Modeling natural variability}
 %The two-layer model does not exhibit natural variability on its own. But we can model the effect of 'weather' by introducing random year-to-year variation in the radiation balance. This is easy to do in the two-layer model; here I create input for a 10000-year long run with random noise sampled at the monthly timescale from a  gaussian distribution as forcing with a standard deviation of 0.1 Wm$^{-2}$:
